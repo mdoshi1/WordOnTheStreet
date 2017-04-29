@@ -89,9 +89,11 @@ extension NoteCardViewController: KolodaViewDataSource {
     }
     
     func koloda(_ koloda: KolodaView, viewForCardAt index: Int) -> UIView {
-        let notecard = UITextView(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
-        notecard.text = dataSource[Int(index)]
-        return notecard
+        let nc = NoteCardView(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
+        nc.wordView.text = dataSource[Int(index)]
+        nc.translationView.text = "Translation of \(dataSource[Int(index)])"
+        nc.backgroundColor = nil;
+        return nc
     }
     
     func koloda(_ koloda: KolodaView, viewForCardOverlayAt index: Int) -> OverlayView? {

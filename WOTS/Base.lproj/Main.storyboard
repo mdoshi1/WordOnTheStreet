@@ -43,10 +43,16 @@
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6Sh-W8-J4f" customClass="CustomNoteCardView" customModule="WOTS" customModuleProvider="target">
                                 <rect key="frame" x="16" y="77" width="343" height="227"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="notecard" translatesAutoresizingMaskIntoConstraints="NO" id="SMa-Ag-gF9">
+                                        <rect key="frame" x="51" y="49" width="240" height="128"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item 1" id="4Am-Rz-Vh2"/>
                     <connections>
@@ -76,4 +82,7 @@
             <point key="canvasLocation" x="138" y="230"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="notecard" width="600" height="359"/>
+    </resources>
 </document>

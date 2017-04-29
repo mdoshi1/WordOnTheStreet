@@ -11,5 +11,4 @@ import Koloda
 
 class CustomNoteCardView: KolodaView {
     
-
 }
