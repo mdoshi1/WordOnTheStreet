@@ -6,6 +6,8 @@ target 'WOTS' do
   use_frameworks!
 
   # Pods for WOTS
-  pod "Koloda"
+  pod 'Koloda'
+  pod 'GoogleMaps'
+  pod 'GooglePlaces'
 
 end
