@@ -87,10 +87,10 @@
 			isa = PBXGroup;
 			children = (
 				95791F891EB5460C00F9FA96 /* OverlayView.xib */,
+				95791F8C1EB5468300F9FA96 /* ExampleOverlayView.swift */,
 				F46EC9811EB52F7B00BF1A53 /* AppDelegate.swift */,
 				F46EC9931EB538DB00BF1A53 /* TabBarController.swift */,
 				F46EC9851EB52F7B00BF1A53 /* Main.storyboard */,
-				95791F8C1EB5468300F9FA96 /* ExampleOverlayView.swift */,
 				F46EC9881EB52F7B00BF1A53 /* Assets.xcassets */,
 				F46EC98A1EB52F7B00BF1A53 /* LaunchScreen.storyboard */,
 				F46EC98D1EB52F7B00BF1A53 /* Info.plist */,

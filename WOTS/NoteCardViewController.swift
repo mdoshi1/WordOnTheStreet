@@ -13,14 +13,18 @@ private var numberOfCards: Int = 5
 
 class NoteCardViewController: UIViewController {
     
-    @IBOutlet weak var kolodaView: KolodaView!
+    @IBOutlet weak var kolodaView: CustomNoteCardView!
     
-    fileprivate var dataSource: [UIImage] = {
-        var array: [UIImage] = []
-        for index in 0..<numberOfCards {
-            array.append(UIImage(named: "Card_like_\(index + 1)")!)
-        }
-        
+//    fileprivate var dataSource: [UIImage] = {
+//        var array: [UIImage] = []
+//        for index in 0..<numberOfCards {
+//            array.append(UIImage(named: "Card_like_\(index + 1)")!)
+//        }
+//        
+//        return array
+//    }()
+    fileprivate var dataSource: [String] = {
+        var array: [String] = ["Michael", "Jade", "Max", "Sam"]
         return array
     }()
     
@@ -28,7 +32,6 @@ class NoteCardViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         kolodaView.dataSource = self
         kolodaView.delegate = self
         
@@ -57,9 +60,13 @@ extension NoteCardViewController: KolodaViewDelegate {
     
     func kolodaDidRunOutOfCards(_ koloda: KolodaView) {
         let position = kolodaView.currentCardIndex
-        for i in 1...4 {
-            dataSource.append(UIImage(named: "Card_like_\(i)")!)
-        }
+//        for i in 1...4 {
+//            dataSource.append(UIImage(named: "Card_like_\(i)")!)
+//        }
+        dataSource.append("Michael");
+        dataSource.append("Jade");
+        dataSource.append("Max");
+        dataSource.append("Sam");
         kolodaView.insertCardAtIndexRange(position..<position + 4, animated: true)
     }
     
@@ -82,7 +89,9 @@ extension NoteCardViewController: KolodaViewDataSource {
     }
     
     func koloda(_ koloda: KolodaView, viewForCardAt index: Int) -> UIView {
-        return UIImageView(image: dataSource[Int(index)])
+        let notecard = UITextView(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
+        notecard.text = dataSource[Int(index)]
+        return notecard
     }
     
     func koloda(_ koloda: KolodaView, viewForCardOverlayAt index: Int) -> OverlayView? {
