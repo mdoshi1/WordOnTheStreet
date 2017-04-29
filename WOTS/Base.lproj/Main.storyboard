@@ -31,7 +31,7 @@
         <!--Item 1-->
         <scene sceneID="8MQ-Ou-8vp">
             <objects>
-                <viewController id="TBO-H3-cLm" sceneMemberID="viewController">
+                <viewController id="TBO-H3-cLm" customClass="ExploreViewController" customModule="WOTS" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="pnO-la-eya"/>
                         <viewControllerLayoutGuide type="bottom" id="sM7-Mu-v9F"/>

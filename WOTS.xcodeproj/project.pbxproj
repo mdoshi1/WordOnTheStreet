@@ -13,6 +13,8 @@
 		F46EC9891EB52F7B00BF1A53 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F46EC9881EB52F7B00BF1A53 /* Assets.xcassets */; };
 		F46EC98C1EB52F7B00BF1A53 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F46EC98A1EB52F7B00BF1A53 /* LaunchScreen.storyboard */; };
 		F46EC9941EB538DB00BF1A53 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46EC9931EB538DB00BF1A53 /* TabBarController.swift */; };
+		F46EC9961EB5418C00BF1A53 /* ExploreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46EC9951EB5418C00BF1A53 /* ExploreViewController.swift */; };
+		F46EC9981EB54E7B00BF1A53 /* UIView+Autolayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46EC9971EB54E7B00BF1A53 /* UIView+Autolayout.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +28,8 @@
 		F46EC98B1EB52F7B00BF1A53 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F46EC98D1EB52F7B00BF1A53 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F46EC9931EB538DB00BF1A53 /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		F46EC9951EB5418C00BF1A53 /* ExploreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExploreViewController.swift; sourceTree = "<group>"; };
+		F46EC9971EB54E7B00BF1A53 /* UIView+Autolayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Autolayout.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +84,8 @@
 			children = (
 				F46EC9811EB52F7B00BF1A53 /* AppDelegate.swift */,
 				F46EC9931EB538DB00BF1A53 /* TabBarController.swift */,
+				F46EC9951EB5418C00BF1A53 /* ExploreViewController.swift */,
+				F46EC9971EB54E7B00BF1A53 /* UIView+Autolayout.swift */,
 				F46EC9851EB52F7B00BF1A53 /* Main.storyboard */,
 				F46EC9881EB52F7B00BF1A53 /* Assets.xcassets */,
 				F46EC98A1EB52F7B00BF1A53 /* LaunchScreen.storyboard */,
@@ -213,7 +219,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				F46EC9941EB538DB00BF1A53 /* TabBarController.swift in Sources */,
+				F46EC9981EB54E7B00BF1A53 /* UIView+Autolayout.swift in Sources */,
 				F46EC9821EB52F7B00BF1A53 /* AppDelegate.swift in Sources */,
+				F46EC9961EB5418C00BF1A53 /* ExploreViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -339,6 +347,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = F42N7QJG3C;
 				INFOPLIST_FILE = WOTS/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = edu.stanford.LearningCurve.WOTS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -353,6 +362,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = F42N7QJG3C;
 				INFOPLIST_FILE = WOTS/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = edu.stanford.LearningCurve.WOTS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -379,6 +389,7 @@
 				F46EC9921EB52F7B00BF1A53 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
