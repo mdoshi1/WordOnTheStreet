@@ -10,6 +10,8 @@
 		1A89F9D8B7ECB90639BAEDC0 /* Pods_WOTS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 749084860D94B5BF673E4213 /* Pods_WOTS.framework */; };
 		95791F861EB53D4700F9FA96 /* NoteCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95791F851EB53D4700F9FA96 /* NoteCardViewController.swift */; };
 		95791F881EB542E400F9FA96 /* CustomNoteCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95791F871EB542E400F9FA96 /* CustomNoteCardView.swift */; };
+		95791F8B1EB5460C00F9FA96 /* OverlayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95791F891EB5460C00F9FA96 /* OverlayView.xib */; };
+		95791F8D1EB5468300F9FA96 /* ExampleOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95791F8C1EB5468300F9FA96 /* ExampleOverlayView.swift */; };
 		F46EC9821EB52F7B00BF1A53 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46EC9811EB52F7B00BF1A53 /* AppDelegate.swift */; };
 		F46EC9871EB52F7B00BF1A53 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F46EC9851EB52F7B00BF1A53 /* Main.storyboard */; };
 		F46EC9891EB52F7B00BF1A53 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F46EC9881EB52F7B00BF1A53 /* Assets.xcassets */; };
@@ -23,6 +25,8 @@
 		749084860D94B5BF673E4213 /* Pods_WOTS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WOTS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		95791F851EB53D4700F9FA96 /* NoteCardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteCardViewController.swift; sourceTree = "<group>"; };
 		95791F871EB542E400F9FA96 /* CustomNoteCardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomNoteCardView.swift; sourceTree = "<group>"; };
+		95791F8A1EB5460C00F9FA96 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = ../../../koloda/Example/Koloda/Base.lproj/OverlayView.xib; sourceTree = "<group>"; };
+		95791F8C1EB5468300F9FA96 /* ExampleOverlayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ExampleOverlayView.swift; path = ../../../koloda/Example/Koloda/ExampleOverlayView.swift; sourceTree = "<group>"; };
 		F46EC97E1EB52F7B00BF1A53 /* WOTS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WOTS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F46EC9811EB52F7B00BF1A53 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F46EC9861EB52F7B00BF1A53 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -82,9 +86,11 @@
 		F46EC9801EB52F7B00BF1A53 /* WOTS */ = {
 			isa = PBXGroup;
 			children = (
+				95791F891EB5460C00F9FA96 /* OverlayView.xib */,
 				F46EC9811EB52F7B00BF1A53 /* AppDelegate.swift */,
 				F46EC9931EB538DB00BF1A53 /* TabBarController.swift */,
 				F46EC9851EB52F7B00BF1A53 /* Main.storyboard */,
+				95791F8C1EB5468300F9FA96 /* ExampleOverlayView.swift */,
 				F46EC9881EB52F7B00BF1A53 /* Assets.xcassets */,
 				F46EC98A1EB52F7B00BF1A53 /* LaunchScreen.storyboard */,
 				F46EC98D1EB52F7B00BF1A53 /* Info.plist */,
@@ -158,6 +164,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F46EC98C1EB52F7B00BF1A53 /* LaunchScreen.storyboard in Resources */,
+				95791F8B1EB5460C00F9FA96 /* OverlayView.xib in Resources */,
 				F46EC9891EB52F7B00BF1A53 /* Assets.xcassets in Resources */,
 				F46EC9871EB52F7B00BF1A53 /* Main.storyboard in Resources */,
 			);
@@ -219,6 +226,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F46EC9941EB538DB00BF1A53 /* TabBarController.swift in Sources */,
+				95791F8D1EB5468300F9FA96 /* ExampleOverlayView.swift in Sources */,
 				95791F881EB542E400F9FA96 /* CustomNoteCardView.swift in Sources */,
 				95791F861EB53D4700F9FA96 /* NoteCardViewController.swift in Sources */,
 				F46EC9821EB52F7B00BF1A53 /* AppDelegate.swift in Sources */,
@@ -228,6 +236,14 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		95791F891EB5460C00F9FA96 /* OverlayView.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				95791F8A1EB5460C00F9FA96 /* Base */,
+			);
+			name = OverlayView.xib;
+			sourceTree = "<group>";
+		};
 		F46EC9851EB52F7B00BF1A53 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
