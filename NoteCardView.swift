@@ -25,7 +25,6 @@ class NoteCardView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         addSubview(wordView)
-        backgroundColor = nil;
     }
     
     required init?(coder aDecoder: NSCoder) {
