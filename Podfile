@@ -6,6 +6,6 @@ target 'WOTS' do
   use_frameworks!
 
   # Pods for WOTS
-  pod "Koloda"
+  pod 'Koloda', '~> 4.0'
 
 end

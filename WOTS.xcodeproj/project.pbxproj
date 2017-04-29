@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		1A89F9D8B7ECB90639BAEDC0 /* Pods_WOTS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 749084860D94B5BF673E4213 /* Pods_WOTS.framework */; };
+		95791F861EB53D4700F9FA96 /* NoteCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95791F851EB53D4700F9FA96 /* NoteCardViewController.swift */; };
+		95791F881EB542E400F9FA96 /* CustomNoteCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95791F871EB542E400F9FA96 /* CustomNoteCardView.swift */; };
 		F46EC9821EB52F7B00BF1A53 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46EC9811EB52F7B00BF1A53 /* AppDelegate.swift */; };
 		F46EC9871EB52F7B00BF1A53 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F46EC9851EB52F7B00BF1A53 /* Main.storyboard */; };
 		F46EC9891EB52F7B00BF1A53 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F46EC9881EB52F7B00BF1A53 /* Assets.xcassets */; };
@@ -19,6 +21,8 @@
 		119B10EC81573764363AC117 /* Pods-WOTS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WOTS.release.xcconfig"; path = "Pods/Target Support Files/Pods-WOTS/Pods-WOTS.release.xcconfig"; sourceTree = "<group>"; };
 		5940474782F3E9AB78BDC15F /* Pods-WOTS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WOTS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WOTS/Pods-WOTS.debug.xcconfig"; sourceTree = "<group>"; };
 		749084860D94B5BF673E4213 /* Pods_WOTS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WOTS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		95791F851EB53D4700F9FA96 /* NoteCardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteCardViewController.swift; sourceTree = "<group>"; };
+		95791F871EB542E400F9FA96 /* CustomNoteCardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomNoteCardView.swift; sourceTree = "<group>"; };
 		F46EC97E1EB52F7B00BF1A53 /* WOTS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WOTS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F46EC9811EB52F7B00BF1A53 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F46EC9861EB52F7B00BF1A53 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -84,6 +88,8 @@
 				F46EC9881EB52F7B00BF1A53 /* Assets.xcassets */,
 				F46EC98A1EB52F7B00BF1A53 /* LaunchScreen.storyboard */,
 				F46EC98D1EB52F7B00BF1A53 /* Info.plist */,
+				95791F851EB53D4700F9FA96 /* NoteCardViewController.swift */,
+				95791F871EB542E400F9FA96 /* CustomNoteCardView.swift */,
 			);
 			path = WOTS;
 			sourceTree = "<group>";
@@ -213,6 +219,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				F46EC9941EB538DB00BF1A53 /* TabBarController.swift in Sources */,
+				95791F881EB542E400F9FA96 /* CustomNoteCardView.swift in Sources */,
+				95791F861EB53D4700F9FA96 /* NoteCardViewController.swift in Sources */,
 				F46EC9821EB52F7B00BF1A53 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -379,6 +387,7 @@
 				F46EC9921EB52F7B00BF1A53 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
