@@ -4,15 +4,15 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Item 2-->
         <scene sceneID="ILx-HY-SuD">
             <objects>
-                <viewController id="aHc-uU-dPf" sceneMemberID="viewController">
+                <viewController id="aHc-uU-dPf" customClass="ExploreViewController" customModule="WOTS" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="VzY-h0-6ra"/>
                         <viewControllerLayoutGuide type="bottom" id="tEM-eL-tR4"/>
@@ -31,7 +31,7 @@
         <!--Item 1-->
         <scene sceneID="8MQ-Ou-8vp">
             <objects>
-                <viewController id="TBO-H3-cLm" customClass="ExploreViewController" customModule="WOTS" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="TBO-H3-cLm" customClass="NoteCardViewController" customModule="WOTS" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="pnO-la-eya"/>
                         <viewControllerLayoutGuide type="bottom" id="sM7-Mu-v9F"/>
@@ -39,13 +39,28 @@
                     <view key="view" contentMode="scaleToFill" id="Ni6-kt-UMs">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Sh-W8-J4f" customClass="KolodaView" customModule="Koloda">
+                                <rect key="frame" x="6" y="77" width="343" height="227"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="sM7-Mu-v9F" firstAttribute="top" secondItem="6Sh-W8-J4f" secondAttribute="bottom" constant="314" id="TMe-ib-ZFv"/>
+                            <constraint firstItem="6Sh-W8-J4f" firstAttribute="top" secondItem="pnO-la-eya" secondAttribute="bottom" constant="57" id="Xd1-oJ-4Wv"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="6Sh-W8-J4f" secondAttribute="leading" constant="10" id="b8H-uL-Dmf"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="6Sh-W8-J4f" secondAttribute="trailing" constant="10" id="xCY-pz-HG2"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item 1" id="4Am-Rz-Vh2"/>
+                    <connections>
+                        <outlet property="kolodaView" destination="6Sh-W8-J4f" id="adT-MS-Z6Y"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="a7g-rA-h6k" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1090" y="-96"/>
+            <point key="canvasLocation" x="1088.8" y="-96.7016491754123"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="4PB-Yb-Yqr">
