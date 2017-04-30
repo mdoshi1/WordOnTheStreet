@@ -11,13 +11,13 @@ import UIKit
 class NoteCardView: UIView {
     
     lazy var wordView: UITextView = {
-        let wordView = UITextView(frame:  CGRect(x: self.frame.width/2, y: 0, width: 100, height: 100))
+        let wordView = UITextView(frame:  CGRect(x: self.frame.width/2 - 100/2, y: 0, width: 100, height: 100))
         wordView.backgroundColor = nil;
         return wordView
     }()
     
     lazy var translationView: UITextView = {
-        let translationView = UITextView(frame:  CGRect(x: 0, y: 30, width: 100, height: 100))
+        let translationView = UITextView(frame:  CGRect(x: self.frame.width/2 - 100/2, y: 30, width: 100, height: 100))
         translationView.backgroundColor = nil
         return translationView
     }()
@@ -25,7 +25,7 @@ class NoteCardView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         let image = UIImageView(image: UIImage(named: "notecard"))
-        image.frame = CGRect(x: 0, y: 0, width: 400, height: 300)
+        image.frame = CGRect(x: 0, y: 0, width: self.frame.width, height: self.frame.height)
         addSubview(image)
         addSubview(wordView)
         addSubview(translationView);
