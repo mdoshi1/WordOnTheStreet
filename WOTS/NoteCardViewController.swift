@@ -70,7 +70,8 @@ extension NoteCardViewController: KolodaViewDelegate {
     
     func koloda(_ koloda: KolodaView, didSelectCardAt index: Int) {
 //        UIApplication.shared.openURL(URL(string: "https://yalantis.com/")!)
-        print("clicked");
+        let nc = koloda.viewForCard(at: index) as? NoteCardView
+        nc?.translationView.isHidden = !(nc?.translationView.isHidden)!;
     }
     
 }
