@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -40,19 +41,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6Sh-W8-J4f" customClass="CustomNoteCardView" customModule="WOTS" customModuleProvider="target">
-                                <rect key="frame" x="16" y="77" width="343" height="227"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="notecard" translatesAutoresizingMaskIntoConstraints="NO" id="SMa-Ag-gF9">
-                                        <rect key="frame" x="51" y="49" width="240" height="128"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    </imageView>
-                                </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Sh-W8-J4f" customClass="CustomNoteCardView" customModule="WOTS" customModuleProvider="target">
+                                <rect key="frame" x="6" y="77" width="343" height="227"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="sM7-Mu-v9F" firstAttribute="top" secondItem="6Sh-W8-J4f" secondAttribute="bottom" constant="314" id="TMe-ib-ZFv"/>
+                            <constraint firstItem="6Sh-W8-J4f" firstAttribute="top" secondItem="pnO-la-eya" secondAttribute="bottom" constant="57" id="Xd1-oJ-4Wv"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="6Sh-W8-J4f" secondAttribute="leading" constant="10" id="b8H-uL-Dmf"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="6Sh-W8-J4f" secondAttribute="trailing" constant="10" id="xCY-pz-HG2"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item 1" id="4Am-Rz-Vh2"/>
                     <connections>
@@ -82,7 +82,4 @@
             <point key="canvasLocation" x="138" y="230"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="notecard" width="600" height="359"/>
-    </resources>
 </document>

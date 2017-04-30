@@ -17,15 +17,20 @@ class NoteCardView: UIView {
     }()
     
     lazy var translationView: UITextView = {
-        let translationView = UITextView(frame:  CGRect(x: 0, y: 10, width: 100, height: 10))
+        let translationView = UITextView(frame:  CGRect(x: 0, y: 30, width: 100, height: 100))
         translationView.backgroundColor = nil
         return translationView
     }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        let image = UIImageView(image: UIImage(named: "notecard"))
+        image.frame = CGRect(x: 0, y: 0, width: 400, height: 300)
+        addSubview(image)
         addSubview(wordView)
+        addSubview(translationView);
     }
+
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
