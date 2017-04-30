@@ -55,7 +55,7 @@
                             <constraint firstAttribute="trailingMargin" secondItem="6Sh-W8-J4f" secondAttribute="trailing" constant="10" id="xCY-pz-HG2"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item 1" id="4Am-Rz-Vh2"/>
+                    <tabBarItem key="tabBarItem" title="Item 1" image="learnTabImg" id="4Am-Rz-Vh2"/>
                     <connections>
                         <outlet property="kolodaView" destination="6Sh-W8-J4f" id="adT-MS-Z6Y"/>
                     </connections>
@@ -83,4 +83,7 @@
             <point key="canvasLocation" x="138" y="230"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="learnTabImg" width="25" height="25"/>
+    </resources>
 </document>

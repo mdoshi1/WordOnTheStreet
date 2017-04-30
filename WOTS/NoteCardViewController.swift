@@ -24,7 +24,12 @@ class NoteCardViewController: UIViewController {
 //        return array
 //    }()
     fileprivate var dataSource: [Dictionary<String, String>] = {
-        var myNewDictArray: [Dictionary<String, String>] =  [["word" : "cafe", "translation": "coffee"], ["word" : "leche", "translation": "milk"]]
+        var myNewDictArray: [Dictionary<String, String>] =  [
+            ["word" : "cafe", "translation": "coffee"],
+            ["word" : "leche", "translation": "milk"],
+            ["word" : "azucar", "translation": "sugar"],
+            ["word" : "paja", "translation": "straw"]
+        ]
         return myNewDictArray
     }()
     
@@ -65,7 +70,9 @@ extension NoteCardViewController: KolodaViewDelegate {
 //        }
         dataSource.append(["word" : "cafe", "translation": "coffee"])
         dataSource.append(["word" : "leche", "translation": "milk"])
-        kolodaView.insertCardAtIndexRange(position..<position + 2, animated: true)
+        dataSource.append(["word" : "azucar", "translation": "sugar"])
+        dataSource.append(["word" : "paja", "translation": "straw"])
+        kolodaView.insertCardAtIndexRange(position..<position + 4, animated: true)
     }
     
     func koloda(_ koloda: KolodaView, didSelectCardAt index: Int) {
