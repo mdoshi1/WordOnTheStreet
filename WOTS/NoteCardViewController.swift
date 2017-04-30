@@ -23,9 +23,9 @@ class NoteCardViewController: UIViewController {
 //        
 //        return array
 //    }()
-    fileprivate var dataSource: [String] = {
-        var array: [String] = ["Michael", "Jade", "Max", "Sam"]
-        return array
+    fileprivate var dataSource: [Dictionary<String, String>] = {
+        var myNewDictArray: [Dictionary<String, String>] =  [["word" : "cafe", "translation": "coffee"], ["word" : "leche", "translation": "milk"]]
+        return myNewDictArray
     }()
     
     // MARK: Lifecycle
@@ -63,11 +63,9 @@ extension NoteCardViewController: KolodaViewDelegate {
 //        for i in 1...4 {
 //            dataSource.append(UIImage(named: "Card_like_\(i)")!)
 //        }
-        dataSource.append("Michael");
-        dataSource.append("Jade");
-        dataSource.append("Max");
-        dataSource.append("Sam");
-        kolodaView.insertCardAtIndexRange(position..<position + 4, animated: true)
+        dataSource.append(["word" : "cafe", "translation": "coffee"])
+        dataSource.append(["word" : "leche", "translation": "milk"])
+        kolodaView.insertCardAtIndexRange(position..<position + 2, animated: true)
     }
     
     func koloda(_ koloda: KolodaView, didSelectCardAt index: Int) {
@@ -91,8 +89,8 @@ extension NoteCardViewController: KolodaViewDataSource {
     
     func koloda(_ koloda: KolodaView, viewForCardAt index: Int) -> UIView {
         let nc = NoteCardView(frame: CGRect(x: 0, y: 0, width: koloda.frame.width, height: koloda.frame.height))
-        nc.wordView.text = dataSource[Int(index)]
-        nc.translationView.text = "Translation of \(dataSource[Int(index)])"
+        nc.wordView.text = dataSource[Int(index)]["word"]
+        nc.translationView.text = dataSource[Int(index)]["translation"]
         return nc
     }
     

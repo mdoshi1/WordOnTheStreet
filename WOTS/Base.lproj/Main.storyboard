@@ -41,15 +41,17 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Sh-W8-J4f" customClass="KolodaView" customModule="Koloda">
-                                <rect key="frame" x="6" y="77" width="343" height="227"/>
+                                <rect key="frame" x="10" y="77" width="355" height="227"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="6Sh-W8-J4f" firstAttribute="leading" secondItem="Ni6-kt-UMs" secondAttribute="leading" constant="10" id="Kxt-kU-HFE"/>
                             <constraint firstItem="sM7-Mu-v9F" firstAttribute="top" secondItem="6Sh-W8-J4f" secondAttribute="bottom" constant="314" id="TMe-ib-ZFv"/>
                             <constraint firstItem="6Sh-W8-J4f" firstAttribute="top" secondItem="pnO-la-eya" secondAttribute="bottom" constant="57" id="Xd1-oJ-4Wv"/>
                             <constraint firstAttribute="leadingMargin" secondItem="6Sh-W8-J4f" secondAttribute="leading" constant="10" id="b8H-uL-Dmf"/>
+                            <constraint firstAttribute="trailing" secondItem="6Sh-W8-J4f" secondAttribute="trailing" constant="10" id="vLZ-G6-luK"/>
                             <constraint firstAttribute="trailingMargin" secondItem="6Sh-W8-J4f" secondAttribute="trailing" constant="10" id="xCY-pz-HG2"/>
                         </constraints>
                     </view>
