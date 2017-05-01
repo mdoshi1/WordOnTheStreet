@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  NoteCardViewController.swift
 //  Koloda
 //
 //  Created by Eugene Andreyev on 4/23/15.
@@ -14,6 +14,8 @@ private var numberOfCards: Int = 5
 class NoteCardViewController: UIViewController {
     
     @IBOutlet weak var kolodaView: CustomNoteCardView!
+    @IBOutlet var upGestureRecognizer: UISwipeGestureRecognizer!
+
     
 //    fileprivate var dataSource: [UIImage] = {
 //        var array: [UIImage] = []
@@ -41,6 +43,10 @@ class NoteCardViewController: UIViewController {
     
     // MARK: IBActions
     
+    @IBAction func upSwiped(_ sender: Any) {
+        print ("swiped up")
+    }
+
     @IBAction func leftButtonTapped() {
         kolodaView?.swipe(.left)
     }
@@ -52,6 +58,29 @@ class NoteCardViewController: UIViewController {
     @IBAction func undoButtonTapped() {
         kolodaView?.revertAction()
     }
+    
+    
+    // Show the WordListView at the bottom like the Google Maps interface
+    func addBottomSheetView() {
+        // 1- Init bottomSheetVC
+        let bottomSheetVC = WordListTableViewController()
+        
+        // 2- Add bottomSheetVC as a child view
+        self.addChildViewController(bottomSheetVC)
+        self.view.addSubview(bottomSheetVC.view)
+        bottomSheetVC.didMove(toParentViewController: self)
+        
+        // 3- Adjust bottomSheet frame and initial position.
+        let height = view.frame.height
+        let width  = view.frame.width
+        bottomSheetVC.view.frame  = CGRect(x: 0, y: self.view.frame.maxY, width: width, height: height)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        addBottomSheetView()
+    }
+    
 }
 
 // MARK: KolodaViewDelegate

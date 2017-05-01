@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		1A89F9D8B7ECB90639BAEDC0 /* Pods_WOTS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 749084860D94B5BF673E4213 /* Pods_WOTS.framework */; };
+		3F3BA9CE1EB6FCA1006B4FC1 /* WordListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F3BA9CD1EB6FCA1006B4FC1 /* WordListTableViewController.swift */; };
+		3F3BA9D31EB6FEF5006B4FC1 /* DefaultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F3BA9D11EB6FEF5006B4FC1 /* DefaultTableViewCell.swift */; };
+		3F3BA9D41EB6FEF5006B4FC1 /* DefaultTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3F3BA9D21EB6FEF5006B4FC1 /* DefaultTableViewCell.xib */; };
+		3F700D161EB563FB00D1CAD4 /* WordListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F700D151EB563FB00D1CAD4 /* WordListViewController.swift */; };
 		95791F861EB53D4700F9FA96 /* NoteCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95791F851EB53D4700F9FA96 /* NoteCardViewController.swift */; };
 		95791F881EB542E400F9FA96 /* CustomNoteCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95791F871EB542E400F9FA96 /* CustomNoteCardView.swift */; };
 		95791F981EB5513300F9FA96 /* NoteCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95791F971EB5513300F9FA96 /* NoteCardView.swift */; };
@@ -22,6 +26,10 @@
 
 /* Begin PBXFileReference section */
 		119B10EC81573764363AC117 /* Pods-WOTS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WOTS.release.xcconfig"; path = "Pods/Target Support Files/Pods-WOTS/Pods-WOTS.release.xcconfig"; sourceTree = "<group>"; };
+		3F3BA9CD1EB6FCA1006B4FC1 /* WordListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WordListTableViewController.swift; sourceTree = "<group>"; };
+		3F3BA9D11EB6FEF5006B4FC1 /* DefaultTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultTableViewCell.swift; sourceTree = "<group>"; };
+		3F3BA9D21EB6FEF5006B4FC1 /* DefaultTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DefaultTableViewCell.xib; sourceTree = "<group>"; };
+		3F700D151EB563FB00D1CAD4 /* WordListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WordListViewController.swift; sourceTree = "<group>"; };
 		5940474782F3E9AB78BDC15F /* Pods-WOTS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WOTS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WOTS/Pods-WOTS.debug.xcconfig"; sourceTree = "<group>"; };
 		749084860D94B5BF673E4213 /* Pods_WOTS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WOTS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		95791F851EB53D4700F9FA96 /* NoteCardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteCardViewController.swift; sourceTree = "<group>"; };
@@ -99,6 +107,10 @@
 				95791F9D1EB55AEE00F9FA96 /* NoteCardOverlayView.xib */,
 				95791F971EB5513300F9FA96 /* NoteCardView.swift */,
 				95791F871EB542E400F9FA96 /* CustomNoteCardView.swift */,
+				3F700D151EB563FB00D1CAD4 /* WordListViewController.swift */,
+				3F3BA9CD1EB6FCA1006B4FC1 /* WordListTableViewController.swift */,
+				3F3BA9D11EB6FEF5006B4FC1 /* DefaultTableViewCell.swift */,
+				3F3BA9D21EB6FEF5006B4FC1 /* DefaultTableViewCell.xib */,
 			);
 			path = WOTS;
 			sourceTree = "<group>";
@@ -138,7 +150,6 @@
 				TargetAttributes = {
 					F46EC97D1EB52F7B00BF1A53 = {
 						CreatedOnToolsVersion = 8.3.2;
-						DevelopmentTeam = F42N7QJG3C;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -169,6 +180,7 @@
 				F46EC98C1EB52F7B00BF1A53 /* LaunchScreen.storyboard in Resources */,
 				F46EC9891EB52F7B00BF1A53 /* Assets.xcassets in Resources */,
 				95791F9E1EB55AEE00F9FA96 /* NoteCardOverlayView.xib in Resources */,
+				3F3BA9D41EB6FEF5006B4FC1 /* DefaultTableViewCell.xib in Resources */,
 				F46EC9871EB52F7B00BF1A53 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -231,8 +243,11 @@
 				F46EC9941EB538DB00BF1A53 /* TabBarController.swift in Sources */,
 				95791F9C1EB55A9700F9FA96 /* NoteCardOverlayView.swift in Sources */,
 				95791F881EB542E400F9FA96 /* CustomNoteCardView.swift in Sources */,
+				3F700D161EB563FB00D1CAD4 /* WordListViewController.swift in Sources */,
 				95791F861EB53D4700F9FA96 /* NoteCardViewController.swift in Sources */,
+				3F3BA9CE1EB6FCA1006B4FC1 /* WordListTableViewController.swift in Sources */,
 				95791F981EB5513300F9FA96 /* NoteCardView.swift in Sources */,
+				3F3BA9D31EB6FEF5006B4FC1 /* DefaultTableViewCell.swift in Sources */,
 				F46EC9821EB52F7B00BF1A53 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -357,8 +372,10 @@
 			baseConfigurationReference = 5940474782F3E9AB78BDC15F /* Pods-WOTS.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = F42N7QJG3C;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = WOTS/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = edu.stanford.LearningCurve.WOTS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -371,8 +388,10 @@
 			baseConfigurationReference = 119B10EC81573764363AC117 /* Pods-WOTS.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = F42N7QJG3C;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = WOTS/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = edu.stanford.LearningCurve.WOTS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
