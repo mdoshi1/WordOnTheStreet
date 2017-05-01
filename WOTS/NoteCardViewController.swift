@@ -63,7 +63,9 @@ class NoteCardViewController: UIViewController {
     // Show the WordListView at the bottom like the Google Maps interface
     func addBottomSheetView() {
         // 1- Init bottomSheetVC
-        let bottomSheetVC = WordListTableViewController()
+//        let bottomSheetVC = WordListTableViewController()
+        let bottomSheetVC = ScrollableBottomSheetViewController()
+
         
         // 2- Add bottomSheetVC as a child view
         self.addChildViewController(bottomSheetVC)
