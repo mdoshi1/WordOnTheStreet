@@ -12,7 +12,17 @@ class ScrollableBottomSheetViewController: UIViewController {
     @IBOutlet weak var headerView: UIView!
     @IBOutlet weak var tableView: UITableView!
     
-    var words: [String] = ["We", "Heart", "Swift"]
+    // placeholder words
+    var words: [Dictionary<String, String>] = [
+        ["english": "coffee", "spanish": "café"],
+        ["english": "sugar", "spanish": "azúcar"],
+        ["english": "milk", "spanish": "leche"],
+        ["english": "coffee", "spanish": "café"],
+        ["english": "sugar", "spanish": "azúcar"],
+        ["english": "coffee", "spanish": "café"],
+        ["english": "sugar", "spanish": "azúcar"],
+        ["english": "coffee", "spanish": "café"],
+        ["english": "sugar", "spanish": "azúcar"]]
     
     let fullView: CGFloat = 100
     var partialView: CGFloat {
@@ -25,6 +35,8 @@ class ScrollableBottomSheetViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(UINib(nibName: "DefaultTableViewCell", bundle: nil), forCellReuseIdentifier: "default")
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 300
         
         let gesture = UIPanGestureRecognizer.init(target: self, action: #selector(ScrollableBottomSheetViewController.panGesture))
         gesture.delegate = self
@@ -96,7 +108,7 @@ class ScrollableBottomSheetViewController: UIViewController {
 }
 
 extension ScrollableBottomSheetViewController: UITableViewDelegate, UITableViewDataSource {
-    
+
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -105,14 +117,16 @@ extension ScrollableBottomSheetViewController: UITableViewDelegate, UITableViewD
         return self.words.count
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 50
-    }
+//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//        return 50
+//    }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell : UITableViewCell = tableView.dequeueReusableCell(withIdentifier: "default")!
-
-        cell.textLabel?.text = self.words[indexPath.row]
+        let cell : DefaultTableViewCell = tableView.dequeueReusableCell(withIdentifier: "default")! as! DefaultTableViewCell
+        var dictionary = self.words[indexPath.row]
+        
+        cell.englishWordLabel.text = dictionary["english"]
+        cell.spanishWordLabel.text = dictionary["spanish"]
         return cell
     }
 }

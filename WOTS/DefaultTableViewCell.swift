@@ -10,6 +10,8 @@ import UIKit
 
 class DefaultTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var spanishWordLabel: UILabel!
+    @IBOutlet weak var englishWordLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
