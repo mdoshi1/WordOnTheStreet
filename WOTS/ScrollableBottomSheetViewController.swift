@@ -55,7 +55,7 @@ class ScrollableBottomSheetViewController: UIViewController {
         UIView.animate(withDuration: 0.6, animations: { [weak self] in
             let frame = self?.view.frame
             let yComponent = self?.partialView
-            self?.view.frame = CGRect(x: 0, y: yComponent!, width: frame!.width, height: frame!.height - 50)
+            self?.view.frame = CGRect(x: 0, y: yComponent!, width: frame!.width, height: frame!.height - 10)
         })
     }
 

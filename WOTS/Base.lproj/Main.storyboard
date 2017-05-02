@@ -22,7 +22,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Explore" id="WAo-Ap-y9b"/>
+                    <tabBarItem key="tabBarItem" title="Explore" image="exploreIcon" id="WAo-Ap-y9b"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9pN-lK-gGH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -151,9 +151,9 @@
         <scene sceneID="s9z-rf-58K">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="cEc-Pl-2nr" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Learn" id="4Am-Rz-Vh2"/>
+                    <tabBarItem key="tabBarItem" title="Learn" image="learnIcon" id="4Am-Rz-Vh2"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="9rI-Pc-ZkH">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="9rI-Pc-ZkH">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -171,7 +171,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="nfv-qe-f9z" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="fdZ-ea-QtO">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="fdZ-ea-QtO">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -185,4 +185,8 @@
             <point key="canvasLocation" x="3240.8000000000002" y="-146.17691154422789"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="exploreIcon" width="18" height="23"/>
+        <image name="learnIcon" width="75" height="94"/>
+    </resources>
 </document>
