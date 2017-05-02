@@ -28,6 +28,49 @@
             </objects>
             <point key="canvasLocation" x="1090" y="558"/>
         </scene>
+        <!--Standard Quiz View Controller-->
+        <scene sceneID="fGw-Cg-VeU">
+            <objects>
+                <viewController id="CQ6-xw-FVR" customClass="StandardQuizViewController" customModule="WOTS" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="LaE-AU-1k9"/>
+                        <viewControllerLayoutGuide type="bottom" id="KUq-Mf-fT9"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="VVL-Xq-Gde">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Type Translation Here" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oyv-Sr-dKQ">
+                                <rect key="frame" x="26" y="335" width="323" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z6a-lQ-L84">
+                                <rect key="frame" x="166" y="114" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="oyv-Sr-dKQ" firstAttribute="top" secondItem="z6a-lQ-L84" secondAttribute="bottom" constant="200" id="3O5-dy-yKO"/>
+                            <constraint firstItem="z6a-lQ-L84" firstAttribute="top" secondItem="LaE-AU-1k9" secondAttribute="bottom" constant="50" id="NMH-1w-PBd"/>
+                            <constraint firstItem="oyv-Sr-dKQ" firstAttribute="centerX" secondItem="VVL-Xq-Gde" secondAttribute="centerX" id="T3q-kv-m44"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="oyv-Sr-dKQ" secondAttribute="trailing" constant="10" id="dWa-VF-cRb"/>
+                            <constraint firstItem="z6a-lQ-L84" firstAttribute="centerX" secondItem="VVL-Xq-Gde" secondAttribute="centerX" id="uJp-He-wGj"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="currentWordLabel" destination="z6a-lQ-L84" id="fx4-RK-fzn"/>
+                        <outlet property="userInput" destination="oyv-Sr-dKQ" id="wfG-aT-djh"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TUc-G7-k44" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2012" y="-920"/>
+        </scene>
         <!--Note Card View Controller-->
         <scene sceneID="8MQ-Ou-8vp">
             <objects>
@@ -44,20 +87,36 @@
                                 <rect key="frame" x="10" y="121" width="355" height="183"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d3s-T8-1zm">
+                                <rect key="frame" x="118" y="369" width="138" height="30"/>
+                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="22"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal" title="Take Quiz">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="CQ6-xw-FVR" kind="show" identifier="TakeQuizSegue" id="h71-RK-L4i"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="6Sh-W8-J4f" firstAttribute="leading" secondItem="Ni6-kt-UMs" secondAttribute="leading" constant="10" id="Kxt-kU-HFE"/>
                             <constraint firstItem="sM7-Mu-v9F" firstAttribute="top" secondItem="6Sh-W8-J4f" secondAttribute="bottom" constant="314" id="TMe-ib-ZFv"/>
+                            <constraint firstItem="d3s-T8-1zm" firstAttribute="centerX" secondItem="Ni6-kt-UMs" secondAttribute="centerX" id="VK1-X6-how"/>
                             <constraint firstItem="6Sh-W8-J4f" firstAttribute="top" secondItem="pnO-la-eya" secondAttribute="bottom" constant="57" id="Xd1-oJ-4Wv"/>
                             <constraint firstAttribute="leadingMargin" secondItem="6Sh-W8-J4f" secondAttribute="leading" constant="10" id="b8H-uL-Dmf"/>
+                            <constraint firstItem="d3s-T8-1zm" firstAttribute="top" secondItem="6Sh-W8-J4f" secondAttribute="bottom" constant="30" id="sb3-M7-a8g"/>
                             <constraint firstAttribute="trailing" secondItem="6Sh-W8-J4f" secondAttribute="trailing" constant="10" id="vLZ-G6-luK"/>
                             <constraint firstAttribute="trailingMargin" secondItem="6Sh-W8-J4f" secondAttribute="trailing" constant="10" id="xCY-pz-HG2"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="kolodaView" destination="6Sh-W8-J4f" id="adT-MS-Z6Y"/>
+                        <outlet property="takeQuizButton" destination="d3s-T8-1zm" id="M3q-Uc-Ygc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="a7g-rA-h6k" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -186,7 +245,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="exploreIcon" width="18" height="23"/>
-        <image name="learnIcon" width="75" height="94"/>
+        <image name="exploreIcon" width="25" height="25"/>
+        <image name="learnIcon" width="25" height="25"/>
     </resources>
 </document>

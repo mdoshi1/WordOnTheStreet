@@ -27,6 +27,7 @@ class NoteCardViewController: UIViewController {
     let noteCardConn = NoteCardConnection()
     // MARK: Lifecycle
     
+    @IBOutlet weak var takeQuizButton: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
         kolodaView.dataSource = self
@@ -40,6 +41,7 @@ class NoteCardViewController: UIViewController {
                 print(source)
             }
         }
+        takeQuizButton.layer.cornerRadius = 4;
         self.modalTransitionStyle = UIModalTransitionStyle.flipHorizontal
     }
     
@@ -121,7 +123,16 @@ class NoteCardViewController: UIViewController {
             return nil
         })
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "TakeQuizSegue" {
+            if let nextVC = segue.destination as? StandardQuizViewController {
+                nextVC.dataSource = self.dataSource
+            }
+        }
+    }
 }
+
 
 // MARK: KolodaViewDelegate
 
