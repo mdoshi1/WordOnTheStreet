@@ -13,6 +13,8 @@ import AWSDynamoDB
 
 
 private var numberOfCards: Int = 5
+var sourceWords: [Dictionary<String, String>] = []
+
 
 class NoteCardViewController: UIViewController {
     
@@ -27,15 +29,7 @@ class NoteCardViewController: UIViewController {
 //        
 //        return array
 //    }()
-    fileprivate var dataSource: [Dictionary<String, String>] = {
-        var myNewDictArray: [Dictionary<String, String>] =  [
-            ["word" : "cafe", "translation": "coffee"],
-            ["word" : "leche", "translation": "milk"],
-            ["word" : "azucar", "translation": "sugar"],
-            ["word" : "paja", "translation": "straw"]
-        ]
-        return myNewDictArray
-    }()
+    var dataSource: [Dictionary<String, String>] = []
     
     fileprivate var isPresentingForFirstTime = true
     
@@ -45,7 +39,8 @@ class NoteCardViewController: UIViewController {
         super.viewDidLoad()
         kolodaView.dataSource = self
         kolodaView.delegate = self
-        insertData()
+      //  insertData()
+        getWordsForUser()
         self.modalTransitionStyle = UIModalTransitionStyle.flipHorizontal
     }
     
@@ -96,6 +91,37 @@ class NoteCardViewController: UIViewController {
         }
     }
     // MARK: AWS functions
+    func getWordsForUser(){
+        let dynamoDBObjectMapper = AWSDynamoDBObjectMapper.default()
+        
+        //Query using GSI index table
+        //What is the top score ever recorded for the game Meteor Blasters?
+        let queryExpression = AWSDynamoDBQueryExpression()
+        queryExpression.keyConditionExpression = "userId = :userId"
+        
+        queryExpression.expressionAttributeValues = [
+            ":userId" : AWSIdentityManager.default().identityId! ];
+        
+        dynamoDBObjectMapper .query(Word.self, expression: queryExpression) .continueWith(executor: AWSExecutor.mainThread(), block: { (task:AWSTask!) -> AnyObject! in
+            if let error = task.error as NSError? {
+                print("Error: \(error)")
+            } else {
+                if let result = task.result {//(task.result != nil) {
+                    for r in result.items as! [Word]{
+                        let dict = ["word": r.spanishWord, "translation": r.englishWord]
+                       // myNewDictArray.append(dict)
+                        self.dataSource.append(dict);
+                        sourceWords.append(dict)
+                        print(r.spanishWord);
+                    }
+                    let position = self.kolodaView.currentCardIndex
+                    self.kolodaView.insertCardAtIndexRange(position..<position + result.items.count, animated: true)
+                }
+               
+            }
+            return nil
+        })
+    }
     //Example insert data function. Used to initialize data set
     func insertData() {
         let objectMapper = AWSDynamoDBObjectMapper.default()
@@ -105,11 +131,6 @@ class NoteCardViewController: UIViewController {
             itemToCreate.userId = AWSIdentityManager.default().identityId!
             itemToCreate.englishWord = dic["translation"]!
             itemToCreate.spanishWord = dic["word"]!
-            print("--------")
-            print(itemToCreate.englishWord)
-            print(itemToCreate.userId)
-            print(itemToCreate.spanishWord)
-            print("--------")
 
             objectMapper.save(itemToCreate, completionHandler: {(error: Error?) -> Void in
                 if let error = error {
@@ -132,15 +153,15 @@ class Word: AWSDynamoDBObjectModel, AWSDynamoDBModeling  {
     
     
     class func dynamoDBTableName() -> String {
-        return "wordonthestreet-mobilehub-915338963-VocabularySet"
+        return "wordonthestreet-mobilehub-915338963-EnglishVocabSet"
     }
     
     class func hashKeyAttribute() -> String {
-        return "englishWord"
+        return "userId"
     }
     
     class func rangeKeyAttribute() -> String {
-        return "userId"
+        return "englishWord"
     }
     
 }
@@ -154,11 +175,10 @@ extension NoteCardViewController: KolodaViewDelegate {
 //        for i in 1...4 {
 //            dataSource.append(UIImage(named: "Card_like_\(i)")!)
 //        }
-        dataSource.append(["word" : "cafe", "translation": "coffee"])
-        dataSource.append(["word" : "leche", "translation": "milk"])
-        dataSource.append(["word" : "azucar", "translation": "sugar"])
-        dataSource.append(["word" : "paja", "translation": "straw"])
-        kolodaView.insertCardAtIndexRange(position..<position + 4, animated: true)
+        for dict in sourceWords{
+            dataSource.append(dict);
+        }
+        kolodaView.insertCardAtIndexRange(position..<position + sourceWords.count, animated: true)
     }
     
     func koloda(_ koloda: KolodaView, didSelectCardAt index: Int) {
