@@ -21,26 +21,25 @@ class NoteCardViewController: UIViewController {
     @IBOutlet var upGestureRecognizer: UISwipeGestureRecognizer!
     @IBOutlet weak var kolodaView: KolodaView!
     
-//    fileprivate var dataSource: [UIImage] = {
-//        var array: [UIImage] = []
-//        for index in 0..<numberOfCards {
-//            array.append(UIImage(named: "Card_like_\(index + 1)")!)
-//        }
-//        
-//        return array
-//    }()
     var dataSource: [Dictionary<String, String>] = []
     
     fileprivate var isPresentingForFirstTime = true
-    
+    let noteCardConn = NoteCardConnection()
     // MARK: Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         kolodaView.dataSource = self
         kolodaView.delegate = self
-      //  insertData()
-        getWordsForUser()
+        noteCardConn.insertData { () in
+            noteCardConn.getWordsForUser { (source) in
+                self.dataSource = source;
+                sourceWords = source;
+                let position = self.kolodaView.currentCardIndex
+                self.kolodaView.insertCardAtIndexRange(position..<position + self.dataSource.count, animated: true)
+                print(source)
+            }
+        }
         self.modalTransitionStyle = UIModalTransitionStyle.flipHorizontal
     }
     
@@ -90,7 +89,7 @@ class NoteCardViewController: UIViewController {
             self.isPresentingForFirstTime = false
         }
     }
-    // MARK: AWS functions
+    
     func getWordsForUser(){
         let dynamoDBObjectMapper = AWSDynamoDBObjectMapper.default()
         
@@ -98,7 +97,7 @@ class NoteCardViewController: UIViewController {
         //What is the top score ever recorded for the game Meteor Blasters?
         let queryExpression = AWSDynamoDBQueryExpression()
         queryExpression.keyConditionExpression = "userId = :userId"
-        
+        print(AWSIdentityManager.default().identityId)
         queryExpression.expressionAttributeValues = [
             ":userId" : AWSIdentityManager.default().identityId! ];
         
@@ -109,7 +108,7 @@ class NoteCardViewController: UIViewController {
                 if let result = task.result {//(task.result != nil) {
                     for r in result.items as! [Word]{
                         let dict = ["word": r.spanishWord, "translation": r.englishWord]
-                       // myNewDictArray.append(dict)
+                        // myNewDictArray.append(dict)
                         self.dataSource.append(dict);
                         sourceWords.append(dict)
                         print(r.spanishWord);
@@ -117,53 +116,11 @@ class NoteCardViewController: UIViewController {
                     let position = self.kolodaView.currentCardIndex
                     self.kolodaView.insertCardAtIndexRange(position..<position + result.items.count, animated: true)
                 }
-               
+                
             }
             return nil
         })
     }
-    //Example insert data function. Used to initialize data set
-    func insertData() {
-        let objectMapper = AWSDynamoDBObjectMapper.default()
-        for dic in dataSource {
-            let itemToCreate: Word = Word()
-            
-            itemToCreate.userId = AWSIdentityManager.default().identityId!
-            itemToCreate.englishWord = dic["translation"]!
-            itemToCreate.spanishWord = dic["word"]!
-
-            objectMapper.save(itemToCreate, completionHandler: {(error: Error?) -> Void in
-                if let error = error {
-                    print("Amazon DynamoDB Save Error: \(error)")
-                    return
-                    
-                }
-                print("Item saved.")
-            })
-        }
-    }
-}
-
-//class that gets the objects from db
-class Word: AWSDynamoDBObjectModel, AWSDynamoDBModeling  {
-    
-    var userId:String = ""
-    var englishWord:String = ""
-    var spanishWord:String = ""
-    
-    
-    class func dynamoDBTableName() -> String {
-        return "wordonthestreet-mobilehub-915338963-EnglishVocabSet"
-    }
-    
-    class func hashKeyAttribute() -> String {
-        return "userId"
-    }
-    
-    class func rangeKeyAttribute() -> String {
-        return "englishWord"
-    }
-    
 }
 
 // MARK: KolodaViewDelegate

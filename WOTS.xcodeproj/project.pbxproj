@@ -32,6 +32,7 @@
 		957EA0C21EB8536F00E7750B /* EnglishToSpanish.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957EA0BB1EB8536F00E7750B /* EnglishToSpanish.swift */; };
 		957EA0C41EB853B300E7750B /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 957EA0C31EB853B300E7750B /* libz.tbd */; };
 		957EA0C61EB853BB00E7750B /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 957EA0C51EB853BB00E7750B /* libsqlite3.tbd */; };
+		957F2F441EB92F72001117DB /* NoteCardData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957F2F431EB92F72001117DB /* NoteCardData.swift */; };
 		F46EC9821EB52F7B00BF1A53 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46EC9811EB52F7B00BF1A53 /* AppDelegate.swift */; };
 		F46EC9871EB52F7B00BF1A53 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F46EC9851EB52F7B00BF1A53 /* Main.storyboard */; };
 		F46EC9891EB52F7B00BF1A53 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F46EC9881EB52F7B00BF1A53 /* Assets.xcassets */; };
@@ -86,6 +87,7 @@
 		957EA0BB1EB8536F00E7750B /* EnglishToSpanish.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnglishToSpanish.swift; sourceTree = "<group>"; };
 		957EA0C31EB853B300E7750B /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		957EA0C51EB853BB00E7750B /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		957F2F431EB92F72001117DB /* NoteCardData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteCardData.swift; sourceTree = "<group>"; };
 		F46EC97E1EB52F7B00BF1A53 /* WOTS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WOTS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F46EC9811EB52F7B00BF1A53 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F46EC9861EB52F7B00BF1A53 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -179,6 +181,25 @@
 			path = NoSQL;
 			sourceTree = "<group>";
 		};
+		957F2F411EB92F12001117DB /* NoteCardView */ = {
+			isa = PBXGroup;
+			children = (
+				95791F851EB53D4700F9FA96 /* NoteCardViewController.swift */,
+				95791F9B1EB55A9700F9FA96 /* NoteCardOverlayView.swift */,
+				95791F9D1EB55AEE00F9FA96 /* NoteCardOverlayView.xib */,
+				95791F971EB5513300F9FA96 /* NoteCardView.swift */,
+			);
+			name = NoteCardView;
+			sourceTree = "<group>";
+		};
+		957F2F421EB92F43001117DB /* AwsConnections */ = {
+			isa = PBXGroup;
+			children = (
+				957F2F431EB92F72001117DB /* NoteCardData.swift */,
+			);
+			name = AwsConnections;
+			sourceTree = "<group>";
+		};
 		F46EC9751EB52F7B00BF1A53 = {
 			isa = PBXGroup;
 			children = (
@@ -202,22 +223,20 @@
 			children = (
 				3F3BA9DB1EB7103C006B4FC1 /* ScrollableBottomSheetViewController.swift */,
 				3F3BA9DC1EB7103C006B4FC1 /* ScrollableBottomSheetViewController.xib */,
-				957EA0AD1EB8536F00E7750B /* AmazonAws */,
-				957EA0A01EB8532A00E7750B /* Sdk */,
 				F46EC9811EB52F7B00BF1A53 /* AppDelegate.swift */,
 				F46EC9931EB538DB00BF1A53 /* TabBarController.swift */,
 				F46EC9951EB5418C00BF1A53 /* ExploreViewController.swift */,
 				F46EC9971EB54E7B00BF1A53 /* UIView+Autolayout.swift */,
 				F46EC9851EB52F7B00BF1A53 /* Main.storyboard */,
-				F46EC9881EB52F7B00BF1A53 /* Assets.xcassets */,
 				F46EC98A1EB52F7B00BF1A53 /* LaunchScreen.storyboard */,
 				F46EC98D1EB52F7B00BF1A53 /* Info.plist */,
-				95791F851EB53D4700F9FA96 /* NoteCardViewController.swift */,
-				95791F9B1EB55A9700F9FA96 /* NoteCardOverlayView.swift */,
-				95791F9D1EB55AEE00F9FA96 /* NoteCardOverlayView.xib */,
-				95791F971EB5513300F9FA96 /* NoteCardView.swift */,
 				3F3BA9D11EB6FEF5006B4FC1 /* DefaultTableViewCell.swift */,
 				3F3BA9D21EB6FEF5006B4FC1 /* DefaultTableViewCell.xib */,
+				957F2F421EB92F43001117DB /* AwsConnections */,
+				957F2F411EB92F12001117DB /* NoteCardView */,
+				957EA0AD1EB8536F00E7750B /* AmazonAws */,
+				957EA0A01EB8532A00E7750B /* Sdk */,
+				F46EC9881EB52F7B00BF1A53 /* Assets.xcassets */,
 			);
 			path = WOTS;
 			sourceTree = "<group>";
@@ -259,6 +278,7 @@
 				TargetAttributes = {
 					F46EC97D1EB52F7B00BF1A53 = {
 						CreatedOnToolsVersion = 8.3.2;
+						DevelopmentTeam = F42N7QJG3C;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -369,6 +389,7 @@
 				957EA0C21EB8536F00E7750B /* EnglishToSpanish.swift in Sources */,
 				F46EC9981EB54E7B00BF1A53 /* UIView+Autolayout.swift in Sources */,
 				957EA0C01EB8536F00E7750B /* AWSMobileClient.swift in Sources */,
+				957F2F441EB92F72001117DB /* NoteCardData.swift in Sources */,
 				95791F9C1EB55A9700F9FA96 /* NoteCardOverlayView.swift in Sources */,
 				957EA0BD1EB8536F00E7750B /* AWSAPI_CX0HSKU68J_ResponseSchema.m in Sources */,
 				95791F861EB53D4700F9FA96 /* NoteCardViewController.swift in Sources */,
