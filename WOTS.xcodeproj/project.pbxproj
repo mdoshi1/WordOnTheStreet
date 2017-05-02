@@ -379,11 +379,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = WOTS/Info.plist;
-<<<<<<< HEAD
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
-=======
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
->>>>>>> 8f9c5ad61eeff038c224eb31568348f0fe9782c9
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = edu.stanford.LearningCurve.WOTS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -399,11 +395,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = WOTS/Info.plist;
-<<<<<<< HEAD
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
-=======
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
->>>>>>> 8f9c5ad61eeff038c224eb31568348f0fe9782c9
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = edu.stanford.LearningCurve.WOTS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
