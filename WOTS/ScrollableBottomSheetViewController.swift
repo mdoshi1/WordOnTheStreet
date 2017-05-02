@@ -29,6 +29,7 @@ class ScrollableBottomSheetViewController: UIViewController {
         return UIScreen.main.bounds.height - 150
     }
 
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -45,7 +46,7 @@ class ScrollableBottomSheetViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        prepareBackgroundView()
+//        prepareBackgroundView()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -54,8 +55,8 @@ class ScrollableBottomSheetViewController: UIViewController {
         UIView.animate(withDuration: 0.6, animations: { [weak self] in
             let frame = self?.view.frame
             let yComponent = self?.partialView
-            self?.view.frame = CGRect(x: 0, y: yComponent!, width: frame!.width, height: frame!.height - 100)
-            })
+            self?.view.frame = CGRect(x: 0, y: yComponent!, width: frame!.width, height: frame!.height - 50)
+        })
     }
 
     override func didReceiveMemoryWarning() {
@@ -94,15 +95,14 @@ class ScrollableBottomSheetViewController: UIViewController {
         }
     }
     
-    
     func prepareBackgroundView(){
         let blurEffect = UIBlurEffect.init(style: .dark)
         let visualEffect = UIVisualEffectView.init(effect: blurEffect)
-        let bluredView = UIVisualEffectView.init(effect: blurEffect)
-        bluredView.contentView.addSubview(visualEffect)
+        let blurredView = UIVisualEffectView.init(effect: blurEffect)
+        blurredView.contentView.addSubview(visualEffect)
         visualEffect.frame = UIScreen.main.bounds
-        bluredView.frame = UIScreen.main.bounds
-        view.insertSubview(bluredView, at: 0)
+        blurredView.frame = UIScreen.main.bounds
+        view.insertSubview(blurredView, at: 0)
     }
 
 }
@@ -116,10 +116,6 @@ extension ScrollableBottomSheetViewController: UITableViewDelegate, UITableViewD
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.words.count
     }
-    
-//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//        return 50
-//    }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell : DefaultTableViewCell = tableView.dequeueReusableCell(withIdentifier: "default")! as! DefaultTableViewCell

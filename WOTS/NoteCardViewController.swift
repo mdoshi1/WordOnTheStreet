@@ -34,6 +34,8 @@ class NoteCardViewController: UIViewController {
         return myNewDictArray
     }()
     
+    fileprivate var isPresentingForFirstTime = true
+    
     // MARK: Lifecycle
     
     override func viewDidLoad() {
@@ -84,7 +86,11 @@ class NoteCardViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        addBottomSheetView()
+        
+        if (self.isPresentingForFirstTime) {
+            addBottomSheetView()
+            self.isPresentingForFirstTime = false
+        }
     }
     
 }

@@ -9,7 +9,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Item 2-->
+        <!--Explore-->
         <scene sceneID="ILx-HY-SuD">
             <objects>
                 <viewController id="aHc-uU-dPf" customClass="ExploreViewController" customModule="WOTS" customModuleProvider="target" sceneMemberID="viewController">
@@ -22,7 +22,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item 2" id="WAo-Ap-y9b"/>
+                    <tabBarItem key="tabBarItem" title="Explore" id="WAo-Ap-y9b"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9pN-lK-gGH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -41,7 +41,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Sh-W8-J4f" customClass="KolodaView" customModule="Koloda">
-                                <rect key="frame" x="10" y="77" width="355" height="227"/>
+                                <rect key="frame" x="10" y="121" width="355" height="183"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
                         </subviews>
@@ -56,8 +56,6 @@
                             <constraint firstAttribute="trailingMargin" secondItem="6Sh-W8-J4f" secondAttribute="trailing" constant="10" id="xCY-pz-HG2"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item 1" image="learnTabImg" id="4Am-Rz-Vh2"/>
->>>>>>> 8f9c5ad61eeff038c224eb31568348f0fe9782c9
                     <connections>
                         <outlet property="kolodaView" destination="6Sh-W8-J4f" id="adT-MS-Z6Y"/>
                     </connections>
@@ -110,15 +108,21 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Word List" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QiW-Gz-kdl">
-                                <rect key="frame" x="134" y="20" width="107" height="55"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Word List" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QiW-Gz-kdl">
+                                <rect key="frame" x="134" y="25" width="107" height="29"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="107" id="nIJ-k6-PBz"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="QiW-Gz-kdl" firstAttribute="centerX" secondItem="zwW-2N-lB0" secondAttribute="centerX" id="ASz-Bx-PrJ"/>
+                            <constraint firstItem="QiW-Gz-kdl" firstAttribute="top" secondItem="mPi-P6-Rue" secondAttribute="bottom" constant="5" id="DXG-xI-BZv"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sOJ-7L-JTg" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -143,11 +147,11 @@
             </objects>
             <point key="canvasLocation" x="138" y="230"/>
         </scene>
-        <!--Item 1-->
+        <!--Learn-->
         <scene sceneID="s9z-rf-58K">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="cEc-Pl-2nr" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item 1" id="4Am-Rz-Vh2"/>
+                    <tabBarItem key="tabBarItem" title="Learn" id="4Am-Rz-Vh2"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="9rI-Pc-ZkH">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -181,7 +185,4 @@
             <point key="canvasLocation" x="3240.8000000000002" y="-146.17691154422789"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="learnTabImg" width="25" height="25"/>
-    </resources>
 </document>
