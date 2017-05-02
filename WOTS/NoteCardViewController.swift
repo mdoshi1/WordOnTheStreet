@@ -8,6 +8,9 @@
 
 import UIKit
 import Koloda
+import AWSMobileHubHelper
+import AWSDynamoDB
+
 
 private var numberOfCards: Int = 5
 
@@ -42,7 +45,7 @@ class NoteCardViewController: UIViewController {
         super.viewDidLoad()
         kolodaView.dataSource = self
         kolodaView.delegate = self
-        
+        insertData()
         self.modalTransitionStyle = UIModalTransitionStyle.flipHorizontal
     }
     
@@ -91,6 +94,53 @@ class NoteCardViewController: UIViewController {
             addBottomSheetView()
             self.isPresentingForFirstTime = false
         }
+    }
+    // MARK: AWS functions
+    //Example insert data function. Used to initialize data set
+    func insertData() {
+        let objectMapper = AWSDynamoDBObjectMapper.default()
+        for dic in dataSource {
+            let itemToCreate: Word = Word()
+            
+            itemToCreate.userId = AWSIdentityManager.default().identityId!
+            itemToCreate.englishWord = dic["translation"]!
+            itemToCreate.spanishWord = dic["word"]!
+            print("--------")
+            print(itemToCreate.englishWord)
+            print(itemToCreate.userId)
+            print(itemToCreate.spanishWord)
+            print("--------")
+
+            objectMapper.save(itemToCreate, completionHandler: {(error: Error?) -> Void in
+                if let error = error {
+                    print("Amazon DynamoDB Save Error: \(error)")
+                    return
+                    
+                }
+                print("Item saved.")
+            })
+        }
+    }
+}
+
+//class that gets the objects from db
+class Word: AWSDynamoDBObjectModel, AWSDynamoDBModeling  {
+    
+    var userId:String = ""
+    var englishWord:String = ""
+    var spanishWord:String = ""
+    
+    
+    class func dynamoDBTableName() -> String {
+        return "wordonthestreet-mobilehub-915338963-VocabularySet"
+    }
+    
+    class func hashKeyAttribute() -> String {
+        return "englishWord"
+    }
+    
+    class func rangeKeyAttribute() -> String {
+        return "userId"
     }
     
 }

@@ -16,6 +16,22 @@
 		95791F981EB5513300F9FA96 /* NoteCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95791F971EB5513300F9FA96 /* NoteCardView.swift */; };
 		95791F9C1EB55A9700F9FA96 /* NoteCardOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95791F9B1EB55A9700F9FA96 /* NoteCardOverlayView.swift */; };
 		95791F9E1EB55AEE00F9FA96 /* NoteCardOverlayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95791F9D1EB55AEE00F9FA96 /* NoteCardOverlayView.xib */; };
+		957EA0A11EB8532A00E7750B /* Sdk in Resources */ = {isa = PBXBuildFile; fileRef = 957EA0A01EB8532A00E7750B /* Sdk */; };
+		957EA0A51EB8534900E7750B /* AWSAPIGateway.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 957EA0A21EB8534900E7750B /* AWSAPIGateway.framework */; };
+		957EA0A61EB8534900E7750B /* AWSAPIGateway.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 957EA0A21EB8534900E7750B /* AWSAPIGateway.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		957EA0A71EB8534900E7750B /* AWSCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 957EA0A31EB8534900E7750B /* AWSCore.framework */; };
+		957EA0A81EB8534900E7750B /* AWSCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 957EA0A31EB8534900E7750B /* AWSCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		957EA0A91EB8534900E7750B /* AWSDynamoDB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 957EA0A41EB8534900E7750B /* AWSDynamoDB.framework */; };
+		957EA0AA1EB8534900E7750B /* AWSDynamoDB.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 957EA0A41EB8534900E7750B /* AWSDynamoDB.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		957EA0BC1EB8536F00E7750B /* AWSAPI_CX0HSKU68J_RequestSchema.m in Sources */ = {isa = PBXBuildFile; fileRef = 957EA0B01EB8536F00E7750B /* AWSAPI_CX0HSKU68J_RequestSchema.m */; };
+		957EA0BD1EB8536F00E7750B /* AWSAPI_CX0HSKU68J_ResponseSchema.m in Sources */ = {isa = PBXBuildFile; fileRef = 957EA0B21EB8536F00E7750B /* AWSAPI_CX0HSKU68J_ResponseSchema.m */; };
+		957EA0BE1EB8536F00E7750B /* AWSAPI_CX0HSKU68J_TestMobileHubClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 957EA0B41EB8536F00E7750B /* AWSAPI_CX0HSKU68J_TestMobileHubClient.m */; };
+		957EA0BF1EB8536F00E7750B /* AWSConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957EA0B51EB8536F00E7750B /* AWSConfiguration.swift */; };
+		957EA0C01EB8536F00E7750B /* AWSMobileClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957EA0B61EB8536F00E7750B /* AWSMobileClient.swift */; };
+		957EA0C11EB8536F00E7750B /* AWSMobileHubHelper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 957EA0B71EB8536F00E7750B /* AWSMobileHubHelper.framework */; };
+		957EA0C21EB8536F00E7750B /* EnglishToSpanish.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957EA0BB1EB8536F00E7750B /* EnglishToSpanish.swift */; };
+		957EA0C41EB853B300E7750B /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 957EA0C31EB853B300E7750B /* libz.tbd */; };
+		957EA0C61EB853BB00E7750B /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 957EA0C51EB853BB00E7750B /* libsqlite3.tbd */; };
 		F46EC9821EB52F7B00BF1A53 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46EC9811EB52F7B00BF1A53 /* AppDelegate.swift */; };
 		F46EC9871EB52F7B00BF1A53 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F46EC9851EB52F7B00BF1A53 /* Main.storyboard */; };
 		F46EC9891EB52F7B00BF1A53 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F46EC9881EB52F7B00BF1A53 /* Assets.xcassets */; };
@@ -24,6 +40,22 @@
 		F46EC9961EB5418C00BF1A53 /* ExploreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46EC9951EB5418C00BF1A53 /* ExploreViewController.swift */; };
 		F46EC9981EB54E7B00BF1A53 /* UIView+Autolayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46EC9971EB54E7B00BF1A53 /* UIView+Autolayout.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		957EA0AB1EB8534A00E7750B /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				957EA0A61EB8534900E7750B /* AWSAPIGateway.framework in Embed Frameworks */,
+				957EA0AA1EB8534900E7750B /* AWSDynamoDB.framework in Embed Frameworks */,
+				957EA0A81EB8534900E7750B /* AWSCore.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		119B10EC81573764363AC117 /* Pods-WOTS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WOTS.release.xcconfig"; path = "Pods/Target Support Files/Pods-WOTS/Pods-WOTS.release.xcconfig"; sourceTree = "<group>"; };
@@ -37,6 +69,23 @@
 		95791F971EB5513300F9FA96 /* NoteCardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NoteCardView.swift; path = ../NoteCardView.swift; sourceTree = "<group>"; };
 		95791F9B1EB55A9700F9FA96 /* NoteCardOverlayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteCardOverlayView.swift; sourceTree = "<group>"; };
 		95791F9D1EB55AEE00F9FA96 /* NoteCardOverlayView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NoteCardOverlayView.xib; sourceTree = "<group>"; };
+		957EA0A01EB8532A00E7750B /* Sdk */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Sdk; sourceTree = "<group>"; };
+		957EA0A21EB8534900E7750B /* AWSAPIGateway.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AWSAPIGateway.framework; path = WOTS/Sdk/Aws/AWSAPIGateway.framework; sourceTree = "<group>"; };
+		957EA0A31EB8534900E7750B /* AWSCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AWSCore.framework; path = WOTS/Sdk/Aws/AWSCore.framework; sourceTree = "<group>"; };
+		957EA0A41EB8534900E7750B /* AWSDynamoDB.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AWSDynamoDB.framework; path = WOTS/Sdk/Aws/AWSDynamoDB.framework; sourceTree = "<group>"; };
+		957EA0AF1EB8536F00E7750B /* AWSAPI_CX0HSKU68J_RequestSchema.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWSAPI_CX0HSKU68J_RequestSchema.h; sourceTree = "<group>"; };
+		957EA0B01EB8536F00E7750B /* AWSAPI_CX0HSKU68J_RequestSchema.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AWSAPI_CX0HSKU68J_RequestSchema.m; sourceTree = "<group>"; };
+		957EA0B11EB8536F00E7750B /* AWSAPI_CX0HSKU68J_ResponseSchema.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWSAPI_CX0HSKU68J_ResponseSchema.h; sourceTree = "<group>"; };
+		957EA0B21EB8536F00E7750B /* AWSAPI_CX0HSKU68J_ResponseSchema.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AWSAPI_CX0HSKU68J_ResponseSchema.m; sourceTree = "<group>"; };
+		957EA0B31EB8536F00E7750B /* AWSAPI_CX0HSKU68J_TestMobileHubClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWSAPI_CX0HSKU68J_TestMobileHubClient.h; sourceTree = "<group>"; };
+		957EA0B41EB8536F00E7750B /* AWSAPI_CX0HSKU68J_TestMobileHubClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AWSAPI_CX0HSKU68J_TestMobileHubClient.m; sourceTree = "<group>"; };
+		957EA0B51EB8536F00E7750B /* AWSConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AWSConfiguration.swift; sourceTree = "<group>"; };
+		957EA0B61EB8536F00E7750B /* AWSMobileClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AWSMobileClient.swift; sourceTree = "<group>"; };
+		957EA0B71EB8536F00E7750B /* AWSMobileHubHelper.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AWSMobileHubHelper.framework; sourceTree = "<group>"; };
+		957EA0B81EB8536F00E7750B /* Bridging_Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bridging_Header.h; sourceTree = "<group>"; };
+		957EA0BB1EB8536F00E7750B /* EnglishToSpanish.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnglishToSpanish.swift; sourceTree = "<group>"; };
+		957EA0C31EB853B300E7750B /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		957EA0C51EB853BB00E7750B /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		F46EC97E1EB52F7B00BF1A53 /* WOTS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WOTS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F46EC9811EB52F7B00BF1A53 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F46EC9861EB52F7B00BF1A53 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -53,7 +102,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				957EA0C61EB853BB00E7750B /* libsqlite3.tbd in Frameworks */,
+				957EA0C41EB853B300E7750B /* libz.tbd in Frameworks */,
+				957EA0C11EB8536F00E7750B /* AWSMobileHubHelper.framework in Frameworks */,
+				957EA0A51EB8534900E7750B /* AWSAPIGateway.framework in Frameworks */,
 				1A89F9D8B7ECB90639BAEDC0 /* Pods_WOTS.framework in Frameworks */,
+				957EA0A91EB8534900E7750B /* AWSDynamoDB.framework in Frameworks */,
+				957EA0A71EB8534900E7750B /* AWSCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -72,9 +127,56 @@
 		540534FF27DCCF9400669C07 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				957EA0C51EB853BB00E7750B /* libsqlite3.tbd */,
+				957EA0C31EB853B300E7750B /* libz.tbd */,
+				957EA0A21EB8534900E7750B /* AWSAPIGateway.framework */,
+				957EA0A31EB8534900E7750B /* AWSCore.framework */,
+				957EA0A41EB8534900E7750B /* AWSDynamoDB.framework */,
 				749084860D94B5BF673E4213 /* Pods_WOTS.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		957EA0AD1EB8536F00E7750B /* AmazonAws */ = {
+			isa = PBXGroup;
+			children = (
+				957EA0AE1EB8536F00E7750B /* Api */,
+				957EA0B51EB8536F00E7750B /* AWSConfiguration.swift */,
+				957EA0B61EB8536F00E7750B /* AWSMobileClient.swift */,
+				957EA0B71EB8536F00E7750B /* AWSMobileHubHelper.framework */,
+				957EA0B81EB8536F00E7750B /* Bridging_Header.h */,
+				957EA0B91EB8536F00E7750B /* Models */,
+			);
+			path = AmazonAws;
+			sourceTree = "<group>";
+		};
+		957EA0AE1EB8536F00E7750B /* Api */ = {
+			isa = PBXGroup;
+			children = (
+				957EA0AF1EB8536F00E7750B /* AWSAPI_CX0HSKU68J_RequestSchema.h */,
+				957EA0B01EB8536F00E7750B /* AWSAPI_CX0HSKU68J_RequestSchema.m */,
+				957EA0B11EB8536F00E7750B /* AWSAPI_CX0HSKU68J_ResponseSchema.h */,
+				957EA0B21EB8536F00E7750B /* AWSAPI_CX0HSKU68J_ResponseSchema.m */,
+				957EA0B31EB8536F00E7750B /* AWSAPI_CX0HSKU68J_TestMobileHubClient.h */,
+				957EA0B41EB8536F00E7750B /* AWSAPI_CX0HSKU68J_TestMobileHubClient.m */,
+			);
+			path = Api;
+			sourceTree = "<group>";
+		};
+		957EA0B91EB8536F00E7750B /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				957EA0BA1EB8536F00E7750B /* NoSQL */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		957EA0BA1EB8536F00E7750B /* NoSQL */ = {
+			isa = PBXGroup;
+			children = (
+				957EA0BB1EB8536F00E7750B /* EnglishToSpanish.swift */,
+			);
+			path = NoSQL;
 			sourceTree = "<group>";
 		};
 		F46EC9751EB52F7B00BF1A53 = {
@@ -100,6 +202,8 @@
 			children = (
 				3F3BA9DB1EB7103C006B4FC1 /* ScrollableBottomSheetViewController.swift */,
 				3F3BA9DC1EB7103C006B4FC1 /* ScrollableBottomSheetViewController.xib */,
+				957EA0AD1EB8536F00E7750B /* AmazonAws */,
+				957EA0A01EB8532A00E7750B /* Sdk */,
 				F46EC9811EB52F7B00BF1A53 /* AppDelegate.swift */,
 				F46EC9931EB538DB00BF1A53 /* TabBarController.swift */,
 				F46EC9951EB5418C00BF1A53 /* ExploreViewController.swift */,
@@ -131,6 +235,8 @@
 				F46EC97C1EB52F7B00BF1A53 /* Resources */,
 				CF762F3459209D8847855E97 /* [CP] Embed Pods Frameworks */,
 				B70F1FBB3DE89C3915166010 /* [CP] Copy Pods Resources */,
+				957EA0AB1EB8534A00E7750B /* Embed Frameworks */,
+				957EA0AC1EB8535900E7750B /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -183,6 +289,7 @@
 				F46EC98C1EB52F7B00BF1A53 /* LaunchScreen.storyboard in Resources */,
 				F46EC9891EB52F7B00BF1A53 /* Assets.xcassets in Resources */,
 				3F3BA9DE1EB7103C006B4FC1 /* ScrollableBottomSheetViewController.xib in Resources */,
+				957EA0A11EB8532A00E7750B /* Sdk in Resources */,
 				95791F9E1EB55AEE00F9FA96 /* NoteCardOverlayView.xib in Resources */,
 				3F3BA9D41EB6FEF5006B4FC1 /* DefaultTableViewCell.xib in Resources */,
 				F46EC9871EB52F7B00BF1A53 /* Main.storyboard in Resources */,
@@ -206,6 +313,19 @@
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
+		};
+		957EA0AC1EB8535900E7750B /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "bash \"${BUILT_PRODUCTS_DIR}/${FRAMEWORKS_FOLDER_PATH}/AWSCore.framework/strip-frameworks.sh\"";
 		};
 		B70F1FBB3DE89C3915166010 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -246,12 +366,18 @@
 			files = (
 				3F3BA9DD1EB7103C006B4FC1 /* ScrollableBottomSheetViewController.swift in Sources */,
 				F46EC9941EB538DB00BF1A53 /* TabBarController.swift in Sources */,
+				957EA0C21EB8536F00E7750B /* EnglishToSpanish.swift in Sources */,
 				F46EC9981EB54E7B00BF1A53 /* UIView+Autolayout.swift in Sources */,
+				957EA0C01EB8536F00E7750B /* AWSMobileClient.swift in Sources */,
 				95791F9C1EB55A9700F9FA96 /* NoteCardOverlayView.swift in Sources */,
+				957EA0BD1EB8536F00E7750B /* AWSAPI_CX0HSKU68J_ResponseSchema.m in Sources */,
 				95791F861EB53D4700F9FA96 /* NoteCardViewController.swift in Sources */,
 				95791F981EB5513300F9FA96 /* NoteCardView.swift in Sources */,
 				3F3BA9D31EB6FEF5006B4FC1 /* DefaultTableViewCell.swift in Sources */,
+				957EA0BC1EB8536F00E7750B /* AWSAPI_CX0HSKU68J_RequestSchema.m in Sources */,
+				957EA0BE1EB8536F00E7750B /* AWSAPI_CX0HSKU68J_TestMobileHubClient.m in Sources */,
 				F46EC9821EB52F7B00BF1A53 /* AppDelegate.swift in Sources */,
+				957EA0BF1EB8536F00E7750B /* AWSConfiguration.swift in Sources */,
 				F46EC9961EB5418C00BF1A53 /* ExploreViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -376,13 +502,56 @@
 			baseConfigurationReference = 5940474782F3E9AB78BDC15F /* Pods-WOTS.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = F42N7QJG3C;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/WOTS/Sdk/Aws",
+					"$(PROJECT_DIR)/WOTS/AmazonAws",
+				);
 				INFOPLIST_FILE = WOTS/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = (
+					"-l\"c++\"",
+					"-l\"z\"",
+					"-framework",
+					"\"Accelerate\"",
+					"-framework",
+					"\"CoreData\"",
+					"-framework",
+					"\"CoreGraphics\"",
+					"-framework",
+					"\"CoreLocation\"",
+					"-framework",
+					"\"CoreText\"",
+					"-framework",
+					"\"GLKit\"",
+					"-framework",
+					"\"GoogleMaps\"",
+					"-framework",
+					"\"GoogleMapsBase\"",
+					"-framework",
+					"\"GoogleMapsCore\"",
+					"-framework",
+					"\"GooglePlaces\"",
+					"-framework",
+					"\"ImageIO\"",
+					"-framework",
+					"\"Koloda\"",
+					"-framework",
+					"\"OpenGLES\"",
+					"-framework",
+					"\"QuartzCore\"",
+					"-framework",
+					"\"SystemConfiguration\"",
+					"-framework",
+					"\"UIKit\"",
+					"-framework",
+					"\"pop\"",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = edu.stanford.LearningCurve.WOTS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = WOTS/AmazonAws/Bridging_Header.h;
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -392,13 +561,56 @@
 			baseConfigurationReference = 119B10EC81573764363AC117 /* Pods-WOTS.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = F42N7QJG3C;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/WOTS/Sdk/Aws",
+					"$(PROJECT_DIR)/WOTS/AmazonAws",
+				);
 				INFOPLIST_FILE = WOTS/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = (
+					"-l\"c++\"",
+					"-l\"z\"",
+					"-framework",
+					"\"Accelerate\"",
+					"-framework",
+					"\"CoreData\"",
+					"-framework",
+					"\"CoreGraphics\"",
+					"-framework",
+					"\"CoreLocation\"",
+					"-framework",
+					"\"CoreText\"",
+					"-framework",
+					"\"GLKit\"",
+					"-framework",
+					"\"GoogleMaps\"",
+					"-framework",
+					"\"GoogleMapsBase\"",
+					"-framework",
+					"\"GoogleMapsCore\"",
+					"-framework",
+					"\"GooglePlaces\"",
+					"-framework",
+					"\"ImageIO\"",
+					"-framework",
+					"\"Koloda\"",
+					"-framework",
+					"\"OpenGLES\"",
+					"-framework",
+					"\"QuartzCore\"",
+					"-framework",
+					"\"SystemConfiguration\"",
+					"-framework",
+					"\"UIKit\"",
+					"-framework",
+					"\"pop\"",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = edu.stanford.LearningCurve.WOTS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = WOTS/AmazonAws/Bridging_Header.h;
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
