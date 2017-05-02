@@ -13,9 +13,8 @@ private var numberOfCards: Int = 5
 
 class NoteCardViewController: UIViewController {
     
-    @IBOutlet weak var kolodaView: CustomNoteCardView!
     @IBOutlet var upGestureRecognizer: UISwipeGestureRecognizer!
-
+    @IBOutlet weak var kolodaView: KolodaView!
     
 //    fileprivate var dataSource: [UIImage] = {
 //        var array: [UIImage] = []
@@ -25,9 +24,14 @@ class NoteCardViewController: UIViewController {
 //        
 //        return array
 //    }()
-    fileprivate var dataSource: [String] = {
-        var array: [String] = ["Michael", "Jade", "Max", "Sam"]
-        return array
+    fileprivate var dataSource: [Dictionary<String, String>] = {
+        var myNewDictArray: [Dictionary<String, String>] =  [
+            ["word" : "cafe", "translation": "coffee"],
+            ["word" : "leche", "translation": "milk"],
+            ["word" : "azucar", "translation": "sugar"],
+            ["word" : "paja", "translation": "straw"]
+        ]
+        return myNewDictArray
     }()
     
     // MARK: Lifecycle
@@ -94,15 +98,17 @@ extension NoteCardViewController: KolodaViewDelegate {
 //        for i in 1...4 {
 //            dataSource.append(UIImage(named: "Card_like_\(i)")!)
 //        }
-        dataSource.append("Michael");
-        dataSource.append("Jade");
-        dataSource.append("Max");
-        dataSource.append("Sam");
+        dataSource.append(["word" : "cafe", "translation": "coffee"])
+        dataSource.append(["word" : "leche", "translation": "milk"])
+        dataSource.append(["word" : "azucar", "translation": "sugar"])
+        dataSource.append(["word" : "paja", "translation": "straw"])
         kolodaView.insertCardAtIndexRange(position..<position + 4, animated: true)
     }
     
     func koloda(_ koloda: KolodaView, didSelectCardAt index: Int) {
-        UIApplication.shared.openURL(URL(string: "https://yalantis.com/")!)
+//        UIApplication.shared.openURL(URL(string: "https://yalantis.com/")!)
+        let nc = koloda.viewForCard(at: index) as? NoteCardView
+        nc?.translationView.isHidden = !(nc?.translationView.isHidden)!;
     }
     
 }
@@ -120,14 +126,15 @@ extension NoteCardViewController: KolodaViewDataSource {
     }
     
     func koloda(_ koloda: KolodaView, viewForCardAt index: Int) -> UIView {
-        let nc = NoteCardView(frame: CGRect(x: 0, y: 0, width: 10, height: 10))
-        nc.wordView.text = dataSource[Int(index)]
-        nc.translationView.text = "Translation of \(dataSource[Int(index)])"
+        let nc = NoteCardView(frame: CGRect(x: 0, y: 0, width: koloda.frame.width, height: koloda.frame.height))
+        nc.wordView.text = dataSource[Int(index)]["word"]
+        nc.translationView.text = dataSource[Int(index)]["translation"]
         return nc
     }
     
     func koloda(_ koloda: KolodaView, viewForCardOverlayAt index: Int) -> OverlayView? {
-        return Bundle.main.loadNibNamed("NoteCardOverlayView", owner: self, options: nil)?[0] as? OverlayView
+        //return Bundle.main.loadNibNamed("NoteCardOverlayView", owner: self, options: nil)?[0] as? OverlayView
+        return nil
     }
 }
 

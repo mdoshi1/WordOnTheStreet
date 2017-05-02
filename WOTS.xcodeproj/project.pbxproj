@@ -13,7 +13,6 @@
 		3F3BA9DD1EB7103C006B4FC1 /* ScrollableBottomSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F3BA9DB1EB7103C006B4FC1 /* ScrollableBottomSheetViewController.swift */; };
 		3F3BA9DE1EB7103C006B4FC1 /* ScrollableBottomSheetViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3F3BA9DC1EB7103C006B4FC1 /* ScrollableBottomSheetViewController.xib */; };
 		95791F861EB53D4700F9FA96 /* NoteCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95791F851EB53D4700F9FA96 /* NoteCardViewController.swift */; };
-		95791F881EB542E400F9FA96 /* CustomNoteCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95791F871EB542E400F9FA96 /* CustomNoteCardView.swift */; };
 		95791F981EB5513300F9FA96 /* NoteCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95791F971EB5513300F9FA96 /* NoteCardView.swift */; };
 		95791F9C1EB55A9700F9FA96 /* NoteCardOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95791F9B1EB55A9700F9FA96 /* NoteCardOverlayView.swift */; };
 		95791F9E1EB55AEE00F9FA96 /* NoteCardOverlayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95791F9D1EB55AEE00F9FA96 /* NoteCardOverlayView.xib */; };
@@ -22,6 +21,8 @@
 		F46EC9891EB52F7B00BF1A53 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F46EC9881EB52F7B00BF1A53 /* Assets.xcassets */; };
 		F46EC98C1EB52F7B00BF1A53 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F46EC98A1EB52F7B00BF1A53 /* LaunchScreen.storyboard */; };
 		F46EC9941EB538DB00BF1A53 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46EC9931EB538DB00BF1A53 /* TabBarController.swift */; };
+		F46EC9961EB5418C00BF1A53 /* ExploreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46EC9951EB5418C00BF1A53 /* ExploreViewController.swift */; };
+		F46EC9981EB54E7B00BF1A53 /* UIView+Autolayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46EC9971EB54E7B00BF1A53 /* UIView+Autolayout.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,7 +34,6 @@
 		5940474782F3E9AB78BDC15F /* Pods-WOTS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WOTS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WOTS/Pods-WOTS.debug.xcconfig"; sourceTree = "<group>"; };
 		749084860D94B5BF673E4213 /* Pods_WOTS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WOTS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		95791F851EB53D4700F9FA96 /* NoteCardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteCardViewController.swift; sourceTree = "<group>"; };
-		95791F871EB542E400F9FA96 /* CustomNoteCardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomNoteCardView.swift; sourceTree = "<group>"; };
 		95791F971EB5513300F9FA96 /* NoteCardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NoteCardView.swift; path = ../NoteCardView.swift; sourceTree = "<group>"; };
 		95791F9B1EB55A9700F9FA96 /* NoteCardOverlayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteCardOverlayView.swift; sourceTree = "<group>"; };
 		95791F9D1EB55AEE00F9FA96 /* NoteCardOverlayView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NoteCardOverlayView.xib; sourceTree = "<group>"; };
@@ -44,6 +44,8 @@
 		F46EC98B1EB52F7B00BF1A53 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F46EC98D1EB52F7B00BF1A53 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F46EC9931EB538DB00BF1A53 /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		F46EC9951EB5418C00BF1A53 /* ExploreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExploreViewController.swift; sourceTree = "<group>"; };
+		F46EC9971EB54E7B00BF1A53 /* UIView+Autolayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Autolayout.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +102,8 @@
 				3F3BA9DC1EB7103C006B4FC1 /* ScrollableBottomSheetViewController.xib */,
 				F46EC9811EB52F7B00BF1A53 /* AppDelegate.swift */,
 				F46EC9931EB538DB00BF1A53 /* TabBarController.swift */,
+				F46EC9951EB5418C00BF1A53 /* ExploreViewController.swift */,
+				F46EC9971EB54E7B00BF1A53 /* UIView+Autolayout.swift */,
 				F46EC9851EB52F7B00BF1A53 /* Main.storyboard */,
 				F46EC9881EB52F7B00BF1A53 /* Assets.xcassets */,
 				F46EC98A1EB52F7B00BF1A53 /* LaunchScreen.storyboard */,
@@ -108,7 +112,6 @@
 				95791F9B1EB55A9700F9FA96 /* NoteCardOverlayView.swift */,
 				95791F9D1EB55AEE00F9FA96 /* NoteCardOverlayView.xib */,
 				95791F971EB5513300F9FA96 /* NoteCardView.swift */,
-				95791F871EB542E400F9FA96 /* CustomNoteCardView.swift */,
 				3F3BA9D11EB6FEF5006B4FC1 /* DefaultTableViewCell.swift */,
 				3F3BA9D21EB6FEF5006B4FC1 /* DefaultTableViewCell.xib */,
 			);
@@ -243,12 +246,13 @@
 			files = (
 				3F3BA9DD1EB7103C006B4FC1 /* ScrollableBottomSheetViewController.swift in Sources */,
 				F46EC9941EB538DB00BF1A53 /* TabBarController.swift in Sources */,
+				F46EC9981EB54E7B00BF1A53 /* UIView+Autolayout.swift in Sources */,
 				95791F9C1EB55A9700F9FA96 /* NoteCardOverlayView.swift in Sources */,
-				95791F881EB542E400F9FA96 /* CustomNoteCardView.swift in Sources */,
 				95791F861EB53D4700F9FA96 /* NoteCardViewController.swift in Sources */,
 				95791F981EB5513300F9FA96 /* NoteCardView.swift in Sources */,
 				3F3BA9D31EB6FEF5006B4FC1 /* DefaultTableViewCell.swift in Sources */,
 				F46EC9821EB52F7B00BF1A53 /* AppDelegate.swift in Sources */,
+				F46EC9961EB5418C00BF1A53 /* ExploreViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -375,7 +379,11 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = WOTS/Info.plist;
+<<<<<<< HEAD
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+=======
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+>>>>>>> 8f9c5ad61eeff038c224eb31568348f0fe9782c9
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = edu.stanford.LearningCurve.WOTS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -391,7 +399,11 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = WOTS/Info.plist;
+<<<<<<< HEAD
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+=======
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+>>>>>>> 8f9c5ad61eeff038c224eb31568348f0fe9782c9
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = edu.stanford.LearningCurve.WOTS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
