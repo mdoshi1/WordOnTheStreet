@@ -38,7 +38,6 @@ class NoteCardViewController: UIViewController {
                 sourceWords = source;
                 let position = self.kolodaView.currentCardIndex
                 self.kolodaView.insertCardAtIndexRange(position..<position + self.dataSource.count, animated: true)
-                print(source)
             }
         }
         takeQuizButton.layer.cornerRadius = 4;
@@ -92,38 +91,6 @@ class NoteCardViewController: UIViewController {
         }
     }
     
-    func getWordsForUser(){
-        let dynamoDBObjectMapper = AWSDynamoDBObjectMapper.default()
-        
-        //Query using GSI index table
-        //What is the top score ever recorded for the game Meteor Blasters?
-        let queryExpression = AWSDynamoDBQueryExpression()
-        queryExpression.keyConditionExpression = "userId = :userId"
-        print(AWSIdentityManager.default().identityId)
-        queryExpression.expressionAttributeValues = [
-            ":userId" : AWSIdentityManager.default().identityId! ];
-        
-        dynamoDBObjectMapper .query(Word.self, expression: queryExpression) .continueWith(executor: AWSExecutor.mainThread(), block: { (task:AWSTask!) -> AnyObject! in
-            if let error = task.error as NSError? {
-                print("Error: \(error)")
-            } else {
-                if let result = task.result {//(task.result != nil) {
-                    for r in result.items as! [Word]{
-                        let dict = ["word": r.spanishWord, "translation": r.englishWord]
-                        // myNewDictArray.append(dict)
-                        self.dataSource.append(dict);
-                        sourceWords.append(dict)
-                        print(r.spanishWord);
-                    }
-                    let position = self.kolodaView.currentCardIndex
-                    self.kolodaView.insertCardAtIndexRange(position..<position + result.items.count, animated: true)
-                }
-                
-            }
-            return nil
-        })
-    }
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "TakeQuizSegue" {
             if let nextVC = segue.destination as? StandardQuizViewController {
@@ -171,8 +138,8 @@ extension NoteCardViewController: KolodaViewDataSource {
     
     func koloda(_ koloda: KolodaView, viewForCardAt index: Int) -> UIView {
         let nc = NoteCardView(frame: CGRect(x: 0, y: 0, width: koloda.frame.width, height: koloda.frame.height))
-        nc.wordView.text = dataSource[Int(index)]["word"]
-        nc.translationView.text = dataSource[Int(index)]["translation"]
+        nc.wordView.text = dataSource[Int(index)]["spanish"]
+        nc.translationView.text = dataSource[Int(index)]["english"]
         return nc
     }
     

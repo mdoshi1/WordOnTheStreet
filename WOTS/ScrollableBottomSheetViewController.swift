@@ -13,25 +13,23 @@ class ScrollableBottomSheetViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     // placeholder words
-    var words: [Dictionary<String, String>] = [
-        ["english": "coffee", "spanish": "café"],
-        ["english": "sugar", "spanish": "azúcar"],
-        ["english": "milk", "spanish": "leche"],
-        ["english": "coffee", "spanish": "café"],
-        ["english": "sugar", "spanish": "azúcar"],
-        ["english": "coffee", "spanish": "café"],
-        ["english": "sugar", "spanish": "azúcar"],
-        ["english": "coffee", "spanish": "café"],
-        ["english": "sugar", "spanish": "azúcar"]]
+    var words: [Dictionary<String, String>] = []
     
     let fullView: CGFloat = 100
     var partialView: CGFloat {
         return UIScreen.main.bounds.height - 150
     }
+    let noteCardConn = NoteCardConnection()
 
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        noteCardConn.insertData { () in
+            noteCardConn.getWordsForUser { (source) in
+                self.words = source;
+                self.tableView.reloadData()
+            }
+        }
         
         tableView.delegate = self
         tableView.dataSource = self

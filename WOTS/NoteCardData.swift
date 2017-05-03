@@ -44,7 +44,7 @@ class NoteCardConnection {
             } else {
                 if let result = task.result {//(task.result != nil) {
                     for r in result.items as! [Word]{
-                        let dict = ["word": r.spanishWord, "translation": r.englishWord]
+                        let dict = ["spanish": r.spanishWord, "english": r.englishWord]
                         dataSource.append(dict)
                     }
                     completion(dataSource);
@@ -57,10 +57,10 @@ class NoteCardConnection {
     //Example insert data function. Used to initialize data set
     func insertData(completion: ()->Void) {
         let dataSource: [Dictionary<String, String>] = [
-            ["word": "cafe", "translation":"coffee"],
-            ["word": "milk", "translation":"leche"],
-            ["word": "straw", "translation":"paja"],
-            ["word": "sugar", "translation":"azucar"]
+            ["english": "cafe", "spanish":"coffee"],
+            ["english": "milk", "spanish":"leche"],
+            ["english": "straw", "spanish":"paja"],
+            ["english": "sugar", "spanish":"azucar"]
         ]
         let objectMapper = AWSDynamoDBObjectMapper.default()
         var count = 0;
@@ -68,8 +68,8 @@ class NoteCardConnection {
             let itemToCreate: Word = Word()
             
             itemToCreate.userId = AWSIdentityManager.default().identityId!
-            itemToCreate.englishWord = dic["translation"]!
-            itemToCreate.spanishWord = dic["word"]!
+            itemToCreate.englishWord = dic["spanish"]!
+            itemToCreate.spanishWord = dic["english"]!
             
             objectMapper.save(itemToCreate, completionHandler: {(error: Error?) -> Void in
                 if let error = error {
