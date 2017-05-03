@@ -19,12 +19,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
-        GMSServices.provideAPIKey("AIzaSyDz57n3eYG4GQl2JqHGRYzHPXucuggCehc")
-        GMSPlacesClient.provideAPIKey("AIzaSyDz57n3eYG4GQl2JqHGRYzHPXucuggCehc")
-        let credentialsProvider = AWSCognitoCredentialsProvider(regionType:.USEast1,
-                                                                identityPoolId:"us-east-1:fb15d096-3f42-4c86-87c0-2db4339ca572")
+        // Google Services
+        GMSServices.provideAPIKey(Constants.APIServices.GMSServicesKey)
+        GMSPlacesClient.provideAPIKey(Constants.APIServices.GMSPlacesKey)
         
-        let configuration = AWSServiceConfiguration(region:.USEast1, credentialsProvider:credentialsProvider)
+        
+        let credentialsProvider = AWSCognitoCredentialsProvider(regionType:.USEast1,
+                                                                identityPoolId: Constants.APIServices.AWSPoolId)
+        
+        let configuration = AWSServiceConfiguration(region: .USEast1, credentialsProvider: credentialsProvider)
         
         AWSServiceManager.default().defaultServiceConfiguration = configuration
 
