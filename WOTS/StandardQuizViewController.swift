@@ -18,7 +18,7 @@ class StandardQuizViewController: UIViewController, UITextFieldDelegate {
     var currentWord = WordAttempt()
     var wordIndex = 0;
     override func viewDidLoad() {
-        currentWord = WordAttempt(englishWord: dataSource[wordIndex]["word"]!, spanishWord:  dataSource[wordIndex]["translation"]!)
+        currentWord = WordAttempt(englishWord: dataSource[wordIndex]["english"]!, spanishWord:  dataSource[wordIndex]["spanish"]!)
         currentWordLabel.text = currentWord.spanishWord
         userInput.delegate = self
         doneButton.isHidden = true;
@@ -40,7 +40,7 @@ class StandardQuizViewController: UIViewController, UITextFieldDelegate {
             currentWordLabel.textColor = UIColor.black
             wordIndex += 1
             if(wordIndex < dataSource.count){
-                currentWord = WordAttempt(englishWord: dataSource[wordIndex]["word"]!, spanishWord:  dataSource[wordIndex]["translation"]!)
+                currentWord = WordAttempt(englishWord: dataSource[wordIndex]["english"]!, spanishWord:  dataSource[wordIndex]["spanish"]!)
                 currentWordLabel.text = currentWord.spanishWord
             } else {
                 userInput.isHidden = true;
