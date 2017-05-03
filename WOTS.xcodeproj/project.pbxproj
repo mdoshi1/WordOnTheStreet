@@ -34,6 +34,8 @@
 		957EA0C61EB853BB00E7750B /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 957EA0C51EB853BB00E7750B /* libsqlite3.tbd */; };
 		957F2F441EB92F72001117DB /* NoteCardData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957F2F431EB92F72001117DB /* NoteCardData.swift */; };
 		957F2F461EB9419A001117DB /* StandardQuizViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957F2F451EB9419A001117DB /* StandardQuizViewController.swift */; };
+		957F2F4C1EB95467001117DB /* ResultsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 957F2F4B1EB95467001117DB /* ResultsView.xib */; };
+		957F2F501EB954B7001117DB /* ResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957F2F4F1EB954B7001117DB /* ResultsView.swift */; };
 		F46EC9821EB52F7B00BF1A53 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46EC9811EB52F7B00BF1A53 /* AppDelegate.swift */; };
 		F46EC9871EB52F7B00BF1A53 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F46EC9851EB52F7B00BF1A53 /* Main.storyboard */; };
 		F46EC9891EB52F7B00BF1A53 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F46EC9881EB52F7B00BF1A53 /* Assets.xcassets */; };
@@ -90,6 +92,8 @@
 		957EA0C51EB853BB00E7750B /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		957F2F431EB92F72001117DB /* NoteCardData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteCardData.swift; sourceTree = "<group>"; };
 		957F2F451EB9419A001117DB /* StandardQuizViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StandardQuizViewController.swift; sourceTree = "<group>"; };
+		957F2F4B1EB95467001117DB /* ResultsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ResultsView.xib; sourceTree = "<group>"; };
+		957F2F4F1EB954B7001117DB /* ResultsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultsView.swift; sourceTree = "<group>"; };
 		F46EC97E1EB52F7B00BF1A53 /* WOTS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WOTS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F46EC9811EB52F7B00BF1A53 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F46EC9861EB52F7B00BF1A53 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -240,6 +244,8 @@
 				957EA0AD1EB8536F00E7750B /* AmazonAws */,
 				957EA0A01EB8532A00E7750B /* Sdk */,
 				F46EC9881EB52F7B00BF1A53 /* Assets.xcassets */,
+				957F2F4B1EB95467001117DB /* ResultsView.xib */,
+				957F2F4F1EB954B7001117DB /* ResultsView.swift */,
 			);
 			path = WOTS;
 			sourceTree = "<group>";
@@ -313,6 +319,7 @@
 				F46EC9891EB52F7B00BF1A53 /* Assets.xcassets in Resources */,
 				3F3BA9DE1EB7103C006B4FC1 /* ScrollableBottomSheetViewController.xib in Resources */,
 				957EA0A11EB8532A00E7750B /* Sdk in Resources */,
+				957F2F4C1EB95467001117DB /* ResultsView.xib in Resources */,
 				95791F9E1EB55AEE00F9FA96 /* NoteCardOverlayView.xib in Resources */,
 				3F3BA9D41EB6FEF5006B4FC1 /* DefaultTableViewCell.xib in Resources */,
 				F46EC9871EB52F7B00BF1A53 /* Main.storyboard in Resources */,
@@ -388,6 +395,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3F3BA9DD1EB7103C006B4FC1 /* ScrollableBottomSheetViewController.swift in Sources */,
+				957F2F501EB954B7001117DB /* ResultsView.swift in Sources */,
 				F46EC9941EB538DB00BF1A53 /* TabBarController.swift in Sources */,
 				957EA0C21EB8536F00E7750B /* EnglishToSpanish.swift in Sources */,
 				F46EC9981EB54E7B00BF1A53 /* UIView+Autolayout.swift in Sources */,

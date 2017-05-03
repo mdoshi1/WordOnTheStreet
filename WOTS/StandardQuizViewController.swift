@@ -13,6 +13,7 @@ class StandardQuizViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var currentWordLabel: UILabel!
     @IBOutlet weak var userInput: UITextField!
+    @IBOutlet weak var doneButton: UIButton!
     
     var currentWord = WordAttempt()
     var wordIndex = 0;
@@ -20,7 +21,8 @@ class StandardQuizViewController: UIViewController, UITextFieldDelegate {
         currentWord = WordAttempt(englishWord: dataSource[wordIndex]["word"]!, spanishWord:  dataSource[wordIndex]["translation"]!)
         currentWordLabel.text = currentWord.spanishWord
         userInput.delegate = self
-
+        doneButton.isHidden = true;
+        doneButton.layer.cornerRadius = 4;
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
@@ -40,6 +42,11 @@ class StandardQuizViewController: UIViewController, UITextFieldDelegate {
             if(wordIndex < dataSource.count){
                 currentWord = WordAttempt(englishWord: dataSource[wordIndex]["word"]!, spanishWord:  dataSource[wordIndex]["translation"]!)
                 currentWordLabel.text = currentWord.spanishWord
+            } else {
+                userInput.isHidden = true;
+                currentWordLabel.text = "congrats!"
+                currentWordLabel.textColor = UIColor.green
+                doneButton.isHidden = false;
             }
         } else {
             currentWordLabel.textColor = UIColor.red
