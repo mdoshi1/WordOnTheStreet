@@ -17,6 +17,10 @@ class StandardQuizViewController: UIViewController, UITextFieldDelegate {
     
     var currentWord = WordAttempt()
     var wordIndex = 0;
+    var numIncorrectWords = 0;
+    var numMaxAttempts = 3;
+    var numAttempts = 0;
+    
     override func viewDidLoad() {
         currentWord = WordAttempt(englishWord: dataSource[wordIndex]["english"]!, spanishWord:  dataSource[wordIndex]["spanish"]!)
         currentWordLabel.text = currentWord.spanishWord
@@ -36,21 +40,30 @@ class StandardQuizViewController: UIViewController, UITextFieldDelegate {
     // UITextField Delegates
 
     func textFieldShouldReturn(_ userInput: UITextField) -> Bool {
-        if(userInput.text! == currentWord.englishWord){
+        // let user have 3 attempts
+        // keep track of how many words the user fails on
+        
+        if (userInput.text! == currentWord.englishWord || numAttempts == numMaxAttempts) {
+            
             currentWordLabel.textColor = UIColor.black
             wordIndex += 1
+            
             if(wordIndex < dataSource.count){
                 currentWord = WordAttempt(englishWord: dataSource[wordIndex]["english"]!, spanishWord:  dataSource[wordIndex]["spanish"]!)
                 currentWordLabel.text = currentWord.spanishWord
+                numAttempts = 0
             } else {
+                // user finished taking the quiz
                 userInput.isHidden = true;
-                currentWordLabel.text = "congrats!"
+                currentWordLabel.text = "Good job!"
                 currentWordLabel.textColor = UIColor.green
                 doneButton.isHidden = false;
             }
         } else {
             currentWordLabel.textColor = UIColor.red
+            numAttempts += 1
         }
+        
         userInput.text = ""
         //userInput.resignFirstResponder();
         return true;
