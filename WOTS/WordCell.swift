@@ -20,7 +20,8 @@ class WordCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
+        addButton.addTarget(self, action: #selector(addToDictionary), for: .touchUpInside)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -29,4 +30,10 @@ class WordCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    // MARK: - IBActions
+    
+    func addToDictionary(sender: UIButton) {
+        sender.setBackgroundImage(UIImage(named: "check_mark"), for: .normal)
+        sender.isEnabled = false
+    }
 }
