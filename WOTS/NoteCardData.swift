@@ -57,7 +57,7 @@ class NoteCardConnection {
     //Example insert data function. Used to initialize data set
     func insertData(completion: ()->Void) {
         let dataSource: [Dictionary<String, String>] = [
-            ["english": "cafe", "spanish":"coffee"],
+            ["english": "coffee", "spanish":"cafe"],
             ["english": "milk", "spanish":"leche"],
             ["english": "straw", "spanish":"paja"],
             ["english": "sugar", "spanish":"azucar"]
@@ -68,8 +68,8 @@ class NoteCardConnection {
             let itemToCreate: Word = Word()
             
             itemToCreate.userId = AWSIdentityManager.default().identityId!
-            itemToCreate.englishWord = dic["spanish"]!
-            itemToCreate.spanishWord = dic["english"]!
+            itemToCreate.englishWord = dic["english"]!
+            itemToCreate.spanishWord = dic["spanish"]!
             
             objectMapper.save(itemToCreate, completionHandler: {(error: Error?) -> Void in
                 if let error = error {
