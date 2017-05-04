@@ -13,19 +13,19 @@ import AWSDynamoDB
 class NoteCardConnection {
     private var dynamoDBObjectMapper = AWSDynamoDBObjectMapper.default()
     
-    init() {
-        //Repeatedly attempt to get the id
-        while(AWSIdentityManager.default().identityId == nil){
-            let credentialsProvider = AWSCognitoCredentialsProvider(regionType:.USEast1,
-                                                                    identityPoolId:"us-east-1:fb15d096-3f42-4c86-87c0-2db4339ca572")
-            credentialsProvider.getIdentityId().continueWith { (task) -> Any? in
-                if (task.error != nil) {
-                    print("Error: " + (task.error?.localizedDescription)!)
-                }
-                return nil
-            }
-        }
-    }
+//    init() {
+//        //Repeatedly attempt to get the id
+//        while(AWSIdentityManager.default().identityId == nil){
+//            let credentialsProvider = AWSCognitoCredentialsProvider(regionType:.USEast1,
+//                                                                    identityPoolId:"us-east-1:fb15d096-3f42-4c86-87c0-2db4339ca572")
+//            credentialsProvider.getIdentityId().continueWith { (task) -> Any? in
+//                if (task.error != nil) {
+//                    print("Error: " + (task.error?.localizedDescription)!)
+//                }
+//                return nil
+//            }
+//        }
+//    }
     // MARK: AWS functions
     func getWordsForUser(completion: @escaping (_ data: [Dictionary<String, String>]) -> Void){
         var dataSource: [Dictionary<String, String>] = []

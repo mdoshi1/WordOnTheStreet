@@ -27,7 +27,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let configuration = AWSServiceConfiguration(region:.USEast1, credentialsProvider:credentialsProvider)
         
         AWSServiceManager.default().defaultServiceConfiguration = configuration
-
+        while(AWSIdentityManager.default().identityId == nil){
+            credentialsProvider.getIdentityId().continueWith { (task) -> Any? in
+                if (task.error != nil) {
+                    print("Error: " + (task.error?.localizedDescription)!)
+                }
+                print(task)
+                return nil
+            }
+        }
         return AWSMobileClient.sharedInstance.didFinishLaunching(application, withOptions: launchOptions)
     }
     
