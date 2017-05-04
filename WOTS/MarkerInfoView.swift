@@ -58,9 +58,11 @@ class MarkerInfoView: UIView {
     // MARK: - MarkerInfoView
     
     init(frame: CGRect? = nil, forMarker marker: GMSMarker) {
-        self.name = marker.title
-        self.numWords = Int(arc4random_uniform(20))
-        self.numPeople = Int(arc4random_uniform(20))
+        let place = marker.userData as? Place
+        
+        self.name = place?.name ?? marker.title
+        self.numWords = place?.numWords ?? Int(arc4random_uniform(20))
+        self.numPeople = place?.numPeople ?? Int(arc4random_uniform(20))
         
         super.init(frame: frame ?? CGRect.zero)
         

@@ -70,6 +70,10 @@ struct Place {
     let name: String
     let placeId: String
     let location: CLLocationCoordinate2D
+    // let types: [String]
+    // let photos: [String]
+    let numWords: Int
+    let numPeople: Int
 }
 
 extension Place {
@@ -86,6 +90,8 @@ extension Place {
         self.name = name
         self.placeId = placeId
         self.location = CLLocationCoordinate2D(latitude: lat, longitude: long)
+        self.numWords = Int(arc4random_uniform(20))
+        self.numPeople = Int(arc4random_uniform(20))
     }
 }
 

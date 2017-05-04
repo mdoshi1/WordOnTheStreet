@@ -24,7 +24,8 @@ class ExploreViewController: UIViewController {
         return mapView
     }()
     
-    var locationManager = CLLocationManager()
+    fileprivate var locationManager = CLLocationManager()
+    fileprivate let placeDetailSegue = "toPlaceDetails"
 
     // MARK: - ExploreViewController
 
@@ -47,7 +48,7 @@ class ExploreViewController: UIViewController {
         // Map View
         let bottomMargin = self.tabBarController?.tabBar.frame.height ?? 49.0
         NSLayoutConstraint.activate([
-            mapView.topAnchor.constraint(equalTo: self.view.topAnchor),
+            mapView.topAnchor.constraint(equalTo: self.topLayoutGuide.bottomAnchor),
             mapView.leftAnchor.constraint(equalTo: self.view.leftAnchor),
             mapView.rightAnchor.constraint(equalTo: self.view.rightAnchor),
             mapView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -bottomMargin)
@@ -68,6 +69,15 @@ class ExploreViewController: UIViewController {
         let d = earthRadius * c
         
         return d * 1000
+    }
+    
+    // MARK: - Navigation
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let place = sender as? Place,
+            let destinationVC = segue.destination as? PlaceDetailViewController {
+            destinationVC.place = place
+        }
     }
 }
 
@@ -94,6 +104,7 @@ extension ExploreViewController: GMSMapViewDelegate {
                     infoMarker.title = place.name
                     infoMarker.opacity = 1.0
                     infoMarker.infoWindowAnchor = CGPoint(x: 0, y: -0.2)
+                    infoMarker.userData = place
                     infoMarker.map = mapView
                 }
             }
@@ -106,7 +117,7 @@ extension ExploreViewController: GMSMapViewDelegate {
     }
     
     func mapView(_ mapView: GMSMapView, didTapInfoWindowOf marker: GMSMarker) {
-        // TODO
+        performSegue(withIdentifier: placeDetailSegue, sender: marker.userData)
     }
 }
 
