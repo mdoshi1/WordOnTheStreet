@@ -24,7 +24,8 @@ class ExploreViewController: UIViewController {
         return mapView
     }()
     
-    var locationManager = CLLocationManager()
+    fileprivate var locationManager = CLLocationManager()
+    fileprivate let placeDetailSegue = "toPlaceDetails"
 
     // MARK: - ExploreViewController
 
@@ -47,7 +48,7 @@ class ExploreViewController: UIViewController {
         // Map View
         let bottomMargin = self.tabBarController?.tabBar.frame.height ?? 49.0
         NSLayoutConstraint.activate([
-            mapView.topAnchor.constraint(equalTo: self.view.topAnchor),
+            mapView.topAnchor.constraint(equalTo: self.topLayoutGuide.bottomAnchor),
             mapView.leftAnchor.constraint(equalTo: self.view.leftAnchor),
             mapView.rightAnchor.constraint(equalTo: self.view.rightAnchor),
             mapView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -bottomMargin)
@@ -69,22 +70,21 @@ class ExploreViewController: UIViewController {
         
         return d * 1000
     }
+    
+    // MARK: - Navigation
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let place = sender as? Place,
+            let destinationVC = segue.destination as? PlaceDetailViewController {
+            destinationVC.place = place
+        }
+    }
 }
 
 // MARK: - GMSMapViewDelegate
 
 extension ExploreViewController: GMSMapViewDelegate {
     
-//    func mapView(_ mapView: GMSMapView, didTapPOIWithPlaceID placeID: String, name: String, location: CLLocationCoordinate2D) {
-//        infoMarker.snippet = placeID
-//        infoMarker.position = location
-//        infoMarker.title = name
-//        infoMarker.opacity = 0
-//        infoMarker.infoWindowAnchor.y = 1
-//        infoMarker.map = mapView
-//        mapView.selectedMarker = infoMarker
-//    }
-//    
     func mapView(_ mapView: GMSMapView, idleAt position: GMSCameraPosition) {
         
         let visibleRegion = mapView.projection.visibleRegion()
@@ -103,10 +103,21 @@ extension ExploreViewController: GMSMapViewDelegate {
                     let infoMarker = GMSMarker(position: place.location)
                     infoMarker.title = place.name
                     infoMarker.opacity = 1.0
+                    infoMarker.infoWindowAnchor = CGPoint(x: 0, y: -0.2)
+                    infoMarker.userData = place
                     infoMarker.map = mapView
                 }
             }
         }
+    }
+    
+    func mapView(_ mapView: GMSMapView, markerInfoWindow marker: GMSMarker) -> UIView? {
+        let markerInfoView = MarkerInfoView(frame: CGRect(x: 0, y: 0, width: 200.0, height: 60.0), forMarker: marker)
+        return markerInfoView
+    }
+    
+    func mapView(_ mapView: GMSMapView, didTapInfoWindowOf marker: GMSMarker) {
+        performSegue(withIdentifier: placeDetailSegue, sender: marker.userData)
     }
 }
 
