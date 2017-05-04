@@ -69,17 +69,6 @@ class ExploreViewController: UIViewController {
         
         return d * 1000
     }
-    
-    fileprivate func measure(lat1: CLLocationDegrees, long1: CLLocationDegrees, lat2: CLLocationDegrees, long2: CLLocationDegrees) -> Double {
-        let R = 6378.137
-        let dLat = lat2 * Double.pi / 180 - lat1 * Double.pi / 180
-        let dLong = long2 * Double.pi / 180 - long1 * Double.pi / 180
-        
-        let a = sin(dLat/2) * sin(dLat/2) + cos(lat1 * Double.pi / 180) * cos(lat2 * Double.pi / 180) * sin(dLong/2) * sin(dLong/2)
-        let c = 2 * atan2(sqrt(a), sqrt(1-a))
-        let d = R * c
-        return d * 1000
-    }
 }
 
 // MARK: - GMSMapViewDelegate
@@ -102,12 +91,21 @@ extension ExploreViewController: GMSMapViewDelegate {
         let currentLocation = position.target
         let radius = calculateDistance(fromLocation: currentLocation, toLocation: visibleRegion.nearLeft)
         
-        APIClient.updateLocations(withinRadius: radius, location: currentLocation) { dictionary in
-            guard let dictionary = dictionary else {
+        APIClient.updateLocations(withinRadius: radius, location: currentLocation) { places in
+            guard let places = places else {
                 print("Error updating locations")
                 return
             }
-            print("Dictionary: \(dictionary)")
+            
+            // Place markers on main queue
+            DispatchQueue.main.async {
+                for place in places {
+                    let infoMarker = GMSMarker(position: place.location)
+                    infoMarker.title = place.name
+                    infoMarker.opacity = 1.0
+                    infoMarker.map = mapView
+                }
+            }
         }
     }
 }
@@ -117,9 +115,13 @@ extension ExploreViewController: GMSMapViewDelegate {
 extension ExploreViewController: CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        
         let location = locations.last
-        let camera = GMSCameraPosition.camera(withLatitude: (location?.coordinate.latitude)!, longitude:(location?.coordinate.longitude)!, zoom:17)
-        mapView.animate(to: camera)
+//        let camera = GMSCameraPosition.camera(withLatitude: (location?.coordinate.latitude)!, longitude:(location?.coordinate.longitude)!, zoom:17)
+//        mapView.animate(to: camera)
+        let cameraUpdate = GMSCameraUpdate.setTarget(CLLocationCoordinate2D(latitude: (location?.coordinate.latitude)!, longitude: (location?.coordinate.longitude)!))
+        mapView.animate(with: cameraUpdate)
+        
         self.locationManager.stopUpdatingLocation()
     }
     
