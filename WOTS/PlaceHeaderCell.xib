@@ -77,6 +77,7 @@
                 <outlet property="numPeopleLabel" destination="emL-61-GmM" id="7i0-gZ-GoQ"/>
                 <outlet property="numWordsLabel" destination="Tgo-GD-X8z" id="D2T-7M-wVY"/>
                 <outlet property="peopleImageView" destination="hTh-gQ-mN9" id="OXH-s6-ei4"/>
+                <outlet property="takeQuizButton" destination="oUq-0Z-QpJ" id="enq-EH-36h"/>
             </connections>
             <point key="canvasLocation" x="34" y="141.5"/>
         </tableViewCell>

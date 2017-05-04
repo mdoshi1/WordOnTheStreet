@@ -17,6 +17,7 @@ class PlaceHeaderCell: UITableViewCell {
     @IBOutlet weak var numPeopleLabel: UILabel!
     @IBOutlet weak var peopleImageView: UIImageView!
     @IBOutlet weak var businessTypeLabel: UILabel!
+    @IBOutlet weak var takeQuizButton: UIButton!
     
     // MARK: PlaceHeaderCell
 

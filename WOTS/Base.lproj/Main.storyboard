@@ -44,6 +44,9 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <segue destination="CQ6-xw-FVR" kind="presentation" identifier="toPlaceQuiz" id="dVC-wn-XaI"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CKe-bo-hIV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -62,16 +65,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="notecard" translatesAutoresizingMaskIntoConstraints="NO" id="Swb-Z0-chz">
-                                <rect key="frame" x="25" y="121" width="324" height="183"/>
+                                <rect key="frame" x="25" y="77" width="324" height="276"/>
                             </imageView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Type Translation Here" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oyv-Sr-dKQ">
-                                <rect key="frame" x="26" y="340.5" width="323" height="30"/>
+                                <rect key="frame" x="26" y="296.5" width="323" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z6a-lQ-L84">
-                                <rect key="frame" x="161" y="164" width="54" height="26.5"/>
+                                <rect key="frame" x="161" y="120" width="54" height="26.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -83,9 +86,6 @@
                                 <state key="normal" title="Done">
                                     <color key="titleColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
-                                <connections>
-                                    <segue destination="TBO-H3-cLm" kind="show" id="hEy-zp-eZ9"/>
-                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
@@ -129,7 +129,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Sh-W8-J4f" customClass="KolodaView" customModule="Koloda">
-                                <rect key="frame" x="10" y="121" width="355" height="183"/>
+                                <rect key="frame" x="10" y="77" width="355" height="276"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d3s-T8-1zm">
@@ -142,7 +142,7 @@
                                     <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="CQ6-xw-FVR" kind="show" identifier="TakeQuizSegue" id="h71-RK-L4i"/>
+                                    <segue destination="CQ6-xw-FVR" kind="presentation" identifier="TakeQuizSegue" id="h71-RK-L4i"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -314,6 +314,6 @@
         <image name="notecard" width="600" height="359"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="gqe-fT-jEp"/>
+        <segue reference="h71-RK-L4i"/>
     </inferredMetricsTieBreakers>
 </document>

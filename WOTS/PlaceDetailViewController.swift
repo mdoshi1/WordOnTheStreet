@@ -30,27 +30,51 @@ class PlaceDetailViewController: UIViewController {
     
     // TODO: remove fake data
     let words = [
-        "drink": "la bebida",
-        "check": "el cheque",
-        "glass": "el vaso",
-        "table": "la mesa",
-        "waiter": "el mesero",
-        "chair": "la silla",
-        "to order": "pedir",
-        "booth": "la cabina",
-        "juice": "el jugo",
-        "fork": "el tenedor",
-        "spoon": "la cuchara",
-        "knife": "el cuchillo",
-        "soup": "la sopa",
-        "dessert": "el postre",
-        "menu": "el menú",
-        "napkin": "la servilleta",
-        "bathroom": "el baño",
-        "to pay": "pagar",
-        "appetizer": "la botana",
-        "water": "el agua"
+        ["english": "drink", "spanish": "la bebida"],
+        ["english": "check", "spanish": "el cheque"],
+        ["english": "glass", "spanish": "el vaso"],
+        ["english": "table", "spanish": "la mesa"],
+        ["english": "waiter", "spanish": "el mesero"],
+        ["english": "chair", "spanish": "la silla"],
+        ["english": "to order", "spanish": "pedir"],
+        ["english": "booth", "spanish": "la cabina"],
+        ["english": "juice", "spanish": "el jugo"],
+        ["english": "fork", "spanish": "el tenedor"],
+        ["english": "spoon", "spanish": "la cuchara"],
+        ["english": "knife", "spanish": "el cuchillo"],
+        ["english": "soup", "spanish": "la sopa"],
+        ["english": "dessert", "spanish": "el postre"],
+        ["english": "menu", "spanish": "el menú"],
+        ["english": "napkin", "spanish": "la servilleta"],
+        ["english": "bathroom", "spanish": "el baño"],
+        ["english": "to pay", "spanish": "pagar"],
+        ["english": "appetizer", "spanish": "la botana"],
+        ["english": "water", "spanish": "el agua"]
     ]
+    
+    
+//    let blah = [
+//        "drink": "la bebida",
+//        "check": "el cheque",
+//        "glass": "el vaso",
+//        "table": "la mesa",
+//        "waiter": "el mesero",
+//        "chair": "la silla",
+//        "to order": "pedir",
+//        "booth": "la cabina",
+//        "juice": "el jugo",
+//        "fork": "el tenedor",
+//        "spoon": "la cuchara",
+//        "knife": "el cuchillo",
+//        "soup": "la sopa",
+//        "dessert": "el postre",
+//        "menu": "el menú",
+//        "napkin": "la servilleta",
+//        "bathroom": "el baño",
+//        "to pay": "pagar",
+//        "appetizer": "la botana",
+//        "water": "el agua"
+//    ]
     
     // MARK: - PlaceDetialViewController
 
@@ -79,6 +103,22 @@ class PlaceDetailViewController: UIViewController {
         wordList.register(UINib(nibName: "PlaceImageCell", bundle: nil), forCellReuseIdentifier: "PlaceImageCell")
         wordList.register(UINib(nibName: "PlaceHeaderCell", bundle: nil), forCellReuseIdentifier: "PlaceHeaderCell")
         wordList.register(UINib(nibName: "WordCell", bundle: nil), forCellReuseIdentifier: "WordCell")
+    }
+    
+    // MARK: - Navigation
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let destinationVC = segue.destination as? StandardQuizViewController {
+            var dataSource = [[String: String]]()
+            for index in 0..<(place?.numWords ?? 10) {
+                dataSource.append(words[index])
+            }
+            destinationVC.dataSource = dataSource
+        }
+    }
+    
+    func toPlaceQuiz(sender: UIButton) {
+        performSegue(withIdentifier: "toPlaceQuiz", sender: nil)
     }
 }
 
@@ -122,11 +162,12 @@ extension PlaceDetailViewController: UITableViewDelegate, UITableViewDataSource 
             headerCell.nameLabel.text = place?.name ?? "Name"
             headerCell.numWordsLabel.text = "\(place?.numWords ?? 0) Words"
             headerCell.numPeopleLabel.text = "\(place?.numPeople ?? 0)"
+            headerCell.takeQuizButton.addTarget(self, action: #selector(toPlaceQuiz), for: .touchUpInside)
             return headerCell
         case .words:
             let wordCell = tableView.dequeueReusableCell(withIdentifier: "WordCell", for: indexPath) as! WordCell
-            wordCell.wordLabel.text = Array(words.keys)[indexPath.row]
-            wordCell.translationLabel.text = Array(words.values)[indexPath.row]
+            wordCell.wordLabel.text = words[indexPath.row]["english"]
+            wordCell.wordLabel.text = words[indexPath.row]["spanish"]
             return wordCell
         }
     }

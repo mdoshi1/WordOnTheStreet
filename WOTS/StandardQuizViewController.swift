@@ -23,6 +23,8 @@ class StandardQuizViewController: UIViewController, UITextFieldDelegate {
         userInput.delegate = self
         doneButton.isHidden = true;
         doneButton.layer.cornerRadius = 4;
+        doneButton.addTarget(self, action: #selector(finishQuiz), for: .touchUpInside)
+        
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
@@ -56,15 +58,12 @@ class StandardQuizViewController: UIViewController, UITextFieldDelegate {
         return true;
     }
 
-    /*
+    
     // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    
+    func finishQuiz(sender: UIButton) {
+        dismiss(animated: true, completion: nil)
     }
-    */
 
 }
 
