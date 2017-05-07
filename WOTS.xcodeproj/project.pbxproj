@@ -45,6 +45,14 @@
 		F46EC9981EB54E7B00BF1A53 /* UIView+Autolayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46EC9971EB54E7B00BF1A53 /* UIView+Autolayout.swift */; };
 		F4BECB0B1EB9745700B98BA8 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4BECB0A1EB9745700B98BA8 /* Constants.swift */; };
 		F4BECB0D1EB97C3800B98BA8 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4BECB0C1EB97C3800B98BA8 /* APIClient.swift */; };
+		F4BECB111EBB02A500B98BA8 /* MarkerInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4BECB101EBB02A500B98BA8 /* MarkerInfoView.swift */; };
+		F4BECB131EBB915000B98BA8 /* PlaceDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4BECB121EBB915000B98BA8 /* PlaceDetailViewController.swift */; };
+		F4BECB181EBBB67900B98BA8 /* PlaceImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4BECB161EBBB67900B98BA8 /* PlaceImageCell.swift */; };
+		F4BECB191EBBB67900B98BA8 /* PlaceImageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4BECB171EBBB67900B98BA8 /* PlaceImageCell.xib */; };
+		F4BECB1D1EBBB7A700B98BA8 /* PlaceHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4BECB1B1EBBB7A700B98BA8 /* PlaceHeaderCell.swift */; };
+		F4BECB1E1EBBB7A700B98BA8 /* PlaceHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4BECB1C1EBBB7A700B98BA8 /* PlaceHeaderCell.xib */; };
+		F4BECB211EBBBAB400B98BA8 /* WordCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4BECB1F1EBBBAB400B98BA8 /* WordCell.swift */; };
+		F4BECB221EBBBAB400B98BA8 /* WordCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4BECB201EBBBAB400B98BA8 /* WordCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -107,6 +115,14 @@
 		F46EC9971EB54E7B00BF1A53 /* UIView+Autolayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Autolayout.swift"; sourceTree = "<group>"; };
 		F4BECB0A1EB9745700B98BA8 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		F4BECB0C1EB97C3800B98BA8 /* APIClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
+		F4BECB101EBB02A500B98BA8 /* MarkerInfoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarkerInfoView.swift; sourceTree = "<group>"; };
+		F4BECB121EBB915000B98BA8 /* PlaceDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceDetailViewController.swift; sourceTree = "<group>"; };
+		F4BECB161EBBB67900B98BA8 /* PlaceImageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceImageCell.swift; sourceTree = "<group>"; };
+		F4BECB171EBBB67900B98BA8 /* PlaceImageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlaceImageCell.xib; sourceTree = "<group>"; };
+		F4BECB1B1EBBB7A700B98BA8 /* PlaceHeaderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceHeaderCell.swift; sourceTree = "<group>"; };
+		F4BECB1C1EBBB7A700B98BA8 /* PlaceHeaderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlaceHeaderCell.xib; sourceTree = "<group>"; };
+		F4BECB1F1EBBBAB400B98BA8 /* WordCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WordCell.swift; sourceTree = "<group>"; };
+		F4BECB201EBBBAB400B98BA8 /* WordCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WordCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -238,6 +254,8 @@
 				F4BECB0C1EB97C3800B98BA8 /* APIClient.swift */,
 				F46EC9931EB538DB00BF1A53 /* TabBarController.swift */,
 				F46EC9951EB5418C00BF1A53 /* ExploreViewController.swift */,
+				F4BECB101EBB02A500B98BA8 /* MarkerInfoView.swift */,
+				F4BECB1A1EBBB77600B98BA8 /* PlaceDetails */,
 				F46EC9971EB54E7B00BF1A53 /* UIView+Autolayout.swift */,
 				F46EC9851EB52F7B00BF1A53 /* Main.storyboard */,
 				3F3BA9D11EB6FEF5006B4FC1 /* DefaultTableViewCell.swift */,
@@ -262,6 +280,20 @@
 				F46EC9881EB52F7B00BF1A53 /* Assets.xcassets */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		F4BECB1A1EBBB77600B98BA8 /* PlaceDetails */ = {
+			isa = PBXGroup;
+			children = (
+				F4BECB121EBB915000B98BA8 /* PlaceDetailViewController.swift */,
+				F4BECB161EBBB67900B98BA8 /* PlaceImageCell.swift */,
+				F4BECB171EBBB67900B98BA8 /* PlaceImageCell.xib */,
+				F4BECB1B1EBBB7A700B98BA8 /* PlaceHeaderCell.swift */,
+				F4BECB1C1EBBB7A700B98BA8 /* PlaceHeaderCell.xib */,
+				F4BECB1F1EBBBAB400B98BA8 /* WordCell.swift */,
+				F4BECB201EBBBAB400B98BA8 /* WordCell.xib */,
+			);
+			name = PlaceDetails;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -329,12 +361,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F4BECB1E1EBBB7A700B98BA8 /* PlaceHeaderCell.xib in Resources */,
 				F46EC98C1EB52F7B00BF1A53 /* LaunchScreen.storyboard in Resources */,
 				F46EC9891EB52F7B00BF1A53 /* Assets.xcassets in Resources */,
 				3F3BA9DE1EB7103C006B4FC1 /* ScrollableBottomSheetViewController.xib in Resources */,
 				957EA0A11EB8532A00E7750B /* Sdk in Resources */,
 				957F2F4C1EB95467001117DB /* ResultsView.xib in Resources */,
 				95791F9E1EB55AEE00F9FA96 /* NoteCardOverlayView.xib in Resources */,
+				F4BECB191EBBB67900B98BA8 /* PlaceImageCell.xib in Resources */,
+				F4BECB221EBBBAB400B98BA8 /* WordCell.xib in Resources */,
 				3F3BA9D41EB6FEF5006B4FC1 /* DefaultTableViewCell.xib in Resources */,
 				F46EC9871EB52F7B00BF1A53 /* Main.storyboard in Resources */,
 			);
@@ -413,19 +448,24 @@
 				957F2F501EB954B7001117DB /* ResultsView.swift in Sources */,
 				F4BECB0D1EB97C3800B98BA8 /* APIClient.swift in Sources */,
 				F46EC9941EB538DB00BF1A53 /* TabBarController.swift in Sources */,
+				F4BECB131EBB915000B98BA8 /* PlaceDetailViewController.swift in Sources */,
 				957EA0C21EB8536F00E7750B /* EnglishToSpanish.swift in Sources */,
 				F46EC9981EB54E7B00BF1A53 /* UIView+Autolayout.swift in Sources */,
+				F4BECB111EBB02A500B98BA8 /* MarkerInfoView.swift in Sources */,
 				957EA0C01EB8536F00E7750B /* AWSMobileClient.swift in Sources */,
 				957F2F441EB92F72001117DB /* NoteCardData.swift in Sources */,
 				95791F9C1EB55A9700F9FA96 /* NoteCardOverlayView.swift in Sources */,
 				957EA0BD1EB8536F00E7750B /* AWSAPI_CX0HSKU68J_ResponseSchema.m in Sources */,
 				95791F861EB53D4700F9FA96 /* NoteCardViewController.swift in Sources */,
+				F4BECB1D1EBBB7A700B98BA8 /* PlaceHeaderCell.swift in Sources */,
 				95791F981EB5513300F9FA96 /* NoteCardView.swift in Sources */,
 				3F3BA9D31EB6FEF5006B4FC1 /* DefaultTableViewCell.swift in Sources */,
 				957EA0BC1EB8536F00E7750B /* AWSAPI_CX0HSKU68J_RequestSchema.m in Sources */,
+				F4BECB181EBBB67900B98BA8 /* PlaceImageCell.swift in Sources */,
 				957EA0BE1EB8536F00E7750B /* AWSAPI_CX0HSKU68J_TestMobileHubClient.m in Sources */,
 				F46EC9821EB52F7B00BF1A53 /* AppDelegate.swift in Sources */,
 				957F2F461EB9419A001117DB /* StandardQuizViewController.swift in Sources */,
+				F4BECB211EBBBAB400B98BA8 /* WordCell.swift in Sources */,
 				957EA0BF1EB8536F00E7750B /* AWSConfiguration.swift in Sources */,
 				F46EC9961EB5418C00BF1A53 /* ExploreViewController.swift in Sources */,
 			);

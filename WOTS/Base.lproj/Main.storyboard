@@ -9,7 +9,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Explore-->
+        <!--Explore View Controller-->
         <scene sceneID="ILx-HY-SuD">
             <objects>
                 <viewController id="aHc-uU-dPf" customClass="ExploreViewController" customModule="WOTS" customModuleProvider="target" sceneMemberID="viewController">
@@ -22,11 +22,35 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Explore" image="exploreIcon" id="WAo-Ap-y9b"/>
+                    <navigationItem key="navigationItem" id="jhp-OV-lA3"/>
+                    <connections>
+                        <segue destination="9kW-Je-6WC" kind="show" identifier="toPlaceDetails" id="gd2-vf-Z2a"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9pN-lK-gGH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1090" y="558"/>
+            <point key="canvasLocation" x="2028" y="557.27136431784118"/>
+        </scene>
+        <!--Place Detail View Controller-->
+        <scene sceneID="Qt7-OC-DAW">
+            <objects>
+                <viewController id="9kW-Je-6WC" customClass="PlaceDetailViewController" customModule="WOTS" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="mCw-Ik-G7P"/>
+                        <viewControllerLayoutGuide type="bottom" id="YcS-Aa-2PH"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="WAp-9a-K9R">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <segue destination="CQ6-xw-FVR" kind="presentation" identifier="toPlaceQuiz" id="dVC-wn-XaI"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CKe-bo-hIV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2937" y="557"/>
         </scene>
         <!--Standard Quiz View Controller-->
         <scene sceneID="fGw-Cg-VeU">
@@ -62,9 +86,6 @@
                                 <state key="normal" title="Done">
                                     <color key="titleColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
-                                <connections>
-                                    <segue destination="TBO-H3-cLm" kind="show" id="hEy-zp-eZ9"/>
-                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r6F-7S-tVd">
                                 <rect key="frame" x="61" y="167" width="253" height="103"/>
@@ -132,7 +153,7 @@
                                     <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="CQ6-xw-FVR" kind="show" identifier="TakeQuizSegue" id="h71-RK-L4i"/>
+                                    <segue destination="CQ6-xw-FVR" kind="presentation" identifier="TakeQuizSegue" id="h71-RK-L4i"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -234,7 +255,7 @@
                     </tabBar>
                     <connections>
                         <segue destination="cEc-Pl-2nr" kind="relationship" relationship="viewControllers" id="APP-DX-vs1"/>
-                        <segue destination="aHc-uU-dPf" kind="relationship" relationship="viewControllers" id="U16-kg-rgl"/>
+                        <segue destination="uMY-KW-Ou3" kind="relationship" relationship="viewControllers" id="U16-kg-rgl"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9ck-Wr-2VB" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -278,6 +299,25 @@
             </objects>
             <point key="canvasLocation" x="3240.8000000000002" y="-146.17691154422789"/>
         </scene>
+        <!--Explore-->
+        <scene sceneID="jMb-jG-orc">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="uMY-KW-Ou3" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Explore" image="exploreIcon" id="WAo-Ap-y9b"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="iM2-UW-8IF">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="aHc-uU-dPf" kind="relationship" relationship="rootViewController" id="dci-Xl-mWo"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iSx-G8-Y1S" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1088.8" y="557.27136431784118"/>
+        </scene>
     </scenes>
     <resources>
         <image name="exploreIcon" width="25" height="25"/>
@@ -285,6 +325,6 @@
         <image name="notecard" width="600" height="359"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="hEy-zp-eZ9"/>
+        <segue reference="h71-RK-L4i"/>
     </inferredMetricsTieBreakers>
 </document>
