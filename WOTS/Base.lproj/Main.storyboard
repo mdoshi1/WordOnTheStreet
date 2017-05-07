@@ -66,6 +66,12 @@
                                     <segue destination="TBO-H3-cLm" kind="show" id="hEy-zp-eZ9"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r6F-7S-tVd">
+                                <rect key="frame" x="61" y="167" width="253" height="103"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -79,7 +85,11 @@
                             <constraint firstItem="z6a-lQ-L84" firstAttribute="top" secondItem="LaE-AU-1k9" secondAttribute="bottom" constant="100" id="NMH-1w-PBd"/>
                             <constraint firstItem="Swb-Z0-chz" firstAttribute="top" secondItem="LaE-AU-1k9" secondAttribute="bottom" constant="57" id="Sbx-RX-T1o"/>
                             <constraint firstItem="oyv-Sr-dKQ" firstAttribute="centerX" secondItem="VVL-Xq-Gde" secondAttribute="centerX" id="T3q-kv-m44"/>
+                            <constraint firstItem="r6F-7S-tVd" firstAttribute="top" secondItem="z6a-lQ-L84" secondAttribute="bottom" constant="20.5" id="VPL-yS-7Bc"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="r6F-7S-tVd" secondAttribute="trailing" constant="45" id="XyA-5f-lm6"/>
                             <constraint firstAttribute="trailingMargin" secondItem="oyv-Sr-dKQ" secondAttribute="trailing" constant="10" id="dWa-VF-cRb"/>
+                            <constraint firstItem="oyv-Sr-dKQ" firstAttribute="top" secondItem="r6F-7S-tVd" secondAttribute="bottom" constant="26.5" id="gR0-3K-ila"/>
+                            <constraint firstItem="r6F-7S-tVd" firstAttribute="leading" secondItem="VVL-Xq-Gde" secondAttribute="leadingMargin" constant="45" id="lvg-4c-QEi"/>
                             <constraint firstItem="lMs-t8-xOF" firstAttribute="centerX" secondItem="VVL-Xq-Gde" secondAttribute="centerX" id="mE5-c7-IRE"/>
                             <constraint firstItem="lMs-t8-xOF" firstAttribute="top" secondItem="z6a-lQ-L84" secondAttribute="bottom" constant="162" id="rmg-ln-RVe"/>
                             <constraint firstItem="z6a-lQ-L84" firstAttribute="centerX" secondItem="VVL-Xq-Gde" secondAttribute="centerX" id="uJp-He-wGj"/>
@@ -88,6 +98,7 @@
                     <connections>
                         <outlet property="currentWordLabel" destination="z6a-lQ-L84" id="fx4-RK-fzn"/>
                         <outlet property="doneButton" destination="lMs-t8-xOF" id="GZA-co-OOe"/>
+                        <outlet property="doneUserFeedback" destination="r6F-7S-tVd" id="o74-D2-Llp"/>
                         <outlet property="userInput" destination="oyv-Sr-dKQ" id="wfG-aT-djh"/>
                     </connections>
                 </viewController>

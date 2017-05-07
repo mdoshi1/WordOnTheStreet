@@ -14,6 +14,7 @@ class StandardQuizViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var currentWordLabel: UILabel!
     @IBOutlet weak var userInput: UITextField!
     @IBOutlet weak var doneButton: UIButton!
+    @IBOutlet weak var doneUserFeedback: UILabel!
     
     var currentWord = WordAttempt()
     var wordIndex = 0;
@@ -26,6 +27,7 @@ class StandardQuizViewController: UIViewController, UITextFieldDelegate {
         currentWordLabel.text = currentWord.spanishWord
         userInput.delegate = self
         doneButton.isHidden = true;
+        doneUserFeedback.isHidden = true;
         doneButton.layer.cornerRadius = 4;
         super.viewDidLoad()
 
@@ -48,6 +50,10 @@ class StandardQuizViewController: UIViewController, UITextFieldDelegate {
             currentWordLabel.textColor = UIColor.black
             wordIndex += 1
             
+            if (numAttempts == numMaxAttempts) {
+                numIncorrectWords += 1
+            }
+            
             if(wordIndex < dataSource.count){
                 currentWord = WordAttempt(englishWord: dataSource[wordIndex]["english"]!, spanishWord:  dataSource[wordIndex]["spanish"]!)
                 currentWordLabel.text = currentWord.spanishWord
@@ -56,8 +62,13 @@ class StandardQuizViewController: UIViewController, UITextFieldDelegate {
                 // user finished taking the quiz
                 userInput.isHidden = true;
                 currentWordLabel.text = "Good job!"
+                let score = Float (Float (dataSource.count - numIncorrectWords) / Float(dataSource.count)) * 100
+                doneUserFeedback.text = "Score: \(score)%\n" +
+                    "Number of incorrect words: \(numIncorrectWords)\n" +
+                    "Total number of words tested: \(dataSource.count)"
                 currentWordLabel.textColor = UIColor.green
                 doneButton.isHidden = false;
+                doneUserFeedback.isHidden = false;
             }
         } else {
             currentWordLabel.textColor = UIColor.red
