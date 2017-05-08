@@ -84,6 +84,8 @@ class PlaceDetailViewController: UIViewController {
         view.addSubview(wordList.usingAutolayout())
         setupConstraints()
         registerReusableCells()
+        self.navigationItem.title = place?.name ?? "Name"
+
     }
     
     // MARK: - Helper Methods
@@ -108,12 +110,28 @@ class PlaceDetailViewController: UIViewController {
     // MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let destinationVC = segue.destination as? StandardQuizViewController {
+//        if let destinationVC = segue.destination as? StandardQuizViewController {
+//            var dataSource = [[String: String]]()
+//            for index in 0..<(place?.numWords ?? 10) {
+//                dataSource.append(words[index])
+//            }
+//            destinationVC.dataSource = dataSource
+//            destinationVC.navigationItem.title = "Quiz for " + (place?.name ?? "Name")
+//        }
+        
+        if let navVC = segue.destination as? UINavigationController {
             var dataSource = [[String: String]]()
             for index in 0..<(place?.numWords ?? 10) {
                 dataSource.append(words[index])
             }
+            let destinationVC = navVC.topViewController as! StandardQuizViewController
             destinationVC.dataSource = dataSource
+            destinationVC.navigationItem.title = "Quiz for " + (place?.name ?? "Name")
+            
+            // Shorten back button title from "Word on the Street" to just "Back"
+            let backItem = UIBarButtonItem()
+            backItem.title = ""
+            navigationItem.backBarButtonItem = backItem
         }
     }
     

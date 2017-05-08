@@ -42,6 +42,8 @@ class NoteCardViewController: UIViewController {
         }
         takeQuizButton.layer.cornerRadius = 4;
         self.modalTransitionStyle = UIModalTransitionStyle.flipHorizontal
+        self.navigationItem.title = "Word on the Street"
+
     }
     
     
@@ -93,10 +95,19 @@ class NoteCardViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "TakeQuizSegue" {
-            if let nextVC = segue.destination as? StandardQuizViewController {
-                nextVC.dataSource = self.dataSource
+//            if let nextVC = segue.destination as? StandardQuizViewController {
+//                nextVC.dataSource = self.dataSource
+//            }
+            
+            if let navVC = segue.destination as? UINavigationController {
+                let destinationVC = navVC.topViewController as! StandardQuizViewController
+                destinationVC.dataSource = self.dataSource
+                destinationVC.navigationItem.title = "Quiz"
             }
         }
+        
+        
+        
     }
 }
 

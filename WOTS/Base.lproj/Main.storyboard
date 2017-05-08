@@ -45,7 +45,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
-                        <segue destination="CQ6-xw-FVR" kind="presentation" identifier="toPlaceQuiz" id="dVC-wn-XaI"/>
+                        <segue destination="hht-Ii-9dy" kind="presentation" identifier="toPlaceQuiz" id="dVC-wn-XaI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CKe-bo-hIV" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -65,16 +65,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="notecard" translatesAutoresizingMaskIntoConstraints="NO" id="Swb-Z0-chz">
-                                <rect key="frame" x="25" y="77" width="324" height="276"/>
+                                <rect key="frame" x="25" y="121" width="324" height="232"/>
                             </imageView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Type Translation Here" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oyv-Sr-dKQ">
-                                <rect key="frame" x="26" y="296.5" width="323" height="30"/>
+                                <rect key="frame" x="26" y="340.5" width="323" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z6a-lQ-L84">
-                                <rect key="frame" x="161" y="120" width="54" height="26.5"/>
+                                <rect key="frame" x="161" y="164" width="54" height="26.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -87,8 +87,15 @@
                                     <color key="titleColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r6F-7S-tVd">
-                                <rect key="frame" x="61" y="167" width="253" height="103"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r6F-7S-tVd">
+                                <rect key="frame" x="61" y="211" width="253" height="103"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uol-Vx-iFG">
+                                <rect key="frame" x="26" y="487" width="323" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -116,16 +123,18 @@
                             <constraint firstItem="z6a-lQ-L84" firstAttribute="centerX" secondItem="VVL-Xq-Gde" secondAttribute="centerX" id="uJp-He-wGj"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="wiA-2Y-WfS"/>
                     <connections>
                         <outlet property="currentWordLabel" destination="z6a-lQ-L84" id="fx4-RK-fzn"/>
                         <outlet property="doneButton" destination="lMs-t8-xOF" id="GZA-co-OOe"/>
                         <outlet property="doneUserFeedback" destination="r6F-7S-tVd" id="o74-D2-Llp"/>
+                        <outlet property="numAttemptsLeftLabel" destination="uol-Vx-iFG" id="oHV-ih-MJV"/>
                         <outlet property="userInput" destination="oyv-Sr-dKQ" id="wfG-aT-djh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TUc-G7-k44" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2028" y="-920.68965517241384"/>
+            <point key="canvasLocation" x="2967.1999999999998" y="-920.68965517241384"/>
         </scene>
         <!--Note Card View Controller-->
         <scene sceneID="8MQ-Ou-8vp">
@@ -140,7 +149,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Sh-W8-J4f" customClass="KolodaView" customModule="Koloda">
-                                <rect key="frame" x="10" y="77" width="355" height="276"/>
+                                <rect key="frame" x="10" y="121" width="355" height="183"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d3s-T8-1zm">
@@ -153,7 +162,7 @@
                                     <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="CQ6-xw-FVR" kind="presentation" identifier="TakeQuizSegue" id="h71-RK-L4i"/>
+                                    <segue destination="hht-Ii-9dy" kind="presentation" identifier="TakeQuizSegue" id="h71-RK-L4i"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -262,11 +271,11 @@
             </objects>
             <point key="canvasLocation" x="138" y="230"/>
         </scene>
-        <!--Learn-->
+        <!--Review-->
         <scene sceneID="s9z-rf-58K">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="cEc-Pl-2nr" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Learn" image="learnIcon" id="4Am-Rz-Vh2"/>
+                    <tabBarItem key="tabBarItem" title="Review" image="learnIcon" id="4Am-Rz-Vh2"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="9rI-Pc-ZkH">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -318,6 +327,24 @@
             </objects>
             <point key="canvasLocation" x="1088.8" y="557.27136431784118"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="bbb-cN-ooQ">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="hht-Ii-9dy" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="RLh-Yv-al1">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="CQ6-xw-FVR" kind="relationship" relationship="rootViewController" id="edL-B5-b6f"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bfW-8r-ArS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2028" y="-920.68965517241384"/>
+        </scene>
     </scenes>
     <resources>
         <image name="exploreIcon" width="25" height="25"/>
@@ -325,6 +352,6 @@
         <image name="notecard" width="600" height="359"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="h71-RK-L4i"/>
+        <segue reference="dVC-wn-XaI"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -39,6 +39,8 @@ class ExploreViewController: UIViewController {
         // Go to current location
         locationManager.delegate = self
         locationManager.startUpdatingLocation()
+        
+        self.navigationItem.title = "Word on the Street"
     }
     
     // MARK: - Helper Methods

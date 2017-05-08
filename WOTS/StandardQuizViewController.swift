@@ -15,19 +15,22 @@ class StandardQuizViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var userInput: UITextField!
     @IBOutlet weak var doneButton: UIButton!
     @IBOutlet weak var doneUserFeedback: UILabel!
+    @IBOutlet weak var numAttemptsLeftLabel: UILabel!
     
     var currentWord = WordAttempt()
     var wordIndex = 0;
     var numIncorrectWords = 0;
-    var numMaxAttempts = 3;
+    var numMaxAttempts = 2; // technically 3, but 0-indexed
     var numAttempts = 0;
     
     override func viewDidLoad() {
+        
         currentWord = WordAttempt(englishWord: dataSource[wordIndex]["english"]!, spanishWord:  dataSource[wordIndex]["spanish"]!)
         currentWordLabel.text = currentWord.spanishWord
         userInput.delegate = self
         doneButton.isHidden = true;
         doneUserFeedback.isHidden = true;
+        numAttemptsLeftLabel.isHidden = true;
         doneButton.layer.cornerRadius = 4;
         doneButton.addTarget(self, action: #selector(finishQuiz), for: .touchUpInside)
         
@@ -56,6 +59,8 @@ class StandardQuizViewController: UIViewController, UITextFieldDelegate {
                 numIncorrectWords += 1
             }
             
+            numAttemptsLeftLabel.isHidden = true
+            
             if(wordIndex < dataSource.count){
                 currentWord = WordAttempt(englishWord: dataSource[wordIndex]["english"]!, spanishWord:  dataSource[wordIndex]["spanish"]!)
                 currentWordLabel.text = currentWord.spanishWord
@@ -65,16 +70,29 @@ class StandardQuizViewController: UIViewController, UITextFieldDelegate {
                 userInput.isHidden = true;
                 currentWordLabel.text = "Good job!"
                 let score = Float (Float (dataSource.count - numIncorrectWords) / Float(dataSource.count)) * 100
-                doneUserFeedback.text = "Score: \(score)%\n" +
-                    "Number of incorrect words: \(numIncorrectWords)\n" +
-                    "Total number of words tested: \(dataSource.count)"
-                currentWordLabel.textColor = UIColor.green
+                let formattedString = NSMutableAttributedString()
+                formattedString
+                  .bold("Score:\t\t")
+                  .normal("\(score)%\n")
+                  .bold("# incorrect words:\t")
+                  .normal("\(numIncorrectWords)\n")
+                  .bold("Total # words tested:\t")
+                  .normal("\(dataSource.count)")
+                
+                doneUserFeedback.attributedText = formattedString
+//                doneUserFeedback.text = "Score:\t\(score)%\n" +
+//                    "# incorrect words:\t\(numIncorrectWords)\n" +
+//                    "Total # words tested:\t\(dataSource.count)"
+                currentWordLabel.textColor = UIColor.black
                 doneButton.isHidden = false;
                 doneUserFeedback.isHidden = false;
             }
         } else {
             currentWordLabel.textColor = UIColor.red
             numAttempts += 1
+            numAttemptsLeftLabel.isHidden = false
+            let numAttemptsLeft = (numMaxAttempts + 1) - numAttempts
+            numAttemptsLeftLabel.text = "You have \(numAttemptsLeft) attempts left."
         }
         
         userInput.text = ""
@@ -104,5 +122,20 @@ class WordAttempt: NSObject {
         self.englishWord = englishWord;
         self.spanishWord = spanishWord;
         self.incorrect = false;
+    }
+}
+
+extension NSMutableAttributedString {
+    func bold(_ text:String) -> NSMutableAttributedString {
+        let attrs:[String:AnyObject] = [NSFontAttributeName : UIFont(name: "AvenirNext-Medium", size: 18)!]
+        let boldString = NSMutableAttributedString(string:"\(text)", attributes:attrs)
+        self.append(boldString)
+        return self
+    }
+    
+    func normal(_ text:String)->NSMutableAttributedString {
+        let normal =  NSAttributedString(string: text)
+        self.append(normal)
+        return self
     }
 }
