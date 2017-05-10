@@ -27,9 +27,6 @@
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tHp-F8-5xu">
                         <rect key="frame" x="282" y="3" width="30" height="37.5"/>
                         <state key="normal" title="Edit"/>
-                        <connections>
-                            <action selector="editDailyGoalBtnPressed:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="vFd-Rg-3RB"/>
-                        </connections>
                     </button>
                 </subviews>
                 <constraints>

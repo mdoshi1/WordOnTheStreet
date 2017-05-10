@@ -328,6 +328,24 @@
             </objects>
             <point key="canvasLocation" x="2028" y="1398.3508245877063"/>
         </scene>
+        <!--Goals View Controller-->
+        <scene sceneID="vY1-h5-mRM">
+            <objects>
+                <viewController storyboardIdentifier="GoalsViewController" id="ObJ-TU-UZQ" customClass="GoalsViewController" customModule="WOTS" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="xUQ-1X-YBB"/>
+                        <viewControllerLayoutGuide type="bottom" id="qbC-dx-VTD"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="HRH-iO-mPp">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Kfm-O4-fnn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3039.1999999999998" y="1484.7076461769116"/>
+        </scene>
         <!--Explore-->
         <scene sceneID="jMb-jG-orc">
             <objects>

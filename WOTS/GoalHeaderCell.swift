@@ -12,9 +12,7 @@ class GoalHeaderCell: UITableViewCell {
     @IBOutlet weak var dailyGoalLabel: UILabel!
 
     @IBOutlet weak var editDailyGoalButton: UIButton!
-    @IBAction func editDailyGoalBtnPressed(_ sender: Any) {
-        
-    }
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

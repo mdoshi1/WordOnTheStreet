@@ -68,6 +68,12 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate {
     }
     */
     
+    // MARK: - Button pressed
+    func editDailyGoalAction(_sender: UIButton) {
+        let buttonTag = _sender.tag
+        print("Edit daily goal button pressed! tag is \(buttonTag)")
+    }
+    
     // MARK: - Image Picker
 
     // TODO: this doesn't really work
@@ -122,6 +128,11 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
         }
     }
     
+    //Set method for UIButton
+    func pushEditDailyGoal(sender: AnyObject) {
+        navigationController!.pushViewController(storyboard!.instantiateViewController(withIdentifier: "GoalsViewController") as! GoalsViewController, animated: true) //where ViewController is the name of the UIViewController and "ViewController" the identifier you set for it in your Storyboard
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch ProfileDetailType(rawValue: indexPath.section)! {
             case .header:
@@ -137,6 +148,11 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
             
             // TODO: use database/user accounts to fill in goals
             let goalsHeaderCell = tableView.dequeueReusableCell(withIdentifier: "GoalHeaderCell", for: indexPath) as! GoalHeaderCell
+            
+            goalsHeaderCell.tag = indexPath.row
+            //Set button's target
+            goalsHeaderCell.editDailyGoalButton.addTarget(self, action: #selector(pushEditDailyGoal), for: .touchUpInside)
+            
             return goalsHeaderCell
             
             case .goals:
