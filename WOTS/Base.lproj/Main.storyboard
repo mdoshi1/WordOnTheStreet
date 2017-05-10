@@ -265,6 +265,7 @@
                     <connections>
                         <segue destination="cEc-Pl-2nr" kind="relationship" relationship="viewControllers" id="APP-DX-vs1"/>
                         <segue destination="uMY-KW-Ou3" kind="relationship" relationship="viewControllers" id="U16-kg-rgl"/>
+                        <segue destination="ln3-gN-BUP" kind="relationship" relationship="viewControllers" id="MLB-db-HGw"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9ck-Wr-2VB" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -277,7 +278,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="cEc-Pl-2nr" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Review" image="learnIcon" id="4Am-Rz-Vh2"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="9rI-Pc-ZkH">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="9rI-Pc-ZkH">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -295,7 +296,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="nfv-qe-f9z" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="fdZ-ea-QtO">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="fdZ-ea-QtO">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -308,13 +309,32 @@
             </objects>
             <point key="canvasLocation" x="3240.8000000000002" y="-146.17691154422789"/>
         </scene>
+        <!--Profile View Controller-->
+        <scene sceneID="pzA-vm-YKD">
+            <objects>
+                <viewController id="KEg-eP-HDn" customClass="ProfileViewController" customModule="WOTS" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="NhK-sS-oFf"/>
+                        <viewControllerLayoutGuide type="bottom" id="WQN-Vy-xxl"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Ozb-vP-JqJ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="C77-Xu-ZWi"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rCh-gl-j48" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2028" y="1398.3508245877063"/>
+        </scene>
         <!--Explore-->
         <scene sceneID="jMb-jG-orc">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="uMY-KW-Ou3" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Explore" image="exploreIcon" id="WAo-Ap-y9b"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="iM2-UW-8IF">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="iM2-UW-8IF">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -332,7 +352,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="hht-Ii-9dy" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="RLh-Yv-al1">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="RLh-Yv-al1">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -345,11 +365,31 @@
             </objects>
             <point key="canvasLocation" x="2028" y="-920.68965517241384"/>
         </scene>
+        <!--Me-->
+        <scene sceneID="o85-We-qdm">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ln3-gN-BUP" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Me" image="profileIcon" id="G9d-6m-afr"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Vd1-Ub-SUH">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="KEg-eP-HDn" kind="relationship" relationship="rootViewController" id="V2Q-D5-UgW"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Jch-sv-lGm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1089" y="1399"/>
+        </scene>
     </scenes>
     <resources>
         <image name="exploreIcon" width="25" height="25"/>
         <image name="learnIcon" width="25" height="25"/>
         <image name="notecard" width="600" height="359"/>
+        <image name="profileIcon" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="dVC-wn-XaI"/>

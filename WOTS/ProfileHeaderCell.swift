@@ -10,6 +10,20 @@ import UIKit
 
 class ProfileHeaderCell: UITableViewCell {
 
+    @IBOutlet weak var profileImageView: UIImageView!
+    @IBOutlet weak var profileNameLabel: UILabel!
+    @IBOutlet weak var profileImageEditButton: UIButton!
+    weak var delegate: ChangePictureProtocol?
+
+    @IBAction func changeProfileImage(_ sender: Any) {
+        let imagePickerVC = UIImagePickerController()
+
+        
+        if ((delegate?.responds(to: Selector(("loadNewScreen:")))) != nil)
+        {
+            delegate?.loadImagePicker(controller: imagePickerVC);
+        }
+    }
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -21,4 +35,8 @@ class ProfileHeaderCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+}
+
+protocol ChangePictureProtocol : NSObjectProtocol {
+    func loadImagePicker(controller: UIImagePickerController) -> Void;
 }
