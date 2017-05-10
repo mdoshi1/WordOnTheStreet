@@ -17,6 +17,8 @@
 		3FBAA2AA1EC2F61C0040AD89 /* ProfileHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3FBAA2A81EC2F61C0040AD89 /* ProfileHeaderCell.xib */; };
 		3FBAA2AE1EC2F87D0040AD89 /* GoalsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FBAA2AC1EC2F87D0040AD89 /* GoalsCell.swift */; };
 		3FBAA2AF1EC2F87D0040AD89 /* GoalsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3FBAA2AD1EC2F87D0040AD89 /* GoalsCell.xib */; };
+		3FBAA2B21EC305AF0040AD89 /* GoalHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FBAA2B01EC305AF0040AD89 /* GoalHeaderCell.swift */; };
+		3FBAA2B31EC305AF0040AD89 /* GoalHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3FBAA2B11EC305AF0040AD89 /* GoalHeaderCell.xib */; };
 		95791F861EB53D4700F9FA96 /* NoteCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95791F851EB53D4700F9FA96 /* NoteCardViewController.swift */; };
 		95791F981EB5513300F9FA96 /* NoteCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95791F971EB5513300F9FA96 /* NoteCardView.swift */; };
 		95791F9C1EB55A9700F9FA96 /* NoteCardOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95791F9B1EB55A9700F9FA96 /* NoteCardOverlayView.swift */; };
@@ -87,6 +89,8 @@
 		3FBAA2A81EC2F61C0040AD89 /* ProfileHeaderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileHeaderCell.xib; sourceTree = "<group>"; };
 		3FBAA2AC1EC2F87D0040AD89 /* GoalsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoalsCell.swift; sourceTree = "<group>"; };
 		3FBAA2AD1EC2F87D0040AD89 /* GoalsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GoalsCell.xib; sourceTree = "<group>"; };
+		3FBAA2B01EC305AF0040AD89 /* GoalHeaderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoalHeaderCell.swift; sourceTree = "<group>"; };
+		3FBAA2B11EC305AF0040AD89 /* GoalHeaderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GoalHeaderCell.xib; sourceTree = "<group>"; };
 		5940474782F3E9AB78BDC15F /* Pods-WOTS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WOTS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WOTS/Pods-WOTS.debug.xcconfig"; sourceTree = "<group>"; };
 		749084860D94B5BF673E4213 /* Pods_WOTS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WOTS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		95791F851EB53D4700F9FA96 /* NoteCardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteCardViewController.swift; sourceTree = "<group>"; };
@@ -161,6 +165,8 @@
 				3FBAA2A81EC2F61C0040AD89 /* ProfileHeaderCell.xib */,
 				3FBAA2AC1EC2F87D0040AD89 /* GoalsCell.swift */,
 				3FBAA2AD1EC2F87D0040AD89 /* GoalsCell.xib */,
+				3FBAA2B01EC305AF0040AD89 /* GoalHeaderCell.swift */,
+				3FBAA2B11EC305AF0040AD89 /* GoalHeaderCell.xib */,
 			);
 			name = Profile;
 			sourceTree = "<group>";
@@ -389,6 +395,7 @@
 				F46EC98C1EB52F7B00BF1A53 /* LaunchScreen.storyboard in Resources */,
 				F46EC9891EB52F7B00BF1A53 /* Assets.xcassets in Resources */,
 				3F3BA9DE1EB7103C006B4FC1 /* ScrollableBottomSheetViewController.xib in Resources */,
+				3FBAA2B31EC305AF0040AD89 /* GoalHeaderCell.xib in Resources */,
 				957EA0A11EB8532A00E7750B /* Sdk in Resources */,
 				957F2F4C1EB95467001117DB /* ResultsView.xib in Resources */,
 				95791F9E1EB55AEE00F9FA96 /* NoteCardOverlayView.xib in Resources */,
@@ -477,6 +484,7 @@
 				F46EC9941EB538DB00BF1A53 /* TabBarController.swift in Sources */,
 				F4BECB131EBB915000B98BA8 /* PlaceDetailViewController.swift in Sources */,
 				957EA0C21EB8536F00E7750B /* EnglishToSpanish.swift in Sources */,
+				3FBAA2B21EC305AF0040AD89 /* GoalHeaderCell.swift in Sources */,
 				F46EC9981EB54E7B00BF1A53 /* UIView+Autolayout.swift in Sources */,
 				F4BECB111EBB02A500B98BA8 /* MarkerInfoView.swift in Sources */,
 				957EA0C01EB8536F00E7750B /* AWSMobileClient.swift in Sources */,

@@ -12,6 +12,7 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate {
     
     enum ProfileDetailType: Int {
         case header
+        case goalsheader
         case goals
     }
     
@@ -30,8 +31,6 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate {
         view.addSubview(tableView.usingAutolayout())
         setupConstraints()
         registerReusableCells()
-        
-
     }
 
     override func didReceiveMemoryWarning() {
@@ -55,6 +54,7 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate {
     
     private func registerReusableCells() {
         tableView.register(UINib(nibName: "ProfileHeaderCell", bundle: nil), forCellReuseIdentifier: "ProfileHeaderCell")
+        tableView.register(UINib(nibName: "GoalHeaderCell", bundle: nil), forCellReuseIdentifier: "GoalHeaderCell")
         tableView.register(UINib(nibName: "GoalsCell", bundle: nil), forCellReuseIdentifier: "GoalsCell")
     }
     
@@ -98,20 +98,24 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         switch ProfileDetailType(rawValue: indexPath.section)! {
-          case .header:
-            return 150.0
-          case .goals:
-            return 55.0
+            case .header:
+                return 150.0
+            case .goalsheader:
+                return 55.0
+            case .goals:
+                return 55.0
         }
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        return 3
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch ProfileDetailType(rawValue: section)! {
         case .header:
+            return 1
+        case .goalsheader:
             return 1
         case .goals:
             return 1
@@ -128,6 +132,13 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
                 headerCell.profileImageView.image = UIImage(named: "defaultProfileImage")
 //                  headerCell.takeQuizButton.addTarget(self, action: #selector(toPlaceQuiz), for: .touchUpInside)
                 return headerCell
+            
+        case .goalsheader:
+            
+            // TODO: use database/user accounts to fill in goals
+            let goalsHeaderCell = tableView.dequeueReusableCell(withIdentifier: "GoalHeaderCell", for: indexPath) as! GoalHeaderCell
+            return goalsHeaderCell
+            
             case .goals:
                 
                 // TODO: use database/user accounts to fill in goals
