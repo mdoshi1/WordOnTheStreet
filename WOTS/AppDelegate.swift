@@ -23,7 +23,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         GMSServices.provideAPIKey(Constants.APIServices.GMSServicesKey)
         GMSPlacesClient.provideAPIKey(Constants.APIServices.GMSPlacesKey)
         
-        
         let credentialsProvider = AWSCognitoCredentialsProvider(regionType:.USEast1,
                                                                 identityPoolId: Constants.APIServices.AWSPoolId)
         

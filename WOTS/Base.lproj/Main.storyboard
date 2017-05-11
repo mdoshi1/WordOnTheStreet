@@ -136,7 +136,7 @@
             </objects>
             <point key="canvasLocation" x="2967.1999999999998" y="-920.68965517241384"/>
         </scene>
-        <!--Note Card View Controller-->
+        <!--Title-->
         <scene sceneID="8MQ-Ou-8vp">
             <objects>
                 <viewController id="TBO-H3-cLm" customClass="NoteCardViewController" customModule="WOTS" customModuleProvider="target" sceneMemberID="viewController">
@@ -165,6 +165,14 @@
                                     <segue destination="hht-Ii-9dy" kind="presentation" identifier="TakeQuizSegue" id="h71-RK-L4i"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9pi-tb-bAc">
+                                <rect key="frame" x="157" y="407" width="60" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Sign Out"/>
+                                <connections>
+                                    <action selector="signOut:" destination="TBO-H3-cLm" eventType="touchUpInside" id="Rkd-tn-GAZ"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
@@ -179,6 +187,7 @@
                             <constraint firstAttribute="trailingMargin" secondItem="6Sh-W8-J4f" secondAttribute="trailing" constant="10" id="xCY-pz-HG2"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="Title" id="Awe-Wl-CQc"/>
                     <connections>
                         <outlet property="kolodaView" destination="6Sh-W8-J4f" id="adT-MS-Z6Y"/>
                         <outlet property="takeQuizButton" destination="d3s-T8-1zm" id="M3q-Uc-Ygc"/>
@@ -352,6 +361,6 @@
         <image name="notecard" width="600" height="359"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="dVC-wn-XaI"/>
+        <segue reference="h71-RK-L4i"/>
     </inferredMetricsTieBreakers>
 </document>

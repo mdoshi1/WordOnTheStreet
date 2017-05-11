@@ -10,6 +10,8 @@ import UIKit
 import Koloda
 import AWSMobileHubHelper
 import AWSDynamoDB
+import AWSMobileHubHelper
+import AWSCognitoUserPoolsSignIn
 
 
 private var numberOfCards: Int = 5
@@ -30,6 +32,25 @@ class NoteCardViewController: UIViewController {
     @IBOutlet weak var takeQuizButton: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
+        // Check if a user is logged in
+        if !AWSSignInManager.sharedInstance().isLoggedIn {
+            
+            // If user is not logged in, present the sign in screen
+            let loginStoryboard = UIStoryboard(name: "SignIn", bundle: nil)
+            let loginController: SignInViewController = loginStoryboard.instantiateViewController(withIdentifier: "SignIn") as! SignInViewController
+            
+            // set canCancel property to false to require user to sign in before accessing the app
+            // set canCancel to true to allow user to cancel the sign in process
+            loginController.canCancel = false
+            
+            // assign the delegate for callback when user either signs in successfully or cancels sign in
+            loginController.didCompleteSignIn = onSignIn
+            
+            // launch the sign in screen
+            let navController = UINavigationController(rootViewController: loginController)
+            navigationController?.present(navController, animated: true, completion: nil)
+        }
+
         kolodaView.dataSource = self
         kolodaView.delegate = self
         noteCardConn.insertData { () in
@@ -45,6 +66,24 @@ class NoteCardViewController: UIViewController {
         self.navigationItem.title = "Word on the Street"
 
     }
+    
+    func onSignIn (_ success: Bool) {
+        
+        if (success) {
+            // handle successful sign in
+            // Perform operations like showing Welcome message
+            DispatchQueue.main.async(execute: {
+                let alert = UIAlertController(title: "Welcome",
+                                              message: "Sign In Successful",
+                                              preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+                self.present(alert, animated: true, completion:nil)
+            })
+        } else {
+            // handle cancel operation from user
+        }
+    }
+    
     
     
     // MARK: IBActions
@@ -65,7 +104,34 @@ class NoteCardViewController: UIViewController {
         kolodaView?.revertAction()
     }
     
+    @IBAction func signOut(_ sender: Any) {
+        let credentialsProvider = AWSCognitoCredentialsProvider(regionType:.USEast1,
+                                                                identityPoolId: Constants.APIServices.AWSPoolId)
+        credentialsProvider.clearCredentials()
+        credentialsProvider.clearKeychain()
+        
+        let pool = AWSCognitoIdentityUserPool(forKey: "UserPool")
+        let user = pool.currentUser()
+        user?.forgetDevice()
+        user?.signOut()
+        
+        // If user is not logged in, present the sign in screen
+        let loginStoryboard = UIStoryboard(name: "SignIn", bundle: nil)
+        let loginController: SignInViewController = loginStoryboard.instantiateViewController(withIdentifier: "SignIn") as! SignInViewController
+        
+        // set canCancel property to false to require user to sign in before accessing the app
+        // set canCancel to true to allow user to cancel the sign in process
+        loginController.canCancel = false
+        
+        // assign the delegate for callback when user either signs in successfully or cancels sign in
+        loginController.didCompleteSignIn = onSignIn
+        
+        // launch the sign in screen
+        let navController = UINavigationController(rootViewController: loginController)
+        navigationController?.present(navController, animated: true, completion: nil)
     
+    }
+
     // Show the WordListView at the bottom like the Google Maps interface
     func addBottomSheetView() {
         // 1- Init bottomSheetVC
