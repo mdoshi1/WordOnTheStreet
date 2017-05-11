@@ -43,6 +43,9 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
         if (selectedGoalCell != "") {
             print ("value from display = \(selectedGoalCell)")
         }
+        
+        // TODO: remove after daily goal fix
+        tableView.reloadData()
     }
     
     // impelment Protocol function
@@ -170,7 +173,22 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
             goalsHeaderCell.tag = indexPath.row
             
             // TODO: retrieve from database what the selected goal is
-            goalsHeaderCell.dailyGoalFreqLabel.text = "1 word/day"
+            // TODO: refactor after daily goal fix
+            var dailyGoalFreqText = ""
+            let selectedRow = UserDefaults.standard.integer(forKey: "daily_goal")
+            switch selectedRow {
+            case 0:
+                dailyGoalFreqText = "1 word/day"
+            case 1:
+                dailyGoalFreqText = "3 word/day"
+            case 2:
+                dailyGoalFreqText = "5 word/day"
+            case 3:
+                dailyGoalFreqText = "8 word/day"
+            default:
+                break
+            }
+            goalsHeaderCell.dailyGoalFreqLabel.text = dailyGoalFreqText
             
             //Set button's target
             goalsHeaderCell.editDailyGoalButton.addTarget(self, action: #selector(pushEditDailyGoal), for: .touchUpInside)
@@ -178,19 +196,19 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
             
             return goalsHeaderCell
             
-            case .goals:
-                
-                // TODO: use database/user accounts to fill in goals
-                let goalsCell = tableView.dequeueReusableCell(withIdentifier: "GoalsCell", for: indexPath) as! GoalsCell
-                
-                // TODO: set the progress for the circles based on database
-                goalsCell.progressFirstCircle.progress = 0.5 // example
-                
-                
-                // TODO:
-                
-                
-                return goalsCell
+        case .goals:
+            
+            // TODO: use database/user accounts to fill in goals
+            let goalsCell = tableView.dequeueReusableCell(withIdentifier: "GoalsCell", for: indexPath) as! GoalsCell
+            
+            // TODO: set the progress for the circles based on database
+            goalsCell.progressFirstCircle.progress = 0.5 // example
+            
+            
+            // TODO:
+            
+            
+            return goalsCell
         }
     }
     
