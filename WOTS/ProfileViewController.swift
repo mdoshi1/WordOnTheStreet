@@ -168,6 +168,7 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
             let goalsHeaderCell = tableView.dequeueReusableCell(withIdentifier: "GoalHeaderCell", for: indexPath) as! GoalHeaderCell
             
             goalsHeaderCell.tag = indexPath.row
+            
             // TODO: retrieve from database what the selected goal is
             goalsHeaderCell.dailyGoalFreqLabel.text = "1 word/day"
             
@@ -182,7 +183,13 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
                 // TODO: use database/user accounts to fill in goals
                 let goalsCell = tableView.dequeueReusableCell(withIdentifier: "GoalsCell", for: indexPath) as! GoalsCell
                 
-                // TODO: show selected goal frequency
+                // TODO: set the progress for the circles based on database
+                goalsCell.progressFirstCircle.progress = 0.5 // example
+                
+                
+                // TODO:
+                
+                
                 return goalsCell
         }
     }

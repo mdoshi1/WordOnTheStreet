@@ -10,6 +10,12 @@ import UIKit
 
 class GoalsCell: UITableViewCell {
 
+    @IBOutlet weak var progressFirstCircle: CircleProgressView!
+    @IBOutlet weak var progressSecCircle: CircleProgressView!
+    @IBOutlet weak var progressThirdCircle: CircleProgressView!
+    @IBOutlet weak var progressFourthCircle: CircleProgressView!
+    @IBOutlet weak var progressFifthCircle: CircleProgressView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
