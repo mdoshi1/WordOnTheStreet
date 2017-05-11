@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ProfileViewController: UIViewController, UIImagePickerControllerDelegate {
+class ProfileViewController: UIViewController, UIImagePickerControllerDelegate,  RememberSelectedCellProtocol {
     
     enum ProfileDetailType: Int {
         case header
@@ -23,6 +23,9 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate {
         return tableView
     }()
     
+    // value sent from GoalsViewController
+    var selectedGoalCell: String = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -31,8 +34,23 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate {
         view.addSubview(tableView.usingAutolayout())
         setupConstraints()
         registerReusableCells()
+        tableView.tableFooterView = UIView()
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if (selectedGoalCell != "") {
+            print ("value from display = \(selectedGoalCell)")
+        }
+    }
+    
+    // impelment Protocol function
+    func setSelectedCell(valueSent: String) {
+        print ("valueSent: \(valueSent)")
+        self.selectedGoalCell = valueSent
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -150,8 +168,12 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
             let goalsHeaderCell = tableView.dequeueReusableCell(withIdentifier: "GoalHeaderCell", for: indexPath) as! GoalHeaderCell
             
             goalsHeaderCell.tag = indexPath.row
+            // TODO: retrieve from database what the selected goal is
+            goalsHeaderCell.dailyGoalFreqLabel.text = "1 word/day"
+            
             //Set button's target
             goalsHeaderCell.editDailyGoalButton.addTarget(self, action: #selector(pushEditDailyGoal), for: .touchUpInside)
+            
             
             return goalsHeaderCell
             
@@ -159,6 +181,8 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
                 
                 // TODO: use database/user accounts to fill in goals
                 let goalsCell = tableView.dequeueReusableCell(withIdentifier: "GoalsCell", for: indexPath) as! GoalsCell
+                
+                // TODO: show selected goal frequency
                 return goalsCell
         }
     }

@@ -1,5 +1,5 @@
 //
-//  GoalHeaderCell.swift
+//  GoalOptionCell.swift
 //  WOTS
 //
 //  Created by Jade Huang on 5/10/17.
@@ -8,12 +8,11 @@
 
 import UIKit
 
-class GoalHeaderCell: UITableViewCell {
-    @IBOutlet weak var dailyGoalLabel: UILabel!
+class GoalOptionCell: UITableViewCell {
 
-    @IBOutlet weak var editDailyGoalButton: UIButton!
-
-    @IBOutlet weak var dailyGoalFreqLabel: UILabel!
+    @IBOutlet weak var goalFreqLabel: UILabel!
+    @IBOutlet weak var goalModeLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
