@@ -32,6 +32,7 @@ class NoteCardViewController: UIViewController {
     @IBOutlet weak var takeQuizButton: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.backgroundColor = UIColor(patternImage: UIImage(named:"blue-background")!)
         // Check if a user is logged in
         if !AWSSignInManager.sharedInstance().isLoggedIn {
             
@@ -61,7 +62,7 @@ class NoteCardViewController: UIViewController {
                 self.kolodaView.insertCardAtIndexRange(position..<position + self.dataSource.count, animated: true)
             }
         }
-        takeQuizButton.layer.cornerRadius = 4;
+        takeQuizButton.layer.cornerRadius = 6;
         self.modalTransitionStyle = UIModalTransitionStyle.flipHorizontal
         self.navigationItem.title = "Word on the Street"
 

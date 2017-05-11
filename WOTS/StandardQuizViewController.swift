@@ -24,6 +24,8 @@ class StandardQuizViewController: UIViewController, UITextFieldDelegate {
     var numAttempts = 0;
     
     override func viewDidLoad() {
+        self.view.backgroundColor = UIColor(patternImage: UIImage(named:"blue-background")!)
+
         
         currentWord = WordAttempt(englishWord: dataSource[wordIndex]["english"]!, spanishWord:  dataSource[wordIndex]["spanish"]!)
         currentWordLabel.text = currentWord.spanishWord
@@ -31,7 +33,7 @@ class StandardQuizViewController: UIViewController, UITextFieldDelegate {
         doneButton.isHidden = true;
         doneUserFeedback.isHidden = true;
         numAttemptsLeftLabel.isHidden = true;
-        doneButton.layer.cornerRadius = 4;
+        doneButton.layer.cornerRadius = 6;
         doneButton.addTarget(self, action: #selector(finishQuiz), for: .touchUpInside)
         
         super.viewDidLoad()
