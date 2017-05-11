@@ -21,6 +21,7 @@ class GoalsViewController: UIViewController {
     var delegate: RememberSelectedCellProtocol?
     var rowToSelect: IndexPath? = nil
     var selectedGoal: String = ""
+    let dailyGoal = "daily_goal"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,10 +38,24 @@ class GoalsViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        if (self.rowToSelect != nil) {
-            rowToSelect = IndexPath(row: 0, section: 0)
-            self.tableView.selectRow(at: rowToSelect, animated: false, scrollPosition: UITableViewScrollPosition.none)
-            self.tableView.cellForRow(at: rowToSelect!)?.accessoryType = .checkmark
+        super.viewDidAppear(animated)
+        
+        // TODO: refactor after daily goal fix
+        let selectedRow = UserDefaults.standard.integer(forKey: dailyGoal)
+        let selectedIndex = IndexPath(row: selectedRow, section: 0)
+        tableView.selectRow(at: selectedIndex, animated: false, scrollPosition: .none)
+        tableView.cellForRow(at: selectedIndex)?.accessoryType = .checkmark
+        
+//        if (self.rowToSelect != nil) {
+//            rowToSelect = IndexPath(row: 0, section: 0)
+//            self.tableView.selectRow(at: rowToSelect, animated: false, scrollPosition: UITableViewScrollPosition.none)
+//            self.tableView.cellForRow(at: rowToSelect!)?.accessoryType = .checkmark
+//        }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        if let selectedIndex = tableView.indexPathForSelectedRow {
+            UserDefaults.standard.set(selectedIndex.row, forKey: dailyGoal)
         }
     }
     
@@ -50,11 +65,6 @@ class GoalsViewController: UIViewController {
         ["mode": "Serious", "freq": "5"],
         ["mode": "Expert", "freq": "8"]
     ]
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
     // MARK: - Helper methods
     
@@ -109,22 +119,22 @@ extension GoalsViewController: UITableViewDelegate, UITableViewDataSource {
         goalOptionCell.goalModeLabel.text = goalOptions[indexPath.row]["mode"]!
         goalOptionCell.goalFreqLabel.text = goalOptions[indexPath.row]["freq"]! + " word(s)/day"
         
-        
-        if (isChecked[indexPath.row]) {
-            goalOptionCell.accessoryType = .checkmark
-        } else {
-            goalOptionCell.accessoryType = .none
-        }
+//        
+//        if (isChecked[indexPath.row]) {
+//            goalOptionCell.accessoryType = .checkmark
+//        } else {
+//            goalOptionCell.accessoryType = .none
+//        }
         return goalOptionCell
     }
 
     
-    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        if (isChecked[indexPath.row]) {
-            cell.setSelected(true, animated: false)
-            tableView.selectRow(at: indexPath, animated: false, scrollPosition: UITableViewScrollPosition.none)
-        }
-    }
+//    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+//        if (isChecked[indexPath.row]) {
+//            cell.setSelected(true, animated: false)
+//            tableView.selectRow(at: indexPath, animated: false, scrollPosition: UITableViewScrollPosition.none)
+//        }
+//    }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let cell = tableView.cellForRow(at: indexPath) as? GoalOptionCell{
@@ -141,7 +151,6 @@ extension GoalsViewController: UITableViewDelegate, UITableViewDataSource {
         if let cell = tableView.cellForRow(at: indexPath) {
             cell.accessoryType = .none
             isChecked[indexPath.row] = false
-            
         }
 
     }
