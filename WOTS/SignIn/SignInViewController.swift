@@ -54,6 +54,8 @@ class SignInViewController : UIViewController {
         self.setUpFacebookButton()
         // set up google button if enabled
         self.setUpGoogleButton()
+        self.hideKeyboardWhenTappedAround()
+
     }
     
     func setUpUserPoolsUI() {

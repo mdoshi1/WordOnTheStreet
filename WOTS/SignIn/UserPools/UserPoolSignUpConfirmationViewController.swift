@@ -31,6 +31,8 @@ class UserPoolSignUpConfirmationViewController : UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setUp()
+        self.hideKeyboardWhenTappedAround()
+
     }
     
     func setUp() {

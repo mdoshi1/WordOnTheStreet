@@ -35,6 +35,8 @@ class UserPoolSignUpViewController: UIViewController {
         super.viewDidLoad()
         self.setUp()
         self.pool = AWSCognitoIdentityUserPool.init(forKey: AWSCognitoUserPoolsSignInProviderKey)
+        self.hideKeyboardWhenTappedAround()
+
     }
     
     func setUp() {
