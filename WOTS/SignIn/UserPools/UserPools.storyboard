@@ -1,10 +1,10 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1421" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="SfA-Z0-41u">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="SfA-Z0-41u">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -28,7 +28,7 @@
         <!--Update Password-->
         <scene sceneID="ro3-wD-2wV">
             <objects>
-                <viewController title="Update Password" id="Wwt-zD-yTe" customClass="UserPoolNewPasswordViewController" customModule="MySampleApp" sceneMemberID="viewController">
+                <viewController title="Update Password" id="Wwt-zD-yTe" customClass="UserPoolNewPasswordViewController" customModule="WOTS" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="FqQ-ca-9Q7"/>
                         <viewControllerLayoutGuide type="bottom" id="FoP-6q-Q3y"/>
@@ -44,11 +44,11 @@
                                         <rect key="frame" x="4" y="4" width="271" height="142"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <prototypes>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="FormTableCell" rowHeight="75" id="fwK-jt-Xtf" customClass="TableInputCell" customModule="MySampleApp" customModuleProvider="target">
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="FormTableCell" rowHeight="75" id="fwK-jt-Xtf" customClass="TableInputCell" customModule="WOTS" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="28" width="271" height="75"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fwK-jt-Xtf" id="obo-ab-0XQ">
-                                                    <rect key="frame" x="0.0" y="0.0" width="271" height="74"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="271" height="74.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="n5E-F6-uaf">
@@ -201,7 +201,7 @@
         <!--Sign-Up View Controller-->
         <scene sceneID="UNL-it-beS">
             <objects>
-                <viewController storyboardIdentifier="SignUp" title="Sign-Up" id="tBM-jZ-I7y" userLabel="Sign-Up View Controller" customClass="UserPoolSignUpViewController" customModule="MySampleApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SignUp" title="Sign-Up" id="tBM-jZ-I7y" userLabel="Sign-Up View Controller" customClass="UserPoolSignUpViewController" customModule="WOTS" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="7hn-wh-vfF"/>
                         <viewControllerLayoutGuide type="bottom" id="Ysf-nz-1Cg"/>
@@ -222,11 +222,11 @@
                                         <rect key="frame" x="4" y="4" width="271" height="292"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <prototypes>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="FormTableCell" rowHeight="75" id="WTQ-Mh-Km6" customClass="TableInputCell" customModule="MySampleApp" customModuleProvider="target">
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="FormTableCell" rowHeight="75" id="WTQ-Mh-Km6" customClass="TableInputCell" customModule="WOTS" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="28" width="271" height="75"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="WTQ-Mh-Km6" id="YR1-zk-gsR">
-                                                    <rect key="frame" x="0.0" y="0.0" width="271" height="74"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="271" height="74.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CWK-NZ-N7r">
@@ -378,7 +378,7 @@
         <!--Sign-Up Confirmation View Controller-->
         <scene sceneID="2rI-Jb-dcB">
             <objects>
-                <viewController storyboardIdentifier="SignUpConfirmation" title="Sign-Up Confirmation" id="oYn-kQ-Tog" userLabel="Sign-Up Confirmation View Controller" customClass="UserPoolSignUpConfirmationViewController" customModule="MySampleApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SignUpConfirmation" title="Sign-Up Confirmation" id="oYn-kQ-Tog" userLabel="Sign-Up Confirmation View Controller" customClass="UserPoolSignUpConfirmationViewController" customModule="WOTS" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jca-3G-Q5u"/>
                         <viewControllerLayoutGuide type="bottom" id="GCB-VV-q3w"/>
@@ -398,11 +398,11 @@
                                         <rect key="frame" x="4" y="4" width="271" height="142"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <prototypes>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="FormTableCell" rowHeight="75" id="83b-bV-L1j" customClass="TableInputCell" customModule="MySampleApp" customModuleProvider="target">
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="FormTableCell" rowHeight="75" id="83b-bV-L1j" customClass="TableInputCell" customModule="WOTS" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="28" width="271" height="75"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="83b-bV-L1j" id="pns-df-LDz">
-                                                    <rect key="frame" x="0.0" y="0.0" width="271" height="74"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="271" height="74.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="w29-2b-nnE">
@@ -577,7 +577,7 @@
         <!--Forgot Password View Controller-->
         <scene sceneID="NvC-5J-jny">
             <objects>
-                <viewController storyboardIdentifier="ForgotPassword" title="Forgot Password" id="P72-4o-dGU" userLabel="Forgot Password View Controller" customClass="UserPoolForgotPasswordViewController" customModule="MySampleApp" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ForgotPassword" title="Forgot Password" id="P72-4o-dGU" userLabel="Forgot Password View Controller" customClass="UserPoolForgotPasswordViewController" customModule="WOTS" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="PN8-a0-H46"/>
                         <viewControllerLayoutGuide type="bottom" id="FH6-oT-BVw"/>
@@ -600,11 +600,11 @@
                                         <rect key="frame" x="4" y="4" width="271" height="67"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <prototypes>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="FormTableCell" rowHeight="75" id="8Rm-Su-nQe" customClass="TableInputCell" customModule="MySampleApp" customModuleProvider="target">
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="FormTableCell" rowHeight="75" id="8Rm-Su-nQe" customClass="TableInputCell" customModule="WOTS" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="28" width="271" height="75"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="8Rm-Su-nQe" id="XUr-lK-Zgp">
-                                                    <rect key="frame" x="0.0" y="0.0" width="271" height="74"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="271" height="74.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OVG-EV-IW9">
@@ -760,7 +760,7 @@
         <!--Forgot Password View Controller-->
         <scene sceneID="vot-MR-mTg">
             <objects>
-                <viewController storyboardIdentifier="MFA" title="MFA" id="Fee-Hn-G0A" userLabel="Forgot Password View Controller" customClass="UserPoolMFAViewController" customModule="MySampleApp" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MFA" title="MFA" id="Fee-Hn-G0A" userLabel="Forgot Password View Controller" customClass="UserPoolMFAViewController" customModule="WOTS" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Hzm-Gk-RpR"/>
                         <viewControllerLayoutGuide type="bottom" id="ugy-cr-rA5"/>
@@ -783,11 +783,11 @@
                                         <rect key="frame" x="4" y="4" width="271" height="67"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <prototypes>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="FormTableCell" rowHeight="75" id="ezE-hB-DJd" customClass="TableInputCell" customModule="MySampleApp" customModuleProvider="target">
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="FormTableCell" rowHeight="75" id="ezE-hB-DJd" customClass="TableInputCell" customModule="WOTS" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="28" width="271" height="75"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ezE-hB-DJd" id="6bF-9s-Rvy">
-                                                    <rect key="frame" x="0.0" y="0.0" width="271" height="74"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="271" height="74.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F5X-Td-vJC">
