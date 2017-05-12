@@ -68,6 +68,9 @@ class StandardQuizViewController: UIViewController, UITextFieldDelegate {
                 currentWordLabel.text = currentWord.spanishWord
                 numAttempts = 0
             } else {
+                
+                // TODO: go to new page/modal with detailed quiz results
+                
                 // user finished taking the quiz
                 userInput.isHidden = true;
                 currentWordLabel.text = "Good job!"
