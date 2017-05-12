@@ -23,14 +23,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         GMSServices.provideAPIKey(Constants.APIServices.GMSServicesKey)
         GMSPlacesClient.provideAPIKey(Constants.APIServices.GMSPlacesKey)
         
-        let credentialsProvider = AWSCognitoCredentialsProvider(regionType:.USEast1,
-                                                                identityPoolId: Constants.APIServices.AWSPoolId)
+//        let credentialsProvider = AWSCognitoCredentialsProvider(regionType:.USEast1,
+//                                                                identityPoolId: Constants.APIServices.AWSPoolId)
         
-        let configuration = AWSServiceConfiguration(region: .USEast1, credentialsProvider: credentialsProvider)
+        
+        let configuration = AWSServiceConfiguration(region: .USEast1, credentialsProvider: CredentialManager.credentialsProvider)
         
         AWSServiceManager.default().defaultServiceConfiguration = configuration
         while(AWSIdentityManager.default().identityId == nil){
-            credentialsProvider.getIdentityId().continueWith { (task) -> Any? in
+           CredentialManager.credentialsProvider.getIdentityId().continueWith { (task) -> Any? in
                 if (task.error != nil) {
                     print("Error: " + (task.error?.localizedDescription)!)
                 }

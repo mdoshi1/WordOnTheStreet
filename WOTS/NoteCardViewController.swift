@@ -106,10 +106,8 @@ class NoteCardViewController: UIViewController {
     }
     
     @IBAction func signOut(_ sender: Any) {
-        let credentialsProvider = AWSCognitoCredentialsProvider(regionType:.USEast1,
-                                                                identityPoolId: Constants.APIServices.AWSPoolId)
-        credentialsProvider.clearCredentials()
-        credentialsProvider.clearKeychain()
+        CredentialManager.credentialsProvider.clearCredentials()
+        CredentialManager.credentialsProvider.clearKeychain()
         
         let pool = AWSCognitoIdentityUserPool(forKey: "UserPool")
         let user = pool.currentUser()
