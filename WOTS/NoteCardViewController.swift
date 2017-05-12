@@ -46,6 +46,8 @@ class NoteCardViewController: UIViewController {
                 self.kolodaView.insertCardAtIndexRange(position..<position + self.dataSource.count, animated: true)
             }
         }
+        //noteCardConn.saveTestWordMap()
+        noteCardConn.getAllWordIds()
         takeQuizButton.layer.cornerRadius = 6;
         self.modalTransitionStyle = UIModalTransitionStyle.flipHorizontal
         self.navigationItem.title = "Word on the Street"

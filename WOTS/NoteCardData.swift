@@ -37,10 +37,6 @@ class NoteCardConnection {
         
         queryExpression.expressionAttributeValues = [
             ":userId" : AWSIdentityManager.default().identityId! ];
-        print("==============")
-        print(AWSIdentityManager.default().identityId!)
-        print("==============")
-
         dynamoDBObjectMapper .query(Word.self, expression: queryExpression) .continueWith(executor: AWSExecutor.mainThread(), block: { (task:AWSTask!) -> AnyObject! in
             if let error = task.error as NSError? {
                 print("Error: \(error)")
@@ -51,6 +47,43 @@ class NoteCardConnection {
                         dataSource.append(dict)
                     }
                     completion(dataSource);
+                }
+            }
+            return nil
+        })
+    }
+    func saveTestWordMap(){
+        let mapElement = ["word-id" : 98 as NSNumber] as Dictionary<String, NSObject>
+        let testObj = WordIds()
+        testObj?.userId = AWSIdentityManager.default().identityId!
+        testObj?.wordMap = mapElement
+        let objectMapper = AWSDynamoDBObjectMapper.default()
+
+        objectMapper.save(testObj!, completionHandler: {(error: Error?) -> Void in
+            if let error = error {
+                print("Amazon DynamoDB Save Error: \(error)")
+                return
+            }
+            print("Map saved.")
+        })
+    }
+    func getAllWordIds(){
+        //Query using GSI index table
+        //What is the top score ever recorded for the game Meteor Blasters?
+        let queryExpression = AWSDynamoDBQueryExpression()
+        queryExpression.keyConditionExpression = "userId = :userId"
+        
+        queryExpression.expressionAttributeValues = [
+            ":userId" : AWSIdentityManager.default().identityId! ];
+        dynamoDBObjectMapper .query(WordIds.self, expression: queryExpression) .continueWith(executor: AWSExecutor.mainThread(), block: { (task:AWSTask!) -> AnyObject! in
+            if let error = task.error as NSError? {
+                print("Error: \(error)")
+            } else {
+                if let result = task.result {//(task.result != nil) {
+                    for r in result.items as! [WordIds]{
+                        let dict = r.wordMap
+                        print(dict)
+                    }
                 }
             }
             return nil
@@ -91,7 +124,18 @@ class NoteCardConnection {
             }
         }
     }
+}
+class WordIds: AWSDynamoDBObjectModel, AWSDynamoDBModeling{
+    var userId: String = ""
+    var wordMap: Dictionary<String, NSObject>?
     
+    class func dynamoDBTableName() -> String {
+        return "wordonthestreet-mobilehub-915338963-UserVocabulary"
+    }
+    
+    class func hashKeyAttribute() -> String {
+        return "userId"
+    }
     
 }
 //class that gets the objects from db
