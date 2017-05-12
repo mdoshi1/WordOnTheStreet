@@ -108,7 +108,11 @@ class NoteCardViewController: UIViewController {
     @IBAction func signOut(_ sender: Any) {
         CredentialManager.credentialsProvider.clearCredentials()
         CredentialManager.credentialsProvider.clearKeychain()
-        
+        AWSSignInManager.sharedInstance().logout { (obj, auth, err) in
+            if((err) != nil) {
+                print(err!)
+            }
+        }
         let pool = AWSCognitoIdentityUserPool(forKey: "UserPool")
         let user = pool.currentUser()
         user?.forgetDevice()
