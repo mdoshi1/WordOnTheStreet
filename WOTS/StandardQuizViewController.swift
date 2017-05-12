@@ -22,12 +22,14 @@ class StandardQuizViewController: UIViewController, UITextFieldDelegate {
     var numIncorrectWords = 0;
     var numMaxAttempts = 2; // technically 3, but 0-indexed
     var numAttempts = 0;
+    var allWords = [WordAttempt]();
     
     override func viewDidLoad() {
         self.view.backgroundColor = UIColor(patternImage: UIImage(named:"blue-background")!)
 
-        
         currentWord = WordAttempt(englishWord: dataSource[wordIndex]["english"]!, spanishWord:  dataSource[wordIndex]["spanish"]!)
+        allWords.append(currentWord)
+        
         currentWordLabel.text = currentWord.spanishWord
         userInput.delegate = self
         doneButton.isHidden = true;
@@ -59,17 +61,24 @@ class StandardQuizViewController: UIViewController, UITextFieldDelegate {
             
             if (numAttempts == numMaxAttempts) {
                 numIncorrectWords += 1
+                currentWord.incorrect = true // mark as incorrect
             }
             
             numAttemptsLeftLabel.isHidden = true
             
             if(wordIndex < dataSource.count){
                 currentWord = WordAttempt(englishWord: dataSource[wordIndex]["english"]!, spanishWord:  dataSource[wordIndex]["spanish"]!)
+                allWords.append(currentWord)
+                
                 currentWordLabel.text = currentWord.spanishWord
                 numAttempts = 0
             } else {
                 
-                // TODO: go to new page/modal with detailed quiz results
+                // TODO: push new page/modal with detailed quiz results
+                // TODO: make sure to pass the list of WordAttempts, allWords
+                // TODO: when done, dismiss, which will dismiss everything
+                
+                performSegue(withIdentifier: "toQuizResults", sender: nil)
                 
                 // user finished taking the quiz
                 userInput.isHidden = true;
@@ -105,12 +114,17 @@ class StandardQuizViewController: UIViewController, UITextFieldDelegate {
         return true;
     }
 
-    
     // MARK: - Navigation
     
     func finishQuiz(sender: UIButton) {
         dismiss(animated: true, completion: nil)
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let destinationVC = segue.destination as! QuizResultsViewController
+        destinationVC.dataSource = allWords
+    }
+
 
 }
 
