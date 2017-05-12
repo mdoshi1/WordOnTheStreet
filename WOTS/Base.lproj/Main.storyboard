@@ -616,8 +616,8 @@
                                 </state>
                                 <variation key="default">
                                     <mask key="constraints">
-                                        <exclude reference="OZk-c4-nHw"/>
                                         <exclude reference="OHm-OQ-cq8"/>
+                                        <exclude reference="OZk-c4-nHw"/>
                                     </mask>
                                 </variation>
                             </button>
@@ -634,8 +634,8 @@
                                 </state>
                                 <variation key="default">
                                     <mask key="constraints">
-                                        <exclude reference="NhY-SV-pk1"/>
                                         <exclude reference="I3t-VN-tnO"/>
+                                        <exclude reference="NhY-SV-pk1"/>
                                     </mask>
                                 </variation>
                             </button>

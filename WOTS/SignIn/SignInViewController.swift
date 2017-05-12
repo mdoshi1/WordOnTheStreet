@@ -55,16 +55,7 @@ class SignInViewController : UIViewController {
         // set up google button if enabled
         self.setUpGoogleButton()
         self.hideKeyboardWhenTappedAround()
-        if !AWSSignInManager.sharedInstance().isLoggedIn {
-            
-            // If user is not logged in, present the sign in screen
-            let mainStoryBoard = UIStoryboard(name: "Main", bundle: nil)
-            let tabBarController: TabBarController = mainStoryBoard.instantiateViewController(withIdentifier: "MainTabBarController") as! TabBarController
-            
-            // launch the sign in screen
-            let navController = UINavigationController(rootViewController: tabBarController)
-            navigationController?.present(navController, animated: true, completion: nil)
-        }
+
     }
     
     func setUpUserPoolsUI() {
