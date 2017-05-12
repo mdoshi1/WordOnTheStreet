@@ -67,6 +67,24 @@ class NoteCardConnection {
             print("Map saved.")
         })
     }
+    
+    func updateTestWordMap(objToUpdate: WordIds){
+        
+        let mapElement = ["word-id-1" : 99 as NSNumber,"word-id-3" : 87 as NSNumber] as Dictionary<String, NSObject>
+        for obj in mapElement {
+            objToUpdate.wordMap?[obj.key] = obj.value
+        }
+        
+        let objectMapper = AWSDynamoDBObjectMapper.default()
+        objectMapper.save(objToUpdate, completionHandler: {(error: Error?) -> Void in
+            if let error = error {
+                print("Amazon DynamoDB Save Error: \(error)")
+                return
+            }
+            print("Map updated.")
+        })
+    }
+    
     func getAllWordIds(){
         //Query using GSI index table
         //What is the top score ever recorded for the game Meteor Blasters?
@@ -74,7 +92,7 @@ class NoteCardConnection {
         queryExpression.keyConditionExpression = "userId = :userId"
         
         queryExpression.expressionAttributeValues = [
-            ":userId" : AWSIdentityManager.default().identityId! ];
+            ":userId" : AWSIdentityManager.default().identityId! ]
         dynamoDBObjectMapper .query(WordIds.self, expression: queryExpression) .continueWith(executor: AWSExecutor.mainThread(), block: { (task:AWSTask!) -> AnyObject! in
             if let error = task.error as NSError? {
                 print("Error: \(error)")
@@ -82,7 +100,8 @@ class NoteCardConnection {
                 if let result = task.result {//(task.result != nil) {
                     for r in result.items as! [WordIds]{
                         let dict = r.wordMap
-                        print(dict)
+                        print(dict!)
+                        self.updateTestWordMap(objToUpdate: r)
                     }
                 }
             }
