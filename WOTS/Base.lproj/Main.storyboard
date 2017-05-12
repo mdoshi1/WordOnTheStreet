@@ -198,7 +198,7 @@
                     <connections>
                         <outlet property="kolodaView" destination="6Sh-W8-J4f" id="adT-MS-Z6Y"/>
                         <outlet property="takeQuizButton" destination="d3s-T8-1zm" id="M3q-Uc-Ygc"/>
-                        <segue destination="nc7-Nw-N8c" kind="show" identifier="logoutSegue" id="3eK-qA-KCf"/>
+                        <segue destination="nc7-Nw-N8c" kind="showDetail" identifier="logoutSegue" action="showViewController:sender:" id="3eK-qA-KCf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="a7g-rA-h6k" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -436,7 +436,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oKC-Kw-b3y">
-                                <rect key="frame" x="47.5" y="370" width="280" height="35"/>
+                                <rect key="frame" x="47.5" y="326" width="280" height="35"/>
                                 <color key="backgroundColor" red="0.2707115296" green="0.59983539500000005" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="280" id="03a-eK-hqd"/>
@@ -454,51 +454,51 @@
                                 </userDefinedRuntimeAttributes>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rAE-kY-HqY">
-                                <rect key="frame" x="16" y="410" width="167.5" height="27"/>
+                                <rect key="frame" x="16" y="366" width="167.5" height="27"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <state key="normal" title="Create new account">
                                     <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7WR-Yr-Jpt" userLabel="Left Horizontal Bar">
-                                <rect key="frame" x="16" y="453" width="112" height="1"/>
+                                <rect key="frame" x="16" y="409" width="112" height="1"/>
                                 <color key="backgroundColor" red="0.66666666669999997" green="0.66666666669999997" blue="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="LR7-IB-gqQ"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oin-yG-PpS" userLabel="Right Horizontal Bar">
-                                <rect key="frame" x="247" y="453" width="112" height="1"/>
+                                <rect key="frame" x="247" y="409" width="112" height="1"/>
                                 <color key="backgroundColor" red="0.66666666669999997" green="0.66666666669999997" blue="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="va3-U7-DQ6"/>
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="or sign in with" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="igh-Sh-nR9">
-                                <rect key="frame" x="136" y="445" width="103" height="18"/>
+                                <rect key="frame" x="136" y="401" width="103" height="18"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <color key="textColor" red="0.66666666669999997" green="0.66666666669999997" blue="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4eh-kH-c4E">
-                                <rect key="frame" x="191.5" y="410" width="167.5" height="27"/>
+                                <rect key="frame" x="191.5" y="366" width="167.5" height="27"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <state key="normal" title="Forgot your password?">
                                     <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oeN-SI-V3k">
-                                <rect key="frame" x="16" y="64" width="343" height="0.0"/>
+                                <rect key="frame" x="16" y="20" width="343" height="0.0"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="WyV-Bt-xdK">
-                                <rect key="frame" x="16" y="64" width="343" height="140"/>
+                                <rect key="frame" x="16" y="20" width="343" height="140"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="140" id="Uz1-wj-K6u"/>
                                 </constraints>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vH8-GH-ED3">
-                                <rect key="frame" x="47.5" y="212" width="280" height="150"/>
+                                <rect key="frame" x="47.5" y="168" width="280" height="150"/>
                                 <subviews>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="75" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="cag-Dh-Rve">
                                         <rect key="frame" x="4" y="4" width="271" height="142"/>
@@ -604,7 +604,7 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oX8-kT-6hV">
-                                <rect key="frame" x="47.5" y="519" width="280" height="40"/>
+                                <rect key="frame" x="47.5" y="475" width="280" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="280" id="4El-qK-nLx"/>
                                     <constraint firstAttribute="width" constant="240" id="OHm-OQ-cq8"/>
@@ -622,7 +622,7 @@
                                 </variation>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hy6-YO-skK">
-                                <rect key="frame" x="47.5" y="471" width="280" height="40"/>
+                                <rect key="frame" x="47.5" y="427" width="280" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="280" id="FUF-4u-POP"/>
                                     <constraint firstAttribute="height" constant="40" id="I3t-VN-tnO"/>

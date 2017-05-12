@@ -110,7 +110,6 @@ class NoteCardViewController: UIViewController {
     }
     func transition(){
         performSegue(withIdentifier: "logoutSegue", sender: self)
-
     }
 
     // Show the WordListView at the bottom like the Google Maps interface
