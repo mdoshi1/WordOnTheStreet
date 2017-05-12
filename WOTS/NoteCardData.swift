@@ -37,7 +37,10 @@ class NoteCardConnection {
         
         queryExpression.expressionAttributeValues = [
             ":userId" : AWSIdentityManager.default().identityId! ];
+        print("==============")
         print(AWSIdentityManager.default().identityId!)
+        print("==============")
+
         dynamoDBObjectMapper .query(Word.self, expression: queryExpression) .continueWith(executor: AWSExecutor.mainThread(), block: { (task:AWSTask!) -> AnyObject! in
             if let error = task.error as NSError? {
                 print("Error: \(error)")

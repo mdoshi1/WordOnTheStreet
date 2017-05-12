@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AWSMobileHubHelper
 
 class TabBarController: UITabBarController {
 
@@ -20,7 +21,6 @@ class TabBarController: UITabBarController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
 
     /*
     // MARK: - Navigation
@@ -33,3 +33,5 @@ class TabBarController: UITabBarController {
     */
 
 }
+
+

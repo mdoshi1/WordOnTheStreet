@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AWSCognitoUserPoolsSignIn
 
 class ProfileViewController: UIViewController, UIImagePickerControllerDelegate,  RememberSelectedCellProtocol {
     
@@ -160,7 +161,7 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
                 let headerCell = tableView.dequeueReusableCell(withIdentifier: "ProfileHeaderCell", for: indexPath) as! ProfileHeaderCell
                 
                 // TODO: use database/user accounts to fill in name
-                headerCell.profileNameLabel.text = "Jade"
+                headerCell.profileNameLabel.text = AWSCognitoUserPoolsSignInProvider.sharedInstance().getUserPool().currentUser()?.username
                 headerCell.profileImageView.image = UIImage(named: "defaultProfileImage")
 //                  headerCell.takeQuizButton.addTarget(self, action: #selector(toPlaceQuiz), for: .touchUpInside)
                 return headerCell

@@ -55,7 +55,16 @@ class SignInViewController : UIViewController {
         // set up google button if enabled
         self.setUpGoogleButton()
         self.hideKeyboardWhenTappedAround()
-
+        if !AWSSignInManager.sharedInstance().isLoggedIn {
+            
+            // If user is not logged in, present the sign in screen
+            let mainStoryBoard = UIStoryboard(name: "Main", bundle: nil)
+            let tabBarController: TabBarController = mainStoryBoard.instantiateViewController(withIdentifier: "MainTabBarController") as! TabBarController
+            
+            // launch the sign in screen
+            let navController = UINavigationController(rootViewController: tabBarController)
+            navigationController?.present(navController, animated: true, completion: nil)
+        }
     }
     
     func setUpUserPoolsUI() {
@@ -129,7 +138,15 @@ class SignInViewController : UIViewController {
             // If no error reported by SignInProvider, discard the sign-in view controller.
             if error == nil {
                 DispatchQueue.main.async(execute: {
-                    self.dismiss(animated: true, completion: nil)
+                   // self.dismiss(animated: true, completion: nil)
+//                    let mainStoryBoard = UIStoryboard(name: "Main", bundle: nil)
+//                    let tabBarController: TabBarController = mainStoryBoard.instantiateViewController(withIdentifier: "MainTabBarController") as! TabBarController
+//                    
+//                    // launch the sign in screen
+//                    let navController = UINavigationController(rootViewController: tabBarController)
+//                    navigationController?.present(navController, animated: true, completion: nil)
+                    self.transition()
+
                     if let didCompleteSignIn = self.didCompleteSignIn {
                         didCompleteSignIn(true)
                     }
@@ -138,6 +155,10 @@ class SignInViewController : UIViewController {
             }
             self.showErrorDialog(signInProvider.identityProviderName, withError: error as! NSError)
         })
+    }
+    
+    func transition(){
+        performSegue(withIdentifier: "toMainTabView", sender: self)
     }
     
     func showErrorDialog(_ loginProviderName: String, withError error: NSError) {
