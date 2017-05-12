@@ -35,19 +35,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 if (task.error != nil) {
                     print("Error: " + (task.error?.localizedDescription)!)
                 }
-                print(task)
                 return nil
             }
         }
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
 
         if !AWSSignInManager.sharedInstance().isLoggedIn {
-            if let tabBarVC = storyboard.instantiateViewController(withIdentifier: "MainTabBarController") as? TabBarController {
-                window?.rootViewController = tabBarVC
-            }
-        } else {
             if let loginVC = storyboard.instantiateViewController(withIdentifier: "SignInViewController") as? SignInViewController {
                 window?.rootViewController = loginVC
+            }
+        } else {
+            if let tabBarVC = storyboard.instantiateViewController(withIdentifier: "MainTabBarController") as? TabBarController {
+                window?.rootViewController = tabBarVC
             }
         }
         return AWSMobileClient.sharedInstance.didFinishLaunching(application, withOptions: launchOptions)

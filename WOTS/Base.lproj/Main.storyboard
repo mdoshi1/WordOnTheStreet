@@ -198,7 +198,6 @@
                     <connections>
                         <outlet property="kolodaView" destination="6Sh-W8-J4f" id="adT-MS-Z6Y"/>
                         <outlet property="takeQuizButton" destination="d3s-T8-1zm" id="M3q-Uc-Ygc"/>
-                        <segue destination="nc7-Nw-N8c" kind="showDetail" identifier="logoutSegue" action="showViewController:sender:" id="3eK-qA-KCf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="a7g-rA-h6k" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -426,7 +425,7 @@
         <!--Sign-In View Controller-->
         <scene sceneID="waj-vv-7Dt">
             <objects>
-                <viewController storyboardIdentifier="SignIn" title="Sign-In View Controller" id="nc7-Nw-N8c" customClass="SignInViewController" customModule="WOTS" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SignInViewController" title="Sign-In View Controller" id="nc7-Nw-N8c" customClass="SignInViewController" customModule="WOTS" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="9ao-sg-Ptr"/>
                         <viewControllerLayoutGuide type="bottom" id="UkW-QR-acm"/>
@@ -685,7 +684,7 @@
                         <outlet property="signUpButton" destination="rAE-kY-HqY" id="ajO-2H-GmA"/>
                         <outlet property="tableFormView" destination="vH8-GH-ED3" id="Njr-rp-gGa"/>
                         <outlet property="tableView" destination="cag-Dh-Rve" id="Zec-yp-5ew"/>
-                        <segue destination="rUh-yu-Ka1" kind="show" identifier="toMainTabView" id="xFq-ee-xz9"/>
+                        <segue destination="rUh-yu-Ka1" kind="modal" identifier="toMainTabView" id="xFq-ee-xz9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="APV-ie-3cB" userLabel="First Responder" sceneMemberID="firstResponder"/>

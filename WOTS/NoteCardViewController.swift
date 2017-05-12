@@ -78,9 +78,6 @@ class NoteCardViewController: UIViewController {
             if((err) != nil) {
                 print(err!)
             } else {
-                print("logging out")
-                print(err)
-                print("=====")
                 let pool = AWSCognitoIdentityUserPool(forKey: "UserPool")
                 let user = pool.currentUser()
                 user?.forgetDevice()
@@ -109,7 +106,7 @@ class NoteCardViewController: UIViewController {
     
     }
     func transition(){
-        performSegue(withIdentifier: "logoutSegue", sender: self)
+        dismiss(animated: true, completion: nil)
     }
 
     // Show the WordListView at the bottom like the Google Maps interface
