@@ -664,6 +664,10 @@
                                     </mask>
                                 </variation>
                             </button>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="l4V-B5-4d2">
+                                <rect key="frame" x="177" y="582" width="20" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -700,6 +704,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="G2W-kt-o7H"/>
                     <connections>
+                        <outlet property="activityIndicatorView" destination="l4V-B5-4d2" id="7a6-xo-teo"/>
                         <outlet property="facebookButton" destination="hy6-YO-skK" id="veA-6a-gpe"/>
                         <outlet property="forgotPasswordButton" destination="4eh-kH-c4E" id="csS-8r-hXz"/>
                         <outlet property="googleButton" destination="oX8-kT-6hV" id="eXO-lf-bRG"/>
