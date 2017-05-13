@@ -9,11 +9,15 @@
 import UIKit
 
 class GoalHeaderCell: UITableViewCell {
+    
+    // MARK: - IBOutlet
+    
     @IBOutlet weak var dailyGoalLabel: UILabel!
-
     @IBOutlet weak var editDailyGoalButton: UIButton!
-
     @IBOutlet weak var dailyGoalFreqLabel: UILabel!
+    
+    // MARK: - GoalHeaderCell
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

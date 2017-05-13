@@ -341,6 +341,9 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="C77-Xu-ZWi"/>
+                    <connections>
+                        <segue destination="ObJ-TU-UZQ" kind="show" identifier="toEditGoal" id="sAn-ZM-UzV"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rCh-gl-j48" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
