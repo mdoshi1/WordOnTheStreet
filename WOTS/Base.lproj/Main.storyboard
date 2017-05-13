@@ -128,7 +128,13 @@
                             <constraint firstItem="oyv-Sr-dKQ" firstAttribute="centerX" secondItem="VVL-Xq-Gde" secondAttribute="centerX" id="vOp-6n-f8B"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="wiA-2Y-WfS"/>
+                    <navigationItem key="navigationItem" id="wiA-2Y-WfS">
+                        <barButtonItem key="leftBarButtonItem" style="plain" systemItem="cancel" id="IQb-AH-JLs">
+                            <connections>
+                                <action selector="clickedCancelQuiz:" destination="CQ6-xw-FVR" id="Tdc-yL-Rj3"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="currentWordLabel" destination="z6a-lQ-L84" id="fx4-RK-fzn"/>
                         <outlet property="doneButton" destination="lMs-t8-xOF" id="GZA-co-OOe"/>
@@ -716,7 +722,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="P7Q-IX-0tL" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="6dd-Tu-FYu">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="6dd-Tu-FYu">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

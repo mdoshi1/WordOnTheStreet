@@ -11,6 +11,7 @@ import UIKit
 class StandardQuizViewController: UIViewController, UITextFieldDelegate {
     var dataSource: [Dictionary<String, String>] = []
 
+
     @IBOutlet weak var currentWordLabel: UILabel!
     @IBOutlet weak var userInput: UITextField!
     @IBOutlet weak var doneButton: UIButton!
@@ -41,6 +42,8 @@ class StandardQuizViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        let backItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: nil, action: nil)
+        navigationItem.backBarButtonItem = backItem
     }
 
     override func didReceiveMemoryWarning() {
@@ -48,6 +51,10 @@ class StandardQuizViewController: UIViewController, UITextFieldDelegate {
         // Dispose of any resources that can be recreated.
     }
 
+    @IBAction func clickedCancelQuiz(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
     // UITextField Delegates
 
     func textFieldShouldReturn(_ userInput: UITextField) -> Bool {
