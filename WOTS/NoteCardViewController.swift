@@ -148,12 +148,8 @@ class NoteCardViewController: UIViewController {
                 destinationVC.navigationItem.title = "Quiz"
             }
         }
-        
-        
-        
     }
 }
-
 
 // MARK: KolodaViewDelegate
 

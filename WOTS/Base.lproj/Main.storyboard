@@ -135,11 +135,31 @@
                         <outlet property="doneUserFeedback" destination="r6F-7S-tVd" id="o74-D2-Llp"/>
                         <outlet property="numAttemptsLeftLabel" destination="uol-Vx-iFG" id="oHV-ih-MJV"/>
                         <outlet property="userInput" destination="oyv-Sr-dKQ" id="wfG-aT-djh"/>
+                        <segue destination="tJB-ZW-Y96" kind="show" identifier="toQuizResults" id="cU9-b5-avC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TUc-G7-k44" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2967.1999999999998" y="-920.68965517241384"/>
+            <point key="canvasLocation" x="2890" y="-929"/>
+        </scene>
+        <!--Quiz Results View Controller-->
+        <scene sceneID="3lI-A0-LEB">
+            <objects>
+                <viewController id="7ZP-eB-7f2" customClass="QuizResultsViewController" customModule="WOTS" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="gJL-s6-055"/>
+                        <viewControllerLayoutGuide type="bottom" id="J9g-yW-6eW"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="bol-eG-9wX">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="PvE-vX-aBR"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="AlK-pG-QsD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4629.6000000000004" y="-920.68965517241384"/>
         </scene>
         <!--Title-->
         <scene sceneID="8MQ-Ou-8vp">
@@ -690,6 +710,23 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="APV-ie-3cB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-985" y="230"/>
+        <!--Navigation Controller-->
+        <scene sceneID="4YB-b9-jVt">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="tJB-ZW-Y96" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="9Sx-lq-5ii">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="7ZP-eB-7f2" kind="relationship" relationship="rootViewController" id="9Hy-gV-Mn5"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="GHN-bN-87I" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3690.4000000000001" y="-920.68965517241384"/>
         </scene>
     </scenes>
     <resources>
