@@ -320,7 +320,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="cEc-Pl-2nr" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Review" image="learnIcon" id="4Am-Rz-Vh2"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="9rI-Pc-ZkH">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="9rI-Pc-ZkH">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" red="0.71764705882352942" green="0.97647058823529409" blue="0.97254901960784312" alpha="1" colorSpace="calibratedRGB"/>
@@ -339,7 +339,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="nfv-qe-f9z" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="fdZ-ea-QtO">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="fdZ-ea-QtO">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" red="0.71764705882352942" green="0.97647058823529409" blue="0.97254901960784312" alpha="1" colorSpace="calibratedRGB"/>
@@ -396,7 +396,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="uMY-KW-Ou3" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Explore" image="exploreIcon" id="WAo-Ap-y9b"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="iM2-UW-8IF">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="iM2-UW-8IF">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" red="0.71764705882352942" green="0.97647058823529409" blue="0.97254901960784312" alpha="1" colorSpace="calibratedRGB"/>
@@ -415,7 +415,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="hht-Ii-9dy" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="RLh-Yv-al1">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="RLh-Yv-al1">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" red="0.71764705882352942" green="0.97647058823529409" blue="0.97254901960784312" alpha="1" colorSpace="calibratedRGB"/>
@@ -435,7 +435,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ln3-gN-BUP" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Me" image="profileIcon" id="G9d-6m-afr"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Vd1-Ub-SUH">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Vd1-Ub-SUH">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

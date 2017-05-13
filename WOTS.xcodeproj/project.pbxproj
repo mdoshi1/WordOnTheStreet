@@ -73,6 +73,7 @@
 		957F2F4C1EB95467001117DB /* ResultsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 957F2F4B1EB95467001117DB /* ResultsView.xib */; };
 		957F2F501EB954B7001117DB /* ResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957F2F4F1EB954B7001117DB /* ResultsView.swift */; };
 		95A5936A1EC6506C006BFEC9 /* CredentialManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A593691EC6506C006BFEC9 /* CredentialManager.swift */; };
+		95A5936C1EC6864F006BFEC9 /* WordIds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A5936B1EC6864F006BFEC9 /* WordIds.swift */; };
 		F46EC9821EB52F7B00BF1A53 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46EC9811EB52F7B00BF1A53 /* AppDelegate.swift */; };
 		F46EC9871EB52F7B00BF1A53 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F46EC9851EB52F7B00BF1A53 /* Main.storyboard */; };
 		F46EC9891EB52F7B00BF1A53 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F46EC9881EB52F7B00BF1A53 /* Assets.xcassets */; };
@@ -177,6 +178,7 @@
 		957F2F4B1EB95467001117DB /* ResultsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ResultsView.xib; sourceTree = "<group>"; };
 		957F2F4F1EB954B7001117DB /* ResultsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultsView.swift; sourceTree = "<group>"; };
 		95A593691EC6506C006BFEC9 /* CredentialManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CredentialManager.swift; sourceTree = "<group>"; };
+		95A5936B1EC6864F006BFEC9 /* WordIds.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WordIds.swift; sourceTree = "<group>"; };
 		F46EC97E1EB52F7B00BF1A53 /* WOTS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WOTS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F46EC9811EB52F7B00BF1A53 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F46EC9861EB52F7B00BF1A53 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -312,6 +314,7 @@
 				9578457D1EC42D2900AA551F /* EnglishVocabSet.swift */,
 				9578457E1EC42D2900AA551F /* PlacesVocabulary.swift */,
 				9578457F1EC42D2900AA551F /* WordPairs.swift */,
+				95A5936B1EC6864F006BFEC9 /* WordIds.swift */,
 			);
 			path = NoSQL;
 			sourceTree = "<group>";
@@ -621,6 +624,7 @@
 				957845A51EC42D4400AA551F /* UserPoolsIdentityProfile.swift in Sources */,
 				957845A71EC42D4400AA551F /* UserPoolSignUpViewController.swift in Sources */,
 				9578459E1EC42D4400AA551F /* FormTableDelegate.swift in Sources */,
+				95A5936C1EC6864F006BFEC9 /* WordIds.swift in Sources */,
 				957845881EC42D2A00AA551F /* EnglishVocabSet.swift in Sources */,
 				957845821EC42D2900AA551F /* AWSAPI_CX0HSKU68J_TestMobileHubClient.m in Sources */,
 				95791F9C1EB55A9700F9FA96 /* NoteCardOverlayView.swift in Sources */,
