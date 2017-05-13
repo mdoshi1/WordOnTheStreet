@@ -24,13 +24,6 @@ class ScrollableBottomSheetViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        noteCardConn.insertData { () in
-            noteCardConn.getWordsForUser { (source) in
-                self.words = source;
-                self.tableView.reloadData()
-            }
-        }
-        
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(UINib(nibName: "DefaultTableViewCell", bundle: nil), forCellReuseIdentifier: "default")
@@ -40,6 +33,11 @@ class ScrollableBottomSheetViewController: UIViewController {
         let gesture = UIPanGestureRecognizer.init(target: self, action: #selector(ScrollableBottomSheetViewController.panGesture))
         gesture.delegate = self
         view.addGestureRecognizer(gesture)
+        
+        noteCardConn.getAllUserWords(forNotecards: false){ (source) in
+            self.words = source;
+            self.tableView.reloadData()
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
