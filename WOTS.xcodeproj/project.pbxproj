@@ -26,6 +26,8 @@
 		3FBAA2B81EC411FF0040AD89 /* GoalOptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FBAA2B61EC411FF0040AD89 /* GoalOptionCell.swift */; };
 		3FBAA2B91EC411FF0040AD89 /* GoalOptionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3FBAA2B71EC411FF0040AD89 /* GoalOptionCell.xib */; };
 		3FBAA2BB1EC434710040AD89 /* CircleProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FBAA2BA1EC434710040AD89 /* CircleProgressView.swift */; };
+		3FC752F01EC67D2C009D9924 /* QuizResultsHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FC752EE1EC67D2C009D9924 /* QuizResultsHeaderCell.swift */; };
+		3FC752F11EC67D2C009D9924 /* QuizResultsHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3FC752EF1EC67D2C009D9924 /* QuizResultsHeaderCell.xib */; };
 		9578455F1EC42CDA00AA551F /* Sdk in Resources */ = {isa = PBXBuildFile; fileRef = 9578455E1EC42CDA00AA551F /* Sdk */; };
 		957845641EC42D0700AA551F /* AWSAPIGateway.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 957845601EC42D0700AA551F /* AWSAPIGateway.framework */; };
 		957845651EC42D0700AA551F /* AWSAPIGateway.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 957845601EC42D0700AA551F /* AWSAPIGateway.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -126,6 +128,8 @@
 		3FBAA2B61EC411FF0040AD89 /* GoalOptionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoalOptionCell.swift; sourceTree = "<group>"; };
 		3FBAA2B71EC411FF0040AD89 /* GoalOptionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GoalOptionCell.xib; sourceTree = "<group>"; };
 		3FBAA2BA1EC434710040AD89 /* CircleProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleProgressView.swift; sourceTree = "<group>"; };
+		3FC752EE1EC67D2C009D9924 /* QuizResultsHeaderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuizResultsHeaderCell.swift; sourceTree = "<group>"; };
+		3FC752EF1EC67D2C009D9924 /* QuizResultsHeaderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QuizResultsHeaderCell.xib; sourceTree = "<group>"; };
 		5940474782F3E9AB78BDC15F /* Pods-WOTS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WOTS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WOTS/Pods-WOTS.debug.xcconfig"; sourceTree = "<group>"; };
 		749084860D94B5BF673E4213 /* Pods_WOTS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WOTS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9578455E1EC42CDA00AA551F /* Sdk */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Sdk; path = ../Sdk; sourceTree = "<group>"; };
@@ -228,6 +232,18 @@
 				3FBAA2B71EC411FF0040AD89 /* GoalOptionCell.xib */,
 			);
 			name = Profile;
+			sourceTree = "<group>";
+		};
+		3FC752F21EC67D9F009D9924 /* QuizResults */ = {
+			isa = PBXGroup;
+			children = (
+				3F6CB68F1EC530DD005A51BD /* QuizResultsCell.swift */,
+				3F6CB6901EC530DD005A51BD /* QuizResultsCell.xib */,
+				3F6CB68D1EC52F1E005A51BD /* QuizResultsViewController.swift */,
+				3FC752EE1EC67D2C009D9924 /* QuizResultsHeaderCell.swift */,
+				3FC752EF1EC67D2C009D9924 /* QuizResultsHeaderCell.xib */,
+			);
+			name = QuizResults;
 			sourceTree = "<group>";
 		};
 		46597EB41FE6481D216A1A55 /* Pods */ = {
@@ -392,9 +408,7 @@
 				F4BECB091EB9741F00B98BA8 /* Supporting Files */,
 				3FBAA2AB1EC2F6230040AD89 /* Profile */,
 				3FBAA2BA1EC434710040AD89 /* CircleProgressView.swift */,
-				3F6CB68F1EC530DD005A51BD /* QuizResultsCell.swift */,
-				3F6CB6901EC530DD005A51BD /* QuizResultsCell.xib */,
-				3F6CB68D1EC52F1E005A51BD /* QuizResultsViewController.swift */,
+				3FC752F21EC67D9F009D9924 /* QuizResults */,
 			);
 			path = WOTS;
 			sourceTree = "<group>";
@@ -489,6 +503,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3FBAA2AA1EC2F61C0040AD89 /* ProfileHeaderCell.xib in Resources */,
+				3FC752F11EC67D2C009D9924 /* QuizResultsHeaderCell.xib in Resources */,
 				F4BECB1E1EBBB7A700B98BA8 /* PlaceHeaderCell.xib in Resources */,
 				F46EC98C1EB52F7B00BF1A53 /* LaunchScreen.storyboard in Resources */,
 				3FBAA2B91EC411FF0040AD89 /* GoalOptionCell.xib in Resources */,
@@ -589,6 +604,7 @@
 				3FBAA2AE1EC2F87D0040AD89 /* GoalsCell.swift in Sources */,
 				F4BECB0D1EB97C3800B98BA8 /* APIClient.swift in Sources */,
 				957845A21EC42D4400AA551F /* UserPoolMFAViewController.swift in Sources */,
+				3FC752F01EC67D2C009D9924 /* QuizResultsHeaderCell.swift in Sources */,
 				F46EC9941EB538DB00BF1A53 /* TabBarController.swift in Sources */,
 				F4BECB131EBB915000B98BA8 /* PlaceDetailViewController.swift in Sources */,
 				957845841EC42D2900AA551F /* AWSConfiguration.swift in Sources */,
