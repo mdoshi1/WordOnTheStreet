@@ -12,7 +12,6 @@ import UIKit
 class CredentialManager {
     static let credentialsProvider = AWSCognitoCredentialsProvider(regionType:.USEast1,
                                                                    identityPoolId: Constants.APIServices.AWSPoolId)
-
 }
 
 func onSignIn (_ success: Bool) {

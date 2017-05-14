@@ -61,7 +61,6 @@
 		957845A61EC42D4400AA551F /* UserPoolSignUpConfirmationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957845981EC42D4400AA551F /* UserPoolSignUpConfirmationViewController.swift */; };
 		957845A71EC42D4400AA551F /* UserPoolSignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957845991EC42D4400AA551F /* UserPoolSignUpViewController.swift */; };
 		957845A81EC42D4400AA551F /* UserPoolsUIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9578459A1EC42D4400AA551F /* UserPoolsUIHelper.swift */; };
-		957845AA1EC42FFA00AA551F /* SignIn.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 957845A91EC42FFA00AA551F /* SignIn.storyboard */; };
 		95791F861EB53D4700F9FA96 /* NoteCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95791F851EB53D4700F9FA96 /* NoteCardViewController.swift */; };
 		95791F981EB5513300F9FA96 /* NoteCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95791F971EB5513300F9FA96 /* NoteCardView.swift */; };
 		95791F9C1EB55A9700F9FA96 /* NoteCardOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95791F9B1EB55A9700F9FA96 /* NoteCardOverlayView.swift */; };
@@ -74,6 +73,9 @@
 		957F2F501EB954B7001117DB /* ResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957F2F4F1EB954B7001117DB /* ResultsView.swift */; };
 		95A5936A1EC6506C006BFEC9 /* CredentialManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A593691EC6506C006BFEC9 /* CredentialManager.swift */; };
 		95A5936C1EC6864F006BFEC9 /* WordIds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A5936B1EC6864F006BFEC9 /* WordIds.swift */; };
+		95FBEDCE1EC7DD0400D94C5D /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FBEDCD1EC7DD0300D94C5D /* UserData.swift */; };
+		95FBEDD01EC7DD3900D94C5D /* UserInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FBEDCF1EC7DD3900D94C5D /* UserInformation.swift */; };
+		95FBEDD21EC7E09400D94C5D /* Achievements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FBEDD11EC7E09400D94C5D /* Achievements.swift */; };
 		F46EC9821EB52F7B00BF1A53 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46EC9811EB52F7B00BF1A53 /* AppDelegate.swift */; };
 		F46EC9871EB52F7B00BF1A53 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F46EC9851EB52F7B00BF1A53 /* Main.storyboard */; };
 		F46EC9891EB52F7B00BF1A53 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F46EC9881EB52F7B00BF1A53 /* Assets.xcassets */; };
@@ -179,6 +181,9 @@
 		957F2F4F1EB954B7001117DB /* ResultsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultsView.swift; sourceTree = "<group>"; };
 		95A593691EC6506C006BFEC9 /* CredentialManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CredentialManager.swift; sourceTree = "<group>"; };
 		95A5936B1EC6864F006BFEC9 /* WordIds.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WordIds.swift; sourceTree = "<group>"; };
+		95FBEDCD1EC7DD0300D94C5D /* UserData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
+		95FBEDCF1EC7DD3900D94C5D /* UserInformation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInformation.swift; sourceTree = "<group>"; };
+		95FBEDD11EC7E09400D94C5D /* Achievements.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Achievements.swift; sourceTree = "<group>"; };
 		F46EC97E1EB52F7B00BF1A53 /* WOTS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WOTS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F46EC9811EB52F7B00BF1A53 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F46EC9861EB52F7B00BF1A53 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -315,6 +320,8 @@
 				9578457E1EC42D2900AA551F /* PlacesVocabulary.swift */,
 				9578457F1EC42D2900AA551F /* WordPairs.swift */,
 				95A5936B1EC6864F006BFEC9 /* WordIds.swift */,
+				95FBEDCF1EC7DD3900D94C5D /* UserInformation.swift */,
+				95FBEDD11EC7E09400D94C5D /* Achievements.swift */,
 			);
 			path = NoSQL;
 			sourceTree = "<group>";
@@ -363,6 +370,7 @@
 			children = (
 				957F2F431EB92F72001117DB /* NoteCardData.swift */,
 				95A593691EC6506C006BFEC9 /* CredentialManager.swift */,
+				95FBEDCD1EC7DD0300D94C5D /* UserData.swift */,
 			);
 			name = AwsConnections;
 			sourceTree = "<group>";
@@ -608,6 +616,7 @@
 				3FBAA2AE1EC2F87D0040AD89 /* GoalsCell.swift in Sources */,
 				F4BECB0D1EB97C3800B98BA8 /* APIClient.swift in Sources */,
 				957845A21EC42D4400AA551F /* UserPoolMFAViewController.swift in Sources */,
+				95FBEDD01EC7DD3900D94C5D /* UserInformation.swift in Sources */,
 				3FC752F01EC67D2C009D9924 /* QuizResultsHeaderCell.swift in Sources */,
 				F46EC9941EB538DB00BF1A53 /* TabBarController.swift in Sources */,
 				F4BECB131EBB915000B98BA8 /* PlaceDetailViewController.swift in Sources */,
@@ -636,6 +645,7 @@
 				9578459F1EC42D4400AA551F /* SignInViewControllerExtensions.swift in Sources */,
 				957845891EC42D2A00AA551F /* PlacesVocabulary.swift in Sources */,
 				95791F981EB5513300F9FA96 /* NoteCardView.swift in Sources */,
+				95FBEDCE1EC7DD0400D94C5D /* UserData.swift in Sources */,
 				957845A61EC42D4400AA551F /* UserPoolSignUpConfirmationViewController.swift in Sources */,
 				3FBAA2BB1EC434710040AD89 /* CircleProgressView.swift in Sources */,
 				3F6CB6911EC530DD005A51BD /* QuizResultsCell.swift in Sources */,
@@ -647,6 +657,7 @@
 				F4BECB211EBBBAB400B98BA8 /* WordCell.swift in Sources */,
 				F46EC9961EB5418C00BF1A53 /* ExploreViewController.swift in Sources */,
 				3FBAA2B51EC30CCD0040AD89 /* GoalsViewController.swift in Sources */,
+				95FBEDD21EC7E09400D94C5D /* Achievements.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

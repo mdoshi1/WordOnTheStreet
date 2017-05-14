@@ -8,7 +8,6 @@
 
 import Foundation
 import UIKit
-import Foundation
 import AWSMobileHubHelper
 import AWSDynamoDB
 

@@ -80,8 +80,6 @@ class NoteCardConnection {
             if(forNotecards == true && wordMap[k] as! Int > 50) {
                 count+=1
                 continue
-            } else if(forNotecards == false){
-                print(k)
             }
             let queryExpression = AWSDynamoDBQueryExpression()
             queryExpression.keyConditionExpression = "wordId = :id"

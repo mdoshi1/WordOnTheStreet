@@ -131,18 +131,10 @@ class SignInViewController : UIViewController {
             // If no error reported by SignInProvider, discard the sign-in view controller.
             if error == nil {
                 DispatchQueue.main.async(execute: {
-                   // self.dismiss(animated: true, completion: nil)
-//                    let mainStoryBoard = UIStoryboard(name: "Main", bundle: nil)
-//                    let tabBarController: TabBarController = mainStoryBoard.instantiateViewController(withIdentifier: "MainTabBarController") as! TabBarController
-//                    
-//                    // launch the sign in screen
-//                    let navController = UINavigationController(rootViewController: tabBarController)
-//                    navigationController?.present(navController, animated: true, completion: nil)
                     self.transition()
                     self.activityIndicatorView.stopAnimating()
                     if let didCompleteSignIn = self.didCompleteSignIn {
                         didCompleteSignIn(true)
-                        
                     }
                 })   
                 return
@@ -152,7 +144,14 @@ class SignInViewController : UIViewController {
     }
     
     func transition(){
+        let userData = UserData()
+        userData.getUserData { (userinfo) in
+            if(userinfo == nil){
+                userData.saveUserInfo()
+            }
+        }
         performSegue(withIdentifier: "toMainTabView", sender: self)
+        
     }
     
     func showErrorDialog(_ loginProviderName: String, withError error: NSError) {
