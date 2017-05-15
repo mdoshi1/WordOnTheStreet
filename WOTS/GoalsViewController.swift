@@ -142,7 +142,6 @@ extension GoalsViewController: UITableViewDelegate, UITableViewDataSource {
             isChecked[indexPath.row] = true
             print ("setting a cell")
             selectedGoal = cell.goalFreqLabel.text!
-
             
             // Instrumentation: user changed goal
             let flurryParams = ["selectedGoal": selectedGoal]
