@@ -209,7 +209,26 @@ extension NoteCardViewController: KolodaViewDataSource {
     }
     
     func koloda(_ koloda: KolodaView, viewForCardOverlayAt index: Int) -> OverlayView? {
-        return Bundle.main.loadNibNamed("NoteCardOverlayView", owner: self, options: nil)?[0] as? OverlayView
+        //return Bundle.main.loadNibNamed("NoteCardOverlayView", owner: self, options: nil)?[0] as? OverlayView
+        return nil
+    }
+    
+    func koloda(koloda: KolodaView, draggedCardWithPercentage finishPercentage: CGFloat, in direction: SwipeResultDirection) {
+        switch direction {
+        case .left :
+            
+            // Instrumentation: user swiped left
+            Flurry.logEvent("NoteCard_Left")
+            break
+        case .right :
+            
+            // Instrumentation: user swiped right
+            Flurry.logEvent("NoteCard_Right")
+            break
+        default:
+            break
+        }
     }
 }
+
 

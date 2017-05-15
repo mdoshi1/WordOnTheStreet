@@ -73,6 +73,7 @@ class ProfileViewController: UIViewController {
     
     // implement Protocol function
     func setSelectedCell(valueSent: String) {
+                
         print ("valueSent: \(valueSent)")
         self.selectedGoalCell = valueSent
     }
