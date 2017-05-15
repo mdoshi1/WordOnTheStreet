@@ -38,13 +38,20 @@ class NoteCardViewController: UIViewController {
 
         kolodaView.dataSource = self
         kolodaView.delegate = self
-        noteCardConn.insertData { () in
-            noteCardConn.getWordsForUser { (source) in
-                self.dataSource = source;
-                sourceWords = source;
-                let position = self.kolodaView.currentCardIndex
-                self.kolodaView.insertCardAtIndexRange(position..<position + self.dataSource.count, animated: true)
-            }
+//        noteCardConn.insertData { () in
+//            noteCardConn.getWordsForUser { (source) in
+//                self.dataSource = source;
+//                sourceWords = source;
+//                let position = self.kolodaView.currentCardIndex
+//                self.kolodaView.insertCardAtIndexRange(position..<position + self.dataSource.count, animated: true)
+//            }
+//        }
+        //noteCardConn.saveTestWordMap()
+        noteCardConn.getAllUserWords(forNotecards: true){ (source) in
+            self.dataSource = source;
+            sourceWords = source;
+            let position = self.kolodaView.currentCardIndex
+            self.kolodaView.insertCardAtIndexRange(position..<position + self.dataSource.count, animated: true)
         }
         takeQuizButton.layer.cornerRadius = 6;
         self.modalTransitionStyle = UIModalTransitionStyle.flipHorizontal
@@ -115,7 +122,6 @@ class NoteCardViewController: UIViewController {
 //        let bottomSheetVC = WordListTableViewController()
         let bottomSheetVC = ScrollableBottomSheetViewController()
 
-        
         // 2- Add bottomSheetVC as a child view
         self.addChildViewController(bottomSheetVC)
         self.view.addSubview(bottomSheetVC.view)
@@ -148,12 +154,8 @@ class NoteCardViewController: UIViewController {
                 destinationVC.navigationItem.title = "Quiz"
             }
         }
-        
-        
-        
     }
 }
-
 
 // MARK: KolodaViewDelegate
 

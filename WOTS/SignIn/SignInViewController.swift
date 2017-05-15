@@ -19,6 +19,7 @@ let backgroundImageColor =  UIColor.darkGray
 
 class SignInViewController : UIViewController {
     
+    @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
     @IBOutlet weak var logoView: UIImageView!
     @IBOutlet weak var tableFormView: UIView!
     @IBOutlet weak var tableView: UITableView!
@@ -124,6 +125,7 @@ class SignInViewController : UIViewController {
     }
     
     func handleLoginWithSignInProvider(_ signInProvider: AWSSignInProvider) {
+        self.activityIndicatorView.startAnimating()
         AWSSignInManager.sharedInstance().login(signInProviderKey: signInProvider.identityProviderName, completionHandler: {(result: Any?, authState: AWSIdentityManagerAuthState, error: Error?) in
             print("result = \(result), error = \(error)")
             // If no error reported by SignInProvider, discard the sign-in view controller.
@@ -137,9 +139,10 @@ class SignInViewController : UIViewController {
 //                    let navController = UINavigationController(rootViewController: tabBarController)
 //                    navigationController?.present(navController, animated: true, completion: nil)
                     self.transition()
-
+                    self.activityIndicatorView.stopAnimating()
                     if let didCompleteSignIn = self.didCompleteSignIn {
                         didCompleteSignIn(true)
+                        
                     }
                 })   
                 return

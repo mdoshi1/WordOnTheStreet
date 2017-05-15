@@ -128,18 +128,44 @@
                             <constraint firstItem="oyv-Sr-dKQ" firstAttribute="centerX" secondItem="VVL-Xq-Gde" secondAttribute="centerX" id="vOp-6n-f8B"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="wiA-2Y-WfS"/>
+                    <navigationItem key="navigationItem" id="wiA-2Y-WfS">
+                        <barButtonItem key="leftBarButtonItem" style="plain" systemItem="cancel" id="IQb-AH-JLs">
+                            <connections>
+                                <action selector="clickedCancelQuiz:" destination="CQ6-xw-FVR" id="Tdc-yL-Rj3"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="currentWordLabel" destination="z6a-lQ-L84" id="fx4-RK-fzn"/>
                         <outlet property="doneButton" destination="lMs-t8-xOF" id="GZA-co-OOe"/>
                         <outlet property="doneUserFeedback" destination="r6F-7S-tVd" id="o74-D2-Llp"/>
                         <outlet property="numAttemptsLeftLabel" destination="uol-Vx-iFG" id="oHV-ih-MJV"/>
                         <outlet property="userInput" destination="oyv-Sr-dKQ" id="wfG-aT-djh"/>
+                        <segue destination="P7Q-IX-0tL" kind="show" identifier="toQuizResults" id="Tsg-J7-WRv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TUc-G7-k44" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2967.1999999999998" y="-920.68965517241384"/>
+            <point key="canvasLocation" x="2890" y="-929"/>
+        </scene>
+        <!--Quiz Results View Controller-->
+        <scene sceneID="3lI-A0-LEB">
+            <objects>
+                <viewController id="7ZP-eB-7f2" customClass="QuizResultsViewController" customModule="WOTS" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="gJL-s6-055"/>
+                        <viewControllerLayoutGuide type="bottom" id="J9g-yW-6eW"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="bol-eG-9wX">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="PvE-vX-aBR"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="AlK-pG-QsD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4652" y="-921.58920539730138"/>
         </scene>
         <!--Title-->
         <scene sceneID="8MQ-Ou-8vp">
@@ -294,7 +320,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="cEc-Pl-2nr" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Review" image="learnIcon" id="4Am-Rz-Vh2"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="9rI-Pc-ZkH">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="9rI-Pc-ZkH">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" red="0.71764705882352942" green="0.97647058823529409" blue="0.97254901960784312" alpha="1" colorSpace="calibratedRGB"/>
@@ -313,7 +339,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="nfv-qe-f9z" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="fdZ-ea-QtO">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="fdZ-ea-QtO">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" red="0.71764705882352942" green="0.97647058823529409" blue="0.97254901960784312" alpha="1" colorSpace="calibratedRGB"/>
@@ -373,7 +399,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="uMY-KW-Ou3" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Explore" image="exploreIcon" id="WAo-Ap-y9b"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="iM2-UW-8IF">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="iM2-UW-8IF">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" red="0.71764705882352942" green="0.97647058823529409" blue="0.97254901960784312" alpha="1" colorSpace="calibratedRGB"/>
@@ -392,7 +418,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="hht-Ii-9dy" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="RLh-Yv-al1">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="RLh-Yv-al1">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" red="0.71764705882352942" green="0.97647058823529409" blue="0.97254901960784312" alpha="1" colorSpace="calibratedRGB"/>
@@ -412,7 +438,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ln3-gN-BUP" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Me" image="profileIcon" id="G9d-6m-afr"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Vd1-Ub-SUH">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Vd1-Ub-SUH">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -641,6 +667,10 @@
                                     </mask>
                                 </variation>
                             </button>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="l4V-B5-4d2">
+                                <rect key="frame" x="177" y="582" width="20" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -677,6 +707,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="G2W-kt-o7H"/>
                     <connections>
+                        <outlet property="activityIndicatorView" destination="l4V-B5-4d2" id="7a6-xo-teo"/>
                         <outlet property="facebookButton" destination="hy6-YO-skK" id="veA-6a-gpe"/>
                         <outlet property="forgotPasswordButton" destination="4eh-kH-c4E" id="csS-8r-hXz"/>
                         <outlet property="googleButton" destination="oX8-kT-6hV" id="eXO-lf-bRG"/>
@@ -693,6 +724,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="APV-ie-3cB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-985" y="230"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="3fZ-M0-azH">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="P7Q-IX-0tL" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="6dd-Tu-FYu">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="7ZP-eB-7f2" kind="relationship" relationship="rootViewController" id="PqV-I2-Mmf"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FEY-BW-XgR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3712.8000000000002" y="-921.58920539730138"/>
         </scene>
     </scenes>
     <resources>

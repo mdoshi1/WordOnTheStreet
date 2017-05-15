@@ -11,6 +11,7 @@ import UIKit
 class StandardQuizViewController: UIViewController, UITextFieldDelegate {
     var dataSource: [Dictionary<String, String>] = []
 
+
     @IBOutlet weak var currentWordLabel: UILabel!
     @IBOutlet weak var userInput: UITextField!
     @IBOutlet weak var doneButton: UIButton!
@@ -22,12 +23,14 @@ class StandardQuizViewController: UIViewController, UITextFieldDelegate {
     var numIncorrectWords = 0;
     var numMaxAttempts = 2; // technically 3, but 0-indexed
     var numAttempts = 0;
+    var allWords = [WordAttempt]();
     
     override func viewDidLoad() {
         self.view.backgroundColor = UIColor(patternImage: UIImage(named:"blue-background")!)
 
-        
         currentWord = WordAttempt(englishWord: dataSource[wordIndex]["english"]!, spanishWord:  dataSource[wordIndex]["spanish"]!)
+        allWords.append(currentWord)
+        
         currentWordLabel.text = currentWord.spanishWord
         userInput.delegate = self
         doneButton.isHidden = true;
@@ -39,6 +42,8 @@ class StandardQuizViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        let backItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: nil, action: nil)
+        navigationItem.backBarButtonItem = backItem
     }
 
     override func didReceiveMemoryWarning() {
@@ -46,6 +51,10 @@ class StandardQuizViewController: UIViewController, UITextFieldDelegate {
         // Dispose of any resources that can be recreated.
     }
 
+    @IBAction func clickedCancelQuiz(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
     // UITextField Delegates
 
     func textFieldShouldReturn(_ userInput: UITextField) -> Bool {
@@ -59,35 +68,25 @@ class StandardQuizViewController: UIViewController, UITextFieldDelegate {
             
             if (numAttempts == numMaxAttempts) {
                 numIncorrectWords += 1
+                currentWord.incorrect = true // mark as incorrect
             }
             
             numAttemptsLeftLabel.isHidden = true
             
             if(wordIndex < dataSource.count){
                 currentWord = WordAttempt(englishWord: dataSource[wordIndex]["english"]!, spanishWord:  dataSource[wordIndex]["spanish"]!)
+                allWords.append(currentWord)
+                
                 currentWordLabel.text = currentWord.spanishWord
                 numAttempts = 0
             } else {
-                // user finished taking the quiz
-                userInput.isHidden = true;
-                currentWordLabel.text = "Good job!"
-                let score = Float (Float (dataSource.count - numIncorrectWords) / Float(dataSource.count)) * 100
-                let formattedString = NSMutableAttributedString()
-                formattedString
-                  .bold("Score:\t\t")
-                  .normal("\(score)%\n")
-                  .bold("# incorrect words:\t")
-                  .normal("\(numIncorrectWords)\n")
-                  .bold("Total # words tested:\t")
-                  .normal("\(dataSource.count)")
                 
-                doneUserFeedback.attributedText = formattedString
-//                doneUserFeedback.text = "Score:\t\(score)%\n" +
-//                    "# incorrect words:\t\(numIncorrectWords)\n" +
-//                    "Total # words tested:\t\(dataSource.count)"
-                currentWordLabel.textColor = UIColor.black
-                doneButton.isHidden = false;
-                doneUserFeedback.isHidden = false;
+                // TODO: push new page/modal with detailed quiz results
+                // TODO: make sure to pass the list of WordAttempts, allWords
+                // TODO: when done, dismiss, which will dismiss everything
+                
+                performSegue(withIdentifier: "toQuizResults", sender: nil)
+
             }
         } else {
             currentWordLabel.textColor = UIColor.red
@@ -102,12 +101,32 @@ class StandardQuizViewController: UIViewController, UITextFieldDelegate {
         return true;
     }
 
-    
     // MARK: - Navigation
     
     func finishQuiz(sender: UIButton) {
         dismiss(animated: true, completion: nil)
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let score = Float (Float (dataSource.count - numIncorrectWords) / Float(dataSource.count)) * 100
+        
+        // prepare data to send:
+        let resultsToSend = ["results": allWords,
+            "score": score
+        ] as [String : Any]
+        
+        if let navVC = segue.destination as? UINavigationController {
+            let destinationVC = navVC.topViewController as! QuizResultsViewController
+            destinationVC.dataSource = resultsToSend
+//            destinationVC.navigationItem.title = "Quiz for " + (place?.name ?? "Name")
+            
+            // Shorten back button title from "Word on the Street" to just "Back"
+//            let backItem = UIBarButtonItem()
+//            backItem.title = ""
+//            navigationItem.backBarButtonItem = backItem
+        }
+    }
+
 
 }
 
@@ -124,20 +143,5 @@ class WordAttempt: NSObject {
         self.englishWord = englishWord;
         self.spanishWord = spanishWord;
         self.incorrect = false;
-    }
-}
-
-extension NSMutableAttributedString {
-    func bold(_ text:String) -> NSMutableAttributedString {
-        let attrs:[String:AnyObject] = [NSFontAttributeName : UIFont(name: "AvenirNext-Medium", size: 18)!]
-        let boldString = NSMutableAttributedString(string:"\(text)", attributes:attrs)
-        self.append(boldString)
-        return self
-    }
-    
-    func normal(_ text:String)->NSMutableAttributedString {
-        let normal =  NSAttributedString(string: text)
-        self.append(normal)
-        return self
     }
 }
