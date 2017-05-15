@@ -150,6 +150,7 @@ class SignInViewController : UIViewController {
                 session.saveUserInfo()
             }
         }
+        
         performSegue(withIdentifier: "toMainTabView", sender: self)
         
     }
