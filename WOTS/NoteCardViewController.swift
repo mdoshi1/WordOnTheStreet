@@ -57,7 +57,15 @@ class NoteCardViewController: UIViewController {
         takeQuizButton.layer.cornerRadius = 6;
         self.modalTransitionStyle = UIModalTransitionStyle.flipHorizontal
         self.navigationItem.title = "Word on the Street"
+        
+        // Instrumentation: time spent in Review
+        Flurry.logEvent("Tab_Review", timed: true)
 
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        // Instrumentation: time spent in Review
+        Flurry.endTimedEvent("Tab_Review", withParameters: nil)
     }
     
     
@@ -80,6 +88,9 @@ class NoteCardViewController: UIViewController {
     }
     
     @IBAction func signOut(_ sender: Any) {
+        // Instrumentation: finish user session
+        Flurry.endTimedEvent("User_Session", withParameters: nil)
+        
         CredentialManager.credentialsProvider.clearCredentials()
         CredentialManager.credentialsProvider.clearKeychain()
         AWSSignInManager.sharedInstance().logout { (obj, auth, err) in
@@ -92,11 +103,8 @@ class NoteCardViewController: UIViewController {
                 user?.signOut()
                 self.transition()
             }
-
         }
 
-
-        
         // If user is not logged in, present the sign in screen
 //        let loginStoryboard = UIStoryboard(name: "SignIn", bundle: nil)
 //        let loginController: SignInViewController = loginStoryboard.instantiateViewController(withIdentifier: "SignIn") as! SignInViewController
@@ -201,8 +209,7 @@ extension NoteCardViewController: KolodaViewDataSource {
     }
     
     func koloda(_ koloda: KolodaView, viewForCardOverlayAt index: Int) -> OverlayView? {
-        //return Bundle.main.loadNibNamed("NoteCardOverlayView", owner: self, options: nil)?[0] as? OverlayView
-        return nil
+        return Bundle.main.loadNibNamed("NoteCardOverlayView", owner: self, options: nil)?[0] as? OverlayView
     }
 }
 

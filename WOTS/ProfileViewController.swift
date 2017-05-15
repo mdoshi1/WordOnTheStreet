@@ -8,6 +8,7 @@
 
 import UIKit
 import AWSCognitoUserPoolsSignIn
+import Flurry_iOS_SDK
 
 class ProfileViewController: UIViewController {
     
@@ -50,7 +51,18 @@ class ProfileViewController: UIViewController {
         view.addSubview(tableView.usingAutolayout())
         setupConstraints()
         registerReusableCells()
+
+        tableView.tableFooterView = UIView()
+        
+        // Instrumentation: time spent in Profile
+        Flurry.logEvent("Tab_Me", timed: true)
     }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        // Instrumentation: time spent in Profile
+        Flurry.endTimedEvent("Tab_Me", withParameters: nil)
+    }
+    
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)

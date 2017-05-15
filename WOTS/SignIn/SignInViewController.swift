@@ -14,6 +14,7 @@
 
 import UIKit
 import AWSMobileHubHelper
+import Flurry_iOS_SDK
 
 let backgroundImageColor =  UIColor.darkGray
 
@@ -139,6 +140,10 @@ class SignInViewController : UIViewController {
 //                    let navController = UINavigationController(rootViewController: tabBarController)
 //                    navigationController?.present(navController, animated: true, completion: nil)
                     self.transition()
+                    
+                    // Instrumentation: time user session
+                    Flurry.logEvent("User_Session", timed: true)
+                    
                     self.activityIndicatorView.stopAnimating()
                     if let didCompleteSignIn = self.didCompleteSignIn {
                         didCompleteSignIn(true)
