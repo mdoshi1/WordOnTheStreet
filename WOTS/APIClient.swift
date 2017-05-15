@@ -34,6 +34,7 @@ final class APIClient {
                 print("Failed to cast JSON data as an array of JSONDictionary")
                 return nil
             }
+            print("Data \(data)")
             return data.flatMap(Place.init)
         })
         

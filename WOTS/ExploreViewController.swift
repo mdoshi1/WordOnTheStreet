@@ -20,11 +20,11 @@ class ExploreViewController: UIViewController {
         let mapView = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
         mapView.isMyLocationEnabled = true
         mapView.settings.myLocationButton = true
-        mapView.delegate = self
         return mapView
     }()
     
     fileprivate var locationManager = CLLocationManager()
+    fileprivate var clusterManager: GMUClusterManager!
     fileprivate let placeDetailSegue = "toPlaceDetails"
 
     // MARK: - ExploreViewController
@@ -35,6 +35,11 @@ class ExploreViewController: UIViewController {
         // Setup mapview
         self.view.addSubview(mapView.usingAutolayout())
         setupConstraints()
+        
+        // Setup cluster manager
+        let renderer = GMUDefaultClusterRenderer(mapView: mapView, clusterIconGenerator: GMUDefaultClusterIconGenerator())
+        clusterManager = GMUClusterManager(map: mapView, algorithm: GMUGridBasedClusterAlgorithm(), renderer: renderer)
+        clusterManager.setDelegate(self, mapDelegate: self)
         
         // Go to current location
         locationManager.delegate = self
@@ -89,6 +94,8 @@ extension ExploreViewController: GMSMapViewDelegate {
     
     func mapView(_ mapView: GMSMapView, idleAt position: GMSCameraPosition) {
         
+        print("Camera became idle at")
+        
         let visibleRegion = mapView.projection.visibleRegion()
         let currentLocation = position.target
         let radius = calculateDistance(fromLocation: currentLocation, toLocation: visibleRegion.nearLeft)
@@ -101,14 +108,22 @@ extension ExploreViewController: GMSMapViewDelegate {
             
             // Place markers on main queue
             DispatchQueue.main.async {
+                self.clusterManager.clearItems()
+                let mapViewBounds = GMSCoordinateBounds(region: visibleRegion)
                 for place in places {
-                    let infoMarker = GMSMarker(position: place.location)
-                    infoMarker.title = place.name
-                    infoMarker.opacity = 1.0
-                    infoMarker.infoWindowAnchor = CGPoint(x: 0, y: -0.2)
-                    infoMarker.userData = place
-                    infoMarker.map = mapView
+//                    let infoMarker = GMSMarker(position: place.location)
+//                    infoMarker.title = place.name
+//                    infoMarker.opacity = 1.0
+//                    infoMarker.infoWindowAnchor = CGPoint(x: 0, y: -0.2)
+//                    infoMarker.userData = place
+//                    infoMarker.map = mapView
+                    
+                    if mapViewBounds.contains(place.location) {
+                        let item = POIItem(position: place.location, name: place.name)
+                        self.clusterManager.add(item)
+                    }
                 }
+                self.clusterManager.cluster()
             }
         }
     }
@@ -118,29 +133,44 @@ extension ExploreViewController: GMSMapViewDelegate {
         return markerInfoView
     }
     
+    func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
+        if let poiItem = marker.userData as? POIItem {
+            print("Tapped cluster")
+        } else {
+            print("Tapped marker")
+        }
+        return false
+    }
+    
     func mapView(_ mapView: GMSMapView, didTapInfoWindowOf marker: GMSMarker) {
         performSegue(withIdentifier: placeDetailSegue, sender: marker.userData)
+    }
+}
+
+// MARK: - GMUClusterManagerDelegate
+
+extension ExploreViewController: GMUClusterManagerDelegate {
+    func clusterManager(_ clusterManager: GMUClusterManager, didTap cluster: GMUCluster) -> Bool {
+        print("Did tap cluster")
+        let cameraUpdate = GMSCameraUpdate.setTarget(cluster.position, zoom: mapView.camera.zoom + 1.0)
+        mapView.animate(with: cameraUpdate)
+        return true
     }
 }
 
 // MARK: - CLLocationManagerDelegate
 
 extension ExploreViewController: CLLocationManagerDelegate {
-    
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        
         let location = locations.last
-//        let camera = GMSCameraPosition.camera(withLatitude: (location?.coordinate.latitude)!, longitude:(location?.coordinate.longitude)!, zoom:17)
-//        mapView.animate(to: camera)
         let cameraUpdate = GMSCameraUpdate.setTarget(CLLocationCoordinate2D(latitude: (location?.coordinate.latitude)!, longitude: (location?.coordinate.longitude)!))
         mapView.animate(with: cameraUpdate)
         
         self.locationManager.stopUpdatingLocation()
     }
-    
 }
 
-// Put this piece of code anywhere you like
+// TODO: Move to an extension file
 extension UIViewController {
     func hideKeyboardWhenTappedAround() {
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
@@ -150,5 +180,15 @@ extension UIViewController {
     
     func dismissKeyboard() {
         view.endEditing(true)
+    }
+}
+
+class POIItem: NSObject, GMUClusterItem {
+    var position: CLLocationCoordinate2D
+    var name: String
+    
+    init(position: CLLocationCoordinate2D, name: String) {
+        self.position = position
+        self.name = name
     }
 }
