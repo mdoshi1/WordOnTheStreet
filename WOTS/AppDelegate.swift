@@ -10,14 +10,21 @@ import UIKit
 import GoogleMaps
 import GooglePlaces
 import AWSMobileHubHelper
+import Flurry_iOS_SDK
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
-
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        
+        
+        // Flurry
+        Flurry.startSession("CTRZ57262RNJVRS2W228", with: FlurrySessionBuilder
+            .init()
+            .withCrashReporting(true)
+            .withLogLevel(FlurryLogLevelAll))
         
         // Google Services
         GMSServices.provideAPIKey(Constants.APIServices.GMSServicesKey)

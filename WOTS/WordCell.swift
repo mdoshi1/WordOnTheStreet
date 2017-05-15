@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Flurry_iOS_SDK
 
 class WordCell: UITableViewCell {
     
@@ -15,6 +16,7 @@ class WordCell: UITableViewCell {
     @IBOutlet weak var wordLabel: UILabel!
     @IBOutlet weak var translationLabel: UILabel!
     @IBOutlet weak var addButton: UIButton!
+    var delegate: DidSelectWordAtPlaceProtocol?
     
     // MARK: - WordCell
 
@@ -33,7 +35,18 @@ class WordCell: UITableViewCell {
     // MARK: - IBActions
     
     func addToDictionary(sender: UIButton) {
+        
+        var wordPairDetails = ["sourceWord": self.wordLabel.text!,
+                            "translationWord": self.translationLabel.text!
+        ]
+        self.delegate?.didSelectWordCell(valueSent: wordPairDetails)
+        
         sender.setBackgroundImage(UIImage(named: "check_mark"), for: .normal)
         sender.isEnabled = false
     }
 }
+
+protocol DidSelectWordAtPlaceProtocol {
+    func didSelectWordCell(valueSent: [String:String])
+}
+

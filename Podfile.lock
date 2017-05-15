@@ -1,4 +1,7 @@
 PODS:
+  - Flurry-iOS-SDK/FlurryAds (8.0.2):
+    - Flurry-iOS-SDK/FlurrySDK
+  - Flurry-iOS-SDK/FlurrySDK (8.0.2)
   - GoogleMaps (2.2.0):
     - GoogleMaps/Maps (= 2.2.0)
   - GoogleMaps/Base (2.2.0)
@@ -11,16 +14,19 @@ PODS:
   - pop (1.0.9)
 
 DEPENDENCIES:
+  - Flurry-iOS-SDK/FlurryAds
+  - Flurry-iOS-SDK/FlurrySDK
   - GoogleMaps
   - GooglePlaces
   - Koloda
 
 SPEC CHECKSUMS:
+  Flurry-iOS-SDK: 6d47c244428d2cab3f25c97bdba9b2f4d4a5935f
   GoogleMaps: 104c418d61ab8a05dff06ed0784c25ea9d37da45
   GooglePlaces: bca867d5e9da15384c794b945e4226848bc6e9d9
   Koloda: 6c4fa3ce9a68776a8ef973311e53fdda432799a8
   pop: f667631a5108a2e60d9e8797c9b32ddaf2080bce
 
-PODFILE CHECKSUM: 3b208ff47c56aad361adfabe9265828debf20a9e
+PODFILE CHECKSUM: 9e8376c71b040a4218d2ecb31777983c82fa65a8
 
 COCOAPODS: 1.2.1

@@ -49,7 +49,7 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
         tableView.reloadData()
     }
     
-    // impelment Protocol function
+    // implement Protocol function
     func setSelectedCell(valueSent: String) {
         print ("valueSent: \(valueSent)")
         self.selectedGoalCell = valueSent
