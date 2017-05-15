@@ -39,7 +39,7 @@ class SignInViewController : UIViewController {
     var tableDelegate : FormTableDelegate?
     var passwordAuthenticationCompletion: AWSTaskCompletionSource<AnyObject>?
     let smallLogoName = "logo-aws-small"
-    let bigLogoName = "logo-aws-big"
+    let bigLogoName = "logo_transparentbg"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -75,8 +75,8 @@ class SignInViewController : UIViewController {
     
     func setUpLogo() {
         logoView.contentMode = UIViewContentMode.center
-        logoView.image = UIImage(imageLiteralResourceName: "word-on-the-street-logo")
-        logoViewHeight.constant = 230
+        logoView.image = UIImage(imageLiteralResourceName: bigLogoName)
+        logoViewHeight.constant = 200
         logoView.setNeedsLayout()
         self.view.setNeedsLayout()
         self.view.layoutIfNeeded()
