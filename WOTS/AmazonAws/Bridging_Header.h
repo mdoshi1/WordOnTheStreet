@@ -11,3 +11,4 @@
 //
 
 #import "AWSAPI_CX0HSKU68J_TestMobileHubClient.h"
+#import "GMUMarkerClustering.h"
