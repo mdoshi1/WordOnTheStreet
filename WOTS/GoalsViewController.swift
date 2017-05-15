@@ -147,7 +147,6 @@ extension GoalsViewController: UITableViewDelegate, UITableViewDataSource {
             let flurryParams = ["selectedGoal": selectedGoal]
             Flurry.logEvent("Changed_Goal", withParameters: flurryParams)
             
-            delegate?.setSelectedCell(valueSent: cell.goalFreqLabel.text!)
             self.rowToSelect = indexPath
         }
     }

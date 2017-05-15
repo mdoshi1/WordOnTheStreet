@@ -71,13 +71,6 @@ class ProfileViewController: UIViewController {
         tableView.reloadData()
     }
     
-    // implement Protocol function
-    func setSelectedCell(valueSent: String) {
-                
-        print ("valueSent: \(valueSent)")
-        self.selectedGoalCell = valueSent
-    }
-    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
