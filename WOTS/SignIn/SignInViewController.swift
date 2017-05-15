@@ -144,10 +144,10 @@ class SignInViewController : UIViewController {
     }
     
     func transition(){
-        let userData = UserData()
-        userData.getUserData { (userinfo) in
-            if(userinfo == nil){
-                userData.saveUserInfo()
+        let session = SessionManager.sharedInstance
+        session.getUserData { (info) in
+            if(info == nil){
+                session.saveUserInfo()
             }
         }
         performSegue(withIdentifier: "toMainTabView", sender: self)

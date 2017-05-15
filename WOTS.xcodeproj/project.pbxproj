@@ -42,6 +42,7 @@
 		9559D0641EC8056200BAC3F5 /* UserInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9559D0581EC8056200BAC3F5 /* UserInformation.swift */; };
 		9559D0651EC8056200BAC3F5 /* UserVocabulary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9559D0591EC8056200BAC3F5 /* UserVocabulary.swift */; };
 		9559D0661EC8056200BAC3F5 /* WordPairs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9559D05A1EC8056200BAC3F5 /* WordPairs.swift */; };
+		955A95E11EC9402F0002BCEE /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 955A95E01EC9402F0002BCEE /* SessionManager.swift */; };
 		9578455F1EC42CDA00AA551F /* Sdk in Resources */ = {isa = PBXBuildFile; fileRef = 9578455E1EC42CDA00AA551F /* Sdk */; };
 		957845641EC42D0700AA551F /* AWSAPIGateway.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 957845601EC42D0700AA551F /* AWSAPIGateway.framework */; };
 		957845651EC42D0700AA551F /* AWSAPIGateway.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 957845601EC42D0700AA551F /* AWSAPIGateway.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -77,7 +78,6 @@
 		95A5936A1EC6506C006BFEC9 /* CredentialManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A593691EC6506C006BFEC9 /* CredentialManager.swift */; };
 		95FBEDCE1EC7DD0400D94C5D /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FBEDCD1EC7DD0300D94C5D /* UserData.swift */; };
 		F43436CA1EC69329007B6A3D /* UIColor+WOTS.swift in Sources */ = {isa = PBXBuildFile; fileRef = F43436C91EC69329007B6A3D /* UIColor+WOTS.swift */; };
-		95A5936C1EC6864F006BFEC9 /* WordIds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A5936B1EC6864F006BFEC9 /* WordIds.swift */; };
 		F46EC9821EB52F7B00BF1A53 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46EC9811EB52F7B00BF1A53 /* AppDelegate.swift */; };
 		F46EC9871EB52F7B00BF1A53 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F46EC9851EB52F7B00BF1A53 /* Main.storyboard */; };
 		F46EC9891EB52F7B00BF1A53 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F46EC9881EB52F7B00BF1A53 /* Assets.xcassets */; };
@@ -157,6 +157,7 @@
 		9559D0581EC8056200BAC3F5 /* UserInformation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInformation.swift; sourceTree = "<group>"; };
 		9559D0591EC8056200BAC3F5 /* UserVocabulary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserVocabulary.swift; sourceTree = "<group>"; };
 		9559D05A1EC8056200BAC3F5 /* WordPairs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WordPairs.swift; sourceTree = "<group>"; };
+		955A95E01EC9402F0002BCEE /* SessionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionManager.swift; sourceTree = "<group>"; };
 		9578455E1EC42CDA00AA551F /* Sdk */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Sdk; path = ../Sdk; sourceTree = "<group>"; };
 		957845601EC42D0700AA551F /* AWSAPIGateway.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AWSAPIGateway.framework; path = Sdk/Aws/AWSAPIGateway.framework; sourceTree = "<group>"; };
 		957845611EC42D0700AA551F /* AWSCognitoIdentityProvider.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AWSCognitoIdentityProvider.framework; path = Sdk/Aws/AWSCognitoIdentityProvider.framework; sourceTree = "<group>"; };
@@ -188,7 +189,6 @@
 		95A593691EC6506C006BFEC9 /* CredentialManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CredentialManager.swift; sourceTree = "<group>"; };
 		95FBEDCD1EC7DD0300D94C5D /* UserData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
 		F43436C91EC69329007B6A3D /* UIColor+WOTS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+WOTS.swift"; sourceTree = "<group>"; };
-		95A5936B1EC6864F006BFEC9 /* WordIds.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WordIds.swift; sourceTree = "<group>"; };
 		F46EC97E1EB52F7B00BF1A53 /* WOTS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WOTS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F46EC9811EB52F7B00BF1A53 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F46EC9861EB52F7B00BF1A53 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -429,6 +429,7 @@
 				3FBAA2AB1EC2F6230040AD89 /* Profile */,
 				3FBAA2BA1EC434710040AD89 /* CircleProgressView.swift */,
 				3FC752F21EC67D9F009D9924 /* QuizResults */,
+				955A95E01EC9402F0002BCEE /* SessionManager.swift */,
 			);
 			path = WOTS;
 			sourceTree = "<group>";
@@ -617,6 +618,7 @@
 				F43436CA1EC69329007B6A3D /* UIColor+WOTS.swift in Sources */,
 				3F6CB68E1EC52F1E005A51BD /* QuizResultsViewController.swift in Sources */,
 				F4BECB0B1EB9745700B98BA8 /* Constants.swift in Sources */,
+				955A95E11EC9402F0002BCEE /* SessionManager.swift in Sources */,
 				957F2F501EB954B7001117DB /* ResultsView.swift in Sources */,
 				3FBAA2A91EC2F61C0040AD89 /* ProfileHeaderCell.swift in Sources */,
 				95A5936A1EC6506C006BFEC9 /* CredentialManager.swift in Sources */,
