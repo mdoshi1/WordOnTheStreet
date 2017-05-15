@@ -19,5 +19,6 @@ class Constants {
     
     struct Storyboard {
         static let AppName = "Word on the Street"
+        static let GoalCell = "GoalHeaderCell"
     }
 }

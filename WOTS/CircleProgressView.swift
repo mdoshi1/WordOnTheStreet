@@ -45,7 +45,7 @@ import UIKit
         didSet { setNeedsDisplay() }
     }
     
-    @IBInspectable open var trackWidth: CGFloat = 10 {
+    @IBInspectable open var trackWidth: CGFloat = 5 {
         didSet { setNeedsDisplay() }
     }
     

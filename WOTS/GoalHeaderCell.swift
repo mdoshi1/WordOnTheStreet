@@ -12,15 +12,18 @@ class GoalHeaderCell: UITableViewCell {
     
     // MARK: - IBOutlet
     
-    @IBOutlet weak var dailyGoalLabel: UILabel!
-    @IBOutlet weak var editDailyGoalButton: UIButton!
-    @IBOutlet weak var dailyGoalFreqLabel: UILabel!
+    @IBOutlet weak var editGoalButton: UIButton!
+    @IBOutlet weak var goalLabel: UILabel!
+    
+    // MARK: - Properties
+    
+    weak var delegate: GoalCellDelegate?
     
     // MARK: - GoalHeaderCell
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        editGoalButton.addTarget(self, action: #selector(editGoal), for: .touchUpInside)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -29,4 +32,15 @@ class GoalHeaderCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    // MARK: - Button Actions
+    
+    func editGoal() {
+        if let delegate = delegate {
+            delegate.editGoal()
+        }
+    }
+}
+
+protocol GoalCellDelegate: class {
+    func editGoal()
 }

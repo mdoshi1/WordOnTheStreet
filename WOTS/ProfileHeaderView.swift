@@ -30,8 +30,7 @@ class ProfileHeaderView: UIView {
     
     private lazy var addImageButton: UIButton = {
         let addImageButton = UIButton()
-        addImageButton.setTitle("Plus", for: .normal)
-        addImageButton.setTitleColor(.white, for: .normal)
+        addImageButton.setBackgroundImage(UIImage(named: "profile_plus"), for: .normal)
         addImageButton.addTarget(self, action: #selector(changeProfileImage), for: .touchUpInside)
         return addImageButton
     }()
@@ -83,7 +82,7 @@ class ProfileHeaderView: UIView {
             addImageButton.centerXAnchor.constraint(equalTo: profileImageView.trailingAnchor),
             addImageButton.centerYAnchor.constraint(equalTo: profileImageView.topAnchor),
             addImageButton.leadingAnchor.constraint(equalTo: profileImageView.trailingAnchor, constant: -7.5),
-            addImageButton.widthAnchor.constraint(equalToConstant: 15.0),
+            addImageButton.widthAnchor.constraint(equalToConstant: 16.0),
             addImageButton.heightAnchor.constraint(equalTo: addImageButton.widthAnchor)
             ])
     }

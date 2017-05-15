@@ -25,6 +25,7 @@ class ProfileViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.isScrollEnabled = false
+        tableView.separatorStyle = .none
         tableView.tableFooterView = UIView()
         return tableView
     }()
@@ -75,19 +76,6 @@ class ProfileViewController: UIViewController {
         tableView.register(UINib(nibName: "GoalHeaderCell", bundle: nil), forCellReuseIdentifier: "GoalHeaderCell")
         tableView.register(UINib(nibName: "GoalsCell", bundle: nil), forCellReuseIdentifier: "GoalsCell")
     }
-    
-    // MARK: - Button pressed
-    func editDailyGoalAction(_sender: UIButton) {
-        let buttonTag = _sender.tag
-        print("Edit daily goal button pressed! tag is \(buttonTag)")
-    }
-    
-    //Set method for UIButton
-    func pushEditDailyGoal(sender: UIButton) {
-        performSegue(withIdentifier: "toEditGoal", sender: nil)
-    }
-
-
 }
 
 // MARK: UITableview Methods
@@ -95,7 +83,12 @@ class ProfileViewController: UIViewController {
 extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 55.0
+        switch ProfileDetailType(rawValue: indexPath.row)! {
+        case .goal:
+            return 37.0
+        case .goalProgress:
+            return 66.0
+        }
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -111,42 +104,38 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
         case .goal:
             
             // TODO: use database/user accounts to fill in goals
-            let goalsHeaderCell = tableView.dequeueReusableCell(withIdentifier: "GoalHeaderCell", for: indexPath) as! GoalHeaderCell
-            
-            goalsHeaderCell.tag = indexPath.row
+            let goalCell = tableView.dequeueReusableCell(withIdentifier: Constants.Storyboard.GoalCell, for: indexPath) as! GoalHeaderCell
+            goalCell.delegate = self
             
             // TODO: retrieve from database what the selected goal is
             // TODO: refactor after daily goal fix
-            var dailyGoalFreqText = ""
+            var dailyGoalText = ""
             let selectedRow = UserDefaults.standard.integer(forKey: "daily_goal")
             switch selectedRow {
             case 0:
-                dailyGoalFreqText = "1 word/day"
+                dailyGoalText = "1 word/day"
             case 1:
-                dailyGoalFreqText = "3 word/day"
+                dailyGoalText = "3 words/day"
             case 2:
-                dailyGoalFreqText = "5 word/day"
+                dailyGoalText = "5 words/day"
             case 3:
-                dailyGoalFreqText = "8 word/day"
+                dailyGoalText = "8 words/day"
             default:
                 break
             }
-            goalsHeaderCell.dailyGoalFreqLabel.text = dailyGoalFreqText
+            goalCell.goalLabel.text = dailyGoalText
             
-            //Set button's target
-            goalsHeaderCell.editDailyGoalButton.addTarget(self, action: #selector(pushEditDailyGoal), for: .touchUpInside)
-            
-            return goalsHeaderCell
+            return goalCell
             
         case .goalProgress:
             
             // TODO: use database/user accounts to fill in goals
-            let goalsCell = tableView.dequeueReusableCell(withIdentifier: "GoalsCell", for: indexPath) as! GoalsCell
+            let goalProgressCell = tableView.dequeueReusableCell(withIdentifier: "GoalsCell", for: indexPath) as! GoalsCell
             
             // TODO: set the progress for the circles based on database
-            goalsCell.progressFirstCircle.progress = 0.5 // example
+            goalProgressCell.progressFirstCircle.progress = 0.5 // example
             
-            return goalsCell
+            return goalProgressCell
         }
     }
 }
@@ -161,6 +150,14 @@ extension ProfileViewController: ProfileHeaderDelegate {
             imagePicker.allowsEditing = false
             present(imagePicker, animated: true, completion: nil)
         }
+    }
+}
+
+// MARK: - GoalCell Methods
+
+extension ProfileViewController: GoalCellDelegate {
+    func editGoal() {
+        performSegue(withIdentifier: "toEditGoal", sender: nil)
     }
 }
 
