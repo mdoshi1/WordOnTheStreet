@@ -39,8 +39,8 @@ class SignInViewController : UIViewController {
     var userNameRow : FormTableCell?
     var tableDelegate : FormTableDelegate?
     var passwordAuthenticationCompletion: AWSTaskCompletionSource<AnyObject>?
-    let smallLogoName = "logo-aws-small"
     let bigLogoName = "logo_transparentbg"
+    let smallLogoName = "logo-wots-big"
     
     override func viewDidLoad() {
         super.viewDidLoad()

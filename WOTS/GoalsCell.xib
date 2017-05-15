@@ -24,6 +24,11 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7S7-1J-cgc" customClass="CircleProgressView" customModule="WOTS" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="36" height="36"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="trackFillColor">
+                                        <color key="value" red="1" green="0.80000000000000004" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pMg-l8-qiS" customClass="CircleProgressView" customModule="WOTS" customModuleProvider="target">
                                 <rect key="frame" x="44" y="0.0" width="36" height="36"/>
