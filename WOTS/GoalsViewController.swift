@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Flurry_iOS_SDK
 
 class GoalsViewController: UIViewController {
 
@@ -142,6 +143,11 @@ extension GoalsViewController: UITableViewDelegate, UITableViewDataSource {
             isChecked[indexPath.row] = true
             print ("setting a cell")
             selectedGoal = cell.goalFreqLabel.text!
+            
+            // Instrumentation: user changed goal
+            let flurryParams = ["selectedGoal": selectedGoal]
+            Flurry.logEvent("Changed_Goal", withParameters: flurryParams)
+            
             delegate?.setSelectedCell(valueSent: cell.goalFreqLabel.text!)
             self.rowToSelect = indexPath
         }
