@@ -9,5 +9,7 @@ target 'WOTS' do
   pod 'Koloda'
   pod 'GoogleMaps'
   pod 'GooglePlaces'
+  pod 'Flurry-iOS-SDK/FlurrySDK' #Analytics Pod
+  pod 'Flurry-iOS-SDK/FlurryAds' #Advertising Pod (requires Analytics)
 
 end

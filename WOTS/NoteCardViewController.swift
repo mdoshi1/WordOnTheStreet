@@ -12,6 +12,7 @@ import AWSMobileHubHelper
 import AWSDynamoDB
 import AWSMobileHubHelper
 import AWSCognitoUserPoolsSignIn
+import Flurry_iOS_SDK
 
 
 private var numberOfCards: Int = 5
@@ -144,9 +145,9 @@ class NoteCardViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "TakeQuizSegue" {
-//            if let nextVC = segue.destination as? StandardQuizViewController {
-//                nextVC.dataSource = self.dataSource
-//            }
+            
+            // Instrumentation: log tab clicked
+            Flurry.logEvent("Review_Quiz")
             
             if let navVC = segue.destination as? UINavigationController {
                 let destinationVC = navVC.topViewController as! StandardQuizViewController

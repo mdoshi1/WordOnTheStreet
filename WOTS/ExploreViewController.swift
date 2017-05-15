@@ -8,6 +8,7 @@
 
 import UIKit
 import GoogleMaps
+import Flurry_iOS_SDK
 
 class ExploreViewController: UIViewController {
     
@@ -115,10 +116,31 @@ extension ExploreViewController: GMSMapViewDelegate {
     
     func mapView(_ mapView: GMSMapView, markerInfoWindow marker: GMSMarker) -> UIView? {
         let markerInfoView = MarkerInfoView(frame: CGRect(x: 0, y: 0, width: 200.0, height: 60.0), forMarker: marker)
+
+        // Instrumentation: What kind of pin did the user click on?
+        let place = marker.userData as! Place
+        let flurryParams = ["name": place.name,
+                            "placeId": place.placeId,
+                            "numWords": place.numWords,
+                            "numPeople": place.numPeople,
+                            "location": place.location
+        ] as [String: Any]
+        Flurry.logEvent("Explore_Pin", withParameters: flurryParams)
         return markerInfoView
     }
     
     func mapView(_ mapView: GMSMapView, didTapInfoWindowOf marker: GMSMarker) {
+        
+        // Instrumentation: User clicked onto info window
+        let place = marker.userData as! Place
+        let flurryParams = ["name": place.name,
+                            "placeId": place.placeId,
+                            "numWords": place.numWords,
+                            "numPeople": place.numPeople,
+                            "location": place.location
+            ] as [String: Any]
+        Flurry.logEvent("Explore_Pin_Info_Window", withParameters: flurryParams)
+        
         performSegue(withIdentifier: placeDetailSegue, sender: marker.userData)
     }
 }

@@ -61,7 +61,6 @@
 		957845A61EC42D4400AA551F /* UserPoolSignUpConfirmationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957845981EC42D4400AA551F /* UserPoolSignUpConfirmationViewController.swift */; };
 		957845A71EC42D4400AA551F /* UserPoolSignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957845991EC42D4400AA551F /* UserPoolSignUpViewController.swift */; };
 		957845A81EC42D4400AA551F /* UserPoolsUIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9578459A1EC42D4400AA551F /* UserPoolsUIHelper.swift */; };
-		957845AA1EC42FFA00AA551F /* SignIn.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 957845A91EC42FFA00AA551F /* SignIn.storyboard */; };
 		95791F861EB53D4700F9FA96 /* NoteCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95791F851EB53D4700F9FA96 /* NoteCardViewController.swift */; };
 		95791F981EB5513300F9FA96 /* NoteCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95791F971EB5513300F9FA96 /* NoteCardView.swift */; };
 		95791F9C1EB55A9700F9FA96 /* NoteCardOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95791F9B1EB55A9700F9FA96 /* NoteCardOverlayView.swift */; };
@@ -134,6 +133,9 @@
 		3FBAA2BA1EC434710040AD89 /* CircleProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleProgressView.swift; sourceTree = "<group>"; };
 		3FC752EE1EC67D2C009D9924 /* QuizResultsHeaderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuizResultsHeaderCell.swift; sourceTree = "<group>"; };
 		3FC752EF1EC67D2C009D9924 /* QuizResultsHeaderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QuizResultsHeaderCell.xib; sourceTree = "<group>"; };
+		3FC752F81EC915ED009D9924 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
+		3FC752FA1EC915F5009D9924 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		3FC752FC1EC915FD009D9924 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		5940474782F3E9AB78BDC15F /* Pods-WOTS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WOTS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WOTS/Pods-WOTS.debug.xcconfig"; sourceTree = "<group>"; };
 		749084860D94B5BF673E4213 /* Pods_WOTS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WOTS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9578455E1EC42CDA00AA551F /* Sdk */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Sdk; path = ../Sdk; sourceTree = "<group>"; };
@@ -266,6 +268,9 @@
 		540534FF27DCCF9400669C07 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3FC752FC1EC915FD009D9924 /* SystemConfiguration.framework */,
+				3FC752FA1EC915F5009D9924 /* CoreData.framework */,
+				3FC752F81EC915ED009D9924 /* AdSupport.framework */,
 				957845601EC42D0700AA551F /* AWSAPIGateway.framework */,
 				957845611EC42D0700AA551F /* AWSCognitoIdentityProvider.framework */,
 				957845621EC42D0700AA551F /* AWSCore.framework */,

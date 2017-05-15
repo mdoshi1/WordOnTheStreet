@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Flurry_iOS_SDK
 
 class StandardQuizViewController: UIViewController, UITextFieldDelegate {
     var dataSource: [Dictionary<String, String>] = []
@@ -40,6 +41,9 @@ class StandardQuizViewController: UIViewController, UITextFieldDelegate {
         doneButton.addTarget(self, action: #selector(finishQuiz), for: .touchUpInside)
         
         super.viewDidLoad()
+        
+        // Instrumentation: Time how long user spends in quiz
+        Flurry.logEvent("Taking_Quiz", withParameters: nil, timed: true);
 
         // Do any additional setup after loading the view.
         let backItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: nil, action: nil)
@@ -53,6 +57,11 @@ class StandardQuizViewController: UIViewController, UITextFieldDelegate {
 
     @IBAction func clickedCancelQuiz(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
+        
+        // Instrumentation: Stop timer if user cancels quiz
+        let flurryParams = ["score": 0.0,
+                           "status": "canceled"] as [String : Any]
+        Flurry.endTimedEvent("Taking_Quiz", withParameters: flurryParams)
     }
     
     // UITextField Delegates
@@ -109,6 +118,11 @@ class StandardQuizViewController: UIViewController, UITextFieldDelegate {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let score = Float (Float (dataSource.count - numIncorrectWords) / Float(dataSource.count)) * 100
+        
+        // Instrumentation: log successful finish of quiz along with scoreInst
+        let flurryParams = ["score": score,
+                            "status": "finished"] as [String : Any]
+        Flurry.endTimedEvent("Taking_Quiz", withParameters: flurryParams)
         
         // prepare data to send:
         let resultsToSend = ["results": allWords,
