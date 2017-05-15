@@ -44,6 +44,17 @@ class ExploreViewController: UIViewController {
         self.navigationItem.title = "Word on the Street"
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        // Instrumentation: time spent in Explore
+        Flurry.logEvent("Tab_Explore", timed: true)
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        // Instrumentation: time spent in Explore
+        Flurry.endTimedEvent("Tab_Explore", withParameters: nil)
+    }
+    
+    
     // MARK: - Helper Methods
     
     private func setupConstraints() {
