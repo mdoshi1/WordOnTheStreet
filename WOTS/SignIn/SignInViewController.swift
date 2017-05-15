@@ -15,7 +15,7 @@
 import UIKit
 import AWSMobileHubHelper
 
-let backgroundImageColor =  UIColor.darkGray
+let backgroundImageColor =  UIColor(red: 40/255, green: 40/255, blue: 40/255, alpha: 1)
 
 class SignInViewController : UIViewController {
     
@@ -75,7 +75,7 @@ class SignInViewController : UIViewController {
     
     func setUpLogo() {
         logoView.contentMode = UIViewContentMode.center
-        logoView.image = UIImage(imageLiteralResourceName: bigLogoName)
+        logoView.image = UIImage(imageLiteralResourceName: "word-on-the-street-logo")
         logoViewHeight.constant = 230
         logoView.setNeedsLayout()
         self.view.setNeedsLayout()

@@ -35,6 +35,24 @@
 			<key>ProjectClientId</key>
 			<string>MobileHub 66a13ecb-e1ce-4759-8c62-768d031dfe93 aws-my-sample-app-ios-swift-v0.14</string>
 		</dict>
+        <key>UserFileManager</key>
+        <dict>
+            <key>Default</key>
+            <dict>
+                <key>S3Bucket</key>
+                <string>wordonthestreet-userfiles-mobilehub-915338963</string>
+                <key>Region</key>
+                <string>us-east-1</string>
+            </dict>
+        </dict>
+        <key>Cognito</key>
+        <dict>
+            <key>Default</key>
+            <dict>
+                <key>Region</key>
+                <string>us-east-1</string>
+            </dict>
+        </dict>
 	</dict>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
