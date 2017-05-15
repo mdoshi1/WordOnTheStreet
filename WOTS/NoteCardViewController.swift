@@ -32,9 +32,11 @@ class NoteCardViewController: UIViewController {
     
     
     @IBOutlet weak var takeQuizButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = UIColor(patternImage: UIImage(named:"blue-background")!)
+//        self.view.backgroundColor = UIColor(patternImage: UIImage(named:"chalk-background")!)
+        self.view.backgroundColor = UIColor(red:0.20, green:0.20, blue:0.20, alpha:1.0)
         // Check if a user is logged in
 
         kolodaView.dataSource = self

@@ -40,7 +40,7 @@ class SignInViewController : UIViewController {
     var tableDelegate : FormTableDelegate?
     var passwordAuthenticationCompletion: AWSTaskCompletionSource<AnyObject>?
     let smallLogoName = "logo-aws-small"
-    let bigLogoName = "logo-aws-big"
+    let bigLogoName = "logo-wots-big"
     
     override func viewDidLoad() {
         super.viewDidLoad()
