@@ -5,7 +5,6 @@
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -19,38 +18,36 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Daily goal: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uV8-2T-Zqi">
-                        <rect key="frame" x="13" y="11" width="83.5" height="21"/>
+                        <rect key="frame" x="16" y="8" width="83.5" height="27.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tHp-F8-5xu">
-                        <rect key="frame" x="282" y="3" width="30" height="37.5"/>
-                        <state key="normal" title="Edit"/>
+                        <rect key="frame" x="242" y="8" width="62" height="27.5"/>
+                        <state key="normal" title="Edit Goal"/>
                     </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Frequency" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mlc-T1-epw">
-                        <rect key="frame" x="97.5" y="11" width="81" height="21"/>
+                        <rect key="frame" x="99.5" y="11" width="81" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="uV8-2T-Zqi" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="3" id="4JD-yS-qbt"/>
-                    <constraint firstItem="mlc-T1-epw" firstAttribute="leading" secondItem="uV8-2T-Zqi" secondAttribute="trailing" constant="1" id="4gN-Iv-VD6"/>
-                    <constraint firstAttribute="bottom" secondItem="tHp-F8-5xu" secondAttribute="bottom" constant="3" id="HoO-bZ-YEp"/>
-                    <constraint firstAttribute="trailing" secondItem="tHp-F8-5xu" secondAttribute="trailing" constant="8" id="guh-95-nTv"/>
-                    <constraint firstAttribute="bottomMargin" secondItem="uV8-2T-Zqi" secondAttribute="bottom" constant="3" id="n5u-m4-IZB"/>
-                    <constraint firstItem="uV8-2T-Zqi" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="5" id="oQZ-nL-jR3"/>
-                    <constraint firstItem="tHp-F8-5xu" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="3" id="rKh-iB-m4D"/>
-                    <constraint firstItem="mlc-T1-epw" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="3" id="xZv-C7-oKZ"/>
-                    <constraint firstAttribute="bottomMargin" secondItem="mlc-T1-epw" secondAttribute="bottom" constant="3" id="ysx-AZ-Whr"/>
+                    <constraint firstItem="uV8-2T-Zqi" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="38M-lg-VCs"/>
+                    <constraint firstItem="mlc-T1-epw" firstAttribute="leading" secondItem="uV8-2T-Zqi" secondAttribute="trailing" id="4gN-Iv-VD6"/>
+                    <constraint firstAttribute="bottom" secondItem="tHp-F8-5xu" secondAttribute="bottom" constant="8" id="EA1-yX-5k3"/>
+                    <constraint firstItem="tHp-F8-5xu" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="MWK-m8-F3P"/>
+                    <constraint firstItem="uV8-2T-Zqi" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="Qss-fz-0fc"/>
+                    <constraint firstAttribute="bottom" secondItem="uV8-2T-Zqi" secondAttribute="bottom" constant="8" id="UUW-tt-gfM"/>
+                    <constraint firstItem="mlc-T1-epw" firstAttribute="centerY" secondItem="uV8-2T-Zqi" secondAttribute="centerY" id="Ut8-Iz-Oqb"/>
+                    <constraint firstAttribute="trailing" secondItem="tHp-F8-5xu" secondAttribute="trailing" constant="16" id="guh-95-nTv"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
-                <outlet property="dailyGoalFreqLabel" destination="mlc-T1-epw" id="BrN-oI-eng"/>
-                <outlet property="dailyGoalLabel" destination="uV8-2T-Zqi" id="SlR-OW-K5E"/>
-                <outlet property="editDailyGoalButton" destination="tHp-F8-5xu" id="9SD-NJ-GtO"/>
+                <outlet property="editGoalButton" destination="tHp-F8-5xu" id="DPL-xB-kqR"/>
+                <outlet property="goalLabel" destination="mlc-T1-epw" id="3xx-I6-JPZ"/>
             </connections>
         </tableViewCell>
     </objects>

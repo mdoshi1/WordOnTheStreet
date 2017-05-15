@@ -18,39 +18,49 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="90.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Bzp-AR-xAK">
-                        <rect key="frame" x="25" y="20" width="270" height="50"/>
+                    <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Bzp-AR-xAK">
+                        <rect key="frame" x="10" y="27" width="300" height="36"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7S7-1J-cgc" customClass="CircleProgressView" customModule="WOTS" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="36" height="36"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pMg-l8-qiS" customClass="CircleProgressView" customModule="WOTS" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                <rect key="frame" x="44" y="0.0" width="36" height="36"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cEM-uK-zX8" customClass="CircleProgressView" customModule="WOTS" customModuleProvider="target">
-                                <rect key="frame" x="55" y="0.0" width="50" height="50"/>
+                                <rect key="frame" x="88" y="0.0" width="36" height="36"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1GW-8H-R8G" customClass="CircleProgressView" customModule="WOTS" customModuleProvider="target">
-                                <rect key="frame" x="110" y="0.0" width="50" height="50"/>
+                                <rect key="frame" x="132" y="0.0" width="36" height="36"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="50" id="PWR-qS-X8i"/>
+                                    <constraint firstAttribute="width" constant="36" id="PWR-qS-X8i"/>
                                     <constraint firstAttribute="width" secondItem="1GW-8H-R8G" secondAttribute="height" multiplier="1:1" id="zDw-oO-gpH"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lyB-gU-xT6" customClass="CircleProgressView" customModule="WOTS" customModuleProvider="target">
-                                <rect key="frame" x="165" y="0.0" width="50" height="50"/>
+                                <rect key="frame" x="176" y="0.0" width="36" height="36"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5Ih-T9-ehv" customClass="CircleProgressView" customModule="WOTS" customModuleProvider="target">
-                                <rect key="frame" x="220" y="0.0" width="50" height="50"/>
+                                <rect key="frame" x="220" y="0.0" width="36" height="36"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sAR-kF-Xjo" customClass="CircleProgressView" customModule="WOTS" customModuleProvider="target">
+                                <rect key="frame" x="264" y="0.0" width="36" height="36"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                         </subviews>
                         <constraints>
+                            <constraint firstItem="1GW-8H-R8G" firstAttribute="width" secondItem="sAR-kF-Xjo" secondAttribute="width" id="M11-z0-I7S"/>
                             <constraint firstItem="1GW-8H-R8G" firstAttribute="width" secondItem="lyB-gU-xT6" secondAttribute="width" id="e5G-ff-sO6"/>
                             <constraint firstItem="1GW-8H-R8G" firstAttribute="width" secondItem="cEM-uK-zX8" secondAttribute="width" id="foO-Hl-t7U"/>
                             <constraint firstItem="1GW-8H-R8G" firstAttribute="width" secondItem="pMg-l8-qiS" secondAttribute="width" id="i81-Kr-exX"/>
                             <constraint firstItem="1GW-8H-R8G" firstAttribute="width" secondItem="5Ih-T9-ehv" secondAttribute="width" id="m8n-IV-iEo"/>
+                            <constraint firstItem="1GW-8H-R8G" firstAttribute="width" secondItem="7S7-1J-cgc" secondAttribute="width" id="xPW-hM-QEU"/>
                         </constraints>
                     </stackView>
                 </subviews>
@@ -60,11 +70,13 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
-                <outlet property="progressFifthCircle" destination="5Ih-T9-ehv" id="uvd-AJ-54A"/>
-                <outlet property="progressFirstCircle" destination="pMg-l8-qiS" id="oUW-gF-Nfe"/>
-                <outlet property="progressFourthCircle" destination="lyB-gU-xT6" id="87H-lb-ze5"/>
-                <outlet property="progressSecCircle" destination="cEM-uK-zX8" id="GZo-S9-3fT"/>
-                <outlet property="progressThirdCircle" destination="1GW-8H-R8G" id="Cjn-gI-1Ox"/>
+                <outlet property="progressFifthCircle" destination="lyB-gU-xT6" id="3sb-Yr-i0x"/>
+                <outlet property="progressFirstCircle" destination="7S7-1J-cgc" id="kF4-Er-AWy"/>
+                <outlet property="progressFourthCircle" destination="1GW-8H-R8G" id="cBU-Qf-z8b"/>
+                <outlet property="progressSecCircle" destination="pMg-l8-qiS" id="yQ8-qb-CGi"/>
+                <outlet property="progressSeventhCircle" destination="sAR-kF-Xjo" id="lUG-WY-upB"/>
+                <outlet property="progressSixthCircle" destination="5Ih-T9-ehv" id="OLT-De-d36"/>
+                <outlet property="progressThirdCircle" destination="cEM-uK-zX8" id="aw1-Rh-qUN"/>
             </connections>
             <point key="canvasLocation" x="34" y="64.5"/>
         </tableViewCell>

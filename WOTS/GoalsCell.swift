@@ -15,6 +15,8 @@ class GoalsCell: UITableViewCell {
     @IBOutlet weak var progressThirdCircle: CircleProgressView!
     @IBOutlet weak var progressFourthCircle: CircleProgressView!
     @IBOutlet weak var progressFifthCircle: CircleProgressView!
+    @IBOutlet weak var progressSixthCircle: CircleProgressView!
+    @IBOutlet weak var progressSeventhCircle: CircleProgressView!
     
     override func awakeFromNib() {
         super.awakeFromNib()

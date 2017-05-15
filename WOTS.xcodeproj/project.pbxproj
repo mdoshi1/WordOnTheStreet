@@ -76,6 +76,8 @@
 		957F2F501EB954B7001117DB /* ResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957F2F4F1EB954B7001117DB /* ResultsView.swift */; };
 		95A5936A1EC6506C006BFEC9 /* CredentialManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A593691EC6506C006BFEC9 /* CredentialManager.swift */; };
 		95FBEDCE1EC7DD0400D94C5D /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FBEDCD1EC7DD0300D94C5D /* UserData.swift */; };
+		F43436CA1EC69329007B6A3D /* UIColor+WOTS.swift in Sources */ = {isa = PBXBuildFile; fileRef = F43436C91EC69329007B6A3D /* UIColor+WOTS.swift */; };
+		95A5936C1EC6864F006BFEC9 /* WordIds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A5936B1EC6864F006BFEC9 /* WordIds.swift */; };
 		F46EC9821EB52F7B00BF1A53 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46EC9811EB52F7B00BF1A53 /* AppDelegate.swift */; };
 		F46EC9871EB52F7B00BF1A53 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F46EC9851EB52F7B00BF1A53 /* Main.storyboard */; };
 		F46EC9891EB52F7B00BF1A53 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F46EC9881EB52F7B00BF1A53 /* Assets.xcassets */; };
@@ -93,6 +95,7 @@
 		F4BECB1E1EBBB7A700B98BA8 /* PlaceHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4BECB1C1EBBB7A700B98BA8 /* PlaceHeaderCell.xib */; };
 		F4BECB211EBBBAB400B98BA8 /* WordCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4BECB1F1EBBBAB400B98BA8 /* WordCell.swift */; };
 		F4BECB221EBBBAB400B98BA8 /* WordCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4BECB201EBBBAB400B98BA8 /* WordCell.xib */; };
+		F4BECB551EC66E5300B98BA8 /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4BECB541EC66E5300B98BA8 /* ProfileHeaderView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -184,6 +187,8 @@
 		957F2F4F1EB954B7001117DB /* ResultsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultsView.swift; sourceTree = "<group>"; };
 		95A593691EC6506C006BFEC9 /* CredentialManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CredentialManager.swift; sourceTree = "<group>"; };
 		95FBEDCD1EC7DD0300D94C5D /* UserData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
+		F43436C91EC69329007B6A3D /* UIColor+WOTS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+WOTS.swift"; sourceTree = "<group>"; };
+		95A5936B1EC6864F006BFEC9 /* WordIds.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WordIds.swift; sourceTree = "<group>"; };
 		F46EC97E1EB52F7B00BF1A53 /* WOTS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WOTS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F46EC9811EB52F7B00BF1A53 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F46EC9861EB52F7B00BF1A53 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -203,6 +208,7 @@
 		F4BECB1C1EBBB7A700B98BA8 /* PlaceHeaderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlaceHeaderCell.xib; sourceTree = "<group>"; };
 		F4BECB1F1EBBBAB400B98BA8 /* WordCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WordCell.swift; sourceTree = "<group>"; };
 		F4BECB201EBBBAB400B98BA8 /* WordCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WordCell.xib; sourceTree = "<group>"; };
+		F4BECB541EC66E5300B98BA8 /* ProfileHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileHeaderView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -229,6 +235,7 @@
 		3FBAA2AB1EC2F6230040AD89 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				F4BECB541EC66E5300B98BA8 /* ProfileHeaderView.swift */,
 				3FBAA2A51EC2F1B70040AD89 /* ProfileViewController.swift */,
 				3FBAA2A71EC2F61C0040AD89 /* ProfileHeaderCell.swift */,
 				3FBAA2A81EC2F61C0040AD89 /* ProfileHeaderCell.xib */,
@@ -400,6 +407,7 @@
 				3F3BA9DC1EB7103C006B4FC1 /* ScrollableBottomSheetViewController.xib */,
 				F46EC9811EB52F7B00BF1A53 /* AppDelegate.swift */,
 				F4BECB0A1EB9745700B98BA8 /* Constants.swift */,
+				F43436C91EC69329007B6A3D /* UIColor+WOTS.swift */,
 				F4BECB0C1EB97C3800B98BA8 /* APIClient.swift */,
 				F46EC9931EB538DB00BF1A53 /* TabBarController.swift */,
 				F46EC9951EB5418C00BF1A53 /* ExploreViewController.swift */,
@@ -606,6 +614,7 @@
 				3FBAA2B81EC411FF0040AD89 /* GoalOptionCell.swift in Sources */,
 				3F3BA9DD1EB7103C006B4FC1 /* ScrollableBottomSheetViewController.swift in Sources */,
 				9559D0601EC8056200BAC3F5 /* AWSMobileClient.swift in Sources */,
+				F43436CA1EC69329007B6A3D /* UIColor+WOTS.swift in Sources */,
 				3F6CB68E1EC52F1E005A51BD /* QuizResultsViewController.swift in Sources */,
 				F4BECB0B1EB9745700B98BA8 /* Constants.swift in Sources */,
 				957F2F501EB954B7001117DB /* ResultsView.swift in Sources */,
@@ -654,6 +663,7 @@
 				957F2F461EB9419A001117DB /* StandardQuizViewController.swift in Sources */,
 				F4BECB211EBBBAB400B98BA8 /* WordCell.swift in Sources */,
 				9559D05D1EC8056200BAC3F5 /* AWSAPI_CX0HSKU68J_TestMobileHubClient.m in Sources */,
+				F4BECB551EC66E5300B98BA8 /* ProfileHeaderView.swift in Sources */,
 				F46EC9961EB5418C00BF1A53 /* ExploreViewController.swift in Sources */,
 				3FBAA2B51EC30CCD0040AD89 /* GoalsViewController.swift in Sources */,
 			);

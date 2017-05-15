@@ -9,63 +9,61 @@
 import UIKit
 import AWSCognitoUserPoolsSignIn
 
-class ProfileViewController: UIViewController, UIImagePickerControllerDelegate,  RememberSelectedCellProtocol {
+class ProfileViewController: UIViewController {
     
     enum ProfileDetailType: Int {
-        case header
-        case goalsheader
-        case goals
+        case goal = 0
+        case goalProgress
+        
+        static var count: Int { return ProfileDetailType.goalProgress.hashValue + 1 }
     }
+    
+    // MARK: - Properties
     
     private lazy var tableView: UITableView = {
         let tableView = UITableView()
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.isScrollEnabled = false
+        tableView.separatorStyle = .none
+        tableView.tableFooterView = UIView()
         return tableView
     }()
     
-    // value sent from GoalsViewController
-    var selectedGoalCell: String = ""
+    fileprivate lazy var tableHeaderView: ProfileHeaderView = {
+        let tableHeaderView = ProfileHeaderView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 150.0))
+        tableHeaderView.delegate = self
+        return tableHeaderView
+    }()
+    
+    let imagePicker = UIImagePickerController()
+    
+    // MARK: - ProfileViewController
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-        self.navigationItem.title = "Word on the Street"
+        self.navigationItem.title = Constants.Storyboard.AppName
+        self.automaticallyAdjustsScrollViewInsets = false
+        
+        // Setup tableview
+        tableView.tableHeaderView = tableHeaderView
         view.addSubview(tableView.usingAutolayout())
         setupConstraints()
         registerReusableCells()
-        tableView.tableFooterView = UIView()
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        if (selectedGoalCell != "") {
-            print ("value from display = \(selectedGoalCell)")
-        }
-        
         // TODO: remove after daily goal fix
         tableView.reloadData()
     }
-    
-    // impelment Protocol function
-    func setSelectedCell(valueSent: String) {
-        print ("valueSent: \(valueSent)")
-        self.selectedGoalCell = valueSent
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
 
     // MARK: - Helper methods
     
     private func setupConstraints() {
         
-        // Place TableView
+        // Table View
         NSLayoutConstraint.activate([
             tableView.topAnchor.constraint(equalTo: topLayoutGuide.bottomAnchor),
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
@@ -75,143 +73,103 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
     }
     
     private func registerReusableCells() {
-        tableView.register(UINib(nibName: "ProfileHeaderCell", bundle: nil), forCellReuseIdentifier: "ProfileHeaderCell")
         tableView.register(UINib(nibName: "GoalHeaderCell", bundle: nil), forCellReuseIdentifier: "GoalHeaderCell")
         tableView.register(UINib(nibName: "GoalsCell", bundle: nil), forCellReuseIdentifier: "GoalsCell")
     }
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-    
-    // MARK: - Button pressed
-    func editDailyGoalAction(_sender: UIButton) {
-        let buttonTag = _sender.tag
-        print("Edit daily goal button pressed! tag is \(buttonTag)")
-    }
-    
-    // MARK: - Image Picker
-
-    // TODO: this doesn't really work
-    func loadImagePicker(imagePicker: UIImagePickerController) {
-        
-        print("Button capture")
-        
-        imagePicker.delegate = self as? UIImagePickerControllerDelegate & UINavigationControllerDelegate
-        imagePicker.sourceType = .photoLibrary;
-        imagePicker.allowsEditing = false
-        
-        self.present(imagePicker, animated: true, completion: nil)
-    }
-    
-    func imagePickerController(picker: UIImagePickerController!, didFinishPickingImage image: UIImage!, editingInfo: NSDictionary!) {
-        
-        self.dismiss(animated: true, completion: { () -> Void in
-        })
-        
-        // TODO: how to actually set the profile image?
-//        profileImage.image = image
-    }
-
 }
+
 // MARK: UITableview Methods
 
 extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        switch ProfileDetailType(rawValue: indexPath.section)! {
-            case .header:
-                return 150.0
-            case .goalsheader:
-                return 55.0
-            case .goals:
-                return 55.0
+        switch ProfileDetailType(rawValue: indexPath.row)! {
+        case .goal:
+            return 37.0
+        case .goalProgress:
+            return 66.0
         }
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 3
+        return 1
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        switch ProfileDetailType(rawValue: section)! {
-        case .header:
-            return 1
-        case .goalsheader:
-            return 1
-        case .goals:
-            return 1
-        }
-    }
-    
-    //Set method for UIButton
-    func pushEditDailyGoal(sender: AnyObject) {
-        navigationController!.pushViewController(storyboard!.instantiateViewController(withIdentifier: "GoalsViewController") as! GoalsViewController, animated: true) //where ViewController is the name of the UIViewController and "ViewController" the identifier you set for it in your Storyboard
+        return ProfileDetailType.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        switch ProfileDetailType(rawValue: indexPath.section)! {
-            case .header:
-                let headerCell = tableView.dequeueReusableCell(withIdentifier: "ProfileHeaderCell", for: indexPath) as! ProfileHeaderCell
-                
-                // TODO: use database/user accounts to fill in name
-                headerCell.profileNameLabel.text = AWSCognitoUserPoolsSignInProvider.sharedInstance().getUserPool().currentUser()?.username
-                headerCell.profileImageView.image = UIImage(named: "defaultProfileImage")
-//                  headerCell.takeQuizButton.addTarget(self, action: #selector(toPlaceQuiz), for: .touchUpInside)
-                return headerCell
-            
-        case .goalsheader:
+        switch ProfileDetailType(rawValue: indexPath.row)! {
+        case .goal:
             
             // TODO: use database/user accounts to fill in goals
-            let goalsHeaderCell = tableView.dequeueReusableCell(withIdentifier: "GoalHeaderCell", for: indexPath) as! GoalHeaderCell
-            
-            goalsHeaderCell.tag = indexPath.row
+            let goalCell = tableView.dequeueReusableCell(withIdentifier: Constants.Storyboard.GoalCell, for: indexPath) as! GoalHeaderCell
+            goalCell.delegate = self
             
             // TODO: retrieve from database what the selected goal is
             // TODO: refactor after daily goal fix
-            var dailyGoalFreqText = ""
+            var dailyGoalText = ""
             let selectedRow = UserDefaults.standard.integer(forKey: "daily_goal")
             switch selectedRow {
             case 0:
-                dailyGoalFreqText = "1 word/day"
+                dailyGoalText = "1 word/day"
             case 1:
-                dailyGoalFreqText = "3 word/day"
+                dailyGoalText = "3 words/day"
             case 2:
-                dailyGoalFreqText = "5 word/day"
+                dailyGoalText = "5 words/day"
             case 3:
-                dailyGoalFreqText = "8 word/day"
+                dailyGoalText = "8 words/day"
             default:
                 break
             }
-            goalsHeaderCell.dailyGoalFreqLabel.text = dailyGoalFreqText
+            goalCell.goalLabel.text = dailyGoalText
             
-            //Set button's target
-            goalsHeaderCell.editDailyGoalButton.addTarget(self, action: #selector(pushEditDailyGoal), for: .touchUpInside)
+            return goalCell
             
-            
-            return goalsHeaderCell
-            
-        case .goals:
+        case .goalProgress:
             
             // TODO: use database/user accounts to fill in goals
-            let goalsCell = tableView.dequeueReusableCell(withIdentifier: "GoalsCell", for: indexPath) as! GoalsCell
+            let goalProgressCell = tableView.dequeueReusableCell(withIdentifier: "GoalsCell", for: indexPath) as! GoalsCell
             
             // TODO: set the progress for the circles based on database
-            goalsCell.progressFirstCircle.progress = 0.5 // example
+            goalProgressCell.progressFirstCircle.progress = 0.5 // example
             
-            
-            // TODO:
-            
-            
-            return goalsCell
+            return goalProgressCell
         }
     }
-    
 }
 
+// MARK: - ProfileHeader Methods
+
+extension ProfileViewController: ProfileHeaderDelegate {
+    func changeProfileImage() {
+        if UIImagePickerController.isSourceTypeAvailable(.savedPhotosAlbum) {
+            imagePicker.delegate = self
+            imagePicker.sourceType = .savedPhotosAlbum
+            imagePicker.allowsEditing = false
+            present(imagePicker, animated: true, completion: nil)
+        }
+    }
+}
+
+// MARK: - GoalCell Methods
+
+extension ProfileViewController: GoalCellDelegate {
+    func editGoal() {
+        performSegue(withIdentifier: "toEditGoal", sender: nil)
+    }
+}
+
+// MARK: - UIImagePickerController Methods
+
+extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        
+        // TODO: Send profile image to backend
+        if let selectedImage = info["UIImagePickerControllerOriginalImage"] as? UIImage {
+            tableHeaderView.setProfileImage(selectedImage)
+        }
+        dismiss(animated: true, completion: nil)
+    }
+}
