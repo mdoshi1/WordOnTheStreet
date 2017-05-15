@@ -30,25 +30,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         GMSServices.provideAPIKey(Constants.APIServices.GMSServicesKey)
         GMSPlacesClient.provideAPIKey(Constants.APIServices.GMSPlacesKey)
         
-//        let credentialsProvider = AWSCognitoCredentialsProvider(regionType:.USEast1,
-//                                                                identityPoolId: Constants.APIServices.AWSPoolId)
+        let credentialsProvider = AWSCognitoCredentialsProvider(regionType:.USEast1,
+                                                                identityPoolId: Constants.APIServices.AWSPoolId)
         
         
-        let configuration = AWSServiceConfiguration(region: .USEast1, credentialsProvider: CredentialManager.credentialsProvider)
+        let configuration = AWSServiceConfiguration(region: .USEast1, credentialsProvider: credentialsProvider)
         
         AWSServiceManager.default().defaultServiceConfiguration = configuration
-        while(AWSIdentityManager.default().identityId == nil){
-           CredentialManager.credentialsProvider.getIdentityId().continueWith { (task) -> Any? in
-                if (task.error != nil) {
-                    print("Error: " + (task.error?.localizedDescription)!)
-                }
-                return nil
-            }
-        }
+//        while(AWSIdentityManager.default().identityId == nil){
+//           CredentialManager.credentialsProvider.getIdentityId().continueWith { (task) -> Any? in
+//                if (task.error != nil) {
+//                    print("Error: " + (task.error?.localizedDescription)!)
+//                }
+//                return nil
+//            }
+//        }
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
 
         if !AWSSignInManager.sharedInstance().isLoggedIn {
             if let loginVC = storyboard.instantiateViewController(withIdentifier: "SignInViewController") as? SignInViewController {
+                loginVC.canCancel = false
+                loginVC.didCompleteSignIn = onSignIn
                 window?.rootViewController = loginVC
             }
         } else {

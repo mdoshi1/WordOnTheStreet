@@ -8,12 +8,14 @@
 
 import UIKit
 
+
 class ProfileHeaderCell: UITableViewCell {
 
     @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var profileNameLabel: UILabel!
     @IBOutlet weak var profileImageEditButton: UIButton!
     weak var delegate: ChangePictureProtocol?
+    
 
     @IBAction func changeProfileImage(_ sender: Any) {
         let imagePickerVC = UIImagePickerController()
@@ -28,6 +30,7 @@ class ProfileHeaderCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
     }
+
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)

@@ -41,7 +41,23 @@ class GoalsViewController: UIViewController {
         super.viewDidAppear(animated)
         
         // TODO: refactor after daily goal fix
-        let selectedRow = UserDefaults.standard.integer(forKey: dailyGoal)
+        var selectedRow = 0;
+        switch SessionManager.sharedInstance.userInfo?._wordGoal as! Int{
+        case 1:
+            selectedRow = 0
+            break
+        case 3:
+            selectedRow = 1
+            break
+        case 5:
+            selectedRow = 2
+            break
+        case 8:
+            selectedRow = 3
+            break
+        default:
+            break
+        }
         let selectedIndex = IndexPath(row: selectedRow, section: 0)
         tableView.selectRow(at: selectedIndex, animated: false, scrollPosition: .none)
         tableView.cellForRow(at: selectedIndex)?.accessoryType = .checkmark
@@ -55,7 +71,8 @@ class GoalsViewController: UIViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         if let selectedIndex = tableView.indexPathForSelectedRow {
-            UserDefaults.standard.set(selectedIndex.row, forKey: dailyGoal)
+            SessionManager.sharedInstance.userInfo?._wordGoal = Int(goalOptions[selectedIndex.row]["freq"]!)! as NSNumber
+            SessionManager.sharedInstance.setUserWordGoal(goal: Int(goalOptions[selectedIndex.row]["freq"]!)!)
         }
     }
     

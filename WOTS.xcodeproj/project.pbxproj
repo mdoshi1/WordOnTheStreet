@@ -28,6 +28,21 @@
 		3FBAA2BB1EC434710040AD89 /* CircleProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FBAA2BA1EC434710040AD89 /* CircleProgressView.swift */; };
 		3FC752F01EC67D2C009D9924 /* QuizResultsHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FC752EE1EC67D2C009D9924 /* QuizResultsHeaderCell.swift */; };
 		3FC752F11EC67D2C009D9924 /* QuizResultsHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3FC752EF1EC67D2C009D9924 /* QuizResultsHeaderCell.xib */; };
+		9559D0451EC804D100BAC3F5 /* AWSS3.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9559D0441EC804D100BAC3F5 /* AWSS3.framework */; };
+		9559D0461EC804D100BAC3F5 /* AWSS3.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9559D0441EC804D100BAC3F5 /* AWSS3.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		9559D05B1EC8056200BAC3F5 /* AWSAPI_CX0HSKU68J_RequestSchema.m in Sources */ = {isa = PBXBuildFile; fileRef = 9559D04A1EC8056200BAC3F5 /* AWSAPI_CX0HSKU68J_RequestSchema.m */; };
+		9559D05C1EC8056200BAC3F5 /* AWSAPI_CX0HSKU68J_ResponseSchema.m in Sources */ = {isa = PBXBuildFile; fileRef = 9559D04C1EC8056200BAC3F5 /* AWSAPI_CX0HSKU68J_ResponseSchema.m */; };
+		9559D05D1EC8056200BAC3F5 /* AWSAPI_CX0HSKU68J_TestMobileHubClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 9559D04E1EC8056200BAC3F5 /* AWSAPI_CX0HSKU68J_TestMobileHubClient.m */; };
+		9559D05E1EC8056200BAC3F5 /* AWSCognitoUserPoolsSignIn.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9559D04F1EC8056200BAC3F5 /* AWSCognitoUserPoolsSignIn.framework */; };
+		9559D05F1EC8056200BAC3F5 /* AWSConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9559D0501EC8056200BAC3F5 /* AWSConfiguration.swift */; };
+		9559D0601EC8056200BAC3F5 /* AWSMobileClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9559D0511EC8056200BAC3F5 /* AWSMobileClient.swift */; };
+		9559D0611EC8056200BAC3F5 /* AWSMobileHubHelper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9559D0521EC8056200BAC3F5 /* AWSMobileHubHelper.framework */; };
+		9559D0621EC8056200BAC3F5 /* Achievements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9559D0561EC8056200BAC3F5 /* Achievements.swift */; };
+		9559D0631EC8056200BAC3F5 /* PlacesVocabulary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9559D0571EC8056200BAC3F5 /* PlacesVocabulary.swift */; };
+		9559D0641EC8056200BAC3F5 /* UserInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9559D0581EC8056200BAC3F5 /* UserInformation.swift */; };
+		9559D0651EC8056200BAC3F5 /* UserVocabulary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9559D0591EC8056200BAC3F5 /* UserVocabulary.swift */; };
+		9559D0661EC8056200BAC3F5 /* WordPairs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9559D05A1EC8056200BAC3F5 /* WordPairs.swift */; };
+		955A95E11EC9402F0002BCEE /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 955A95E01EC9402F0002BCEE /* SessionManager.swift */; };
 		9578455F1EC42CDA00AA551F /* Sdk in Resources */ = {isa = PBXBuildFile; fileRef = 9578455E1EC42CDA00AA551F /* Sdk */; };
 		957845641EC42D0700AA551F /* AWSAPIGateway.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 957845601EC42D0700AA551F /* AWSAPIGateway.framework */; };
 		957845651EC42D0700AA551F /* AWSAPIGateway.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 957845601EC42D0700AA551F /* AWSAPIGateway.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -37,17 +52,6 @@
 		957845691EC42D0700AA551F /* AWSCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 957845621EC42D0700AA551F /* AWSCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		9578456A1EC42D0700AA551F /* AWSDynamoDB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 957845631EC42D0700AA551F /* AWSDynamoDB.framework */; };
 		9578456B1EC42D0700AA551F /* AWSDynamoDB.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 957845631EC42D0700AA551F /* AWSDynamoDB.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		957845801EC42D2900AA551F /* AWSAPI_CX0HSKU68J_RequestSchema.m in Sources */ = {isa = PBXBuildFile; fileRef = 957845701EC42D2900AA551F /* AWSAPI_CX0HSKU68J_RequestSchema.m */; };
-		957845811EC42D2900AA551F /* AWSAPI_CX0HSKU68J_ResponseSchema.m in Sources */ = {isa = PBXBuildFile; fileRef = 957845721EC42D2900AA551F /* AWSAPI_CX0HSKU68J_ResponseSchema.m */; };
-		957845821EC42D2900AA551F /* AWSAPI_CX0HSKU68J_TestMobileHubClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 957845741EC42D2900AA551F /* AWSAPI_CX0HSKU68J_TestMobileHubClient.m */; };
-		957845831EC42D2900AA551F /* AWSCognitoUserPoolsSignIn.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 957845751EC42D2900AA551F /* AWSCognitoUserPoolsSignIn.framework */; };
-		957845841EC42D2900AA551F /* AWSConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957845761EC42D2900AA551F /* AWSConfiguration.swift */; };
-		957845851EC42D2A00AA551F /* AWSMobileClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957845771EC42D2900AA551F /* AWSMobileClient.swift */; };
-		957845861EC42D2A00AA551F /* AWSMobileHubHelper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 957845781EC42D2900AA551F /* AWSMobileHubHelper.framework */; };
-		957845871EC42D2A00AA551F /* ApplicationUsers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9578457C1EC42D2900AA551F /* ApplicationUsers.swift */; };
-		957845881EC42D2A00AA551F /* EnglishVocabSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9578457D1EC42D2900AA551F /* EnglishVocabSet.swift */; };
-		957845891EC42D2A00AA551F /* PlacesVocabulary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9578457E1EC42D2900AA551F /* PlacesVocabulary.swift */; };
-		9578458A1EC42D2A00AA551F /* WordPairs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9578457F1EC42D2900AA551F /* WordPairs.swift */; };
 		9578459C1EC42D4400AA551F /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9578458D1EC42D4400AA551F /* SignInViewController.swift */; };
 		9578459D1EC42D4400AA551F /* FormTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9578458F1EC42D4400AA551F /* FormTableCell.swift */; };
 		9578459E1EC42D4400AA551F /* FormTableDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957845901EC42D4400AA551F /* FormTableDelegate.swift */; };
@@ -72,8 +76,8 @@
 		957F2F4C1EB95467001117DB /* ResultsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 957F2F4B1EB95467001117DB /* ResultsView.xib */; };
 		957F2F501EB954B7001117DB /* ResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957F2F4F1EB954B7001117DB /* ResultsView.swift */; };
 		95A5936A1EC6506C006BFEC9 /* CredentialManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A593691EC6506C006BFEC9 /* CredentialManager.swift */; };
+		95FBEDCE1EC7DD0400D94C5D /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FBEDCD1EC7DD0300D94C5D /* UserData.swift */; };
 		F43436CA1EC69329007B6A3D /* UIColor+WOTS.swift in Sources */ = {isa = PBXBuildFile; fileRef = F43436C91EC69329007B6A3D /* UIColor+WOTS.swift */; };
-		95A5936C1EC6864F006BFEC9 /* WordIds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A5936B1EC6864F006BFEC9 /* WordIds.swift */; };
 		F46EC9821EB52F7B00BF1A53 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46EC9811EB52F7B00BF1A53 /* AppDelegate.swift */; };
 		F46EC9871EB52F7B00BF1A53 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F46EC9851EB52F7B00BF1A53 /* Main.storyboard */; };
 		F46EC9891EB52F7B00BF1A53 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F46EC9881EB52F7B00BF1A53 /* Assets.xcassets */; };
@@ -105,6 +109,7 @@
 				957845671EC42D0700AA551F /* AWSCognitoIdentityProvider.framework in Embed Frameworks */,
 				9578456B1EC42D0700AA551F /* AWSDynamoDB.framework in Embed Frameworks */,
 				957845691EC42D0700AA551F /* AWSCore.framework in Embed Frameworks */,
+				9559D0461EC804D100BAC3F5 /* AWSS3.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -138,26 +143,29 @@
 		3FC752FC1EC915FD009D9924 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		5940474782F3E9AB78BDC15F /* Pods-WOTS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WOTS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WOTS/Pods-WOTS.debug.xcconfig"; sourceTree = "<group>"; };
 		749084860D94B5BF673E4213 /* Pods_WOTS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WOTS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9559D0441EC804D100BAC3F5 /* AWSS3.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AWSS3.framework; path = Sdk/Aws/AWSS3.framework; sourceTree = "<group>"; };
+		9559D0491EC8056200BAC3F5 /* AWSAPI_CX0HSKU68J_RequestSchema.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWSAPI_CX0HSKU68J_RequestSchema.h; sourceTree = "<group>"; };
+		9559D04A1EC8056200BAC3F5 /* AWSAPI_CX0HSKU68J_RequestSchema.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AWSAPI_CX0HSKU68J_RequestSchema.m; sourceTree = "<group>"; };
+		9559D04B1EC8056200BAC3F5 /* AWSAPI_CX0HSKU68J_ResponseSchema.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWSAPI_CX0HSKU68J_ResponseSchema.h; sourceTree = "<group>"; };
+		9559D04C1EC8056200BAC3F5 /* AWSAPI_CX0HSKU68J_ResponseSchema.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AWSAPI_CX0HSKU68J_ResponseSchema.m; sourceTree = "<group>"; };
+		9559D04D1EC8056200BAC3F5 /* AWSAPI_CX0HSKU68J_TestMobileHubClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWSAPI_CX0HSKU68J_TestMobileHubClient.h; sourceTree = "<group>"; };
+		9559D04E1EC8056200BAC3F5 /* AWSAPI_CX0HSKU68J_TestMobileHubClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AWSAPI_CX0HSKU68J_TestMobileHubClient.m; sourceTree = "<group>"; };
+		9559D04F1EC8056200BAC3F5 /* AWSCognitoUserPoolsSignIn.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AWSCognitoUserPoolsSignIn.framework; sourceTree = "<group>"; };
+		9559D0501EC8056200BAC3F5 /* AWSConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AWSConfiguration.swift; sourceTree = "<group>"; };
+		9559D0511EC8056200BAC3F5 /* AWSMobileClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AWSMobileClient.swift; sourceTree = "<group>"; };
+		9559D0521EC8056200BAC3F5 /* AWSMobileHubHelper.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AWSMobileHubHelper.framework; sourceTree = "<group>"; };
+		9559D0531EC8056200BAC3F5 /* Bridging_Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bridging_Header.h; sourceTree = "<group>"; };
+		9559D0561EC8056200BAC3F5 /* Achievements.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Achievements.swift; sourceTree = "<group>"; };
+		9559D0571EC8056200BAC3F5 /* PlacesVocabulary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlacesVocabulary.swift; sourceTree = "<group>"; };
+		9559D0581EC8056200BAC3F5 /* UserInformation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInformation.swift; sourceTree = "<group>"; };
+		9559D0591EC8056200BAC3F5 /* UserVocabulary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserVocabulary.swift; sourceTree = "<group>"; };
+		9559D05A1EC8056200BAC3F5 /* WordPairs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WordPairs.swift; sourceTree = "<group>"; };
+		955A95E01EC9402F0002BCEE /* SessionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionManager.swift; sourceTree = "<group>"; };
 		9578455E1EC42CDA00AA551F /* Sdk */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Sdk; path = ../Sdk; sourceTree = "<group>"; };
 		957845601EC42D0700AA551F /* AWSAPIGateway.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AWSAPIGateway.framework; path = Sdk/Aws/AWSAPIGateway.framework; sourceTree = "<group>"; };
 		957845611EC42D0700AA551F /* AWSCognitoIdentityProvider.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AWSCognitoIdentityProvider.framework; path = Sdk/Aws/AWSCognitoIdentityProvider.framework; sourceTree = "<group>"; };
 		957845621EC42D0700AA551F /* AWSCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AWSCore.framework; path = Sdk/Aws/AWSCore.framework; sourceTree = "<group>"; };
 		957845631EC42D0700AA551F /* AWSDynamoDB.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AWSDynamoDB.framework; path = Sdk/Aws/AWSDynamoDB.framework; sourceTree = "<group>"; };
-		9578456F1EC42D2900AA551F /* AWSAPI_CX0HSKU68J_RequestSchema.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWSAPI_CX0HSKU68J_RequestSchema.h; sourceTree = "<group>"; };
-		957845701EC42D2900AA551F /* AWSAPI_CX0HSKU68J_RequestSchema.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AWSAPI_CX0HSKU68J_RequestSchema.m; sourceTree = "<group>"; };
-		957845711EC42D2900AA551F /* AWSAPI_CX0HSKU68J_ResponseSchema.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWSAPI_CX0HSKU68J_ResponseSchema.h; sourceTree = "<group>"; };
-		957845721EC42D2900AA551F /* AWSAPI_CX0HSKU68J_ResponseSchema.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AWSAPI_CX0HSKU68J_ResponseSchema.m; sourceTree = "<group>"; };
-		957845731EC42D2900AA551F /* AWSAPI_CX0HSKU68J_TestMobileHubClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWSAPI_CX0HSKU68J_TestMobileHubClient.h; sourceTree = "<group>"; };
-		957845741EC42D2900AA551F /* AWSAPI_CX0HSKU68J_TestMobileHubClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AWSAPI_CX0HSKU68J_TestMobileHubClient.m; sourceTree = "<group>"; };
-		957845751EC42D2900AA551F /* AWSCognitoUserPoolsSignIn.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AWSCognitoUserPoolsSignIn.framework; sourceTree = "<group>"; };
-		957845761EC42D2900AA551F /* AWSConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AWSConfiguration.swift; sourceTree = "<group>"; };
-		957845771EC42D2900AA551F /* AWSMobileClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AWSMobileClient.swift; sourceTree = "<group>"; };
-		957845781EC42D2900AA551F /* AWSMobileHubHelper.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AWSMobileHubHelper.framework; sourceTree = "<group>"; };
-		957845791EC42D2900AA551F /* Bridging_Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bridging_Header.h; sourceTree = "<group>"; };
-		9578457C1EC42D2900AA551F /* ApplicationUsers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplicationUsers.swift; sourceTree = "<group>"; };
-		9578457D1EC42D2900AA551F /* EnglishVocabSet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnglishVocabSet.swift; sourceTree = "<group>"; };
-		9578457E1EC42D2900AA551F /* PlacesVocabulary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlacesVocabulary.swift; sourceTree = "<group>"; };
-		9578457F1EC42D2900AA551F /* WordPairs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WordPairs.swift; sourceTree = "<group>"; };
 		9578458D1EC42D4400AA551F /* SignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		9578458F1EC42D4400AA551F /* FormTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormTableCell.swift; sourceTree = "<group>"; };
 		957845901EC42D4400AA551F /* FormTableDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormTableDelegate.swift; sourceTree = "<group>"; };
@@ -182,8 +190,8 @@
 		957F2F4B1EB95467001117DB /* ResultsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ResultsView.xib; sourceTree = "<group>"; };
 		957F2F4F1EB954B7001117DB /* ResultsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultsView.swift; sourceTree = "<group>"; };
 		95A593691EC6506C006BFEC9 /* CredentialManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CredentialManager.swift; sourceTree = "<group>"; };
+		95FBEDCD1EC7DD0300D94C5D /* UserData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
 		F43436C91EC69329007B6A3D /* UIColor+WOTS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+WOTS.swift"; sourceTree = "<group>"; };
-		95A5936B1EC6864F006BFEC9 /* WordIds.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WordIds.swift; sourceTree = "<group>"; };
 		F46EC97E1EB52F7B00BF1A53 /* WOTS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WOTS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F46EC9811EB52F7B00BF1A53 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F46EC9861EB52F7B00BF1A53 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -211,15 +219,16 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9559D0611EC8056200BAC3F5 /* AWSMobileHubHelper.framework in Frameworks */,
 				957EA0C61EB853BB00E7750B /* libsqlite3.tbd in Frameworks */,
-				957845831EC42D2900AA551F /* AWSCognitoUserPoolsSignIn.framework in Frameworks */,
 				957EA0C41EB853B300E7750B /* libz.tbd in Frameworks */,
 				957845641EC42D0700AA551F /* AWSAPIGateway.framework in Frameworks */,
+				9559D0451EC804D100BAC3F5 /* AWSS3.framework in Frameworks */,
 				957845661EC42D0700AA551F /* AWSCognitoIdentityProvider.framework in Frameworks */,
 				1A89F9D8B7ECB90639BAEDC0 /* Pods_WOTS.framework in Frameworks */,
 				9578456A1EC42D0700AA551F /* AWSDynamoDB.framework in Frameworks */,
 				957845681EC42D0700AA551F /* AWSCore.framework in Frameworks */,
-				957845861EC42D2A00AA551F /* AWSMobileHubHelper.framework in Frameworks */,
+				9559D05E1EC8056200BAC3F5 /* AWSCognitoUserPoolsSignIn.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -271,6 +280,7 @@
 				3FC752FC1EC915FD009D9924 /* SystemConfiguration.framework */,
 				3FC752FA1EC915F5009D9924 /* CoreData.framework */,
 				3FC752F81EC915ED009D9924 /* AdSupport.framework */,
+				9559D0441EC804D100BAC3F5 /* AWSS3.framework */,
 				957845601EC42D0700AA551F /* AWSAPIGateway.framework */,
 				957845611EC42D0700AA551F /* AWSCognitoIdentityProvider.framework */,
 				957845621EC42D0700AA551F /* AWSCore.framework */,
@@ -282,49 +292,49 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		9578456D1EC42D2900AA551F /* AmazonAws */ = {
+		9559D0471EC8056200BAC3F5 /* AmazonAws */ = {
 			isa = PBXGroup;
 			children = (
-				9578456E1EC42D2900AA551F /* Api */,
-				957845751EC42D2900AA551F /* AWSCognitoUserPoolsSignIn.framework */,
-				957845761EC42D2900AA551F /* AWSConfiguration.swift */,
-				957845771EC42D2900AA551F /* AWSMobileClient.swift */,
-				957845781EC42D2900AA551F /* AWSMobileHubHelper.framework */,
-				957845791EC42D2900AA551F /* Bridging_Header.h */,
-				9578457A1EC42D2900AA551F /* Models */,
+				9559D0481EC8056200BAC3F5 /* Api */,
+				9559D04F1EC8056200BAC3F5 /* AWSCognitoUserPoolsSignIn.framework */,
+				9559D0501EC8056200BAC3F5 /* AWSConfiguration.swift */,
+				9559D0511EC8056200BAC3F5 /* AWSMobileClient.swift */,
+				9559D0521EC8056200BAC3F5 /* AWSMobileHubHelper.framework */,
+				9559D0531EC8056200BAC3F5 /* Bridging_Header.h */,
+				9559D0541EC8056200BAC3F5 /* Models */,
 			);
 			path = AmazonAws;
 			sourceTree = "<group>";
 		};
-		9578456E1EC42D2900AA551F /* Api */ = {
+		9559D0481EC8056200BAC3F5 /* Api */ = {
 			isa = PBXGroup;
 			children = (
-				9578456F1EC42D2900AA551F /* AWSAPI_CX0HSKU68J_RequestSchema.h */,
-				957845701EC42D2900AA551F /* AWSAPI_CX0HSKU68J_RequestSchema.m */,
-				957845711EC42D2900AA551F /* AWSAPI_CX0HSKU68J_ResponseSchema.h */,
-				957845721EC42D2900AA551F /* AWSAPI_CX0HSKU68J_ResponseSchema.m */,
-				957845731EC42D2900AA551F /* AWSAPI_CX0HSKU68J_TestMobileHubClient.h */,
-				957845741EC42D2900AA551F /* AWSAPI_CX0HSKU68J_TestMobileHubClient.m */,
+				9559D0491EC8056200BAC3F5 /* AWSAPI_CX0HSKU68J_RequestSchema.h */,
+				9559D04A1EC8056200BAC3F5 /* AWSAPI_CX0HSKU68J_RequestSchema.m */,
+				9559D04B1EC8056200BAC3F5 /* AWSAPI_CX0HSKU68J_ResponseSchema.h */,
+				9559D04C1EC8056200BAC3F5 /* AWSAPI_CX0HSKU68J_ResponseSchema.m */,
+				9559D04D1EC8056200BAC3F5 /* AWSAPI_CX0HSKU68J_TestMobileHubClient.h */,
+				9559D04E1EC8056200BAC3F5 /* AWSAPI_CX0HSKU68J_TestMobileHubClient.m */,
 			);
 			path = Api;
 			sourceTree = "<group>";
 		};
-		9578457A1EC42D2900AA551F /* Models */ = {
+		9559D0541EC8056200BAC3F5 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				9578457B1EC42D2900AA551F /* NoSQL */,
+				9559D0551EC8056200BAC3F5 /* NoSQL */,
 			);
 			path = Models;
 			sourceTree = "<group>";
 		};
-		9578457B1EC42D2900AA551F /* NoSQL */ = {
+		9559D0551EC8056200BAC3F5 /* NoSQL */ = {
 			isa = PBXGroup;
 			children = (
-				9578457C1EC42D2900AA551F /* ApplicationUsers.swift */,
-				9578457D1EC42D2900AA551F /* EnglishVocabSet.swift */,
-				9578457E1EC42D2900AA551F /* PlacesVocabulary.swift */,
-				9578457F1EC42D2900AA551F /* WordPairs.swift */,
-				95A5936B1EC6864F006BFEC9 /* WordIds.swift */,
+				9559D0561EC8056200BAC3F5 /* Achievements.swift */,
+				9559D0571EC8056200BAC3F5 /* PlacesVocabulary.swift */,
+				9559D0581EC8056200BAC3F5 /* UserInformation.swift */,
+				9559D0591EC8056200BAC3F5 /* UserVocabulary.swift */,
+				9559D05A1EC8056200BAC3F5 /* WordPairs.swift */,
 			);
 			path = NoSQL;
 			sourceTree = "<group>";
@@ -373,6 +383,7 @@
 			children = (
 				957F2F431EB92F72001117DB /* NoteCardData.swift */,
 				95A593691EC6506C006BFEC9 /* CredentialManager.swift */,
+				95FBEDCD1EC7DD0300D94C5D /* UserData.swift */,
 			);
 			name = AwsConnections;
 			sourceTree = "<group>";
@@ -417,13 +428,14 @@
 				957F2F4F1EB954B7001117DB /* ResultsView.swift */,
 				9578458B1EC42D4400AA551F /* SignIn */,
 				957F2F421EB92F43001117DB /* AwsConnections */,
+				9559D0471EC8056200BAC3F5 /* AmazonAws */,
 				957F2F411EB92F12001117DB /* NoteCardView */,
-				9578456D1EC42D2900AA551F /* AmazonAws */,
 				9578455E1EC42CDA00AA551F /* Sdk */,
 				F4BECB091EB9741F00B98BA8 /* Supporting Files */,
 				3FBAA2AB1EC2F6230040AD89 /* Profile */,
 				3FBAA2BA1EC434710040AD89 /* CircleProgressView.swift */,
 				3FC752F21EC67D9F009D9924 /* QuizResults */,
+				955A95E01EC9402F0002BCEE /* SessionManager.swift */,
 			);
 			path = WOTS;
 			sourceTree = "<group>";
@@ -606,14 +618,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				957845811EC42D2900AA551F /* AWSAPI_CX0HSKU68J_ResponseSchema.m in Sources */,
 				3FBAA2B81EC411FF0040AD89 /* GoalOptionCell.swift in Sources */,
 				3F3BA9DD1EB7103C006B4FC1 /* ScrollableBottomSheetViewController.swift in Sources */,
-				957845851EC42D2A00AA551F /* AWSMobileClient.swift in Sources */,
+				9559D0601EC8056200BAC3F5 /* AWSMobileClient.swift in Sources */,
 				F43436CA1EC69329007B6A3D /* UIColor+WOTS.swift in Sources */,
 				3F6CB68E1EC52F1E005A51BD /* QuizResultsViewController.swift in Sources */,
-				957845801EC42D2900AA551F /* AWSAPI_CX0HSKU68J_RequestSchema.m in Sources */,
 				F4BECB0B1EB9745700B98BA8 /* Constants.swift in Sources */,
+				955A95E11EC9402F0002BCEE /* SessionManager.swift in Sources */,
 				957F2F501EB954B7001117DB /* ResultsView.swift in Sources */,
 				3FBAA2A91EC2F61C0040AD89 /* ProfileHeaderCell.swift in Sources */,
 				95A5936A1EC6506C006BFEC9 /* CredentialManager.swift in Sources */,
@@ -623,7 +634,6 @@
 				3FC752F01EC67D2C009D9924 /* QuizResultsHeaderCell.swift in Sources */,
 				F46EC9941EB538DB00BF1A53 /* TabBarController.swift in Sources */,
 				F4BECB131EBB915000B98BA8 /* PlaceDetailViewController.swift in Sources */,
-				957845841EC42D2900AA551F /* AWSConfiguration.swift in Sources */,
 				957845A31EC42D4400AA551F /* UserPoolNewPasswordViewController.swift in Sources */,
 				957845A01EC42D4400AA551F /* TableInputCell.swift in Sources */,
 				9578459D1EC42D4400AA551F /* FormTableCell.swift in Sources */,
@@ -636,27 +646,31 @@
 				957845A51EC42D4400AA551F /* UserPoolsIdentityProfile.swift in Sources */,
 				957845A71EC42D4400AA551F /* UserPoolSignUpViewController.swift in Sources */,
 				9578459E1EC42D4400AA551F /* FormTableDelegate.swift in Sources */,
-				95A5936C1EC6864F006BFEC9 /* WordIds.swift in Sources */,
-				957845881EC42D2A00AA551F /* EnglishVocabSet.swift in Sources */,
-				957845821EC42D2900AA551F /* AWSAPI_CX0HSKU68J_TestMobileHubClient.m in Sources */,
+				9559D05B1EC8056200BAC3F5 /* AWSAPI_CX0HSKU68J_RequestSchema.m in Sources */,
 				95791F9C1EB55A9700F9FA96 /* NoteCardOverlayView.swift in Sources */,
-				957845871EC42D2A00AA551F /* ApplicationUsers.swift in Sources */,
 				95791F861EB53D4700F9FA96 /* NoteCardViewController.swift in Sources */,
+				9559D0621EC8056200BAC3F5 /* Achievements.swift in Sources */,
+				9559D0661EC8056200BAC3F5 /* WordPairs.swift in Sources */,
 				F4BECB1D1EBBB7A700B98BA8 /* PlaceHeaderCell.swift in Sources */,
 				957845A11EC42D4400AA551F /* UserPoolForgotPasswordViewController.swift in Sources */,
 				957845A81EC42D4400AA551F /* UserPoolsUIHelper.swift in Sources */,
 				9578459F1EC42D4400AA551F /* SignInViewControllerExtensions.swift in Sources */,
-				957845891EC42D2A00AA551F /* PlacesVocabulary.swift in Sources */,
+				9559D0641EC8056200BAC3F5 /* UserInformation.swift in Sources */,
 				95791F981EB5513300F9FA96 /* NoteCardView.swift in Sources */,
+				95FBEDCE1EC7DD0400D94C5D /* UserData.swift in Sources */,
 				957845A61EC42D4400AA551F /* UserPoolSignUpConfirmationViewController.swift in Sources */,
+				9559D05F1EC8056200BAC3F5 /* AWSConfiguration.swift in Sources */,
 				3FBAA2BB1EC434710040AD89 /* CircleProgressView.swift in Sources */,
 				3F6CB6911EC530DD005A51BD /* QuizResultsCell.swift in Sources */,
 				3F3BA9D31EB6FEF5006B4FC1 /* DefaultTableViewCell.swift in Sources */,
+				9559D0651EC8056200BAC3F5 /* UserVocabulary.swift in Sources */,
 				F4BECB181EBBB67900B98BA8 /* PlaceImageCell.swift in Sources */,
+				9559D05C1EC8056200BAC3F5 /* AWSAPI_CX0HSKU68J_ResponseSchema.m in Sources */,
+				9559D0631EC8056200BAC3F5 /* PlacesVocabulary.swift in Sources */,
 				F46EC9821EB52F7B00BF1A53 /* AppDelegate.swift in Sources */,
 				957F2F461EB9419A001117DB /* StandardQuizViewController.swift in Sources */,
-				9578458A1EC42D2A00AA551F /* WordPairs.swift in Sources */,
 				F4BECB211EBBBAB400B98BA8 /* WordCell.swift in Sources */,
+				9559D05D1EC8056200BAC3F5 /* AWSAPI_CX0HSKU68J_TestMobileHubClient.m in Sources */,
 				F4BECB551EC66E5300B98BA8 /* ProfileHeaderView.swift in Sources */,
 				F46EC9961EB5418C00BF1A53 /* ExploreViewController.swift in Sources */,
 				3FBAA2B51EC30CCD0040AD89 /* GoalsViewController.swift in Sources */,

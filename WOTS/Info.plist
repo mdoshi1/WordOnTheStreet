@@ -4,6 +4,16 @@
 <dict>
 	<key>AWS</key>
 	<dict>
+        <key>UserFileManager</key>
+        <dict>
+            <key>Default</key>
+            <dict>
+                <key>S3Bucket</key>
+                <string>wordonthestreet-userfiles-mobilehub-915338963</string>
+                <key>Region</key>
+                <string>us-east-1</string>
+            </dict>
+        </dict>
 		<key>CredentialsProvider</key>
 		<dict>
 			<key>CognitoIdentity</key>
@@ -35,6 +45,20 @@
 			<key>ProjectClientId</key>
 			<string>MobileHub 66a13ecb-e1ce-4759-8c62-768d031dfe93 aws-my-sample-app-ios-swift-v0.14</string>
 		</dict>
+        <key>CognitoUserPool</key>
+        <dict>
+            <key>Default</key>
+            <dict>
+                <key>Region</key>
+                <string>us-east-1</string>
+                <key>CognitoUserPoolId</key>
+                <string>us-east-1_LmNZkMGbU</string>
+                <key>CognitoUserPoolAppClientId</key>
+                <string>1g79s9sjkg149u9d157tk4hdb</string>
+                <key>CognitoUserPoolAppClientSecret</key>
+                <string>1bu8a94qbfs5b6od3r24mcnn3hu95kca1e2e9pjjuni5h9u4hvcm</string>
+            </dict>
+        </dict>
 	</dict>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>

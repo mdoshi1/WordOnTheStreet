@@ -105,22 +105,8 @@ class NoteCardViewController: UIViewController {
             }
         }
 
-        // If user is not logged in, present the sign in screen
-//        let loginStoryboard = UIStoryboard(name: "SignIn", bundle: nil)
-//        let loginController: SignInViewController = loginStoryboard.instantiateViewController(withIdentifier: "SignIn") as! SignInViewController
-//        
-//        // set canCancel property to false to require user to sign in before accessing the app
-//        // set canCancel to true to allow user to cancel the sign in process
-//        loginController.canCancel = false
-//        
-//        // assign the delegate for callback when user either signs in successfully or cancels sign in
-//        loginController.didCompleteSignIn = onSignIn
-//        
-//        // launch the sign in screen
-//        let navController = UINavigationController(rootViewController: loginController)
-//        navigationController?.present(navController, animated: true, completion: nil)
-    
     }
+    
     func transition(){
         dismiss(animated: true, completion: nil)
     }
