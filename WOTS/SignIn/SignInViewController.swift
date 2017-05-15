@@ -14,8 +14,9 @@
 
 import UIKit
 import AWSMobileHubHelper
+import Flurry_iOS_SDK
 
-let backgroundImageColor =  UIColor.darkGray
+let backgroundImageColor =  UIColor(red: 40/255, green: 40/255, blue: 40/255, alpha: 1)
 
 class SignInViewController : UIViewController {
     
@@ -38,9 +39,9 @@ class SignInViewController : UIViewController {
     var userNameRow : FormTableCell?
     var tableDelegate : FormTableDelegate?
     var passwordAuthenticationCompletion: AWSTaskCompletionSource<AnyObject>?
-    let smallLogoName = "logo-aws-small"
-    let bigLogoName = "logo-aws-big"
-    
+    let bigLogoName = "logo_transparentbg"
+    let smallLogoName = "logo-wots-big"
+
     override func viewDidLoad() {
         super.viewDidLoad()
         // set up the navigation controller
@@ -76,7 +77,7 @@ class SignInViewController : UIViewController {
     func setUpLogo() {
         logoView.contentMode = UIViewContentMode.center
         logoView.image = UIImage(imageLiteralResourceName: bigLogoName)
-        logoViewHeight.constant = 230
+        logoViewHeight.constant = 200
         logoView.setNeedsLayout()
         self.view.setNeedsLayout()
         self.view.layoutIfNeeded()
@@ -131,18 +132,14 @@ class SignInViewController : UIViewController {
             // If no error reported by SignInProvider, discard the sign-in view controller.
             if error == nil {
                 DispatchQueue.main.async(execute: {
-                   // self.dismiss(animated: true, completion: nil)
-//                    let mainStoryBoard = UIStoryboard(name: "Main", bundle: nil)
-//                    let tabBarController: TabBarController = mainStoryBoard.instantiateViewController(withIdentifier: "MainTabBarController") as! TabBarController
-//                    
-//                    // launch the sign in screen
-//                    let navController = UINavigationController(rootViewController: tabBarController)
-//                    navigationController?.present(navController, animated: true, completion: nil)
                     self.transition()
+                    
+                    // Instrumentation: time user session
+                    Flurry.logEvent("User_Session", timed: true)
+                    
                     self.activityIndicatorView.stopAnimating()
                     if let didCompleteSignIn = self.didCompleteSignIn {
                         didCompleteSignIn(true)
-                        
                     }
                 })   
                 return
@@ -152,7 +149,15 @@ class SignInViewController : UIViewController {
     }
     
     func transition(){
+        let session = SessionManager.sharedInstance
+        session.getUserData { (info) in
+            if(info == nil){
+                session.saveUserInfo()
+            }
+        }
+        
         performSegue(withIdentifier: "toMainTabView", sender: self)
+        
     }
     
     func showErrorDialog(_ loginProviderName: String, withError error: NSError) {

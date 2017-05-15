@@ -25,6 +25,7 @@ class PlaceHeaderCell: UITableViewCell {
         super.awakeFromNib()
         
         peopleImageView.image = UIImage(named: "person")
+        takeQuizButton.layer.cornerRadius = 6;
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

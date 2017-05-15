@@ -8,6 +8,7 @@
 
 import UIKit
 import AWSCognitoUserPoolsSignIn
+import Flurry_iOS_SDK
 
 class ProfileViewController: UIViewController {
     
@@ -37,6 +38,7 @@ class ProfileViewController: UIViewController {
     }()
     
     let imagePicker = UIImagePickerController()
+    let session = SessionManager.sharedInstance
     
     // MARK: - ProfileViewController
     
@@ -44,13 +46,24 @@ class ProfileViewController: UIViewController {
         super.viewDidLoad()
         self.navigationItem.title = Constants.Storyboard.AppName
         self.automaticallyAdjustsScrollViewInsets = false
-        
+
         // Setup tableview
         tableView.tableHeaderView = tableHeaderView
         view.addSubview(tableView.usingAutolayout())
         setupConstraints()
         registerReusableCells()
+
+        tableView.tableFooterView = UIView()
+        
+        // Instrumentation: time spent in Profile
+        Flurry.logEvent("Tab_Me", timed: true)
     }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        // Instrumentation: time spent in Profile
+        Flurry.endTimedEvent("Tab_Me", withParameters: nil)
+    }
+    
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -58,7 +71,12 @@ class ProfileViewController: UIViewController {
         // TODO: remove after daily goal fix
         tableView.reloadData()
     }
-
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
     // MARK: - Helper methods
     
     private func setupConstraints() {
@@ -109,22 +127,11 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
             
             // TODO: retrieve from database what the selected goal is
             // TODO: refactor after daily goal fix
-            var dailyGoalText = ""
-            let selectedRow = UserDefaults.standard.integer(forKey: "daily_goal")
-            switch selectedRow {
-            case 0:
-                dailyGoalText = "1 word/day"
-            case 1:
-                dailyGoalText = "3 words/day"
-            case 2:
-                dailyGoalText = "5 words/day"
-            case 3:
-                dailyGoalText = "8 words/day"
-            default:
-                break
+            var apndStr = " words/day"
+            if(session.userInfo?._wordGoal! == 1){
+                apndStr = " word/day"
             }
-            goalCell.goalLabel.text = dailyGoalText
-            
+            goalCell.goalLabel.text = String(describing: (session.userInfo?._wordGoal!)!) + apndStr
             return goalCell
             
         case .goalProgress:
@@ -169,6 +176,9 @@ extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationCo
         // TODO: Send profile image to backend
         if let selectedImage = info["UIImagePickerControllerOriginalImage"] as? UIImage {
             tableHeaderView.setProfileImage(selectedImage)
+            let data = UIImagePNGRepresentation(selectedImage) as NSData?
+            let ud = UserData()
+            ud.uploadWithData(data: data!, forKey: "profile_pic")
         }
         dismiss(animated: true, completion: nil)
     }

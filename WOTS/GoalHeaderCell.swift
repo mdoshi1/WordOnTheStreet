@@ -24,6 +24,7 @@ class GoalHeaderCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         editGoalButton.addTarget(self, action: #selector(editGoal), for: .touchUpInside)
+        editGoalButton.layer.cornerRadius = 6;
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

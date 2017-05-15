@@ -15,9 +15,9 @@ class NoteCardConnection {
 
     func saveTestWordMap(){
         let mapElement = ["word-id" : 98 as NSNumber] as Dictionary<String, NSObject>
-        let testObj = WordIds()
-        testObj?.userId = AWSIdentityManager.default().identityId!
-        testObj?.wordMap = mapElement
+        let testObj = UserVocabulary()
+        testObj?._userId = AWSIdentityManager.default().identityId!
+        testObj?._wordMap = mapElement
         let objectMapper = AWSDynamoDBObjectMapper.default()
 
         objectMapper.save(testObj!, completionHandler: {(error: Error?) -> Void in
@@ -29,11 +29,11 @@ class NoteCardConnection {
         })
     }
     
-    func updateTestWordMap(objToUpdate: WordIds){
+    func updateTestWordMap(objToUpdate: UserVocabulary){
         
         let mapElement = ["word-id-4" : 23 as NSNumber,"word-id-5" : 46 as NSNumber] as Dictionary<String, NSObject>
         for obj in mapElement {
-            objToUpdate.wordMap?[obj.key] = obj.value
+            objToUpdate._wordMap?[obj.key] = obj.value
         }
         
         let objectMapper = AWSDynamoDBObjectMapper.default()
@@ -54,13 +54,13 @@ class NoteCardConnection {
         
         queryExpression.expressionAttributeValues = [
             ":userId" : AWSIdentityManager.default().identityId! ]
-        dynamoDBObjectMapper .query(WordIds.self, expression: queryExpression) .continueWith(executor: AWSExecutor.mainThread(), block: { (task:AWSTask!) -> AnyObject! in
+        dynamoDBObjectMapper .query(UserVocabulary.self, expression: queryExpression) .continueWith(executor: AWSExecutor.mainThread(), block: { (task:AWSTask!) -> AnyObject! in
             if let error = task.error as NSError? {
                 print("Error: \(error)")
             } else {
                 if let result = task.result {//(task.result != nil) {
-                    for r in result.items as! [WordIds]{
-                        let dict = r.wordMap
+                    for r in result.items as! [UserVocabulary]{
+                        let dict = r._wordMap
                         //self.updateTestWordMap(objToUpdate: r)
                         self.getWordsFromIds(forNotecards: forNotecards, wordMap: dict!, completion: completion)
                     }
@@ -80,8 +80,6 @@ class NoteCardConnection {
             if(forNotecards == true && wordMap[k] as! Int > 50) {
                 count+=1
                 continue
-            } else if(forNotecards == false){
-                print(k)
             }
             let queryExpression = AWSDynamoDBQueryExpression()
             queryExpression.keyConditionExpression = "wordId = :id"

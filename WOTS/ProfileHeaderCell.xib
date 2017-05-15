@@ -49,7 +49,7 @@
             <connections>
                 <outlet property="profileImageEditButton" destination="B7X-0v-2QT" id="v09-kr-Wuq"/>
                 <outlet property="profileImageView" destination="opI-0A-XT7" id="5pw-V6-yUf"/>
-                <outlet property="profileNameLabel" destination="GCm-ga-ouC" id="90v-ka-YJy"/>
+                <outlet property="profileNameLabel" destination="GCm-ga-ouC" id="xsV-dN-C1h"/>
             </connections>
             <point key="canvasLocation" x="34" y="155.5"/>
         </tableViewCell>

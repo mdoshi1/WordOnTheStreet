@@ -18,14 +18,21 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Daily goal: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uV8-2T-Zqi">
-                        <rect key="frame" x="16" y="8" width="83.5" height="27.5"/>
+                        <rect key="frame" x="16" y="11.5" width="83.5" height="20.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tHp-F8-5xu">
-                        <rect key="frame" x="242" y="8" width="62" height="27.5"/>
-                        <state key="normal" title="Edit Goal"/>
+                        <rect key="frame" x="229" y="7" width="75" height="30"/>
+                        <color key="backgroundColor" red="1" green="0.80000000000000004" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="75" id="AJf-sd-G0c"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                        <state key="normal" title="Edit Goal">
+                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        </state>
                     </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Frequency" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mlc-T1-epw">
                         <rect key="frame" x="99.5" y="11" width="81" height="21"/>
@@ -35,13 +42,11 @@
                     </label>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="uV8-2T-Zqi" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="38M-lg-VCs"/>
                     <constraint firstItem="mlc-T1-epw" firstAttribute="leading" secondItem="uV8-2T-Zqi" secondAttribute="trailing" id="4gN-Iv-VD6"/>
-                    <constraint firstAttribute="bottom" secondItem="tHp-F8-5xu" secondAttribute="bottom" constant="8" id="EA1-yX-5k3"/>
-                    <constraint firstItem="tHp-F8-5xu" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="MWK-m8-F3P"/>
+                    <constraint firstItem="uV8-2T-Zqi" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="PBh-bc-BMe"/>
                     <constraint firstItem="uV8-2T-Zqi" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="Qss-fz-0fc"/>
-                    <constraint firstAttribute="bottom" secondItem="uV8-2T-Zqi" secondAttribute="bottom" constant="8" id="UUW-tt-gfM"/>
                     <constraint firstItem="mlc-T1-epw" firstAttribute="centerY" secondItem="uV8-2T-Zqi" secondAttribute="centerY" id="Ut8-Iz-Oqb"/>
+                    <constraint firstItem="tHp-F8-5xu" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="XaB-8d-TPz"/>
                     <constraint firstAttribute="trailing" secondItem="tHp-F8-5xu" secondAttribute="trailing" constant="16" id="guh-95-nTv"/>
                 </constraints>
             </tableViewCellContentView>

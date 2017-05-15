@@ -12,6 +12,7 @@ import AWSMobileHubHelper
 import AWSDynamoDB
 import AWSMobileHubHelper
 import AWSCognitoUserPoolsSignIn
+import Flurry_iOS_SDK
 
 
 private var numberOfCards: Int = 5
@@ -31,9 +32,11 @@ class NoteCardViewController: UIViewController {
     
     
     @IBOutlet weak var takeQuizButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = UIColor(patternImage: UIImage(named:"blue-background")!)
+//        self.view.backgroundColor = UIColor(patternImage: UIImage(named:"chalk-background")!)
+        self.view.backgroundColor = UIColor(red:0.20, green:0.20, blue:0.20, alpha:1.0)
         // Check if a user is logged in
 
         kolodaView.dataSource = self
@@ -56,7 +59,15 @@ class NoteCardViewController: UIViewController {
         takeQuizButton.layer.cornerRadius = 6;
         self.modalTransitionStyle = UIModalTransitionStyle.flipHorizontal
         self.navigationItem.title = "Word on the Street"
+        
+        // Instrumentation: time spent in Review
+        Flurry.logEvent("Tab_Review", timed: true)
 
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        // Instrumentation: time spent in Review
+        Flurry.endTimedEvent("Tab_Review", withParameters: nil)
     }
     
     
@@ -79,6 +90,9 @@ class NoteCardViewController: UIViewController {
     }
     
     @IBAction func signOut(_ sender: Any) {
+        // Instrumentation: finish user session
+        Flurry.endTimedEvent("User_Session", withParameters: nil)
+        
         CredentialManager.credentialsProvider.clearCredentials()
         CredentialManager.credentialsProvider.clearKeychain()
         AWSSignInManager.sharedInstance().logout { (obj, auth, err) in
@@ -91,27 +105,10 @@ class NoteCardViewController: UIViewController {
                 user?.signOut()
                 self.transition()
             }
-
         }
 
-
-        
-        // If user is not logged in, present the sign in screen
-//        let loginStoryboard = UIStoryboard(name: "SignIn", bundle: nil)
-//        let loginController: SignInViewController = loginStoryboard.instantiateViewController(withIdentifier: "SignIn") as! SignInViewController
-//        
-//        // set canCancel property to false to require user to sign in before accessing the app
-//        // set canCancel to true to allow user to cancel the sign in process
-//        loginController.canCancel = false
-//        
-//        // assign the delegate for callback when user either signs in successfully or cancels sign in
-//        loginController.didCompleteSignIn = onSignIn
-//        
-//        // launch the sign in screen
-//        let navController = UINavigationController(rootViewController: loginController)
-//        navigationController?.present(navController, animated: true, completion: nil)
-    
     }
+    
     func transition(){
         dismiss(animated: true, completion: nil)
     }
@@ -144,9 +141,9 @@ class NoteCardViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "TakeQuizSegue" {
-//            if let nextVC = segue.destination as? StandardQuizViewController {
-//                nextVC.dataSource = self.dataSource
-//            }
+            
+            // Instrumentation: log tab clicked
+            Flurry.logEvent("Review_Quiz")
             
             if let navVC = segue.destination as? UINavigationController {
                 let destinationVC = navVC.topViewController as! StandardQuizViewController
@@ -203,5 +200,23 @@ extension NoteCardViewController: KolodaViewDataSource {
         //return Bundle.main.loadNibNamed("NoteCardOverlayView", owner: self, options: nil)?[0] as? OverlayView
         return nil
     }
+    
+    func koloda(koloda: KolodaView, draggedCardWithPercentage finishPercentage: CGFloat, in direction: SwipeResultDirection) {
+        switch direction {
+        case .left :
+            
+            // Instrumentation: user swiped left
+            Flurry.logEvent("NoteCard_Left")
+            break
+        case .right :
+            
+            // Instrumentation: user swiped right
+            Flurry.logEvent("NoteCard_Right")
+            break
+        default:
+            break
+        }
+    }
 }
+
 

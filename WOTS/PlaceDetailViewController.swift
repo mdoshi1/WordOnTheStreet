@@ -8,8 +8,9 @@
 
 import UIKit
 import GoogleMaps
+import Flurry_iOS_SDK
 
-class PlaceDetailViewController: UIViewController {
+class PlaceDetailViewController: UIViewController, DidSelectWordAtPlaceProtocol {
     
     enum DetailType: Int {
         case image = 0
@@ -110,14 +111,6 @@ class PlaceDetailViewController: UIViewController {
     // MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if let destinationVC = segue.destination as? StandardQuizViewController {
-//            var dataSource = [[String: String]]()
-//            for index in 0..<(place?.numWords ?? 10) {
-//                dataSource.append(words[index])
-//            }
-//            destinationVC.dataSource = dataSource
-//            destinationVC.navigationItem.title = "Quiz for " + (place?.name ?? "Name")
-//        }
         
         if let navVC = segue.destination as? UINavigationController {
             var dataSource = [[String: String]]()
@@ -136,6 +129,15 @@ class PlaceDetailViewController: UIViewController {
     }
     
     func toPlaceQuiz(sender: UIButton) {
+        // Instrumentation: Taking quiz based on location
+        let flurryParams = ["name": place?.name ?? "Place_Name",
+                            "placeId": place?.placeId ?? "Place_Id",
+                            "numWords": place?.numWords ?? "Place_Num_Word",
+                            "numPeople": place?.numPeople ?? "Place_Num_People",
+                            "location": place?.location ?? "Place_Location"
+            ] as [String: Any]
+        Flurry.logEvent("Explore_Quiz", withParameters: flurryParams)
+        
         performSegue(withIdentifier: "toPlaceQuiz", sender: nil)
     }
 }
@@ -186,8 +188,27 @@ extension PlaceDetailViewController: UITableViewDelegate, UITableViewDataSource 
             let wordCell = tableView.dequeueReusableCell(withIdentifier: "WordCell", for: indexPath) as! WordCell
             wordCell.wordLabel.text = words[indexPath.row]["english"]
             wordCell.wordLabel.text = words[indexPath.row]["spanish"]
+            wordCell.delegate = self
             return wordCell
         }
+    }
+    
+    // MARK: Protocol for WordCell
+    func didSelectWordCell(valueSent: [String:String]) {
+        
+        // Instrumentation: what word pair did the user add to their own list
+        // and other details about the place
+        let flurryParams = ["name": place?.name ?? "Place_Name",
+                            "placeId": place?.placeId ?? "Place_Id",
+                            "numWords": place?.numWords ?? "Place_Num_Word",
+                            "numPeople": place?.numPeople ?? "Place_Num_People",
+                            "location": place?.location ?? "Place_Location",
+                            "sourceWord": valueSent["sourceWord"] ?? "Source_Word",
+                            "translationWord": valueSent["translationWord"] ?? "Translation_Word"
+        ] as [String: Any]
+        
+        Flurry.logEvent("Added_Word", withParameters: flurryParams)
+        
     }
     
 }

@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import AWSMobileHubHelper
+import AWSCognitoUserPoolsSignIn
 
 class ProfileHeaderView: UIView {
     
@@ -22,7 +24,7 @@ class ProfileHeaderView: UIView {
     
     private lazy var userNameLabel: UILabel = {
         let userNameLabel = UILabel()
-        userNameLabel.text = "User Name"
+        userNameLabel.text = AWSCognitoUserPoolsSignInProvider.sharedInstance().getUserPool().currentUser()?.username
         userNameLabel.textColor = .white
         userNameLabel.textAlignment = .center
         return userNameLabel

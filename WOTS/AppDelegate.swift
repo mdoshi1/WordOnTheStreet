@@ -10,26 +10,34 @@ import UIKit
 import GoogleMaps
 import GooglePlaces
 import AWSMobileHubHelper
+import Flurry_iOS_SDK
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
-
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        
+        
+        // Flurry
+        Flurry.startSession("CTRZ57262RNJVRS2W228", with: FlurrySessionBuilder
+            .init()
+            .withCrashReporting(true)
+            .withLogLevel(FlurryLogLevelAll))
         
         // Google Services
         GMSServices.provideAPIKey(Constants.APIServices.GMSServicesKey)
         GMSPlacesClient.provideAPIKey(Constants.APIServices.GMSPlacesKey)
         
-//        let credentialsProvider = AWSCognitoCredentialsProvider(regionType:.USEast1,
-//                                                                identityPoolId: Constants.APIServices.AWSPoolId)
+        let credentialsProvider = AWSCognitoCredentialsProvider(regionType:.USEast1,
+                                                                identityPoolId: Constants.APIServices.AWSPoolId)
         
         
-        let configuration = AWSServiceConfiguration(region: .USEast1, credentialsProvider: CredentialManager.credentialsProvider)
+        let configuration = AWSServiceConfiguration(region: .USEast1, credentialsProvider: credentialsProvider)
         
         AWSServiceManager.default().defaultServiceConfiguration = configuration
+<<<<<<< HEAD
         while(AWSIdentityManager.default().identityId == nil){
            CredentialManager.credentialsProvider.getIdentityId().continueWith { (task) -> Any? in
                 if (task.error != nil) {
@@ -49,6 +57,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //                window?.rootViewController = tabBarVC
 //            }
 //        }
+=======
+//        while(AWSIdentityManager.default().identityId == nil){
+//           CredentialManager.credentialsProvider.getIdentityId().continueWith { (task) -> Any? in
+//                if (task.error != nil) {
+//                    print("Error: " + (task.error?.localizedDescription)!)
+//                }
+//                return nil
+//            }
+//        }
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+
+        if !AWSSignInManager.sharedInstance().isLoggedIn {
+            if let loginVC = storyboard.instantiateViewController(withIdentifier: "SignInViewController") as? SignInViewController {
+                loginVC.canCancel = false
+                loginVC.didCompleteSignIn = onSignIn
+                window?.rootViewController = loginVC
+            }
+        } else {
+            if let tabBarVC = storyboard.instantiateViewController(withIdentifier: "MainTabBarController") as? TabBarController {
+                window?.rootViewController = tabBarVC
+            }
+        }
+>>>>>>> 953f75e67702e6d00e9469af9b3b691ffd527647
         return AWSMobileClient.sharedInstance.didFinishLaunching(application, withOptions: launchOptions)
     }
     
