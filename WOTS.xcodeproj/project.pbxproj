@@ -67,6 +67,7 @@
 		957F2F4C1EB95467001117DB /* ResultsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 957F2F4B1EB95467001117DB /* ResultsView.xib */; };
 		957F2F501EB954B7001117DB /* ResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957F2F4F1EB954B7001117DB /* ResultsView.swift */; };
 		95A5936A1EC6506C006BFEC9 /* CredentialManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A593691EC6506C006BFEC9 /* CredentialManager.swift */; };
+		F43436CA1EC69329007B6A3D /* UIColor+WOTS.swift in Sources */ = {isa = PBXBuildFile; fileRef = F43436C91EC69329007B6A3D /* UIColor+WOTS.swift */; };
 		F46EC9821EB52F7B00BF1A53 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46EC9811EB52F7B00BF1A53 /* AppDelegate.swift */; };
 		F46EC9871EB52F7B00BF1A53 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F46EC9851EB52F7B00BF1A53 /* Main.storyboard */; };
 		F46EC9891EB52F7B00BF1A53 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F46EC9881EB52F7B00BF1A53 /* Assets.xcassets */; };
@@ -84,6 +85,7 @@
 		F4BECB1E1EBBB7A700B98BA8 /* PlaceHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4BECB1C1EBBB7A700B98BA8 /* PlaceHeaderCell.xib */; };
 		F4BECB211EBBBAB400B98BA8 /* WordCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4BECB1F1EBBBAB400B98BA8 /* WordCell.swift */; };
 		F4BECB221EBBBAB400B98BA8 /* WordCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4BECB201EBBBAB400B98BA8 /* WordCell.xib */; };
+		F4BECB551EC66E5300B98BA8 /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4BECB541EC66E5300B98BA8 /* ProfileHeaderView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -166,6 +168,7 @@
 		957F2F4B1EB95467001117DB /* ResultsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ResultsView.xib; sourceTree = "<group>"; };
 		957F2F4F1EB954B7001117DB /* ResultsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultsView.swift; sourceTree = "<group>"; };
 		95A593691EC6506C006BFEC9 /* CredentialManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CredentialManager.swift; sourceTree = "<group>"; };
+		F43436C91EC69329007B6A3D /* UIColor+WOTS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+WOTS.swift"; sourceTree = "<group>"; };
 		F46EC97E1EB52F7B00BF1A53 /* WOTS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WOTS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F46EC9811EB52F7B00BF1A53 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F46EC9861EB52F7B00BF1A53 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -185,6 +188,7 @@
 		F4BECB1C1EBBB7A700B98BA8 /* PlaceHeaderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlaceHeaderCell.xib; sourceTree = "<group>"; };
 		F4BECB1F1EBBBAB400B98BA8 /* WordCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WordCell.swift; sourceTree = "<group>"; };
 		F4BECB201EBBBAB400B98BA8 /* WordCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WordCell.xib; sourceTree = "<group>"; };
+		F4BECB541EC66E5300B98BA8 /* ProfileHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileHeaderView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -210,6 +214,7 @@
 		3FBAA2AB1EC2F6230040AD89 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				F4BECB541EC66E5300B98BA8 /* ProfileHeaderView.swift */,
 				3FBAA2A51EC2F1B70040AD89 /* ProfileViewController.swift */,
 				3FBAA2A71EC2F61C0040AD89 /* ProfileHeaderCell.swift */,
 				3FBAA2A81EC2F61C0040AD89 /* ProfileHeaderCell.xib */,
@@ -366,6 +371,7 @@
 				3F3BA9DC1EB7103C006B4FC1 /* ScrollableBottomSheetViewController.xib */,
 				F46EC9811EB52F7B00BF1A53 /* AppDelegate.swift */,
 				F4BECB0A1EB9745700B98BA8 /* Constants.swift */,
+				F43436C91EC69329007B6A3D /* UIColor+WOTS.swift */,
 				F4BECB0C1EB97C3800B98BA8 /* APIClient.swift */,
 				F46EC9931EB538DB00BF1A53 /* TabBarController.swift */,
 				F46EC9951EB5418C00BF1A53 /* ExploreViewController.swift */,
@@ -427,8 +433,8 @@
 				F46EC97C1EB52F7B00BF1A53 /* Resources */,
 				CF762F3459209D8847855E97 /* [CP] Embed Pods Frameworks */,
 				B70F1FBB3DE89C3915166010 /* [CP] Copy Pods Resources */,
-				957EA0AC1EB8535900E7750B /* ShellScript */,
 				9578456C1EC42D0700AA551F /* Embed Frameworks */,
+				957EA0AC1EB8535900E7750B /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -570,6 +576,7 @@
 				3FBAA2B81EC411FF0040AD89 /* GoalOptionCell.swift in Sources */,
 				3F3BA9DD1EB7103C006B4FC1 /* ScrollableBottomSheetViewController.swift in Sources */,
 				957845851EC42D2A00AA551F /* AWSMobileClient.swift in Sources */,
+				F43436CA1EC69329007B6A3D /* UIColor+WOTS.swift in Sources */,
 				957845801EC42D2900AA551F /* AWSAPI_CX0HSKU68J_RequestSchema.m in Sources */,
 				F4BECB0B1EB9745700B98BA8 /* Constants.swift in Sources */,
 				957F2F501EB954B7001117DB /* ResultsView.swift in Sources */,
@@ -612,6 +619,7 @@
 				957F2F461EB9419A001117DB /* StandardQuizViewController.swift in Sources */,
 				9578458A1EC42D2A00AA551F /* WordPairs.swift in Sources */,
 				F4BECB211EBBBAB400B98BA8 /* WordCell.swift in Sources */,
+				F4BECB551EC66E5300B98BA8 /* ProfileHeaderView.swift in Sources */,
 				F46EC9961EB5418C00BF1A53 /* ExploreViewController.swift in Sources */,
 				3FBAA2B51EC30CCD0040AD89 /* GoalsViewController.swift in Sources */,
 			);

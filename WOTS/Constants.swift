@@ -17,4 +17,8 @@ class Constants {
         static let AWSPoolId = "us-east-1:fb15d096-3f42-4c86-87c0-2db4339ca572"
     }
     
+    struct Storyboard {
+        static let AppName = "Word on the Street"
+        static let GoalCell = "GoalHeaderCell"
+    }
 }

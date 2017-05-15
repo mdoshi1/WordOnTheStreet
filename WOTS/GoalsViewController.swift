@@ -18,7 +18,6 @@ class GoalsViewController: UIViewController {
     }()
     
     var isChecked = [Bool]()
-    var delegate: RememberSelectedCellProtocol?
     var rowToSelect: IndexPath? = nil
     var selectedGoal: String = ""
     let dailyGoal = "daily_goal"
@@ -142,7 +141,6 @@ extension GoalsViewController: UITableViewDelegate, UITableViewDataSource {
             isChecked[indexPath.row] = true
             print ("setting a cell")
             selectedGoal = cell.goalFreqLabel.text!
-            delegate?.setSelectedCell(valueSent: cell.goalFreqLabel.text!)
             self.rowToSelect = indexPath
         }
     }
@@ -155,8 +153,4 @@ extension GoalsViewController: UITableViewDelegate, UITableViewDataSource {
 
     }
     
-}
-
-protocol RememberSelectedCellProtocol {
-    func setSelectedCell(valueSent: String)
 }
