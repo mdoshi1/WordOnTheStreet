@@ -41,7 +41,7 @@ class SignInViewController : UIViewController {
     var passwordAuthenticationCompletion: AWSTaskCompletionSource<AnyObject>?
     let bigLogoName = "logo_transparentbg"
     let smallLogoName = "logo-wots-big"
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         // set up the navigation controller
