@@ -63,8 +63,6 @@
 		9551CD031ECAA8A100D820DD /* UserPoolSignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9551CCF51ECAA8A100D820DD /* UserPoolSignUpViewController.swift */; };
 		9551CD041ECAA8A100D820DD /* UserPoolsUIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9551CCF61ECAA8A100D820DD /* UserPoolsUIHelper.swift */; };
 		9551CD061ECAAB5500D820DD /* SignIn.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9551CD051ECAAB5500D820DD /* SignIn.storyboard */; };
-		9551CD0A1ECAAF7800D820DD /* InitialNavController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9551CD091ECAAF7800D820DD /* InitialNavController.swift */; };
-		9551CD0C1ECABA8100D820DD /* InitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9551CD0B1ECABA8100D820DD /* InitialViewController.swift */; };
 		9559D0451EC804D100BAC3F5 /* AWSS3.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9559D0441EC804D100BAC3F5 /* AWSS3.framework */; };
 		9559D0461EC804D100BAC3F5 /* AWSS3.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9559D0441EC804D100BAC3F5 /* AWSS3.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		9559D05B1EC8056200BAC3F5 /* AWSAPI_CX0HSKU68J_RequestSchema.m in Sources */ = {isa = PBXBuildFile; fileRef = 9559D04A1EC8056200BAC3F5 /* AWSAPI_CX0HSKU68J_RequestSchema.m */; };
@@ -239,8 +237,6 @@
 		9551CCF51ECAA8A100D820DD /* UserPoolSignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserPoolSignUpViewController.swift; sourceTree = "<group>"; };
 		9551CCF61ECAA8A100D820DD /* UserPoolsUIHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserPoolsUIHelper.swift; sourceTree = "<group>"; };
 		9551CD051ECAAB5500D820DD /* SignIn.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SignIn.storyboard; sourceTree = "<group>"; };
-		9551CD091ECAAF7800D820DD /* InitialNavController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InitialNavController.swift; sourceTree = "<group>"; };
-		9551CD0B1ECABA8100D820DD /* InitialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InitialViewController.swift; sourceTree = "<group>"; };
 		9559D0441EC804D100BAC3F5 /* AWSS3.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AWSS3.framework; path = Sdk/Aws/AWSS3.framework; sourceTree = "<group>"; };
 		9559D0491EC8056200BAC3F5 /* AWSAPI_CX0HSKU68J_RequestSchema.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWSAPI_CX0HSKU68J_RequestSchema.h; sourceTree = "<group>"; };
 		9559D04A1EC8056200BAC3F5 /* AWSAPI_CX0HSKU68J_RequestSchema.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AWSAPI_CX0HSKU68J_RequestSchema.m; sourceTree = "<group>"; };
@@ -637,8 +633,6 @@
 				3FBAA2BA1EC434710040AD89 /* CircleProgressView.swift */,
 				3FC752F21EC67D9F009D9924 /* QuizResults */,
 				955A95E01EC9402F0002BCEE /* SessionManager.swift */,
-				9551CD091ECAAF7800D820DD /* InitialNavController.swift */,
-				9551CD0B1ECABA8100D820DD /* InitialViewController.swift */,
 			);
 			path = WOTS;
 			sourceTree = "<group>";
@@ -823,7 +817,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				9551CCD61ECAA75800D820DD /* GMUSimpleClusterAlgorithm.m in Sources */,
-				9551CD0A1ECAAF7800D820DD /* InitialNavController.swift in Sources */,
 				3FBAA2B81EC411FF0040AD89 /* GoalOptionCell.swift in Sources */,
 				3F3BA9DD1EB7103C006B4FC1 /* ScrollableBottomSheetViewController.swift in Sources */,
 				9551CCD21ECAA75800D820DD /* GQTPointQuadTree.m in Sources */,
@@ -837,7 +830,6 @@
 				955A95E11EC9402F0002BCEE /* SessionManager.swift in Sources */,
 				957F2F501EB954B7001117DB /* ResultsView.swift in Sources */,
 				9551CCE01ECAA75800D820DD /* GMUGeometryCollection.m in Sources */,
-				9551CD0C1ECABA8100D820DD /* InitialViewController.swift in Sources */,
 				9551CCE41ECAA75800D820DD /* GMUPoint.m in Sources */,
 				3FBAA2A91EC2F61C0040AD89 /* ProfileHeaderCell.swift in Sources */,
 				95A5936A1EC6506C006BFEC9 /* CredentialManager.swift in Sources */,

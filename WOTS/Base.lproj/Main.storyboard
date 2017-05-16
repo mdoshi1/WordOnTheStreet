@@ -297,10 +297,10 @@
             </objects>
             <point key="canvasLocation" x="6743.1999999999998" y="-222.63868065967017"/>
         </scene>
-        <!--Initial Nav Controller-->
+        <!--Navigation Controller-->
         <scene sceneID="cY6-aX-Dut">
             <objects>
-                <navigationController id="9wY-Ye-KVM" customClass="InitialNavController" customModule="WOTS" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController id="9wY-Ye-KVM" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="GyS-2J-ZVp">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>

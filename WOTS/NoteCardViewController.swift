@@ -41,9 +41,6 @@ class NoteCardViewController: UIViewController {
         // Check if a user is logged in
         self.presentSignInViewController()
 
-        kolodaView.dataSource = self
-        kolodaView.delegate = self
-
         takeQuizButton.layer.cornerRadius = 6;
         self.modalTransitionStyle = UIModalTransitionStyle.flipHorizontal
         self.navigationItem.title = "Word on the Street"
@@ -109,6 +106,12 @@ class NoteCardViewController: UIViewController {
     func onSignIn (_ success: Bool) {
         
         if (success) {
+            let session = SessionManager.sharedInstance
+            session.getUserData { (info) in
+                if(info == nil){
+                    session.saveUserInfo()
+                }
+            }
             initData()
         } else {
             // handle cancel operation from user
@@ -117,6 +120,8 @@ class NoteCardViewController: UIViewController {
     
     func initData(){
         noteCardConn.getAllUserWords(forNotecards: true){ (source) in
+            self.kolodaView.dataSource = self
+            self.kolodaView.delegate = self
             self.dataSource = source;
             sourceWords = source;
             let position = self.kolodaView.currentCardIndex
