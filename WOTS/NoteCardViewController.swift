@@ -33,8 +33,19 @@ class NoteCardViewController: UIViewController {
     
     @IBOutlet weak var takeQuizButton: UIButton!
     
+    override func viewWillAppear(_ animated: Bool) {
+        noteCardConn.getAllUserWords(forNotecards: true){ (source) in
+            self.dataSource = source;
+            sourceWords = source;
+            let position = self.kolodaView.currentCardIndex
+            self.kolodaView.insertCardAtIndexRange(position..<position + self.dataSource.count, animated: true)
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        presentSignInViewController()
+
 //        self.view.backgroundColor = UIColor(patternImage: UIImage(named:"chalk-background")!)
         self.view.backgroundColor = UIColor(red:0.20, green:0.20, blue:0.20, alpha:1.0)
         // Check if a user is logged in
@@ -50,12 +61,6 @@ class NoteCardViewController: UIViewController {
 //            }
 //        }
         //noteCardConn.saveTestWordMap()
-        noteCardConn.getAllUserWords(forNotecards: true){ (source) in
-            self.dataSource = source;
-            sourceWords = source;
-            let position = self.kolodaView.currentCardIndex
-            self.kolodaView.insertCardAtIndexRange(position..<position + self.dataSource.count, animated: true)
-        }
         takeQuizButton.layer.cornerRadius = 6;
         self.modalTransitionStyle = UIModalTransitionStyle.flipHorizontal
         self.navigationItem.title = "Word on the Street"
@@ -93,20 +98,41 @@ class NoteCardViewController: UIViewController {
         // Instrumentation: finish user session
         Flurry.endTimedEvent("User_Session", withParameters: nil)
         
-        CredentialManager.credentialsProvider.clearCredentials()
-        CredentialManager.credentialsProvider.clearKeychain()
-        AWSSignInManager.sharedInstance().logout { (obj, auth, err) in
-            if((err) != nil) {
-                print(err!)
-            } else {
-                let pool = AWSCognitoIdentityUserPool(forKey: "UserPool")
-                let user = pool.currentUser()
-                user?.forgetDevice()
-                user?.signOut()
-                self.transition()
-            }
+//        CredentialManager.credentialsProvider.clearCredentials()
+//        CredentialManager.credentialsProvider.clearKeychain()
+//        AWSSignInManager.sharedInstance().logout { (obj, auth, err) in
+//            if((err) != nil) {
+//                print(err!)
+//            } else {
+//                let pool = AWSCognitoIdentityUserPool(forKey: "UserPool")
+//                let user = pool.currentUser()
+//                user?.forgetDevice()
+//                user?.signOut()
+//                self.transition()
+//            }
+//        }
+        if (AWSSignInManager.sharedInstance().isLoggedIn) {
+            AWSSignInManager.sharedInstance().logout(completionHandler: {(result: Any?, authState: AWSIdentityManagerAuthState, error: Error?) in
+                self.navigationController!.popToRootViewController(animated: false)
+                self.presentSignInViewController()
+            })
+            // print("Logout Successful: \(signInProvider.getDisplayName)");
+        } else {
+            assert(false)
         }
 
+
+    }
+    
+    func presentSignInViewController() {
+        if !AWSSignInManager.sharedInstance().isLoggedIn {
+            let loginStoryboard = UIStoryboard(name: "SignIn", bundle: nil)
+            let loginController: SignInViewController = loginStoryboard.instantiateViewController(withIdentifier: "SignIn") as! SignInViewController
+            loginController.canCancel = false
+            loginController.didCompleteSignIn = onSignIn
+            let navController = UINavigationController(rootViewController: loginController)
+            navigationController?.present(navController, animated: true, completion: nil)
+        }
     }
     
     func transition(){

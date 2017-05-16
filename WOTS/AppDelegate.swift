@@ -37,23 +37,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let configuration = AWSServiceConfiguration(region: .USEast1, credentialsProvider: credentialsProvider)
         
         AWSServiceManager.default().defaultServiceConfiguration = configuration
-        while(AWSIdentityManager.default().identityId == nil){
-           CredentialManager.credentialsProvider.getIdentityId().continueWith { (task) -> Any? in
-                if (task.error != nil) {
-                    print("Error: " + (task.error?.localizedDescription)!)
-                }
-                return nil
-            }
-        }
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//        while(AWSIdentityManager.default().identityId == nil){
+//           CredentialManager.credentialsProvider.getIdentityId().continueWith { (task) -> Any? in
+//                if (task.error != nil) {
+//                    print("Error: " + (task.error?.localizedDescription)!)
+//                }
+//                return nil
+//            }
+//        }
 
 //        if !AWSSignInManager.sharedInstance().isLoggedIn {
 //            if let loginVC = storyboard.instantiateViewController(withIdentifier: "SignInViewController") as? SignInViewController {
 //                window?.rootViewController = loginVC
-//            }
-//        } else {
-//            if let tabBarVC = storyboard.instantiateViewController(withIdentifier: "MainTabBarController") as? TabBarController {
-//                window?.rootViewController = tabBarVC
 //            }
 //        }
         return AWSMobileClient.sharedInstance.didFinishLaunching(application, withOptions: launchOptions)

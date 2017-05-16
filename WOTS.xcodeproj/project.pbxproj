@@ -49,6 +49,21 @@
 		9551CCE41ECAA75800D820DD /* GMUPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 9551CCCD1ECAA75800D820DD /* GMUPoint.m */; };
 		9551CCE51ECAA75800D820DD /* GMUPolygon.m in Sources */ = {isa = PBXBuildFile; fileRef = 9551CCCF1ECAA75800D820DD /* GMUPolygon.m */; };
 		9551CCE61ECAA75800D820DD /* GMUStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = 9551CCD11ECAA75800D820DD /* GMUStyle.m */; };
+		9551CCF81ECAA8A100D820DD /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9551CCE91ECAA8A100D820DD /* SignInViewController.swift */; };
+		9551CCF91ECAA8A100D820DD /* FormTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9551CCEB1ECAA8A100D820DD /* FormTableCell.swift */; };
+		9551CCFA1ECAA8A100D820DD /* FormTableDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9551CCEC1ECAA8A100D820DD /* FormTableDelegate.swift */; };
+		9551CCFB1ECAA8A100D820DD /* SignInViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9551CCED1ECAA8A100D820DD /* SignInViewControllerExtensions.swift */; };
+		9551CCFC1ECAA8A100D820DD /* TableInputCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9551CCEE1ECAA8A100D820DD /* TableInputCell.swift */; };
+		9551CCFD1ECAA8A100D820DD /* UserPoolForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9551CCEF1ECAA8A100D820DD /* UserPoolForgotPasswordViewController.swift */; };
+		9551CCFE1ECAA8A100D820DD /* UserPoolMFAViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9551CCF01ECAA8A100D820DD /* UserPoolMFAViewController.swift */; };
+		9551CCFF1ECAA8A100D820DD /* UserPoolNewPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9551CCF11ECAA8A100D820DD /* UserPoolNewPasswordViewController.swift */; };
+		9551CD001ECAA8A100D820DD /* UserPools.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9551CCF21ECAA8A100D820DD /* UserPools.storyboard */; };
+		9551CD011ECAA8A100D820DD /* UserPoolsIdentityProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9551CCF31ECAA8A100D820DD /* UserPoolsIdentityProfile.swift */; };
+		9551CD021ECAA8A100D820DD /* UserPoolSignUpConfirmationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9551CCF41ECAA8A100D820DD /* UserPoolSignUpConfirmationViewController.swift */; };
+		9551CD031ECAA8A100D820DD /* UserPoolSignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9551CCF51ECAA8A100D820DD /* UserPoolSignUpViewController.swift */; };
+		9551CD041ECAA8A100D820DD /* UserPoolsUIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9551CCF61ECAA8A100D820DD /* UserPoolsUIHelper.swift */; };
+		9551CD061ECAAB5500D820DD /* SignIn.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9551CD051ECAAB5500D820DD /* SignIn.storyboard */; };
+		9551CD0A1ECAAF7800D820DD /* InitialNavController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9551CD091ECAAF7800D820DD /* InitialNavController.swift */; };
 		9559D0451EC804D100BAC3F5 /* AWSS3.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9559D0441EC804D100BAC3F5 /* AWSS3.framework */; };
 		9559D0461EC804D100BAC3F5 /* AWSS3.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9559D0441EC804D100BAC3F5 /* AWSS3.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		9559D05B1EC8056200BAC3F5 /* AWSAPI_CX0HSKU68J_RequestSchema.m in Sources */ = {isa = PBXBuildFile; fileRef = 9559D04A1EC8056200BAC3F5 /* AWSAPI_CX0HSKU68J_RequestSchema.m */; };
@@ -73,19 +88,6 @@
 		957845691EC42D0700AA551F /* AWSCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 957845621EC42D0700AA551F /* AWSCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		9578456A1EC42D0700AA551F /* AWSDynamoDB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 957845631EC42D0700AA551F /* AWSDynamoDB.framework */; };
 		9578456B1EC42D0700AA551F /* AWSDynamoDB.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 957845631EC42D0700AA551F /* AWSDynamoDB.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		9578459C1EC42D4400AA551F /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9578458D1EC42D4400AA551F /* SignInViewController.swift */; };
-		9578459D1EC42D4400AA551F /* FormTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9578458F1EC42D4400AA551F /* FormTableCell.swift */; };
-		9578459E1EC42D4400AA551F /* FormTableDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957845901EC42D4400AA551F /* FormTableDelegate.swift */; };
-		9578459F1EC42D4400AA551F /* SignInViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957845911EC42D4400AA551F /* SignInViewControllerExtensions.swift */; };
-		957845A01EC42D4400AA551F /* TableInputCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957845921EC42D4400AA551F /* TableInputCell.swift */; };
-		957845A11EC42D4400AA551F /* UserPoolForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957845931EC42D4400AA551F /* UserPoolForgotPasswordViewController.swift */; };
-		957845A21EC42D4400AA551F /* UserPoolMFAViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957845941EC42D4400AA551F /* UserPoolMFAViewController.swift */; };
-		957845A31EC42D4400AA551F /* UserPoolNewPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957845951EC42D4400AA551F /* UserPoolNewPasswordViewController.swift */; };
-		957845A41EC42D4400AA551F /* UserPools.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 957845961EC42D4400AA551F /* UserPools.storyboard */; };
-		957845A51EC42D4400AA551F /* UserPoolsIdentityProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957845971EC42D4400AA551F /* UserPoolsIdentityProfile.swift */; };
-		957845A61EC42D4400AA551F /* UserPoolSignUpConfirmationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957845981EC42D4400AA551F /* UserPoolSignUpConfirmationViewController.swift */; };
-		957845A71EC42D4400AA551F /* UserPoolSignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957845991EC42D4400AA551F /* UserPoolSignUpViewController.swift */; };
-		957845A81EC42D4400AA551F /* UserPoolsUIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9578459A1EC42D4400AA551F /* UserPoolsUIHelper.swift */; };
 		95791F861EB53D4700F9FA96 /* NoteCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95791F851EB53D4700F9FA96 /* NoteCardViewController.swift */; };
 		95791F981EB5513300F9FA96 /* NoteCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95791F971EB5513300F9FA96 /* NoteCardView.swift */; };
 		95791F9C1EB55A9700F9FA96 /* NoteCardOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95791F9B1EB55A9700F9FA96 /* NoteCardOverlayView.swift */; };
@@ -222,6 +224,21 @@
 		9551CCCF1ECAA75800D820DD /* GMUPolygon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GMUPolygon.m; sourceTree = "<group>"; };
 		9551CCD01ECAA75800D820DD /* GMUStyle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GMUStyle.h; sourceTree = "<group>"; };
 		9551CCD11ECAA75800D820DD /* GMUStyle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GMUStyle.m; sourceTree = "<group>"; };
+		9551CCE91ECAA8A100D820DD /* SignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
+		9551CCEB1ECAA8A100D820DD /* FormTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormTableCell.swift; sourceTree = "<group>"; };
+		9551CCEC1ECAA8A100D820DD /* FormTableDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormTableDelegate.swift; sourceTree = "<group>"; };
+		9551CCED1ECAA8A100D820DD /* SignInViewControllerExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewControllerExtensions.swift; sourceTree = "<group>"; };
+		9551CCEE1ECAA8A100D820DD /* TableInputCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableInputCell.swift; sourceTree = "<group>"; };
+		9551CCEF1ECAA8A100D820DD /* UserPoolForgotPasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserPoolForgotPasswordViewController.swift; sourceTree = "<group>"; };
+		9551CCF01ECAA8A100D820DD /* UserPoolMFAViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserPoolMFAViewController.swift; sourceTree = "<group>"; };
+		9551CCF11ECAA8A100D820DD /* UserPoolNewPasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserPoolNewPasswordViewController.swift; sourceTree = "<group>"; };
+		9551CCF21ECAA8A100D820DD /* UserPools.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = UserPools.storyboard; sourceTree = "<group>"; };
+		9551CCF31ECAA8A100D820DD /* UserPoolsIdentityProfile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserPoolsIdentityProfile.swift; sourceTree = "<group>"; };
+		9551CCF41ECAA8A100D820DD /* UserPoolSignUpConfirmationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserPoolSignUpConfirmationViewController.swift; sourceTree = "<group>"; };
+		9551CCF51ECAA8A100D820DD /* UserPoolSignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserPoolSignUpViewController.swift; sourceTree = "<group>"; };
+		9551CCF61ECAA8A100D820DD /* UserPoolsUIHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserPoolsUIHelper.swift; sourceTree = "<group>"; };
+		9551CD051ECAAB5500D820DD /* SignIn.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SignIn.storyboard; sourceTree = "<group>"; };
+		9551CD091ECAAF7800D820DD /* InitialNavController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InitialNavController.swift; sourceTree = "<group>"; };
 		9559D0441EC804D100BAC3F5 /* AWSS3.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AWSS3.framework; path = Sdk/Aws/AWSS3.framework; sourceTree = "<group>"; };
 		9559D0491EC8056200BAC3F5 /* AWSAPI_CX0HSKU68J_RequestSchema.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWSAPI_CX0HSKU68J_RequestSchema.h; sourceTree = "<group>"; };
 		9559D04A1EC8056200BAC3F5 /* AWSAPI_CX0HSKU68J_RequestSchema.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AWSAPI_CX0HSKU68J_RequestSchema.m; sourceTree = "<group>"; };
@@ -245,19 +262,6 @@
 		957845611EC42D0700AA551F /* AWSCognitoIdentityProvider.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AWSCognitoIdentityProvider.framework; path = Sdk/Aws/AWSCognitoIdentityProvider.framework; sourceTree = "<group>"; };
 		957845621EC42D0700AA551F /* AWSCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AWSCore.framework; path = Sdk/Aws/AWSCore.framework; sourceTree = "<group>"; };
 		957845631EC42D0700AA551F /* AWSDynamoDB.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AWSDynamoDB.framework; path = Sdk/Aws/AWSDynamoDB.framework; sourceTree = "<group>"; };
-		9578458D1EC42D4400AA551F /* SignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
-		9578458F1EC42D4400AA551F /* FormTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormTableCell.swift; sourceTree = "<group>"; };
-		957845901EC42D4400AA551F /* FormTableDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormTableDelegate.swift; sourceTree = "<group>"; };
-		957845911EC42D4400AA551F /* SignInViewControllerExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewControllerExtensions.swift; sourceTree = "<group>"; };
-		957845921EC42D4400AA551F /* TableInputCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableInputCell.swift; sourceTree = "<group>"; };
-		957845931EC42D4400AA551F /* UserPoolForgotPasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserPoolForgotPasswordViewController.swift; sourceTree = "<group>"; };
-		957845941EC42D4400AA551F /* UserPoolMFAViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserPoolMFAViewController.swift; sourceTree = "<group>"; };
-		957845951EC42D4400AA551F /* UserPoolNewPasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserPoolNewPasswordViewController.swift; sourceTree = "<group>"; };
-		957845961EC42D4400AA551F /* UserPools.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = UserPools.storyboard; sourceTree = "<group>"; };
-		957845971EC42D4400AA551F /* UserPoolsIdentityProfile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserPoolsIdentityProfile.swift; sourceTree = "<group>"; };
-		957845981EC42D4400AA551F /* UserPoolSignUpConfirmationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserPoolSignUpConfirmationViewController.swift; sourceTree = "<group>"; };
-		957845991EC42D4400AA551F /* UserPoolSignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserPoolSignUpViewController.swift; sourceTree = "<group>"; };
-		9578459A1EC42D4400AA551F /* UserPoolsUIHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserPoolsUIHelper.swift; sourceTree = "<group>"; };
 		95791F851EB53D4700F9FA96 /* NoteCardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteCardViewController.swift; sourceTree = "<group>"; };
 		95791F971EB5513300F9FA96 /* NoteCardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NoteCardView.swift; path = ../NoteCardView.swift; sourceTree = "<group>"; };
 		95791F9B1EB55A9700F9FA96 /* NoteCardOverlayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteCardOverlayView.swift; sourceTree = "<group>"; };
@@ -474,6 +478,35 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		9551CCE71ECAA8A100D820DD /* SignIn */ = {
+			isa = PBXGroup;
+			children = (
+				9551CD051ECAAB5500D820DD /* SignIn.storyboard */,
+				9551CCE91ECAA8A100D820DD /* SignInViewController.swift */,
+				9551CCEA1ECAA8A100D820DD /* UserPools */,
+			);
+			path = SignIn;
+			sourceTree = "<group>";
+		};
+		9551CCEA1ECAA8A100D820DD /* UserPools */ = {
+			isa = PBXGroup;
+			children = (
+				9551CCEB1ECAA8A100D820DD /* FormTableCell.swift */,
+				9551CCEC1ECAA8A100D820DD /* FormTableDelegate.swift */,
+				9551CCED1ECAA8A100D820DD /* SignInViewControllerExtensions.swift */,
+				9551CCEE1ECAA8A100D820DD /* TableInputCell.swift */,
+				9551CCEF1ECAA8A100D820DD /* UserPoolForgotPasswordViewController.swift */,
+				9551CCF01ECAA8A100D820DD /* UserPoolMFAViewController.swift */,
+				9551CCF11ECAA8A100D820DD /* UserPoolNewPasswordViewController.swift */,
+				9551CCF21ECAA8A100D820DD /* UserPools.storyboard */,
+				9551CCF31ECAA8A100D820DD /* UserPoolsIdentityProfile.swift */,
+				9551CCF41ECAA8A100D820DD /* UserPoolSignUpConfirmationViewController.swift */,
+				9551CCF51ECAA8A100D820DD /* UserPoolSignUpViewController.swift */,
+				9551CCF61ECAA8A100D820DD /* UserPoolsUIHelper.swift */,
+			);
+			path = UserPools;
+			sourceTree = "<group>";
+		};
 		9559D0471EC8056200BAC3F5 /* AmazonAws */ = {
 			isa = PBXGroup;
 			children = (
@@ -519,34 +552,6 @@
 				9559D05A1EC8056200BAC3F5 /* WordPairs.swift */,
 			);
 			path = NoSQL;
-			sourceTree = "<group>";
-		};
-		9578458B1EC42D4400AA551F /* SignIn */ = {
-			isa = PBXGroup;
-			children = (
-				9578458D1EC42D4400AA551F /* SignInViewController.swift */,
-				9578458E1EC42D4400AA551F /* UserPools */,
-			);
-			path = SignIn;
-			sourceTree = "<group>";
-		};
-		9578458E1EC42D4400AA551F /* UserPools */ = {
-			isa = PBXGroup;
-			children = (
-				9578458F1EC42D4400AA551F /* FormTableCell.swift */,
-				957845901EC42D4400AA551F /* FormTableDelegate.swift */,
-				957845911EC42D4400AA551F /* SignInViewControllerExtensions.swift */,
-				957845921EC42D4400AA551F /* TableInputCell.swift */,
-				957845931EC42D4400AA551F /* UserPoolForgotPasswordViewController.swift */,
-				957845941EC42D4400AA551F /* UserPoolMFAViewController.swift */,
-				957845951EC42D4400AA551F /* UserPoolNewPasswordViewController.swift */,
-				957845961EC42D4400AA551F /* UserPools.storyboard */,
-				957845971EC42D4400AA551F /* UserPoolsIdentityProfile.swift */,
-				957845981EC42D4400AA551F /* UserPoolSignUpConfirmationViewController.swift */,
-				957845991EC42D4400AA551F /* UserPoolSignUpViewController.swift */,
-				9578459A1EC42D4400AA551F /* UserPoolsUIHelper.swift */,
-			);
-			path = UserPools;
 			sourceTree = "<group>";
 		};
 		957F2F411EB92F12001117DB /* NoteCardView */ = {
@@ -620,7 +625,7 @@
 				957F2F451EB9419A001117DB /* StandardQuizViewController.swift */,
 				957F2F4B1EB95467001117DB /* ResultsView.xib */,
 				957F2F4F1EB954B7001117DB /* ResultsView.swift */,
-				9578458B1EC42D4400AA551F /* SignIn */,
+				9551CCE71ECAA8A100D820DD /* SignIn */,
 				957F2F421EB92F43001117DB /* AwsConnections */,
 				9559D0471EC8056200BAC3F5 /* AmazonAws */,
 				957F2F411EB92F12001117DB /* NoteCardView */,
@@ -630,6 +635,7 @@
 				3FBAA2BA1EC434710040AD89 /* CircleProgressView.swift */,
 				3FC752F21EC67D9F009D9924 /* QuizResults */,
 				955A95E01EC9402F0002BCEE /* SessionManager.swift */,
+				9551CD091ECAAF7800D820DD /* InitialNavController.swift */,
 			);
 			path = WOTS;
 			sourceTree = "<group>";
@@ -731,14 +737,15 @@
 				F46EC9891EB52F7B00BF1A53 /* Assets.xcassets in Resources */,
 				3F3BA9DE1EB7103C006B4FC1 /* ScrollableBottomSheetViewController.xib in Resources */,
 				3FBAA2B31EC305AF0040AD89 /* GoalHeaderCell.xib in Resources */,
+				9551CD001ECAA8A100D820DD /* UserPools.storyboard in Resources */,
 				3F6CB6921EC530DD005A51BD /* QuizResultsCell.xib in Resources */,
 				957F2F4C1EB95467001117DB /* ResultsView.xib in Resources */,
 				9578455F1EC42CDA00AA551F /* Sdk in Resources */,
 				95791F9E1EB55AEE00F9FA96 /* NoteCardOverlayView.xib in Resources */,
+				9551CD061ECAAB5500D820DD /* SignIn.storyboard in Resources */,
 				3FBAA2AF1EC2F87D0040AD89 /* GoalsCell.xib in Resources */,
 				F4BECB191EBBB67900B98BA8 /* PlaceImageCell.xib in Resources */,
 				F4BECB221EBBBAB400B98BA8 /* WordCell.xib in Resources */,
-				957845A41EC42D4400AA551F /* UserPools.storyboard in Resources */,
 				3F3BA9D41EB6FEF5006B4FC1 /* DefaultTableViewCell.xib in Resources */,
 				F46EC9871EB52F7B00BF1A53 /* Main.storyboard in Resources */,
 			);
@@ -813,13 +820,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				9551CCD61ECAA75800D820DD /* GMUSimpleClusterAlgorithm.m in Sources */,
+				9551CD0A1ECAAF7800D820DD /* InitialNavController.swift in Sources */,
 				3FBAA2B81EC411FF0040AD89 /* GoalOptionCell.swift in Sources */,
 				3F3BA9DD1EB7103C006B4FC1 /* ScrollableBottomSheetViewController.swift in Sources */,
 				9551CCD21ECAA75800D820DD /* GQTPointQuadTree.m in Sources */,
+				9551CD041ECAA8A100D820DD /* UserPoolsUIHelper.swift in Sources */,
 				9559D0601EC8056200BAC3F5 /* AWSMobileClient.swift in Sources */,
 				F43436CA1EC69329007B6A3D /* UIColor+WOTS.swift in Sources */,
 				9551CCD51ECAA75800D820DD /* GMUNonHierarchicalDistanceBasedAlgorithm.m in Sources */,
 				3F6CB68E1EC52F1E005A51BD /* QuizResultsViewController.swift in Sources */,
+				9551CCF81ECAA8A100D820DD /* SignInViewController.swift in Sources */,
 				F4BECB0B1EB9745700B98BA8 /* Constants.swift in Sources */,
 				955A95E11EC9402F0002BCEE /* SessionManager.swift in Sources */,
 				957F2F501EB954B7001117DB /* ResultsView.swift in Sources */,
@@ -829,48 +839,42 @@
 				95A5936A1EC6506C006BFEC9 /* CredentialManager.swift in Sources */,
 				3FBAA2AE1EC2F87D0040AD89 /* GoalsCell.swift in Sources */,
 				F4BECB0D1EB97C3800B98BA8 /* APIClient.swift in Sources */,
-				957845A21EC42D4400AA551F /* UserPoolMFAViewController.swift in Sources */,
 				3FC752F01EC67D2C009D9924 /* QuizResultsHeaderCell.swift in Sources */,
 				F46EC9941EB538DB00BF1A53 /* TabBarController.swift in Sources */,
 				F4BECB131EBB915000B98BA8 /* PlaceDetailViewController.swift in Sources */,
-				957845A31EC42D4400AA551F /* UserPoolNewPasswordViewController.swift in Sources */,
 				9551CCDA1ECAA75800D820DD /* GMUDefaultClusterIconGenerator.m in Sources */,
-				957845A01EC42D4400AA551F /* TableInputCell.swift in Sources */,
-				9578459D1EC42D4400AA551F /* FormTableCell.swift in Sources */,
 				9551CCE51ECAA75800D820DD /* GMUPolygon.m in Sources */,
-				9578459C1EC42D4400AA551F /* SignInViewController.swift in Sources */,
 				F43437251ECA56D7007B6A3D /* Place.swift in Sources */,
 				3FBAA2B21EC305AF0040AD89 /* GoalHeaderCell.swift in Sources */,
 				F46EC9981EB54E7B00BF1A53 /* UIView+Autolayout.swift in Sources */,
 				F4BECB111EBB02A500B98BA8 /* MarkerInfoView.swift in Sources */,
+				9551CCFF1ECAA8A100D820DD /* UserPoolNewPasswordViewController.swift in Sources */,
 				3FBAA2A61EC2F1B70040AD89 /* ProfileViewController.swift in Sources */,
 				957F2F441EB92F72001117DB /* NoteCardData.swift in Sources */,
-				957845A51EC42D4400AA551F /* UserPoolsIdentityProfile.swift in Sources */,
 				9551CCD41ECAA75800D820DD /* GMUGridBasedClusterAlgorithm.m in Sources */,
-				957845A71EC42D4400AA551F /* UserPoolSignUpViewController.swift in Sources */,
 				9551CCDF1ECAA75800D820DD /* GMUFeature.m in Sources */,
 				9551CCE11ECAA75800D820DD /* GMUGroundOverlay.m in Sources */,
-				9578459E1EC42D4400AA551F /* FormTableDelegate.swift in Sources */,
 				9551CCD71ECAA75800D820DD /* GMUWrappingDictionaryKey.m in Sources */,
 				9551CCDD1ECAA75800D820DD /* GMUGeometryRenderer.m in Sources */,
 				9559D05B1EC8056200BAC3F5 /* AWSAPI_CX0HSKU68J_RequestSchema.m in Sources */,
+				9551CD011ECAA8A100D820DD /* UserPoolsIdentityProfile.swift in Sources */,
+				9551CD031ECAA8A100D820DD /* UserPoolSignUpViewController.swift in Sources */,
 				95791F9C1EB55A9700F9FA96 /* NoteCardOverlayView.swift in Sources */,
 				95791F861EB53D4700F9FA96 /* NoteCardViewController.swift in Sources */,
 				9559D0621EC8056200BAC3F5 /* Achievements.swift in Sources */,
 				9559D0661EC8056200BAC3F5 /* WordPairs.swift in Sources */,
 				9551CCDC1ECAA75800D820DD /* GMUGeoJSONParser.m in Sources */,
 				9551CCE61ECAA75800D820DD /* GMUStyle.m in Sources */,
+				9551CCFD1ECAA8A100D820DD /* UserPoolForgotPasswordViewController.swift in Sources */,
 				F4BECB1D1EBBB7A700B98BA8 /* PlaceHeaderCell.swift in Sources */,
-				957845A11EC42D4400AA551F /* UserPoolForgotPasswordViewController.swift in Sources */,
-				957845A81EC42D4400AA551F /* UserPoolsUIHelper.swift in Sources */,
-				9578459F1EC42D4400AA551F /* SignInViewControllerExtensions.swift in Sources */,
+				9551CCF91ECAA8A100D820DD /* FormTableCell.swift in Sources */,
 				9559D0641EC8056200BAC3F5 /* UserInformation.swift in Sources */,
 				95791F981EB5513300F9FA96 /* NoteCardView.swift in Sources */,
 				9551CCDB1ECAA75800D820DD /* GMUDefaultClusterRenderer.m in Sources */,
 				9551CCDE1ECAA75800D820DD /* GMUKMLParser.m in Sources */,
+				9551CCFA1ECAA8A100D820DD /* FormTableDelegate.swift in Sources */,
 				95FBEDCE1EC7DD0400D94C5D /* UserData.swift in Sources */,
 				9551CCD31ECAA75800D820DD /* GQTPointQuadTreeChild.m in Sources */,
-				957845A61EC42D4400AA551F /* UserPoolSignUpConfirmationViewController.swift in Sources */,
 				9551CCD91ECAA75800D820DD /* GMUStaticCluster.m in Sources */,
 				9559D05F1EC8056200BAC3F5 /* AWSConfiguration.swift in Sources */,
 				3FBAA2BB1EC434710040AD89 /* CircleProgressView.swift in Sources */,
@@ -879,16 +883,20 @@
 				9551CCD81ECAA75800D820DD /* GMUClusterManager.m in Sources */,
 				9559D0651EC8056200BAC3F5 /* UserVocabulary.swift in Sources */,
 				F4BECB181EBBB67900B98BA8 /* PlaceImageCell.swift in Sources */,
+				9551CCFC1ECAA8A100D820DD /* TableInputCell.swift in Sources */,
 				9559D05C1EC8056200BAC3F5 /* AWSAPI_CX0HSKU68J_ResponseSchema.m in Sources */,
 				9559D0631EC8056200BAC3F5 /* PlacesVocabulary.swift in Sources */,
+				9551CCFB1ECAA8A100D820DD /* SignInViewControllerExtensions.swift in Sources */,
 				F46EC9821EB52F7B00BF1A53 /* AppDelegate.swift in Sources */,
 				957F2F461EB9419A001117DB /* StandardQuizViewController.swift in Sources */,
 				F4BECB211EBBBAB400B98BA8 /* WordCell.swift in Sources */,
+				9551CD021ECAA8A100D820DD /* UserPoolSignUpConfirmationViewController.swift in Sources */,
 				9551CCE31ECAA75800D820DD /* GMUPlacemark.m in Sources */,
 				9559D05D1EC8056200BAC3F5 /* AWSAPI_CX0HSKU68J_TestMobileHubClient.m in Sources */,
 				F4BECB551EC66E5300B98BA8 /* ProfileHeaderView.swift in Sources */,
 				F46EC9961EB5418C00BF1A53 /* ExploreViewController.swift in Sources */,
 				9551CCE21ECAA75800D820DD /* GMULineString.m in Sources */,
+				9551CCFE1ECAA8A100D820DD /* UserPoolMFAViewController.swift in Sources */,
 				3FBAA2B51EC30CCD0040AD89 /* GoalsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
