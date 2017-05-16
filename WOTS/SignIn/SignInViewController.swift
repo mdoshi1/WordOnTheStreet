@@ -122,10 +122,10 @@ class SignInViewController : UIViewController {
     }
     
     func handleLoginWithSignInProvider(_ signInProvider: AWSSignInProvider) {
-        let myActivityIndicator = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.gray)
-        myActivityIndicator.center = view.center
-        myActivityIndicator.startAnimating()
-        view.addSubview(myActivityIndicator)
+//        let myActivityIndicator = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.gray)
+//        myActivityIndicator.center = view.center
+//        myActivityIndicator.startAnimating()
+//        view.addSubview(myActivityIndicator)
         AWSSignInManager.sharedInstance().login(signInProviderKey: signInProvider.identityProviderName, completionHandler: {(result: Any?, authState: AWSIdentityManagerAuthState, error: Error?) in
             print("result = \(result), error = \(error)")
             // If no error reported by SignInProvider, discard the sign-in view controller.
@@ -139,7 +139,7 @@ class SignInViewController : UIViewController {
                                 session.saveUserInfo()
                             }
                         }
-                        myActivityIndicator.stopAnimating()
+                        //myActivityIndicator.stopAnimating()
                         didCompleteSignIn(true)
                     }
                 })   
