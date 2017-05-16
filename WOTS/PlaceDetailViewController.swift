@@ -134,7 +134,7 @@ class PlaceDetailViewController: UIViewController, DidSelectWordAtPlaceProtocol 
                             "placeId": place?.placeId ?? "Place_Id",
                             "numWords": place?.numWords ?? "Place_Num_Word",
                             "numPeople": place?.numPeople ?? "Place_Num_People",
-                            "location": place?.location ?? "Place_Location"
+                            "location": place?.position ?? "Place_Location"
             ] as [String: Any]
         Flurry.logEvent("Explore_Quiz", withParameters: flurryParams)
         
@@ -186,8 +186,15 @@ extension PlaceDetailViewController: UITableViewDelegate, UITableViewDataSource 
             return headerCell
         case .words:
             let wordCell = tableView.dequeueReusableCell(withIdentifier: "WordCell", for: indexPath) as! WordCell
-            wordCell.wordLabel.text = words[indexPath.row]["english"]
-            wordCell.wordLabel.text = words[indexPath.row]["spanish"]
+            if let vocab = place?.vocab {
+                let key = Array(vocab.dict.keys)[indexPath.row]
+                wordCell.wordLabel.text = key
+                wordCell.translationLabel.text = vocab.dict[key]
+            } else {
+                wordCell.wordLabel.text = words[indexPath.row]["english"]
+                wordCell.translationLabel.text = words[indexPath.row]["spanish"]
+            }
+
             wordCell.delegate = self
             return wordCell
         }
@@ -202,7 +209,7 @@ extension PlaceDetailViewController: UITableViewDelegate, UITableViewDataSource 
                             "placeId": place?.placeId ?? "Place_Id",
                             "numWords": place?.numWords ?? "Place_Num_Word",
                             "numPeople": place?.numPeople ?? "Place_Num_People",
-                            "location": place?.location ?? "Place_Location",
+                            "location": place?.position ?? "Place_Location",
                             "sourceWord": valueSent["sourceWord"] ?? "Source_Word",
                             "translationWord": valueSent["translationWord"] ?? "Translation_Word"
         ] as [String: Any]
