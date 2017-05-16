@@ -56,9 +56,6 @@ class NoteCardViewController: UIViewController {
     override func viewDidDisappear(_ animated: Bool) {
         // Instrumentation: time spent in Review
         Flurry.endTimedEvent("Tab_Review", withParameters: nil)
-        let count = dataSource.count
-        self.dataSource.removeAll()
-        self.kolodaView.removeCardInIndexRange(0..<0+count, animated: false)
     }
     
     
@@ -102,6 +99,9 @@ class NoteCardViewController: UIViewController {
             AWSSignInManager.sharedInstance().logout(completionHandler: {(result: Any?, authState: AWSIdentityManagerAuthState, error: Error?) in
                 self.navigationController!.popToRootViewController(animated: false)
                 self.presentSignInViewController()
+                let count = self.dataSource.count
+                self.dataSource.removeAll()
+                self.kolodaView.removeCardInIndexRange(0..<0+count, animated: false)
             })
             // print("Logout Successful: \(signInProvider.getDisplayName)");
         } else {
