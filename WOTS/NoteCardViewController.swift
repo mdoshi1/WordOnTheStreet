@@ -34,12 +34,12 @@ class NoteCardViewController: UIViewController {
     @IBOutlet weak var takeQuizButton: UIButton!
     
     override func viewWillAppear(_ animated: Bool) {
-        noteCardConn.getAllUserWords(forNotecards: true){ (source) in
-            self.dataSource = source;
-            sourceWords = source;
-            let position = self.kolodaView.currentCardIndex
-            self.kolodaView.insertCardAtIndexRange(position..<position + self.dataSource.count, animated: true)
-        }
+//        noteCardConn.getAllUserWords(forNotecards: true){ (source) in
+//            self.dataSource = source;
+//            sourceWords = source;
+//            let position = self.kolodaView.currentCardIndex
+//            self.kolodaView.insertCardAtIndexRange(position..<position + self.dataSource.count, animated: true)
+//        }
     }
     
     override func viewDidLoad() {
