@@ -76,7 +76,8 @@
 		957F2F4C1EB95467001117DB /* ResultsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 957F2F4B1EB95467001117DB /* ResultsView.xib */; };
 		957F2F501EB954B7001117DB /* ResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957F2F4F1EB954B7001117DB /* ResultsView.swift */; };
 		95A5936A1EC6506C006BFEC9 /* CredentialManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A593691EC6506C006BFEC9 /* CredentialManager.swift */; };
-		95A5936C1EC6864F006BFEC9 /* WordIds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A5936B1EC6864F006BFEC9 /* WordIds.swift */; };
+		95FBEDCE1EC7DD0400D94C5D /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FBEDCD1EC7DD0300D94C5D /* UserData.swift */; };
+		F43436CA1EC69329007B6A3D /* UIColor+WOTS.swift in Sources */ = {isa = PBXBuildFile; fileRef = F43436C91EC69329007B6A3D /* UIColor+WOTS.swift */; };
 		F434370B1EC93384007B6A3D /* GMUGridBasedClusterAlgorithm.m in Sources */ = {isa = PBXBuildFile; fileRef = F43436D01EC93384007B6A3D /* GMUGridBasedClusterAlgorithm.m */; };
 		F434370C1EC93384007B6A3D /* GMUNonHierarchicalDistanceBasedAlgorithm.m in Sources */ = {isa = PBXBuildFile; fileRef = F43436D21EC93384007B6A3D /* GMUNonHierarchicalDistanceBasedAlgorithm.m */; };
 		F434370D1EC93384007B6A3D /* GMUSimpleClusterAlgorithm.m in Sources */ = {isa = PBXBuildFile; fileRef = F43436D41EC93384007B6A3D /* GMUSimpleClusterAlgorithm.m */; };
@@ -98,8 +99,7 @@
 		F434371D1EC93384007B6A3D /* GMUStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = F43437021EC93384007B6A3D /* GMUStyle.m */; };
 		F434371E1EC93384007B6A3D /* GQTPointQuadTree.m in Sources */ = {isa = PBXBuildFile; fileRef = F43437071EC93384007B6A3D /* GQTPointQuadTree.m */; };
 		F434371F1EC93384007B6A3D /* GQTPointQuadTreeChild.m in Sources */ = {isa = PBXBuildFile; fileRef = F43437091EC93384007B6A3D /* GQTPointQuadTreeChild.m */; };
-		95FBEDCE1EC7DD0400D94C5D /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FBEDCD1EC7DD0300D94C5D /* UserData.swift */; };
-		F43436CA1EC69329007B6A3D /* UIColor+WOTS.swift in Sources */ = {isa = PBXBuildFile; fileRef = F43436C91EC69329007B6A3D /* UIColor+WOTS.swift */; };
+		F43437251ECA56D7007B6A3D /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = F43437241ECA56D7007B6A3D /* Place.swift */; };
 		F46EC9821EB52F7B00BF1A53 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46EC9811EB52F7B00BF1A53 /* AppDelegate.swift */; };
 		F46EC9871EB52F7B00BF1A53 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F46EC9851EB52F7B00BF1A53 /* Main.storyboard */; };
 		F46EC9891EB52F7B00BF1A53 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F46EC9881EB52F7B00BF1A53 /* Assets.xcassets */; };
@@ -212,7 +212,8 @@
 		957F2F4B1EB95467001117DB /* ResultsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ResultsView.xib; sourceTree = "<group>"; };
 		957F2F4F1EB954B7001117DB /* ResultsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultsView.swift; sourceTree = "<group>"; };
 		95A593691EC6506C006BFEC9 /* CredentialManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CredentialManager.swift; sourceTree = "<group>"; };
-		95A5936B1EC6864F006BFEC9 /* WordIds.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WordIds.swift; sourceTree = "<group>"; };
+		95FBEDCD1EC7DD0300D94C5D /* UserData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
+		F43436C91EC69329007B6A3D /* UIColor+WOTS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+WOTS.swift"; sourceTree = "<group>"; };
 		F43436CE1EC93384007B6A3D /* GMUClusterAlgorithm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GMUClusterAlgorithm.h; sourceTree = "<group>"; };
 		F43436CF1EC93384007B6A3D /* GMUGridBasedClusterAlgorithm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GMUGridBasedClusterAlgorithm.h; sourceTree = "<group>"; };
 		F43436D01EC93384007B6A3D /* GMUGridBasedClusterAlgorithm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GMUGridBasedClusterAlgorithm.m; sourceTree = "<group>"; };
@@ -270,8 +271,7 @@
 		F43437081EC93384007B6A3D /* GQTPointQuadTreeChild.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GQTPointQuadTreeChild.h; sourceTree = "<group>"; };
 		F43437091EC93384007B6A3D /* GQTPointQuadTreeChild.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GQTPointQuadTreeChild.m; sourceTree = "<group>"; };
 		F434370A1EC93384007B6A3D /* GQTPointQuadTreeItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GQTPointQuadTreeItem.h; sourceTree = "<group>"; };
-		95FBEDCD1EC7DD0300D94C5D /* UserData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
-		F43436C91EC69329007B6A3D /* UIColor+WOTS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+WOTS.swift"; sourceTree = "<group>"; };
+		F43437241ECA56D7007B6A3D /* Place.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Place.swift; sourceTree = "<group>"; };
 		F46EC97E1EB52F7B00BF1A53 /* WOTS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WOTS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F46EC9811EB52F7B00BF1A53 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F46EC9861EB52F7B00BF1A53 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -611,6 +611,7 @@
 				F4BECB0A1EB9745700B98BA8 /* Constants.swift */,
 				F43436C91EC69329007B6A3D /* UIColor+WOTS.swift */,
 				F4BECB0C1EB97C3800B98BA8 /* APIClient.swift */,
+				F43437241ECA56D7007B6A3D /* Place.swift */,
 				F46EC9931EB538DB00BF1A53 /* TabBarController.swift */,
 				F46EC9951EB5418C00BF1A53 /* ExploreViewController.swift */,
 				F4BECB101EBB02A500B98BA8 /* MarkerInfoView.swift */,
@@ -821,7 +822,6 @@
 				F43437191EC93384007B6A3D /* GMULineString.m in Sources */,
 				3F6CB68E1EC52F1E005A51BD /* QuizResultsViewController.swift in Sources */,
 				F434370D1EC93384007B6A3D /* GMUSimpleClusterAlgorithm.m in Sources */,
-				957845801EC42D2900AA551F /* AWSAPI_CX0HSKU68J_RequestSchema.m in Sources */,
 				F4BECB0B1EB9745700B98BA8 /* Constants.swift in Sources */,
 				955A95E11EC9402F0002BCEE /* SessionManager.swift in Sources */,
 				957F2F501EB954B7001117DB /* ResultsView.swift in Sources */,
@@ -835,7 +835,6 @@
 				F46EC9941EB538DB00BF1A53 /* TabBarController.swift in Sources */,
 				F4BECB131EBB915000B98BA8 /* PlaceDetailViewController.swift in Sources */,
 				F434371F1EC93384007B6A3D /* GQTPointQuadTreeChild.m in Sources */,
-				957845841EC42D2900AA551F /* AWSConfiguration.swift in Sources */,
 				957845A31EC42D4400AA551F /* UserPoolNewPasswordViewController.swift in Sources */,
 				F434371E1EC93384007B6A3D /* GQTPointQuadTree.m in Sources */,
 				957845A01EC42D4400AA551F /* TableInputCell.swift in Sources */,
@@ -843,6 +842,7 @@
 				9578459D1EC42D4400AA551F /* FormTableCell.swift in Sources */,
 				9578459C1EC42D4400AA551F /* SignInViewController.swift in Sources */,
 				F434370E1EC93384007B6A3D /* GMUWrappingDictionaryKey.m in Sources */,
+				F43437251ECA56D7007B6A3D /* Place.swift in Sources */,
 				3FBAA2B21EC305AF0040AD89 /* GoalHeaderCell.swift in Sources */,
 				F46EC9981EB54E7B00BF1A53 /* UIView+Autolayout.swift in Sources */,
 				F43437131EC93384007B6A3D /* GMUGeoJSONParser.m in Sources */,
@@ -866,7 +866,6 @@
 				957845A81EC42D4400AA551F /* UserPoolsUIHelper.swift in Sources */,
 				F434371D1EC93384007B6A3D /* GMUStyle.m in Sources */,
 				9578459F1EC42D4400AA551F /* SignInViewControllerExtensions.swift in Sources */,
-				957845891EC42D2A00AA551F /* PlacesVocabulary.swift in Sources */,
 				F434370C1EC93384007B6A3D /* GMUNonHierarchicalDistanceBasedAlgorithm.m in Sources */,
 				9559D0641EC8056200BAC3F5 /* UserInformation.swift in Sources */,
 				95791F981EB5513300F9FA96 /* NoteCardView.swift in Sources */,
@@ -884,7 +883,6 @@
 				F46EC9821EB52F7B00BF1A53 /* AppDelegate.swift in Sources */,
 				F434370B1EC93384007B6A3D /* GMUGridBasedClusterAlgorithm.m in Sources */,
 				957F2F461EB9419A001117DB /* StandardQuizViewController.swift in Sources */,
-				9578458A1EC42D2A00AA551F /* WordPairs.swift in Sources */,
 				F43437111EC93384007B6A3D /* GMUDefaultClusterIconGenerator.m in Sources */,
 				F4BECB211EBBBAB400B98BA8 /* WordCell.swift in Sources */,
 				9559D05D1EC8056200BAC3F5 /* AWSAPI_CX0HSKU68J_TestMobileHubClient.m in Sources */,

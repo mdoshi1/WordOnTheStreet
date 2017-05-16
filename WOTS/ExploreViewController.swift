@@ -27,6 +27,7 @@ class ExploreViewController: UIViewController {
     fileprivate var locationManager = CLLocationManager()
     fileprivate var clusterManager: GMUClusterManager!
     fileprivate let placeDetailSegue = "toPlaceDetails"
+    fileprivate var placesDict = [String: Place]()
 
     // MARK: - ExploreViewController
 
@@ -120,9 +121,11 @@ extension ExploreViewController: GMSMapViewDelegate {
             
             // Place markers on main queue
             DispatchQueue.main.async {
-                self.clusterManager.clearItems()
-                let mapViewBounds = GMSCoordinateBounds(region: visibleRegion)
                 for place in places {
+                    if self.placesDict[place.placeId] == nil {
+                        self.placesDict[place.placeId] = place
+                        self.clusterManager.add(place)
+                    }
 //                    let infoMarker = GMSMarker(position: place.location)
 //                    infoMarker.title = place.name
 //                    infoMarker.opacity = 1.0
@@ -130,10 +133,9 @@ extension ExploreViewController: GMSMapViewDelegate {
 //                    infoMarker.userData = place
 //                    infoMarker.map = mapView
                     
-                    if mapViewBounds.contains(place.location) {
-                        let item = POIItem(position: place.location, name: place.name)
-                        self.clusterManager.add(item)
-                    }
+//                    if mapViewBounds.contains(place.position) {
+//                        self.clusterManager.add(place)
+//                    }
                 }
                 self.clusterManager.cluster()
             }
@@ -144,24 +146,37 @@ extension ExploreViewController: GMSMapViewDelegate {
         let markerInfoView = MarkerInfoView(frame: CGRect(x: 0, y: 0, width: 200.0, height: 60.0), forMarker: marker)
 
         // Instrumentation: What kind of pin did the user click on?
-        let place = marker.userData as! Place
-        let flurryParams = ["name": place.name,
-                            "placeId": place.placeId,
-                            "numWords": place.numWords,
-                            "numPeople": place.numPeople,
-                            "location": place.location
-        ] as [String: Any]
-        Flurry.logEvent("Explore_Pin", withParameters: flurryParams)
+        if let place = marker.userData as? Place {
+            let flurryParams = ["name": place.name,
+                                "placeId": place.placeId,
+                                "numWords": place.numWords,
+                                "numPeople": place.numPeople,
+                                "location": place.position
+                ] as [String: Any]
+            Flurry.logEvent("Explore_Pin", withParameters: flurryParams)
+        } else {
+            Flurry.logEvent("Explore_Pin", withParameters: ["name": "Marker did not have Place data"])
+        }
+        
         return markerInfoView
     }
     
     func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
-        if let poiItem = marker.userData as? POIItem {
-            print("Tapped cluster")
+        mapView.selectedMarker = marker
+        if let place = marker.userData as? Place {
+            print("Place marker was tapped")
+            APIClient.getWords(forPlace: place) { vocab in
+                guard let vocab = vocab else {
+                    print("Error retrieving vocab for selected marker")
+                    return
+                }
+                place.updateVocab(vocab)
+            }
         } else {
-            print("Tapped marker")
+            print("Map cluster was tapped")
         }
-        return false
+        
+        return true
     }
     
     func mapView(_ mapView: GMSMapView, didTapInfoWindowOf marker: GMSMarker) {
@@ -172,7 +187,7 @@ extension ExploreViewController: GMSMapViewDelegate {
                             "placeId": place.placeId,
                             "numWords": place.numWords,
                             "numPeople": place.numPeople,
-                            "location": place.location
+                            "location": place.position
             ] as [String: Any]
         Flurry.logEvent("Explore_Pin_Info_Window", withParameters: flurryParams)
         
@@ -213,15 +228,5 @@ extension UIViewController {
     
     func dismissKeyboard() {
         view.endEditing(true)
-    }
-}
-
-class POIItem: NSObject, GMUClusterItem {
-    var position: CLLocationCoordinate2D
-    var name: String
-    
-    init(position: CLLocationCoordinate2D, name: String) {
-        self.position = position
-        self.name = name
     }
 }

@@ -468,13 +468,8 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oKC-Kw-b3y">
-<<<<<<< HEAD
                                 <rect key="frame" x="47.5" y="370" width="280" height="35"/>
                                 <color key="backgroundColor" red="0.2707115296" green="0.59983539500000005" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-=======
-                                <rect key="frame" x="47.5" y="326" width="280" height="35"/>
-                                <color key="backgroundColor" red="1" green="0.80000000000000004" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
->>>>>>> 953f75e67702e6d00e9469af9b3b691ffd527647
                                 <constraints>
                                     <constraint firstAttribute="width" constant="280" id="03a-eK-hqd"/>
                                     <constraint firstAttribute="height" constant="35" id="ww7-ah-WCr"/>

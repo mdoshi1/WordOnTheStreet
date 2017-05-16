@@ -25,7 +25,7 @@ final class APIClient {
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
         
-        let resource = Resource<[Place]>(urlRequest: request, parseJSON: { json in
+        let resource = Resource<[Place]>(urlRequest: request) { json in
             guard let response = json as? JSONDictionary else {
                 print("Failed to cast JSON response as a JSONDictionary")
                 return nil
@@ -34,9 +34,8 @@ final class APIClient {
                 print("Failed to cast JSON data as an array of JSONDictionary")
                 return nil
             }
-            print("Data \(data)")
             return data.flatMap(Place.init)
-        })
+        }
         
         load(resource: resource) { places in
             guard let places = places else {
@@ -46,6 +45,38 @@ final class APIClient {
             }
             print("Success in retrieving places")
             completion(places)
+        }
+    }
+    
+    class func getWords(forPlace place: Place, completion: @escaping (Vocab?) -> ()) {
+        let lat = place.position.latitude
+        let long = place.position.longitude
+        let urlString = "https://ra1xa35x56.execute-api.us-west-2.amazonaws.com/testing/prepopulate?latitude=\(lat)&longitude=\(long)"
+        guard let url = URL(string: urlString) else {
+            print("Error generating URL from string: \(urlString)")
+            return
+        }
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        
+        let resource = Resource<Vocab>(urlRequest: request) { json in
+            print("json \(json)")
+            guard let response = json as? JSONDictionary else {
+                print("Failed to cast JSON response as a JSONDictionary")
+                return nil
+            }
+            return Vocab(dictionary: response)
+        }
+        
+        load(resource: resource) { vocab in
+            guard let vocab = vocab else {
+                print("Error in retrieving vocab")
+                completion(nil)
+                return
+            }
+            print("Success in retrieving vocab")
+            completion(vocab)
         }
     }
     
@@ -67,34 +98,23 @@ final class APIClient {
     }
 }
 
-struct Place {
-    let name: String
-    let placeId: String
-    let location: CLLocationCoordinate2D
-    // let types: [String]
-    // let photos: [String]
-    let numWords: Int
-    let numPeople: Int
+struct Vocab {
+    var dict: [String: String] = [:]
 }
 
-extension Place {
+extension Vocab {
     init?(dictionary: JSONDictionary) {
-        guard let name = dictionary["name"] as? String,
-            let placeId = dictionary["place_id"] as? String,
-            let geometry = dictionary["geometry"] as? JSONDictionary,
-            let location = geometry["location"] as? JSONDictionary,
-            let lat = location["lat"] as? Double,
-            let long = location["lng"] as? Double else {
-                print("Error in one or more fields of Place JSON")
+        guard let words = dictionary["words"] as? [String],
+            let translations = dictionary["translated"] as? [String] else {
+                print("Error in one or more fields of Vocab JSON")
                 return nil
         }
-        self.name = name
-        self.placeId = placeId
-        self.location = CLLocationCoordinate2D(latitude: lat, longitude: long)
-        self.numWords = Int(arc4random_uniform(20))
-        self.numPeople = Int(arc4random_uniform(20))
+        for index in 0..<words.count {
+            dict[words[index]] = translations[index]
+        }
     }
 }
+
 
 struct Resource<A> {
     let urlRequest: URLRequest
