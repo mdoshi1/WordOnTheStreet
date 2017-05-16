@@ -29,38 +29,21 @@ class NoteCardViewController: UIViewController {
     fileprivate var isPresentingForFirstTime = true
     let noteCardConn = NoteCardConnection()
     // MARK: Lifecycle
-    
+    let bottomSheetVC = ScrollableBottomSheetViewController()
+
     
     @IBOutlet weak var takeQuizButton: UIButton!
     
-    override func viewWillAppear(_ animated: Bool) {
-//        noteCardConn.getAllUserWords(forNotecards: true){ (source) in
-//            self.dataSource = source;
-//            sourceWords = source;
-//            let position = self.kolodaView.currentCardIndex
-//            self.kolodaView.insertCardAtIndexRange(position..<position + self.dataSource.count, animated: true)
-//        }
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        presentSignInViewController()
-
 //        self.view.backgroundColor = UIColor(patternImage: UIImage(named:"chalk-background")!)
         self.view.backgroundColor = UIColor(red:0.20, green:0.20, blue:0.20, alpha:1.0)
         // Check if a user is logged in
+        self.presentSignInViewController()
 
         kolodaView.dataSource = self
         kolodaView.delegate = self
-//        noteCardConn.insertData { () in
-//            noteCardConn.getWordsForUser { (source) in
-//                self.dataSource = source;
-//                sourceWords = source;
-//                let position = self.kolodaView.currentCardIndex
-//                self.kolodaView.insertCardAtIndexRange(position..<position + self.dataSource.count, animated: true)
-//            }
-//        }
-        //noteCardConn.saveTestWordMap()
+
         takeQuizButton.layer.cornerRadius = 6;
         self.modalTransitionStyle = UIModalTransitionStyle.flipHorizontal
         self.navigationItem.title = "Word on the Street"
@@ -123,6 +106,25 @@ class NoteCardViewController: UIViewController {
 
 
     }
+    func onSignIn (_ success: Bool) {
+        
+        if (success) {
+            initData()
+        } else {
+            // handle cancel operation from user
+        }
+    }
+    
+    func initData(){
+        noteCardConn.getAllUserWords(forNotecards: true){ (source) in
+            self.dataSource = source;
+            sourceWords = source;
+            let position = self.kolodaView.currentCardIndex
+            self.kolodaView.insertCardAtIndexRange(position..<position + self.dataSource.count, animated: true)
+            self.bottomSheetVC.getBottomSheetData()
+        }
+    }
+
     
     func presentSignInViewController() {
         if !AWSSignInManager.sharedInstance().isLoggedIn {
@@ -132,6 +134,14 @@ class NoteCardViewController: UIViewController {
             loginController.didCompleteSignIn = onSignIn
             let navController = UINavigationController(rootViewController: loginController)
             navigationController?.present(navController, animated: true, completion: nil)
+        } else {
+            let session = SessionManager.sharedInstance
+            session.getUserData { (info) in
+                if(info == nil){
+                    session.saveUserInfo()
+                }
+            }
+            initData()
         }
     }
     
@@ -143,8 +153,6 @@ class NoteCardViewController: UIViewController {
     func addBottomSheetView() {
         // 1- Init bottomSheetVC
 //        let bottomSheetVC = WordListTableViewController()
-        let bottomSheetVC = ScrollableBottomSheetViewController()
-
         // 2- Add bottomSheetVC as a child view
         self.addChildViewController(bottomSheetVC)
         self.view.addSubview(bottomSheetVC.view)

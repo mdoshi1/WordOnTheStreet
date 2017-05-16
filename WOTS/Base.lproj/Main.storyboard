@@ -306,12 +306,12 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="rUh-yu-Ka1" kind="relationship" relationship="rootViewController" id="Ol2-nR-0pY"/>
+                        <segue destination="rUh-yu-Ka1" kind="relationship" relationship="rootViewController" id="6JU-8C-3LS"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fUP-7j-kVM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1182" y="230"/>
+            <point key="canvasLocation" x="990" y="230"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="4PB-Yb-Yqr">

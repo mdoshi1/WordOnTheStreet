@@ -37,7 +37,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let configuration = AWSServiceConfiguration(region: .USEast1, credentialsProvider: credentialsProvider)
         
         AWSServiceManager.default().defaultServiceConfiguration = configuration
-        let singleton = SessionManager.sharedInstance
 //        while(AWSIdentityManager.default().identityId == nil){
 //           CredentialManager.credentialsProvider.getIdentityId().continueWith { (task) -> Any? in
 //                if (task.error != nil) {

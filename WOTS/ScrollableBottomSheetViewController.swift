@@ -34,10 +34,13 @@ class ScrollableBottomSheetViewController: UIViewController {
         gesture.delegate = self
         view.addGestureRecognizer(gesture)
         
-//        noteCardConn.getAllUserWords(forNotecards: false){ (source) in
-//            self.words = source;
-//            self.tableView.reloadData()
-//        }
+
+    }
+    func getBottomSheetData(){
+        noteCardConn.getAllUserWords(forNotecards: false){ (source) in
+            self.words = source;
+            self.tableView.reloadData()
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {

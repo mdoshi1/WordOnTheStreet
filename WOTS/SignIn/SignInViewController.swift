@@ -129,6 +129,12 @@ class SignInViewController : UIViewController {
                 DispatchQueue.main.async(execute: {
                     self.dismiss(animated: true, completion: nil)
                     if let didCompleteSignIn = self.didCompleteSignIn {
+                        let session = SessionManager.sharedInstance
+                        session.getUserData { (info) in
+                            if(info == nil){
+                                session.saveUserInfo()
+                            }
+                        }
                         didCompleteSignIn(true)
                     }
                 })   
