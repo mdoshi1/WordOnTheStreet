@@ -13,16 +13,17 @@ import AWSDynamoDB
 import AWSMobileHubHelper
 import AWSCognitoUserPoolsSignIn
 import Flurry_iOS_SDK
-
+import Instructions
 
 private var numberOfCards: Int = 5
 var sourceWords: [Dictionary<String, String>] = []
 
 
-class NoteCardViewController: UIViewController {
+class NoteCardViewController: UIViewController, CoachMarksControllerDataSource, CoachMarksControllerDelegate {
     
     @IBOutlet var upGestureRecognizer: UISwipeGestureRecognizer!
     @IBOutlet weak var kolodaView: KolodaView!
+    let coachMarksController = CoachMarksController()
     
     var dataSource: [Dictionary<String, String>] = []
     
@@ -50,6 +51,9 @@ class NoteCardViewController: UIViewController {
         
         // Instrumentation: time spent in Review
         Flurry.logEvent("Tab_Review", timed: true)
+        
+        // Onboarding
+        self.coachMarksController.dataSource = self
 
     }
     
@@ -58,7 +62,31 @@ class NoteCardViewController: UIViewController {
         Flurry.endTimedEvent("Tab_Review", withParameters: nil)
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.coachMarksController.stop(immediately: true)
+    }
     
+    
+    // MARK - Coach marks
+    func numberOfCoachMarks(for coachMarksController: CoachMarksController) -> Int {
+        return 1
+    }
+
+    func coachMarksController(_ coachMarksController: CoachMarksController,
+                          coachMarkAt index: Int) -> CoachMark {
+        return coachMarksController.helper.makeCoachMark(for: self.kolodaView)
+    }
+    
+    func coachMarksController(_ coachMarksController: CoachMarksController, coachMarkViewsAt index: Int, madeFrom coachMark: CoachMark) -> (bodyView: CoachMarkBodyView, arrowView: CoachMarkArrowView?) {
+        let coachViews = coachMarksController.helper.makeDefaultCoachViews(withArrow: true, arrowOrientation: coachMark.arrowOrientation)
+        
+        coachViews.bodyView.hintLabel.text = "Hello! I'm a Coach Mark!"
+        coachViews.bodyView.nextLabel.text = "Ok!"
+        
+        return (bodyView: coachViews.bodyView, arrowView: coachViews.arrowView)
+    }
+
     // MARK: IBActions
     
     @IBAction func upSwiped(_ sender: Any) {
@@ -181,6 +209,9 @@ class NoteCardViewController: UIViewController {
             addBottomSheetView()
             self.isPresentingForFirstTime = false
         }
+        
+        // start coach marks flow
+        self.coachMarksController.startOn(self)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -240,10 +271,10 @@ extension NoteCardViewController: KolodaViewDataSource {
         return nc
     }
     
-    func koloda(_ koloda: KolodaView, viewForCardOverlayAt index: Int) -> OverlayView? {
-        //return Bundle.main.loadNibNamed("NoteCardOverlayView", owner: self, options: nil)?[0] as? OverlayView
-        return nil
-    }
+//    func koloda(_ koloda: KolodaView, viewForCardOverlayAt index: Int) -> OverlayView? {
+//        //return Bundle.main.loadNibNamed("NoteCardOverlayView", owner: self, options: nil)?[0] as? OverlayView
+//        return nil
+//    }
     
     func koloda(koloda: KolodaView, draggedCardWithPercentage finishPercentage: CGFloat, in direction: SwipeResultDirection) {
         switch direction {
@@ -261,6 +292,8 @@ extension NoteCardViewController: KolodaViewDataSource {
             break
         }
     }
+    
+
 }
 
 
