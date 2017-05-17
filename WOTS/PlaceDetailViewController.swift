@@ -183,6 +183,7 @@ extension PlaceDetailViewController: UITableViewDelegate, UITableViewDataSource 
             headerCell.numWordsLabel.text = "\(place?.numWords ?? 0) Words"
             headerCell.numPeopleLabel.text = "\(place?.numPeople ?? 0)"
             headerCell.takeQuizButton.addTarget(self, action: #selector(toPlaceQuiz), for: .touchUpInside)
+            headerCell.selectionStyle = UITableViewCellSelectionStyle.none
             return headerCell
         case .words:
             let wordCell = tableView.dequeueReusableCell(withIdentifier: "WordCell", for: indexPath) as! WordCell

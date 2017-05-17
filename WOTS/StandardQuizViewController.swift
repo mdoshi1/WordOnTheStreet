@@ -12,7 +12,6 @@ import Flurry_iOS_SDK
 class StandardQuizViewController: UIViewController, UITextFieldDelegate {
     var dataSource: [Dictionary<String, String>] = []
 
-
     @IBOutlet weak var currentWordLabel: UILabel!
     @IBOutlet weak var userInput: UITextField!
     @IBOutlet weak var doneButton: UIButton!
@@ -27,7 +26,7 @@ class StandardQuizViewController: UIViewController, UITextFieldDelegate {
     var allWords = [WordAttempt]();
     
     override func viewDidLoad() {
-        self.view.backgroundColor = UIColor(patternImage: UIImage(named:"blue-background")!)
+        self.view.backgroundColor = UIColor(patternImage: UIImage(named:"chalk-background")!)
 
         currentWord = WordAttempt(englishWord: dataSource[wordIndex]["english"]!, spanishWord:  dataSource[wordIndex]["spanish"]!)
         allWords.append(currentWord)

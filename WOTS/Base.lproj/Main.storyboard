@@ -199,9 +199,8 @@
                                     <segue destination="hht-Ii-9dy" kind="presentation" identifier="TakeQuizSegue" id="h71-RK-L4i"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9pi-tb-bAc">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9pi-tb-bAc">
                                 <rect key="frame" x="157" y="407" width="60" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Sign Out">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
@@ -214,9 +213,11 @@
                         <constraints>
                             <constraint firstItem="6Sh-W8-J4f" firstAttribute="leading" secondItem="Ni6-kt-UMs" secondAttribute="leading" constant="10" id="Kxt-kU-HFE"/>
                             <constraint firstItem="sM7-Mu-v9F" firstAttribute="top" secondItem="6Sh-W8-J4f" secondAttribute="bottom" constant="314" id="TMe-ib-ZFv"/>
+                            <constraint firstItem="9pi-tb-bAc" firstAttribute="top" secondItem="d3s-T8-1zm" secondAttribute="bottom" constant="34" id="UfS-Yp-PrT"/>
                             <constraint firstItem="d3s-T8-1zm" firstAttribute="centerX" secondItem="Ni6-kt-UMs" secondAttribute="centerX" id="VK1-X6-how"/>
                             <constraint firstItem="6Sh-W8-J4f" firstAttribute="top" secondItem="pnO-la-eya" secondAttribute="bottom" constant="57" id="Xd1-oJ-4Wv"/>
                             <constraint firstAttribute="leadingMargin" secondItem="6Sh-W8-J4f" secondAttribute="leading" constant="10" id="b8H-uL-Dmf"/>
+                            <constraint firstItem="9pi-tb-bAc" firstAttribute="centerX" secondItem="Ni6-kt-UMs" secondAttribute="centerX" id="pRb-IW-kRa"/>
                             <constraint firstItem="d3s-T8-1zm" firstAttribute="top" secondItem="6Sh-W8-J4f" secondAttribute="bottom" constant="30" id="sb3-M7-a8g"/>
                             <constraint firstAttribute="trailing" secondItem="6Sh-W8-J4f" secondAttribute="trailing" constant="10" id="vLZ-G6-luK"/>
                             <constraint firstAttribute="trailingMargin" secondItem="6Sh-W8-J4f" secondAttribute="trailing" constant="10" id="xCY-pz-HG2"/>
@@ -498,6 +499,6 @@
         <image name="profileIcon" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="h71-RK-L4i"/>
+        <segue reference="dVC-wn-XaI"/>
     </inferredMetricsTieBreakers>
 </document>
