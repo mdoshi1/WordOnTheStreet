@@ -98,6 +98,7 @@
 		957F2F4C1EB95467001117DB /* ResultsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 957F2F4B1EB95467001117DB /* ResultsView.xib */; };
 		957F2F501EB954B7001117DB /* ResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957F2F4F1EB954B7001117DB /* ResultsView.swift */; };
 		95A5936A1EC6506C006BFEC9 /* CredentialManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A593691EC6506C006BFEC9 /* CredentialManager.swift */; };
+		95CF55611ECD02ED00AEB769 /* InitialNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95CF55601ECD02ED00AEB769 /* InitialNavigationController.swift */; };
 		95FBEDCE1EC7DD0400D94C5D /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FBEDCD1EC7DD0300D94C5D /* UserData.swift */; };
 		F43436CA1EC69329007B6A3D /* UIColor+WOTS.swift in Sources */ = {isa = PBXBuildFile; fileRef = F43436C91EC69329007B6A3D /* UIColor+WOTS.swift */; };
 		F43437251ECA56D7007B6A3D /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = F43437241ECA56D7007B6A3D /* Place.swift */; };
@@ -271,6 +272,7 @@
 		957F2F4B1EB95467001117DB /* ResultsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ResultsView.xib; sourceTree = "<group>"; };
 		957F2F4F1EB954B7001117DB /* ResultsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultsView.swift; sourceTree = "<group>"; };
 		95A593691EC6506C006BFEC9 /* CredentialManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CredentialManager.swift; sourceTree = "<group>"; };
+		95CF55601ECD02ED00AEB769 /* InitialNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InitialNavigationController.swift; sourceTree = "<group>"; };
 		95FBEDCD1EC7DD0300D94C5D /* UserData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
 		F43436C91EC69329007B6A3D /* UIColor+WOTS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+WOTS.swift"; sourceTree = "<group>"; };
 		F43437241ECA56D7007B6A3D /* Place.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Place.swift; sourceTree = "<group>"; };
@@ -633,6 +635,7 @@
 				3FBAA2BA1EC434710040AD89 /* CircleProgressView.swift */,
 				3FC752F21EC67D9F009D9924 /* QuizResults */,
 				955A95E01EC9402F0002BCEE /* SessionManager.swift */,
+				95CF55601ECD02ED00AEB769 /* InitialNavigationController.swift */,
 			);
 			path = WOTS;
 			sourceTree = "<group>";
@@ -851,6 +854,7 @@
 				9551CCDF1ECAA75800D820DD /* GMUFeature.m in Sources */,
 				9551CCE11ECAA75800D820DD /* GMUGroundOverlay.m in Sources */,
 				9551CCD71ECAA75800D820DD /* GMUWrappingDictionaryKey.m in Sources */,
+				95CF55611ECD02ED00AEB769 /* InitialNavigationController.swift in Sources */,
 				9551CCDD1ECAA75800D820DD /* GMUGeometryRenderer.m in Sources */,
 				9559D05B1EC8056200BAC3F5 /* AWSAPI_CX0HSKU68J_RequestSchema.m in Sources */,
 				9551CD011ECAA8A100D820DD /* UserPoolsIdentityProfile.swift in Sources */,

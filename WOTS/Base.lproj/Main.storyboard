@@ -298,21 +298,21 @@
             </objects>
             <point key="canvasLocation" x="6743.1999999999998" y="-222.63868065967017"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Initial Navigation Controller-->
         <scene sceneID="cY6-aX-Dut">
             <objects>
-                <navigationController id="9wY-Ye-KVM" sceneMemberID="viewController">
+                <navigationController id="9wY-Ye-KVM" customClass="InitialNavigationController" customModule="WOTS" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="GyS-2J-ZVp">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="rUh-yu-Ka1" kind="relationship" relationship="rootViewController" id="6JU-8C-3LS"/>
+                        <segue destination="rUh-yu-Ka1" kind="relationship" relationship="rootViewController" id="pJ8-Zg-tSQ"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fUP-7j-kVM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="990" y="230"/>
+            <point key="canvasLocation" x="892" y="230"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="4PB-Yb-Yqr">

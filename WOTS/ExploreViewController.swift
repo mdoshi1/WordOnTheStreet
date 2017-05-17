@@ -33,7 +33,7 @@ class ExploreViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Setup mapview
         self.view.addSubview(mapView.usingAutolayout())
         setupConstraints()
