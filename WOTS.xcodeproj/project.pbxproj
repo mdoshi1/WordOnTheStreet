@@ -100,6 +100,7 @@
 		95A5936A1EC6506C006BFEC9 /* CredentialManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A593691EC6506C006BFEC9 /* CredentialManager.swift */; };
 		95CF55611ECD02ED00AEB769 /* InitialNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95CF55601ECD02ED00AEB769 /* InitialNavigationController.swift */; };
 		95FBEDCE1EC7DD0400D94C5D /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FBEDCD1EC7DD0300D94C5D /* UserData.swift */; };
+		95FC0BB81ECD321800664F87 /* DateFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FC0BB71ECD321800664F87 /* DateFunctions.swift */; };
 		F43436CA1EC69329007B6A3D /* UIColor+WOTS.swift in Sources */ = {isa = PBXBuildFile; fileRef = F43436C91EC69329007B6A3D /* UIColor+WOTS.swift */; };
 		F43437251ECA56D7007B6A3D /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = F43437241ECA56D7007B6A3D /* Place.swift */; };
 		F46EC9821EB52F7B00BF1A53 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46EC9811EB52F7B00BF1A53 /* AppDelegate.swift */; };
@@ -274,6 +275,7 @@
 		95A593691EC6506C006BFEC9 /* CredentialManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CredentialManager.swift; sourceTree = "<group>"; };
 		95CF55601ECD02ED00AEB769 /* InitialNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InitialNavigationController.swift; sourceTree = "<group>"; };
 		95FBEDCD1EC7DD0300D94C5D /* UserData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
+		95FC0BB71ECD321800664F87 /* DateFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateFunctions.swift; sourceTree = "<group>"; };
 		F43436C91EC69329007B6A3D /* UIColor+WOTS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+WOTS.swift"; sourceTree = "<group>"; };
 		F43437241ECA56D7007B6A3D /* Place.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Place.swift; sourceTree = "<group>"; };
 		F46EC97E1EB52F7B00BF1A53 /* WOTS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WOTS.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -636,6 +638,7 @@
 				3FC752F21EC67D9F009D9924 /* QuizResults */,
 				955A95E01EC9402F0002BCEE /* SessionManager.swift */,
 				95CF55601ECD02ED00AEB769 /* InitialNavigationController.swift */,
+				95FC0BB71ECD321800664F87 /* DateFunctions.swift */,
 			);
 			path = WOTS;
 			sourceTree = "<group>";
@@ -872,6 +875,7 @@
 				95791F981EB5513300F9FA96 /* NoteCardView.swift in Sources */,
 				9551CCDB1ECAA75800D820DD /* GMUDefaultClusterRenderer.m in Sources */,
 				9551CCDE1ECAA75800D820DD /* GMUKMLParser.m in Sources */,
+				95FC0BB81ECD321800664F87 /* DateFunctions.swift in Sources */,
 				9551CCFA1ECAA8A100D820DD /* FormTableDelegate.swift in Sources */,
 				95FBEDCE1EC7DD0400D94C5D /* UserData.swift in Sources */,
 				9551CCD31ECAA75800D820DD /* GQTPointQuadTreeChild.m in Sources */,

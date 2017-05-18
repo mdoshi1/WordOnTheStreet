@@ -136,12 +136,52 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
             
         case .goalProgress:
             
-            // TODO: use database/user accounts to fill in goals
             let goalProgressCell = tableView.dequeueReusableCell(withIdentifier: "GoalsCell", for: indexPath) as! GoalsCell
-            
-            // TODO: set the progress for the circles based on database
-            goalProgressCell.progressFirstCircle.progress = 0.5 // example
-            
+            //Get the start of week
+            let date = getDateByWeekday(direction: .Previous, "Monday", considerToday: true)
+            //For every day of the week, check if the map value exists and update the progress accordingly
+            for i in 0 ..< 7 {
+                //Progress to next day
+                let d = date.addingTimeInterval(TimeInterval(60*60*24*i))
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateFormat = "MM:dd:YYYY"
+                let dateStr = dateFormatter.string(from: d as Date)
+                if(session.userInfo?._history != nil){
+                    if(session.userInfo?._history?[dateStr] != nil){
+                        let learned = (session.userInfo?._history?[dateStr]!)! as! Double
+                        let goal = Int((session.userInfo?._wordGoal)!)
+                        var percentage = learned/Double(goal)
+                        if(percentage > 1.0){
+                            percentage = 1.0
+                        }
+                        switch i {
+                        case 0:
+                            goalProgressCell.progressFirstCircle.progress = percentage // example
+                            break
+                        case 1:
+                            goalProgressCell.progressSecCircle.progress = percentage
+                            break
+                        case 2:
+                            goalProgressCell.progressThirdCircle.progress = percentage
+                            break
+                        case 3:
+                            goalProgressCell.progressFourthCircle.progress = percentage
+                            break
+                        case 4:
+                            goalProgressCell.progressFifthCircle.progress = percentage
+                            break
+                        case 5:
+                            goalProgressCell.progressSixthCircle.progress = percentage
+                            break
+                        case 6:
+                            goalProgressCell.progressSeventhCircle.progress = percentage
+                            break
+                        default:
+                            break
+                        }
+                    }
+                }
+            }
             return goalProgressCell
         }
     }

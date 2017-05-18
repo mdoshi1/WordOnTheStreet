@@ -19,7 +19,7 @@ class UserInformation: AWSDynamoDBObjectModel, AWSDynamoDBModeling {
     
     var _userId: String?
     var _achievements: Set<String>?
-    var _history: [String: String]?
+    var _history:  Dictionary<String, NSObject>?
     var _wordGoal: NSNumber?
     
     class func dynamoDBTableName() -> String {

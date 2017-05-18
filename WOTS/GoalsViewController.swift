@@ -22,7 +22,8 @@ class GoalsViewController: UIViewController {
     var rowToSelect: IndexPath? = nil
     var selectedGoal: String = ""
     let dailyGoal = "daily_goal"
-    
+    let session = SessionManager.sharedInstance
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -71,8 +72,8 @@ class GoalsViewController: UIViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         if let selectedIndex = tableView.indexPathForSelectedRow {
-            SessionManager.sharedInstance.userInfo?._wordGoal = Int(goalOptions[selectedIndex.row]["freq"]!)! as NSNumber
-            SessionManager.sharedInstance.setUserWordGoal(goal: Int(goalOptions[selectedIndex.row]["freq"]!)!)
+            session.userInfo?._wordGoal = Int(goalOptions[selectedIndex.row]["freq"]!) as NSNumber?
+            session.setUserWordGoal(goal: Int(goalOptions[selectedIndex.row]["freq"]!)!)
         }
     }
     
