@@ -54,6 +54,10 @@ class SignInViewController : UIViewController {
         // set up google button if enabled
         self.setUpGoogleButton()
     }
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+        
+    }
     
     func setUpUserPoolsUI() {
         passwordRow = FormTableCell(placeHolder: "Password", type: InputType.password)
