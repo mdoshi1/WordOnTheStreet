@@ -6,23 +6,24 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="GoalsCell" rowHeight="133" id="KGk-i7-Jjw" customClass="GoalsCell" customModule="WOTS" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="133"/>
+            <rect key="frame" x="0.0" y="0.0" width="426" height="133"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="132.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="426" height="132.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Bzp-AR-xAK">
-                        <rect key="frame" x="10" y="48.5" width="300" height="36"/>
+                        <rect key="frame" x="8" y="41.5" width="398" height="50"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7S7-1J-cgc" customClass="CircleProgressView" customModule="WOTS" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="36" height="36"/>
+                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="trackFillColor">
@@ -31,15 +32,15 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pMg-l8-qiS" customClass="CircleProgressView" customModule="WOTS" customModuleProvider="target">
-                                <rect key="frame" x="44" y="0.0" width="36" height="36"/>
+                                <rect key="frame" x="58" y="0.0" width="50" height="50"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cEM-uK-zX8" customClass="CircleProgressView" customModule="WOTS" customModuleProvider="target">
-                                <rect key="frame" x="88" y="0.0" width="36" height="36"/>
+                                <rect key="frame" x="116" y="0.0" width="50" height="50"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1GW-8H-R8G" customClass="CircleProgressView" customModule="WOTS" customModuleProvider="target">
-                                <rect key="frame" x="132" y="0.0" width="36" height="36"/>
+                                <rect key="frame" x="174" y="0.0" width="50" height="50"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="36" id="PWR-qS-X8i"/>
@@ -47,15 +48,15 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lyB-gU-xT6" customClass="CircleProgressView" customModule="WOTS" customModuleProvider="target">
-                                <rect key="frame" x="176" y="0.0" width="36" height="36"/>
+                                <rect key="frame" x="232" y="0.0" width="50" height="50"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5Ih-T9-ehv" customClass="CircleProgressView" customModule="WOTS" customModuleProvider="target">
-                                <rect key="frame" x="220" y="0.0" width="36" height="36"/>
+                                <rect key="frame" x="290" y="0.0" width="50" height="50"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sAR-kF-Xjo" customClass="CircleProgressView" customModule="WOTS" customModuleProvider="target">
-                                <rect key="frame" x="264" y="0.0" width="36" height="36"/>
+                                <rect key="frame" x="348" y="0.0" width="50" height="50"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                         </subviews>
@@ -69,29 +70,47 @@
                         </constraints>
                     </stackView>
                     <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zt5-eu-Tgj">
-                        <rect key="frame" x="10" y="83" width="144" height="20.5"/>
+                        <rect key="frame" x="10" y="83" width="350" height="50"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="S" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DkR-Df-IAe">
-                                <rect key="frame" x="0.0" y="0.0" width="36" height="20.5"/>
+                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="M" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rnc-LC-KTh">
-                                <rect key="frame" x="36" y="0.0" width="36" height="20.5"/>
+                                <rect key="frame" x="50" y="0.0" width="50" height="50"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="T" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cvt-uZ-ro4">
-                                <rect key="frame" x="72" y="0.0" width="36" height="20.5"/>
+                                <rect key="frame" x="100" y="0.0" width="50" height="50"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="W" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rv3-tY-j7s">
-                                <rect key="frame" x="108" y="0.0" width="36" height="20.5"/>
+                                <rect key="frame" x="150" y="0.0" width="50" height="50"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="T" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ei7-7e-oeg">
+                                <rect key="frame" x="200" y="0.0" width="50" height="50"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="F" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Ak-an-Pod">
+                                <rect key="frame" x="250" y="0.0" width="50" height="50"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="S" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n5G-hY-hyj">
+                                <rect key="frame" x="300" y="0.0" width="50" height="50"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -101,27 +120,49 @@
                 </subviews>
                 <constraints>
                     <constraint firstItem="DkR-Df-IAe" firstAttribute="centerX" secondItem="7S7-1J-cgc" secondAttribute="centerX" id="1Vx-EX-2qo"/>
+                    <constraint firstItem="sAR-kF-Xjo" firstAttribute="height" secondItem="n5G-hY-hyj" secondAttribute="height" id="4a0-UN-x4N"/>
                     <constraint firstItem="1GW-8H-R8G" firstAttribute="centerX" secondItem="rv3-tY-j7s" secondAttribute="centerX" id="678-un-qg1"/>
+                    <constraint firstItem="lyB-gU-xT6" firstAttribute="height" secondItem="ei7-7e-oeg" secondAttribute="height" id="6ed-tJ-5Ci"/>
+                    <constraint firstItem="sAR-kF-Xjo" firstAttribute="width" secondItem="n5G-hY-hyj" secondAttribute="width" id="CSZ-xS-PKf"/>
+                    <constraint firstItem="Cvt-uZ-ro4" firstAttribute="height" secondItem="cEM-uK-zX8" secondAttribute="height" id="EHS-eo-3GU"/>
                     <constraint firstItem="DkR-Df-IAe" firstAttribute="width" secondItem="7S7-1J-cgc" secondAttribute="width" id="Go5-48-v6y"/>
                     <constraint firstItem="1GW-8H-R8G" firstAttribute="width" secondItem="rv3-tY-j7s" secondAttribute="width" id="M3B-Hn-Pa3"/>
+                    <constraint firstItem="lyB-gU-xT6" firstAttribute="width" secondItem="ei7-7e-oeg" secondAttribute="width" id="PPA-nu-F3q"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="Bzp-AR-xAK" secondAttribute="trailing" id="TYM-vV-Dsg"/>
+                    <constraint firstItem="5Ih-T9-ehv" firstAttribute="centerX" secondItem="4Ak-an-Pod" secondAttribute="centerX" id="XuY-OF-8qR"/>
+                    <constraint firstItem="Bzp-AR-xAK" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="ZVJ-sn-l8F"/>
                     <constraint firstItem="Bzp-AR-xAK" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="a83-sv-xQq"/>
                     <constraint firstItem="Rnc-LC-KTh" firstAttribute="centerX" secondItem="pMg-l8-qiS" secondAttribute="centerX" id="aLd-AF-AC5"/>
                     <constraint firstItem="Rnc-LC-KTh" firstAttribute="width" secondItem="pMg-l8-qiS" secondAttribute="width" id="aWI-kX-J3G"/>
                     <constraint firstItem="Bzp-AR-xAK" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="c0D-my-Jhz"/>
+                    <constraint firstItem="sAR-kF-Xjo" firstAttribute="centerX" secondItem="n5G-hY-hyj" secondAttribute="centerX" id="dTF-3a-UYB"/>
+                    <constraint firstItem="5Ih-T9-ehv" firstAttribute="height" secondItem="4Ak-an-Pod" secondAttribute="height" id="dqa-nW-Tu2"/>
+                    <constraint firstItem="1GW-8H-R8G" firstAttribute="height" secondItem="rv3-tY-j7s" secondAttribute="height" id="eD9-dl-34O"/>
                     <constraint firstItem="Cvt-uZ-ro4" firstAttribute="width" secondItem="cEM-uK-zX8" secondAttribute="width" id="gV3-YR-ag6"/>
+                    <constraint firstItem="5Ih-T9-ehv" firstAttribute="width" secondItem="4Ak-an-Pod" secondAttribute="width" id="jDe-qb-5re"/>
+                    <constraint firstItem="DkR-Df-IAe" firstAttribute="height" secondItem="7S7-1J-cgc" secondAttribute="height" id="mTD-07-AC1"/>
+                    <constraint firstItem="Rnc-LC-KTh" firstAttribute="height" secondItem="pMg-l8-qiS" secondAttribute="height" id="n50-qP-wpQ"/>
                     <constraint firstItem="Cvt-uZ-ro4" firstAttribute="centerX" secondItem="cEM-uK-zX8" secondAttribute="centerX" id="u5J-3F-Mfe"/>
+                    <constraint firstItem="lyB-gU-xT6" firstAttribute="centerX" secondItem="ei7-7e-oeg" secondAttribute="centerX" id="yFt-mF-hcV"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
                 <outlet property="progressFifthCircle" destination="lyB-gU-xT6" id="3sb-Yr-i0x"/>
+                <outlet property="progressFifthDay" destination="ei7-7e-oeg" id="fpb-Xc-E50"/>
                 <outlet property="progressFirstCircle" destination="7S7-1J-cgc" id="kF4-Er-AWy"/>
+                <outlet property="progressFirstDay" destination="DkR-Df-IAe" id="Dwi-Zf-8ho"/>
                 <outlet property="progressFourthCircle" destination="1GW-8H-R8G" id="cBU-Qf-z8b"/>
+                <outlet property="progressFourthDay" destination="rv3-tY-j7s" id="4YP-gF-cPJ"/>
                 <outlet property="progressSecCircle" destination="pMg-l8-qiS" id="yQ8-qb-CGi"/>
+                <outlet property="progressSecondDay" destination="Rnc-LC-KTh" id="gq2-FL-6nF"/>
                 <outlet property="progressSeventhCircle" destination="sAR-kF-Xjo" id="lUG-WY-upB"/>
+                <outlet property="progressSeventhDay" destination="n5G-hY-hyj" id="EsT-W5-hB2"/>
                 <outlet property="progressSixthCircle" destination="5Ih-T9-ehv" id="OLT-De-d36"/>
+                <outlet property="progressSixthDay" destination="4Ak-an-Pod" id="LtJ-VE-GHW"/>
                 <outlet property="progressThirdCircle" destination="cEM-uK-zX8" id="aw1-Rh-qUN"/>
+                <outlet property="progressThirdDay" destination="Cvt-uZ-ro4" id="ubo-UA-P0z"/>
             </connections>
-            <point key="canvasLocation" x="34" y="85.5"/>
+            <point key="canvasLocation" x="87" y="85.5"/>
         </tableViewCell>
     </objects>
 </document>

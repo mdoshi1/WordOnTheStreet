@@ -136,7 +136,6 @@ extension GoalsViewController: UITableViewDelegate, UITableViewDataSource {
         let goalOptionCell = tableView.dequeueReusableCell(withIdentifier: "GoalOptionCell", for: indexPath) as! GoalOptionCell
         goalOptionCell.goalModeLabel.text = goalOptions[indexPath.row]["mode"]!
         goalOptionCell.goalFreqLabel.text = goalOptions[indexPath.row]["freq"]! + " word(s)/day"
-        
 //        
 //        if (isChecked[indexPath.row]) {
 //            goalOptionCell.accessoryType = .checkmark

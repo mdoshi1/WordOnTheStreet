@@ -133,6 +133,8 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
                 apndStr = " word/day"
             }
             goalCell.goalLabel.text = String(describing: (session.userInfo?._wordGoal!)!) + apndStr
+            goalCell.selectionStyle = UITableViewCellSelectionStyle.none
+
             return goalCell
             
         case .goalProgress:
@@ -218,6 +220,7 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
                     }
                 }
             }
+            goalProgressCell.selectionStyle = UITableViewCellSelectionStyle.none
             return goalProgressCell
         }
     }

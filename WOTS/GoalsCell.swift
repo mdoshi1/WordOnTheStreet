@@ -18,6 +18,13 @@ class GoalsCell: UITableViewCell {
     @IBOutlet weak var progressSixthCircle: CircleProgressView!
     @IBOutlet weak var progressSeventhCircle: CircleProgressView!
     
+    @IBOutlet weak var progressFirstDay: UILabel!
+    @IBOutlet weak var progressSecondDay: UILabel!
+    @IBOutlet weak var progressThirdDay: UILabel!
+    @IBOutlet weak var progressFourthDay: UILabel!
+    @IBOutlet weak var progressFifthDay: UILabel!
+    @IBOutlet weak var progressSixthDay: UILabel!
+    @IBOutlet weak var progressSeventhDay: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
