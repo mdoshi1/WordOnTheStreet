@@ -120,6 +120,8 @@ class NoteCardViewController: UIViewController {
                 }
             }
             initData()
+            //noteCardConn.saveTestWordMap()
+
         } else {
             // handle cancel operation from user
         }

@@ -57,6 +57,7 @@ class ProfileViewController: UIViewController {
         
         // Instrumentation: time spent in Profile
         Flurry.logEvent("Tab_Me", timed: true)
+        //session.saveUserWordHistory(wordsLearned: 3)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -157,24 +158,59 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
                         switch i {
                         case 0:
                             goalProgressCell.progressFirstCircle.progress = percentage // example
+                            if(Calendar.current.isDate(d as Date, inSameDayAs: NSDate() as Date)) {
+                                goalProgressCell.progressFirstCircle.trackFillColor = UIColor(red: 254/255, green: 204/255, blue: 102/255, alpha: 1)
+                            } else {
+                                goalProgressCell.progressFirstCircle.trackFillColor = UIColor.blue
+                            }
                             break
                         case 1:
                             goalProgressCell.progressSecCircle.progress = percentage
+                            if(Calendar.current.isDate(d as Date, inSameDayAs: NSDate() as Date)) {
+                                goalProgressCell.progressSecCircle.trackFillColor = UIColor(red: 254/255, green: 204/255, blue: 102/255, alpha: 1)
+                            } else {
+                                goalProgressCell.progressSecCircle.trackFillColor = UIColor.blue
+                            }
                             break
                         case 2:
                             goalProgressCell.progressThirdCircle.progress = percentage
+                            if(Calendar.current.isDate(d as Date, inSameDayAs: NSDate() as Date)) {
+                                goalProgressCell.progressThirdCircle.trackFillColor = UIColor(red: 254/255, green: 204/255, blue: 102/255, alpha: 1)
+                            } else {
+                                goalProgressCell.progressThirdCircle.trackFillColor = UIColor.blue
+                            }
                             break
                         case 3:
                             goalProgressCell.progressFourthCircle.progress = percentage
+                            if(Calendar.current.isDate(d as Date, inSameDayAs: NSDate() as Date)) {
+                                goalProgressCell.progressFourthCircle.trackFillColor = UIColor(red: 254/255, green: 204/255, blue: 102/255, alpha: 1)
+                            } else {
+                                goalProgressCell.progressFourthCircle.trackFillColor = UIColor.blue
+                            }
                             break
                         case 4:
                             goalProgressCell.progressFifthCircle.progress = percentage
+                            if(Calendar.current.isDate(d as Date, inSameDayAs: NSDate() as Date)) {
+                                goalProgressCell.progressFifthCircle.trackFillColor = UIColor(red: 254/255, green: 204/255, blue: 102/255, alpha: 1)
+                            } else {
+                                goalProgressCell.progressFifthCircle.trackFillColor = UIColor.blue
+                            }
                             break
                         case 5:
                             goalProgressCell.progressSixthCircle.progress = percentage
+                            if(Calendar.current.isDate(d as Date, inSameDayAs: NSDate() as Date)) {
+                                goalProgressCell.progressSixthCircle.trackFillColor = UIColor(red: 254/255, green: 204/255, blue: 102/255, alpha: 1)
+                            } else {
+                                goalProgressCell.progressSixthCircle.trackFillColor = UIColor.blue
+                            }
                             break
                         case 6:
                             goalProgressCell.progressSeventhCircle.progress = percentage
+                            if(Calendar.current.isDate(d as Date, inSameDayAs: NSDate() as Date)) {
+                                goalProgressCell.progressSeventhCircle.trackFillColor = UIColor(red: 254/255, green: 204/255, blue: 102/255, alpha: 1)
+                            } else {
+                                goalProgressCell.progressSeventhCircle.trackFillColor = UIColor.blue
+                            }
                             break
                         default:
                             break
