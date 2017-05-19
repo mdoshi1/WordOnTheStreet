@@ -89,6 +89,23 @@ class PlaceDetailViewController: UIViewController, DidSelectWordAtPlaceProtocol 
 
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        // Instrumentation: time spent in Place Details
+        Flurry.logEvent("Place_Details", timed: true)
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        // Instrumentation: time spent in Place Details
+        
+        let flurryParams = ["name": place?.name ?? "Place_Name",
+                            "placeId": place?.placeId ?? "Place_Id",
+                            "numWords": place?.numWords ?? "Place_Num_Word",
+                            "numPeople": place?.numPeople ?? "Place_Num_People",
+                            "location": place?.position ?? "Place_Location"
+            ] as [String: Any]
+        Flurry.endTimedEvent("Place_Details", withParameters: flurryParams)
+    }
+    
     // MARK: - Helper Methods
     
     private func setupConstraints() {
