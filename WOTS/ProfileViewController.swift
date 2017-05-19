@@ -141,7 +141,7 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
             
             let goalProgressCell = tableView.dequeueReusableCell(withIdentifier: "GoalsCell", for: indexPath) as! GoalsCell
             //Get the start of week
-            let date = getDateByWeekday(direction: .Previous, "Monday", considerToday: true)
+            let date = getDateByWeekday(direction: .Previous, "Sunday", considerToday: true)
             //For every day of the week, check if the map value exists and update the progress accordingly
             for i in 0 ..< 7 {
                 //Progress to next day
