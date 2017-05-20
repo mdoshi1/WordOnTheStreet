@@ -144,6 +144,7 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
             for i in 0 ..< 7 {
                 //Progress to next day
                 let d = date.addingTimeInterval(TimeInterval(60*60*24*i))
+                print(d.timeIntervalSince1970)
                 let dateFormatter = DateFormatter()
                 dateFormatter.dateFormat = "MM:dd:YYYY"
                 let dateStr = dateFormatter.string(from: d as Date)

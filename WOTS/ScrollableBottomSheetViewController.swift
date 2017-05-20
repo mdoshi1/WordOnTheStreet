@@ -13,14 +13,13 @@ class ScrollableBottomSheetViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     // placeholder words
-    var words: [Dictionary<String, String>] = []
+    var words: [Dictionary<String, Any>] = []
     
     let fullView: CGFloat = 100
     var partialView: CGFloat {
         return UIScreen.main.bounds.height - 150
     }
-    let noteCardConn = NoteCardConnection()
-
+    let userWordManger = UserWordManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,14 +32,10 @@ class ScrollableBottomSheetViewController: UIViewController {
         let gesture = UIPanGestureRecognizer.init(target: self, action: #selector(ScrollableBottomSheetViewController.panGesture))
         gesture.delegate = self
         view.addGestureRecognizer(gesture)
-        
-
     }
-    func getBottomSheetData(){
-        noteCardConn.getAllUserWords(forNotecards: false){ (source) in
-            self.words = source;
-            self.tableView.reloadData()
-        }
+    func setBottomSheetData(source:  [Dictionary<String, Any>]){
+        self.words = source;
+        self.tableView.reloadData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -120,8 +115,8 @@ extension ScrollableBottomSheetViewController: UITableViewDelegate, UITableViewD
         let cell : DefaultTableViewCell = tableView.dequeueReusableCell(withIdentifier: "default")! as! DefaultTableViewCell
         var dictionary = self.words[indexPath.row]
         
-        cell.englishWordLabel.text = dictionary["english"]
-        cell.spanishWordLabel.text = dictionary["spanish"]
+        cell.englishWordLabel.text = dictionary["english"] as? String
+        cell.spanishWordLabel.text = dictionary["spanish"] as? String
         return cell
     }
 }

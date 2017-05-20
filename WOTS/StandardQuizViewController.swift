@@ -10,7 +10,7 @@ import UIKit
 import Flurry_iOS_SDK
 
 class StandardQuizViewController: UIViewController, UITextFieldDelegate {
-    var dataSource: [Dictionary<String, String>] = []
+    var dataSource: [Dictionary<String, Any>] = []
 
     @IBOutlet weak var currentWordLabel: UILabel!
     @IBOutlet weak var userInput: UITextField!
@@ -28,7 +28,7 @@ class StandardQuizViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         self.view.backgroundColor = UIColor(patternImage: UIImage(named:"chalk-background")!)
 
-        currentWord = WordAttempt(englishWord: dataSource[wordIndex]["english"]!, spanishWord:  dataSource[wordIndex]["spanish"]!)
+        currentWord = WordAttempt(englishWord: dataSource[wordIndex]["english"]! as! String, spanishWord:  dataSource[wordIndex]["spanish"]! as! String)
         allWords.append(currentWord)
         
         currentWordLabel.text = currentWord.spanishWord
@@ -82,7 +82,7 @@ class StandardQuizViewController: UIViewController, UITextFieldDelegate {
             numAttemptsLeftLabel.isHidden = true
             
             if(wordIndex < dataSource.count){
-                currentWord = WordAttempt(englishWord: dataSource[wordIndex]["english"]!, spanishWord:  dataSource[wordIndex]["spanish"]!)
+                currentWord = WordAttempt(englishWord: dataSource[wordIndex]["english"]! as! String, spanishWord:  dataSource[wordIndex]["spanish"]! as! String)
                 allWords.append(currentWord)
                 
                 currentWordLabel.text = currentWord.spanishWord

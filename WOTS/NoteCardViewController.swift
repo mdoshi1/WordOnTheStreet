@@ -16,7 +16,7 @@ import Flurry_iOS_SDK
 
 
 private var numberOfCards: Int = 5
-var sourceWords: [Dictionary<String, String>] = []
+var sourceWords: [Dictionary<String, Any>] = []
 
 
 class NoteCardViewController: UIViewController {
@@ -24,13 +24,14 @@ class NoteCardViewController: UIViewController {
     @IBOutlet var upGestureRecognizer: UISwipeGestureRecognizer!
     @IBOutlet weak var kolodaView: KolodaView!
     
-    var dataSource: [Dictionary<String, String>] = []
+    var dataSource: [Dictionary<String, Any>] = []
     
     fileprivate var isPresentingForFirstTime = true
-    let noteCardConn = NoteCardConnection()
+    let userWordManger = UserWordManager()
     // MARK: Lifecycle
     let bottomSheetVC = ScrollableBottomSheetViewController()
-
+    var userVoc = UserVocab()
+    var testedFlashcards = false
     
     @IBOutlet weak var takeQuizButton: UIButton!
     
@@ -56,45 +57,44 @@ class NoteCardViewController: UIViewController {
     override func viewDidDisappear(_ animated: Bool) {
         // Instrumentation: time spent in Review
         Flurry.endTimedEvent("Tab_Review", withParameters: nil)
+        userWordManger.saveUserVocab(data: userVoc!)
     }
     
-    
-    // MARK: IBActions
-    
-    @IBAction func upSwiped(_ sender: Any) {
-        print ("swiped up")
+    func koloda(_ koloda: KolodaView, didSwipeCardAt index: Int, in direction: SwipeResultDirection) {
+        
+        var card = self.dataSource[index]
+        let i = card["index"]! as! Int
+        let movedUp = card["movedUp"]! as! Bool
+        var wordMap = userVoc?._flashcardWords?[i] as! Dictionary<String, Any>
+        let d = Date(timeIntervalSince1970: wordMap["date"] as! TimeInterval)
+        var bucketNum = wordMap["bucket"] as! Int
+        if( direction == .left){
+            bucketNum = 1
+        } else if( direction == .right){
+            if(Calendar.current.isDate(d as Date, inSameDayAs: NSDate() as Date)){
+                return
+            }
+            if(movedUp == false){
+                card["movedUp"] = true
+                self.dataSource[index] = card
+                sourceWords = self.dataSource
+            } else {
+                return
+            }
+            if(bucketNum < 5){
+                bucketNum += 1
+            }
+        }
+        wordMap["bucket"] = bucketNum
+        wordMap["date"] = Date().timeIntervalSince1970
+        userVoc?._flashcardWords?[i] = wordMap as NSObject
+        testedFlashcards = true
     }
-
-    @IBAction func leftButtonTapped() {
-        kolodaView?.swipe(.left)
-    }
     
-    @IBAction func rightButtonTapped() {
-        kolodaView?.swipe(.right)
-    }
-    
-    @IBAction func undoButtonTapped() {
-        kolodaView?.revertAction()
-    }
     
     @IBAction func signOut(_ sender: Any) {
         // Instrumentation: finish user session
         Flurry.endTimedEvent("User_Session", withParameters: nil)
-        
-//        CredentialManager.credentialsProvider.clearCredentials()
-//        CredentialManager.credentialsProvider.clearKeychain()
-//        AWSSignInManager.sharedInstance().logout { (obj, auth, err) in
-//            if((err) != nil) {
-//                print(err!)
-//            } else {
-//                let pool = AWSCognitoIdentityUserPool(forKey: "UserPool")
-//                let user = pool.currentUser()
-//                user?.forgetDevice()
-//                user?.signOut()
-//                self.transition()
-//            }
-//        }
-        
         if (AWSSignInManager.sharedInstance().isLoggedIn) {
             AWSSignInManager.sharedInstance().logout(completionHandler: {(result: Any?, authState: AWSIdentityManagerAuthState, error: Error?) in
                 self.navigationController!.popToRootViewController(animated: false)
@@ -120,7 +120,6 @@ class NoteCardViewController: UIViewController {
                 }
             }
             initData()
-            //noteCardConn.saveTestWordMap()
 
         } else {
             // handle cancel operation from user
@@ -128,12 +127,17 @@ class NoteCardViewController: UIViewController {
     }
     
     func initData(){
-        noteCardConn.getAllUserWords(forNotecards: true){ (source) in
-            self.dataSource = source;
-            sourceWords = source;
-            let position = self.kolodaView.currentCardIndex
-            self.kolodaView.insertCardAtIndexRange(position..<position + self.dataSource.count, animated: true)
-            self.bottomSheetVC.getBottomSheetData()
+        userWordManger.pullUserWordIds { (userVocab) in
+            self.userVoc = userVocab
+            self.userWordManger.getFlashcardWords(userVocab, completion: { (source) in
+                self.dataSource = source;
+                sourceWords = source;
+                let position = self.kolodaView.currentCardIndex
+                self.kolodaView.insertCardAtIndexRange(position..<position + self.dataSource.count, animated: true)
+            })
+            self.userWordManger.getAllWords(userVocab, completion: { (source) in
+                self.bottomSheetVC.setBottomSheetData(source: source)
+            })
         }
     }
 
@@ -237,8 +241,8 @@ extension NoteCardViewController: KolodaViewDataSource {
     
     func koloda(_ koloda: KolodaView, viewForCardAt index: Int) -> UIView {
         let nc = NoteCardView(frame: CGRect(x: 0, y: 0, width: koloda.frame.width, height: koloda.frame.height))
-        nc.wordView.text = dataSource[Int(index)]["spanish"]
-        nc.translationView.text = dataSource[Int(index)]["english"]
+        nc.wordView.text = dataSource[Int(index)]["spanish"] as! String
+        nc.translationView.text = dataSource[Int(index)]["english"] as! String
         return nc
     }
     
