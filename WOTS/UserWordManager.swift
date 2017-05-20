@@ -121,7 +121,7 @@ class UserWordManager {
                     }
                 }
                 count += 1
-                if(count == data._flashcardWords?.count){
+                if(count == data._allWords?.count){
                     completion(dataSource)
                 }
                 return nil

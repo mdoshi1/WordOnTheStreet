@@ -127,6 +127,7 @@ class NoteCardViewController: UIViewController {
     }
     
     func initData(){
+//        userWordManger.testing_saveWordMap()
         userWordManger.pullUserWordIds { (userVocab) in
             self.userVoc = userVocab
             self.userWordManger.getFlashcardWords(userVocab, completion: { (source) in
