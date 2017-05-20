@@ -93,11 +93,12 @@
 		95791F9E1EB55AEE00F9FA96 /* NoteCardOverlayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95791F9D1EB55AEE00F9FA96 /* NoteCardOverlayView.xib */; };
 		957EA0C41EB853B300E7750B /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 957EA0C31EB853B300E7750B /* libz.tbd */; };
 		957EA0C61EB853BB00E7750B /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 957EA0C51EB853BB00E7750B /* libsqlite3.tbd */; };
-		957F2F441EB92F72001117DB /* NoteCardData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957F2F431EB92F72001117DB /* NoteCardData.swift */; };
 		957F2F461EB9419A001117DB /* StandardQuizViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957F2F451EB9419A001117DB /* StandardQuizViewController.swift */; };
 		957F2F4C1EB95467001117DB /* ResultsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 957F2F4B1EB95467001117DB /* ResultsView.xib */; };
 		957F2F501EB954B7001117DB /* ResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957F2F4F1EB954B7001117DB /* ResultsView.swift */; };
 		95A5936A1EC6506C006BFEC9 /* CredentialManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A593691EC6506C006BFEC9 /* CredentialManager.swift */; };
+		95CC6F811ECFB54300871B7B /* UserVocab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95CC6F801ECFB54300871B7B /* UserVocab.swift */; };
+		95CC6F831ECFB5B200871B7B /* UserWordManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95CC6F821ECFB5B200871B7B /* UserWordManager.swift */; };
 		95CF55611ECD02ED00AEB769 /* InitialNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95CF55601ECD02ED00AEB769 /* InitialNavigationController.swift */; };
 		95FBEDCE1EC7DD0400D94C5D /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FBEDCD1EC7DD0300D94C5D /* UserData.swift */; };
 		95FC0BB81ECD321800664F87 /* DateFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FC0BB71ECD321800664F87 /* DateFunctions.swift */; };
@@ -268,11 +269,12 @@
 		95791F9D1EB55AEE00F9FA96 /* NoteCardOverlayView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NoteCardOverlayView.xib; sourceTree = "<group>"; };
 		957EA0C31EB853B300E7750B /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		957EA0C51EB853BB00E7750B /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
-		957F2F431EB92F72001117DB /* NoteCardData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteCardData.swift; sourceTree = "<group>"; };
 		957F2F451EB9419A001117DB /* StandardQuizViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StandardQuizViewController.swift; sourceTree = "<group>"; };
 		957F2F4B1EB95467001117DB /* ResultsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ResultsView.xib; sourceTree = "<group>"; };
 		957F2F4F1EB954B7001117DB /* ResultsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultsView.swift; sourceTree = "<group>"; };
 		95A593691EC6506C006BFEC9 /* CredentialManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CredentialManager.swift; sourceTree = "<group>"; };
+		95CC6F801ECFB54300871B7B /* UserVocab.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserVocab.swift; sourceTree = "<group>"; };
+		95CC6F821ECFB5B200871B7B /* UserWordManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserWordManager.swift; sourceTree = "<group>"; };
 		95CF55601ECD02ED00AEB769 /* InitialNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InitialNavigationController.swift; sourceTree = "<group>"; };
 		95FBEDCD1EC7DD0300D94C5D /* UserData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
 		95FC0BB71ECD321800664F87 /* DateFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateFunctions.swift; sourceTree = "<group>"; };
@@ -551,6 +553,7 @@
 				9559D0571EC8056200BAC3F5 /* PlacesVocabulary.swift */,
 				9559D0581EC8056200BAC3F5 /* UserInformation.swift */,
 				9559D0591EC8056200BAC3F5 /* UserVocabulary.swift */,
+				95CC6F801ECFB54300871B7B /* UserVocab.swift */,
 				9559D05A1EC8056200BAC3F5 /* WordPairs.swift */,
 			);
 			path = NoSQL;
@@ -570,9 +573,9 @@
 		957F2F421EB92F43001117DB /* AwsConnections */ = {
 			isa = PBXGroup;
 			children = (
-				957F2F431EB92F72001117DB /* NoteCardData.swift */,
 				95A593691EC6506C006BFEC9 /* CredentialManager.swift */,
 				95FBEDCD1EC7DD0300D94C5D /* UserData.swift */,
+				95CC6F821ECFB5B200871B7B /* UserWordManager.swift */,
 			);
 			name = AwsConnections;
 			sourceTree = "<group>";
@@ -824,7 +827,9 @@
 			files = (
 				9551CCD61ECAA75800D820DD /* GMUSimpleClusterAlgorithm.m in Sources */,
 				3FBAA2B81EC411FF0040AD89 /* GoalOptionCell.swift in Sources */,
+				95CC6F831ECFB5B200871B7B /* UserWordManager.swift in Sources */,
 				3F3BA9DD1EB7103C006B4FC1 /* ScrollableBottomSheetViewController.swift in Sources */,
+				95CC6F811ECFB54300871B7B /* UserVocab.swift in Sources */,
 				9551CCD21ECAA75800D820DD /* GQTPointQuadTree.m in Sources */,
 				9551CD041ECAA8A100D820DD /* UserPoolsUIHelper.swift in Sources */,
 				9559D0601EC8056200BAC3F5 /* AWSMobileClient.swift in Sources */,
@@ -852,7 +857,6 @@
 				F4BECB111EBB02A500B98BA8 /* MarkerInfoView.swift in Sources */,
 				9551CCFF1ECAA8A100D820DD /* UserPoolNewPasswordViewController.swift in Sources */,
 				3FBAA2A61EC2F1B70040AD89 /* ProfileViewController.swift in Sources */,
-				957F2F441EB92F72001117DB /* NoteCardData.swift in Sources */,
 				9551CCD41ECAA75800D820DD /* GMUGridBasedClusterAlgorithm.m in Sources */,
 				9551CCDF1ECAA75800D820DD /* GMUFeature.m in Sources */,
 				9551CCE11ECAA75800D820DD /* GMUGroundOverlay.m in Sources */,

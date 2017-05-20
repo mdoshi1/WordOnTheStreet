@@ -1,5 +1,5 @@
 //
-//  UserVocabulary.swift
+//  UserVocab.swift
 //  MySampleApp
 //
 //
@@ -15,14 +15,15 @@ import Foundation
 import UIKit
 import AWSDynamoDB
 
-class UserVocabulary: AWSDynamoDBObjectModel, AWSDynamoDBModeling {
+class UserVocab: AWSDynamoDBObjectModel, AWSDynamoDBModeling {
     
     var _userId: String?
-    var _wordMap: Dictionary<String, NSObject>?
-    
+    var _allWords: [NSObject]?
+    var _flashcardWords: [NSObject]?
+
     class func dynamoDBTableName() -> String {
 
-        return "wordonthestreet-mobilehub-915338963-UserVocabulary"
+        return "wordonthestreet-mobilehub-915338963-UserVocab"
     }
     
     class func hashKeyAttribute() -> String {
@@ -33,19 +34,8 @@ class UserVocabulary: AWSDynamoDBObjectModel, AWSDynamoDBModeling {
     override class func jsonKeyPathsByPropertyKey() -> [AnyHashable: Any] {
         return [
                "_userId" : "userId",
-               "_wordMap" : "wordMap",
+               "_allWords" : "allWords",
+               "_flashcardWords" : "flashcardWords",
         ]
-    }
-}
-
-class BucketInfo: NSObject {
-    
-    var bucketNum: NSNumber // no need (!). It will be initialised from controller
-    var date: String
-    
-    init(bucket: NSNumber, date: String) {
-        self.bucketNum = bucket
-        self.date = date
-        super.init()
     }
 }
