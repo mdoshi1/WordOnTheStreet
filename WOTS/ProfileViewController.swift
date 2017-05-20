@@ -7,8 +7,11 @@
 //
 
 import UIKit
+import AWSCognitoIdentityProvider
+import AWSMobileHubHelper
 import AWSCognitoUserPoolsSignIn
 import Flurry_iOS_SDK
+import AWSS3
 
 class ProfileViewController: UIViewController {
     
@@ -253,10 +256,49 @@ extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationCo
         // TODO: Send profile image to backend
         if let selectedImage = info["UIImagePickerControllerOriginalImage"] as? UIImage {
             tableHeaderView.setProfileImage(selectedImage)
-            let data = UIImagePNGRepresentation(selectedImage) as NSData?
-            let ud = UserData()
-            ud.uploadWithData(data: data!, forKey: "profile_pic")
+            let data = UIImagePNGRepresentation(selectedImage)
+            let key: String = "profile_pic"
+            uploadWithData(data: data!, forKey: key)
         }
         dismiss(animated: true, completion: nil)
     }
+    
+    func completionHandler() -> AWSS3TransferUtilityUploadCompletionHandlerBlock? {
+        DispatchQueue.main.async {
+            print("done")
+        }
+        return nil
+        
+    }
+    
+    fileprivate func uploadWithData(data: Data, forKey key: String) {
+        let expression = AWSS3TransferUtilityUploadExpression()
+        expression.progressBlock = {(task, progress) in DispatchQueue.main.async(execute: {
+            // Do something e.g. Update a progress bar.
+            print(progress.fractionCompleted)
+        })
+        }
+        
+
+        let  transferUtility = AWSS3TransferUtility.default()
+        let key = "\(String(describing: (session.userInfo?._userId!)!)).jpg"
+
+        transferUtility.uploadData(data,
+                                   bucket: "wordonthestreet-userdata-mobile-hub-915338963",
+                                   key: key,
+                                   contentType: "image/png",
+                                   expression: expression,
+                                   completionHandler: completionHandler()).continueWith { (task) -> AnyObject! in
+                                    if let error = task.error {
+                                        print("Error: \(error.localizedDescription)")
+                                    }
+                                    
+                                    if let _ = task.result {
+                                        // Do something with uploadTask.
+                                    }
+                                    
+                                    return nil;
+        }
+    }
+    
 }

@@ -11,23 +11,27 @@ import AWSMobileHubHelper
 import AWSDynamoDB
 
 class UserData {
-    private var dynamoDBObjectMapper = AWSDynamoDBObjectMapper.default()
     
-    func uploadWithData(data: NSData, forKey key: String) {
+    func uploadWithData(data: Data, forKey key: String) {
         let manager = AWSUserFileManager.defaultUserFileManager()
-        let localContent = manager.localContent(with: data as Data, key: key)
+        let localContent = manager.localContent(with: data, key: key)
         localContent.uploadWithPin(
             onCompletion: false,
             progressBlock: {[weak self](content: AWSLocalContent, progress: Progress) -> Void in
                 guard let strongSelf = self else { return }
                 /* Show progress in UI. */
+                print(progress)
             },
             completionHandler: {[weak self](content: AWSLocalContent?, error: Error?) -> Void in
                 guard let strongSelf = self else { return }
                 if let error = error {
+                    print("=========")
                     print("Failed to upload an object. \(error)")
+                    print("=========")
                 } else {
+                    print("=========")
                     print("Object upload complete. \(error)")
+                    print("=========")
                 }
         })
     }

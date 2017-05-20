@@ -9,6 +9,7 @@
 import UIKit
 import AWSMobileHubHelper
 import AWSCognitoUserPoolsSignIn
+import AWSS3
 
 class ProfileHeaderView: UIView {
     
@@ -53,6 +54,7 @@ class ProfileHeaderView: UIView {
         addSubview(userNameLabel.usingAutolayout())
         addSubview(addImageButton.usingAutolayout())
         setupConstraints()
+        downloadContent()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -99,6 +101,82 @@ class ProfileHeaderView: UIView {
         if let delegate = delegate {
             delegate.changeProfileImage()
         }
+    }
+    
+    func completionHandler() -> AWSS3TransferUtilityDownloadCompletionHandlerBlock? {
+        DispatchQueue.main.async {
+            print("done")
+        }
+        return nil
+        
+    }
+    
+    fileprivate func downloadContent() {
+        let transferManager = AWSS3TransferManager.default()
+
+        let downloadingFileURL = URL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent("profile_pic.jpg")
+        
+        let downloadRequest = AWSS3TransferManagerDownloadRequest()
+        
+        downloadRequest?.bucket = "wordonthestreet-userdata-mobile-hub-915338963"
+        downloadRequest?.key =  "\( (SessionManager.sharedInstance.userInfo?._userId!)! ).jpg"
+        downloadRequest?.downloadingFileURL = downloadingFileURL
+        
+        transferManager.download(downloadRequest!).continueWith(executor: AWSExecutor.mainThread(), block: { (task:AWSTask<AnyObject>) -> Any? in
+            
+            if let error = task.error as NSError? {
+                if error.domain == AWSS3TransferManagerErrorDomain, let code = AWSS3TransferManagerErrorType(rawValue: error.code) {
+                    switch code {
+                    case .cancelled, .paused:
+                        break
+                    default:
+                        print("Error downloading: \(String(describing: downloadRequest?.key)) Error: \(error)")
+                    }
+                } else {
+                    print("Error downloading: \(String(describing: downloadRequest?.key)) Error: \(error)")
+                }
+                return nil
+            }
+            print("Download complete for: \(String(describing: downloadRequest?.key))")
+            let _ = task.result
+            
+            if let data = NSData(contentsOf: downloadingFileURL) {
+                let img = UIImage(data: data as Data)
+                self.setProfileImage(img!)
+            }
+            return nil
+        })
+        
+        
+        //let file_name = "\(String(describing: (SessionManager.sharedInstance.userInfo?._userId!)!))"
+//        let fileURL = URL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent("profile_pic.jpg")
+//        // Add progress and completion blocks
+//        let expression = AWSS3TransferUtilityDownloadExpression()
+//        expression.progressBlock = {(task, progress) in DispatchQueue.main.async(execute: {
+//            // Do something e.g. Update a progress bar.
+//            print(progress.fractionCompleted)
+//            print(file_name)
+//
+//        })
+//        }
+//        let transferUtility = AWSS3TransferUtility.default()
+//        transferUtility.download(
+//            to: fileURL,
+//            bucket: "wordonthestreet-userdata-mobile-hub-915338963",
+//            key: file_name,
+//            expression: expression,
+//            completionHandler: completionHandler()
+//            ).continueWith {
+//                (task) -> AnyObject! in if let error = task.error {
+//                    print("Error: \(error.localizedDescription)")
+//                }
+//                
+//                if let _ = task.result {
+//                    // Do some\(SessionManager.sharedInstance.userInfo?._userId!)/profile_picthing with downloadTask.
+//                    print(task.result.debugDescription)
+//                }
+//                return nil;
+//        }
     }
 }
 
