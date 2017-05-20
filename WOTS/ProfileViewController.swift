@@ -122,11 +122,9 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
         switch ProfileDetailType(rawValue: indexPath.row)! {
         case .goal:
             
-            // TODO: use database/user accounts to fill in goals
             let goalCell = tableView.dequeueReusableCell(withIdentifier: Constants.Storyboard.GoalCell, for: indexPath) as! GoalHeaderCell
             goalCell.delegate = self
             
-            // TODO: retrieve from database what the selected goal is
             // TODO: refactor after daily goal fix
             var apndStr = " words/day"
             if(session.userInfo?._wordGoal! == 1){
@@ -146,7 +144,6 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
             for i in 0 ..< 7 {
                 //Progress to next day
                 let d = date.addingTimeInterval(TimeInterval(60*60*24*i))
-                print(d.timeIntervalSince1970)
                 let dateFormatter = DateFormatter()
                 dateFormatter.dateFormat = "MM:dd:YYYY"
                 let dateStr = dateFormatter.string(from: d as Date)
