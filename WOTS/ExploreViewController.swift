@@ -24,10 +24,25 @@ class ExploreViewController: UIViewController {
         return mapView
     }()
     
+    fileprivate lazy var activityIndicator: UIActivityIndicatorView = {
+        let activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge)
+        activityIndicator.color = .charcoal
+        return activityIndicator
+    }()
+    
+    fileprivate lazy var loadingLabel: UILabel = {
+        let loadingLabel = UILabel()
+        loadingLabel.text = "Loading places..."
+        loadingLabel.textColor = .charcoal
+        loadingLabel.isHidden = true
+        return loadingLabel
+    }()
+    
     fileprivate var locationManager = CLLocationManager()
     fileprivate var clusterManager: GMUClusterManager!
     fileprivate let placeDetailSegue = "toPlaceDetails"
     fileprivate var placesDict = [String: Place]()
+    fileprivate var loadedPlaces = [String]()
 
     // MARK: - ExploreViewController
 
@@ -35,7 +50,9 @@ class ExploreViewController: UIViewController {
         super.viewDidLoad()
         
         // Setup mapview
-        self.view.addSubview(mapView.usingAutolayout())
+        view.addSubview(mapView.usingAutolayout())
+        view.addSubview(activityIndicator.usingAutolayout())
+        view.addSubview(loadingLabel.usingAutolayout())
         setupConstraints()
         
         // Setup cluster manager
@@ -73,6 +90,18 @@ class ExploreViewController: UIViewController {
             mapView.rightAnchor.constraint(equalTo: self.view.rightAnchor),
             mapView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -bottomMargin)
             ])
+        
+        // Activity Indicator
+        NSLayoutConstraint.activate([
+            activityIndicator.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            activityIndicator.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+            ])
+        
+        // Loading Label
+        NSLayoutConstraint.activate([
+            loadingLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            loadingLabel.topAnchor.constraint(equalTo: activityIndicator.bottomAnchor)
+            ])
     }
     
     fileprivate func calculateDistance(fromLocation startLocation: CLLocationCoordinate2D, toLocation endLocation: CLLocationCoordinate2D) -> Double {
@@ -107,37 +136,46 @@ extension ExploreViewController: GMSMapViewDelegate {
     
     func mapView(_ mapView: GMSMapView, idleAt position: GMSCameraPosition) {
         
-        print("Camera became idle at")
-        
         let visibleRegion = mapView.projection.visibleRegion()
         let currentLocation = position.target
         let radius = calculateDistance(fromLocation: currentLocation, toLocation: visibleRegion.nearLeft)
         
+        activityIndicator.startAnimating()
+        loadingLabel.isHidden = false
         APIClient.updateLocations(withinRadius: radius, location: currentLocation) { places in
             guard let places = places else {
                 print("Error updating locations")
                 return
             }
             
-            // Place markers on main queue
-            DispatchQueue.main.async {
+            DispatchQueue.global(qos: .userInitiated).async {
                 for place in places {
-                    if self.placesDict[place.placeId] == nil {
-                        self.placesDict[place.placeId] = place
-                        self.clusterManager.add(place)
+                    if !self.loadedPlaces.contains(place.placeId) {
+                        self.loadedPlaces.append(place.placeId)
+                        
+                        APIClient.getWords(forPlace: place) { vocab in
+                            guard let vocab = vocab else {
+                                print("Error retrieving vocab for selected marker")
+                                return
+                            }
+                            place.updateVocab(vocab)
+                            
+                            DispatchQueue.main.async {
+                                let infoMarker = GMSMarker(position: place.position)
+                                infoMarker.title = place.name
+                                infoMarker.opacity = 1.0
+                                infoMarker.infoWindowAnchor = CGPoint(x: 0, y: -0.2)
+                                infoMarker.userData = place
+                                infoMarker.map = mapView
+                                
+                                if place.placeId == self.loadedPlaces.last {
+                                    self.activityIndicator.stopAnimating()
+                                    self.loadingLabel.isHidden = true
+                                }
+                            }
+                        }
                     }
-//                    let infoMarker = GMSMarker(position: place.location)
-//                    infoMarker.title = place.name
-//                    infoMarker.opacity = 1.0
-//                    infoMarker.infoWindowAnchor = CGPoint(x: 0, y: -0.2)
-//                    infoMarker.userData = place
-//                    infoMarker.map = mapView
-                    
-//                    if mapViewBounds.contains(place.position) {
-//                        self.clusterManager.add(place)
-//                    }
                 }
-                self.clusterManager.cluster()
             }
         }
     }
@@ -161,23 +199,23 @@ extension ExploreViewController: GMSMapViewDelegate {
         return markerInfoView
     }
     
-    func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
-        mapView.selectedMarker = marker
-        if let place = marker.userData as? Place {
-            print("Place marker was tapped")
-            APIClient.getWords(forPlace: place) { vocab in
-                guard let vocab = vocab else {
-                    print("Error retrieving vocab for selected marker")
-                    return
-                }
-                place.updateVocab(vocab)
-            }
-        } else {
-            print("Map cluster was tapped")
-        }
+//    func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
+//        mapView.selectedMarker = marker
+//        if let place = marker.userData as? Place {
+//            print("Place marker was tapped")
+//            APIClient.getWords(forPlace: place) { vocab in
+//                guard let vocab = vocab else {
+//                    print("Error retrieving vocab for selected marker")
+//                    return
+//                }
+//                place.updateVocab(vocab)
+//            }
+//        } else {
+//            print("Map cluster was tapped")
+//        }
         
-        return true
-    }
+//        return true
+//    }
     
     func mapView(_ mapView: GMSMapView, didTapInfoWindowOf marker: GMSMarker) {
         
