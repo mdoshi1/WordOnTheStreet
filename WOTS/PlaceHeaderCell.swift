@@ -25,6 +25,8 @@ class PlaceHeaderCell: UITableViewCell {
         super.awakeFromNib()
         
         peopleImageView.image = UIImage(named: "person")
+        peopleImageView.isHidden = true
+        numPeopleLabel.isHidden = true
         takeQuizButton.layer.cornerRadius = 6;
     }
 

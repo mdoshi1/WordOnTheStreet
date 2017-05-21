@@ -31,6 +31,7 @@ class MarkerInfoView: UIView {
     private lazy var numPeopleLabel: UILabel = {
         [unowned self] in
         let numPeopleLabel = UILabel()
+        numPeopleLabel.isHidden = true
         numPeopleLabel.text = String(self.numPeople)
         numPeopleLabel.font = UIFont.systemFont(ofSize: 12.0)
         return numPeopleLabel
@@ -38,6 +39,7 @@ class MarkerInfoView: UIView {
     
     private lazy var personImageView: UIImageView = {
         let personImageView = UIImageView(image: UIImage(named: "person"))
+        personImageView.isHidden = true
         return personImageView
     }()
     
