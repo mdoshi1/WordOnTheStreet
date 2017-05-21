@@ -53,30 +53,6 @@ class PlaceDetailViewController: UIViewController, DidSelectWordAtPlaceProtocol 
         ["english": "water", "spanish": "el agua"]
     ]
     
-    
-//    let blah = [
-//        "drink": "la bebida",
-//        "check": "el cheque",
-//        "glass": "el vaso",
-//        "table": "la mesa",
-//        "waiter": "el mesero",
-//        "chair": "la silla",
-//        "to order": "pedir",
-//        "booth": "la cabina",
-//        "juice": "el jugo",
-//        "fork": "el tenedor",
-//        "spoon": "la cuchara",
-//        "knife": "el cuchillo",
-//        "soup": "la sopa",
-//        "dessert": "el postre",
-//        "menu": "el menú",
-//        "napkin": "la servilleta",
-//        "bathroom": "el baño",
-//        "to pay": "pagar",
-//        "appetizer": "la botana",
-//        "water": "el agua"
-//    ]
-    
     // MARK: - PlaceDetialViewController
 
     override func viewDidLoad() {
@@ -131,8 +107,11 @@ class PlaceDetailViewController: UIViewController, DidSelectWordAtPlaceProtocol 
         
         if let navVC = segue.destination as? UINavigationController {
             var dataSource = [[String: String]]()
-            for index in 0..<(place?.numWords ?? 10) {
-                dataSource.append(words[index])
+            if let place = place,
+                let vocab = place.vocab {
+                for (english,spanish) in vocab.dict {
+                    dataSource.append(["english": english, "spanish": spanish])
+                }
             }
             let destinationVC = navVC.topViewController as! StandardQuizViewController
             destinationVC.dataSource = dataSource
@@ -166,7 +145,7 @@ extension PlaceDetailViewController: UITableViewDelegate, UITableViewDataSource 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         switch DetailType(rawValue: indexPath.section)! {
         case .image:
-            return 150.0
+            return 0 // TODO: get place images 150.0
         case .header:
             return 95.0
         case .words:
