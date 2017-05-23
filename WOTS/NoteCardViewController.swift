@@ -102,7 +102,7 @@ class NoteCardViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         if(!self.isPresentingForFirstTime){
-            initKoloda()
+            initData()
         }
     }
     
