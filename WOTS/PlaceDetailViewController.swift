@@ -91,7 +91,7 @@ class PlaceDetailViewController: UIViewController, DidSelectWordAtPlaceProtocol 
     
     func initData(){
         //  userWordManger.testing_saveWordMap()
-        UserWordManager.sharedSession.pullUserWordIds { (userVocab) in
+        UserWordManager.shared.pullUserWordIds { (userVocab) in
             UserWordManager.sharedSession.getAllWords(userVocab, completion: { (source) in
                 self.dataSource = source
             })
@@ -206,8 +206,6 @@ extension PlaceDetailViewController: UITableViewDelegate, UITableViewDataSource 
                 wordCell.translationLabel.text = words[indexPath.row]["spanish"]
             }
             for item in self.dataSource {
-                print(wordCell.wordLabel.text!)
-                print((item["english"] as! String ))
                 if(item["english"] as! String == wordCell.wordLabel.text!){
                     wordCell.addButton.setBackgroundImage(UIImage(named: "check_mark"), for: .normal)
                 }

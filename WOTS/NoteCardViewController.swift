@@ -43,7 +43,6 @@ class NoteCardViewController: UIViewController {
         // Check if a user is logged in
         self.presentSignInViewController()
         if AWSSignInManager.sharedInstance().isLoggedIn {
-            userWordManger = UserWordManager.sharedSession
             bottomSheetVC = ScrollableBottomSheetViewController()
         }
         kolodaView.dataSource = self
@@ -141,18 +140,7 @@ class NoteCardViewController: UIViewController {
             // handle cancel operation from user
         }
     }
-    func initKoloda() {
-        userWordManger?.pullUserWordIds { (userVocab) in
-            self.userVoc = userVocab
-            self.userWordManger?.getFlashcardWords(userVocab, completion: { (source) in
-                self.dataSource = source;
-                sourceWords = source;
-                let position = self.kolodaView.currentCardIndex
-                self.kolodaView.insertCardAtIndexRange(position..<position + self.dataSource.count, animated: true)
-            })
-        }
-    }
-    
+
     func initData(){
       //  userWordManger.testing_saveWordMap()
         UserWordManager.shared.pullUserWordIds { (userVocab) in
@@ -164,7 +152,7 @@ class NoteCardViewController: UIViewController {
                 self.kolodaView.insertCardAtIndexRange(position..<position + self.dataSource.count, animated: true)
             })
             UserWordManager.shared.getAllWords(userVocab, completion: { (source) in
-                self.bottomSheetVC.setBottomSheetData(source: source)
+                self.bottomSheetVC?.setBottomSheetData(source: source)
             })
         }
     }
