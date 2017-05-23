@@ -59,6 +59,7 @@ class UserWordManager {
         let TI = Int(Date().timeIntervalSince1970)
         let wordMap = ["wordId": wordPair._wordId,"bucket":1,"date":TI] as [String : Any]
         data._flashcardWords?.append(wordMap as NSObject)
+        data._allWords?.append(wordMap as NSObject)
         dynamoDBObjectMapper.save(data)
     }
     
