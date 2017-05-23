@@ -6,7 +6,6 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -20,10 +19,10 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Bzp-AR-xAK">
-                        <rect key="frame" x="8" y="41.5" width="398" height="50"/>
+                        <rect key="frame" x="63" y="48.5" width="300" height="36"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7S7-1J-cgc" customClass="CircleProgressView" customModule="WOTS" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                <rect key="frame" x="0.0" y="0.0" width="36" height="36"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="trackFillColor">
@@ -32,15 +31,15 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pMg-l8-qiS" customClass="CircleProgressView" customModule="WOTS" customModuleProvider="target">
-                                <rect key="frame" x="58" y="0.0" width="50" height="50"/>
+                                <rect key="frame" x="44" y="0.0" width="36" height="36"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cEM-uK-zX8" customClass="CircleProgressView" customModule="WOTS" customModuleProvider="target">
-                                <rect key="frame" x="116" y="0.0" width="50" height="50"/>
+                                <rect key="frame" x="88" y="0.0" width="36" height="36"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1GW-8H-R8G" customClass="CircleProgressView" customModule="WOTS" customModuleProvider="target">
-                                <rect key="frame" x="174" y="0.0" width="50" height="50"/>
+                                <rect key="frame" x="132" y="0.0" width="36" height="36"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="36" id="PWR-qS-X8i"/>
@@ -48,15 +47,15 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lyB-gU-xT6" customClass="CircleProgressView" customModule="WOTS" customModuleProvider="target">
-                                <rect key="frame" x="232" y="0.0" width="50" height="50"/>
+                                <rect key="frame" x="176" y="0.0" width="36" height="36"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5Ih-T9-ehv" customClass="CircleProgressView" customModule="WOTS" customModuleProvider="target">
-                                <rect key="frame" x="290" y="0.0" width="50" height="50"/>
+                                <rect key="frame" x="220" y="0.0" width="36" height="36"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sAR-kF-Xjo" customClass="CircleProgressView" customModule="WOTS" customModuleProvider="target">
-                                <rect key="frame" x="348" y="0.0" width="50" height="50"/>
+                                <rect key="frame" x="264" y="0.0" width="36" height="36"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                         </subviews>
@@ -67,50 +66,51 @@
                             <constraint firstItem="1GW-8H-R8G" firstAttribute="width" secondItem="cEM-uK-zX8" secondAttribute="width" id="foO-Hl-t7U"/>
                             <constraint firstItem="1GW-8H-R8G" firstAttribute="width" secondItem="pMg-l8-qiS" secondAttribute="width" id="i81-Kr-exX"/>
                             <constraint firstItem="1GW-8H-R8G" firstAttribute="width" secondItem="5Ih-T9-ehv" secondAttribute="width" id="m8n-IV-iEo"/>
+                            <constraint firstAttribute="width" constant="300" id="ypb-dd-I6d"/>
                         </constraints>
                     </stackView>
                     <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zt5-eu-Tgj">
-                        <rect key="frame" x="10" y="83" width="350" height="20.5"/>
+                        <rect key="frame" x="10" y="83" width="252" height="20.5"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="S" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DkR-Df-IAe">
-                                <rect key="frame" x="0.0" y="0.0" width="50" height="20.5"/>
+                                <rect key="frame" x="0.0" y="0.0" width="36" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="M" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rnc-LC-KTh">
-                                <rect key="frame" x="50" y="0.0" width="50" height="20.5"/>
+                                <rect key="frame" x="36" y="0.0" width="36" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="T" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cvt-uZ-ro4">
-                                <rect key="frame" x="100" y="0.0" width="50" height="20.5"/>
+                                <rect key="frame" x="72" y="0.0" width="36" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="W" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rv3-tY-j7s">
-                                <rect key="frame" x="150" y="0.0" width="50" height="20.5"/>
+                                <rect key="frame" x="108" y="0.0" width="36" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="T" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ei7-7e-oeg">
-                                <rect key="frame" x="200" y="0.0" width="50" height="20.5"/>
+                                <rect key="frame" x="144" y="0.0" width="36" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="F" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Ak-an-Pod">
-                                <rect key="frame" x="250" y="0.0" width="50" height="20.5"/>
+                                <rect key="frame" x="180" y="0.0" width="36" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="S" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n5G-hY-hyj">
-                                <rect key="frame" x="300" y="0.0" width="50" height="20.5"/>
+                                <rect key="frame" x="216" y="0.0" width="36" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -125,9 +125,7 @@
                     <constraint firstItem="DkR-Df-IAe" firstAttribute="width" secondItem="7S7-1J-cgc" secondAttribute="width" id="Go5-48-v6y"/>
                     <constraint firstItem="1GW-8H-R8G" firstAttribute="width" secondItem="rv3-tY-j7s" secondAttribute="width" id="M3B-Hn-Pa3"/>
                     <constraint firstItem="lyB-gU-xT6" firstAttribute="width" secondItem="ei7-7e-oeg" secondAttribute="width" id="PPA-nu-F3q"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="Bzp-AR-xAK" secondAttribute="trailing" id="TYM-vV-Dsg"/>
                     <constraint firstItem="5Ih-T9-ehv" firstAttribute="centerX" secondItem="4Ak-an-Pod" secondAttribute="centerX" id="XuY-OF-8qR"/>
-                    <constraint firstItem="Bzp-AR-xAK" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="ZVJ-sn-l8F"/>
                     <constraint firstItem="Bzp-AR-xAK" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="a83-sv-xQq"/>
                     <constraint firstItem="Rnc-LC-KTh" firstAttribute="centerX" secondItem="pMg-l8-qiS" secondAttribute="centerX" id="aLd-AF-AC5"/>
                     <constraint firstItem="Rnc-LC-KTh" firstAttribute="width" secondItem="pMg-l8-qiS" secondAttribute="width" id="aWI-kX-J3G"/>
