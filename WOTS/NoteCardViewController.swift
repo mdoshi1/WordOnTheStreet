@@ -94,6 +94,20 @@ class NoteCardViewController: UIViewController {
         testedFlashcards = true
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        let count = self.dataSource.count
+        self.dataSource.removeAll()
+        self.kolodaView.removeCardInIndexRange(0..<0+count, animated: false)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        if(!self.isPresentingForFirstTime){
+            initKoloda()
+            
+        }
+    }
+    
+    
     
     @IBAction func signOut(_ sender: Any) {
         // Instrumentation: finish user session
@@ -111,7 +125,6 @@ class NoteCardViewController: UIViewController {
             assert(false)
         }
 
-
     }
     func onSignIn (_ success: Bool) {
         
@@ -126,6 +139,17 @@ class NoteCardViewController: UIViewController {
             
         } else {
             // handle cancel operation from user
+        }
+    }
+    func initKoloda() {
+        userWordManger?.pullUserWordIds { (userVocab) in
+            self.userVoc = userVocab
+            self.userWordManger?.getFlashcardWords(userVocab, completion: { (source) in
+                self.dataSource = source;
+                sourceWords = source;
+                let position = self.kolodaView.currentCardIndex
+                self.kolodaView.insertCardAtIndexRange(position..<position + self.dataSource.count, animated: true)
+            })
         }
     }
     

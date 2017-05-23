@@ -213,8 +213,8 @@ extension PlaceDetailViewController: UITableViewDelegate, UITableViewDataSource 
         ] as [String: Any]
         
         Flurry.logEvent("Added_Word", withParameters: flurryParams)
-        userWordManager.getWordId(valueSent["sourceWord"]!, spanishWord: valueSent["translationWord"]!) { (wordPairs) in
-            print(wordPairs._wordId)
+        userWordManager.getWordId(valueSent["sourceWord"]!, spanishWord: valueSent["translationWord"]!) { (wordPair) in
+            self.userWordManager.updateUserData(wordPair: wordPair, data: self.userWordManager.userInfo!)
         }
     }
     
