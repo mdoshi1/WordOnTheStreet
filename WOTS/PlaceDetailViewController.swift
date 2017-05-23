@@ -18,6 +18,9 @@ class PlaceDetailViewController: UIViewController, DidSelectWordAtPlaceProtocol 
         case words
     }
     
+    var dataSource: [Dictionary<String, Any>] = []
+
+    
     // MARK: - Properties
     
     private lazy var wordList: UITableView = {
@@ -63,6 +66,7 @@ class PlaceDetailViewController: UIViewController, DidSelectWordAtPlaceProtocol 
         setupConstraints()
         registerReusableCells()
         self.navigationItem.title = place?.name ?? "Name"
+        initData()
 
     }
     
@@ -84,6 +88,15 @@ class PlaceDetailViewController: UIViewController, DidSelectWordAtPlaceProtocol 
     }
     
     // MARK: - Helper Methods
+    
+    func initData(){
+        //  userWordManger.testing_saveWordMap()
+        UserWordManager.sharedSession.pullUserWordIds { (userVocab) in
+            UserWordManager.sharedSession.getAllWords(userVocab, completion: { (source) in
+                self.dataSource = source
+            })
+        }
+    }
     
     private func setupConstraints() {
         
@@ -192,7 +205,13 @@ extension PlaceDetailViewController: UITableViewDelegate, UITableViewDataSource 
                 wordCell.wordLabel.text = words[indexPath.row]["english"]
                 wordCell.translationLabel.text = words[indexPath.row]["spanish"]
             }
-
+            for item in self.dataSource {
+                print(wordCell.wordLabel.text!)
+                print((item["english"] as! String ))
+                if(item["english"] as! String == wordCell.wordLabel.text!){
+                    wordCell.addButton.setBackgroundImage(UIImage(named: "check_mark"), for: .normal)
+                }
+            }
             wordCell.delegate = self
             return wordCell
         }
