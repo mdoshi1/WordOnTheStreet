@@ -27,9 +27,9 @@ class NoteCardViewController: UIViewController {
     var dataSource: [Dictionary<String, Any>] = []
     
     fileprivate var isPresentingForFirstTime = true
-    let userWordManger = UserWordManager.sharedSession
+    var userWordManger: UserWordManager? = nil
     // MARK: Lifecycle
-    let bottomSheetVC = ScrollableBottomSheetViewController()
+    var bottomSheetVC: ScrollableBottomSheetViewController? = nil
     var userVoc = UserVocab()
     var testedFlashcards = false
     
@@ -41,7 +41,10 @@ class NoteCardViewController: UIViewController {
         self.view.backgroundColor = UIColor(red:0.20, green:0.20, blue:0.20, alpha:1.0)
         // Check if a user is logged in
         self.presentSignInViewController()
-
+        if AWSSignInManager.sharedInstance().isLoggedIn {
+            userWordManger = UserWordManager.sharedSession
+            bottomSheetVC = ScrollableBottomSheetViewController()
+        }
         kolodaView.dataSource = self
         kolodaView.delegate = self
 
@@ -57,7 +60,7 @@ class NoteCardViewController: UIViewController {
     override func viewDidDisappear(_ animated: Bool) {
         // Instrumentation: time spent in Review
         Flurry.endTimedEvent("Tab_Review", withParameters: nil)
-        userWordManger.saveUserVocab(data: userVoc!)
+        userWordManger?.saveUserVocab(data: userVoc!)
     }
     
     func koloda(_ koloda: KolodaView, didSwipeCardAt index: Int, in direction: SwipeResultDirection) {
@@ -128,16 +131,16 @@ class NoteCardViewController: UIViewController {
     
     func initData(){
       //  userWordManger.testing_saveWordMap()
-        userWordManger.pullUserWordIds { (userVocab) in
+        userWordManger?.pullUserWordIds { (userVocab) in
             self.userVoc = userVocab
-            self.userWordManger.getFlashcardWords(userVocab, completion: { (source) in
+            self.userWordManger?.getFlashcardWords(userVocab, completion: { (source) in
                 self.dataSource = source;
                 sourceWords = source;
                 let position = self.kolodaView.currentCardIndex
                 self.kolodaView.insertCardAtIndexRange(position..<position + self.dataSource.count, animated: true)
             })
-            self.userWordManger.getAllWords(userVocab, completion: { (source) in
-                self.bottomSheetVC.setBottomSheetData(source: source)
+            self.userWordManger?.getAllWords(userVocab, completion: { (source) in
+                self.bottomSheetVC?.setBottomSheetData(source: source)
             })
         }
     }
@@ -171,22 +174,24 @@ class NoteCardViewController: UIViewController {
         // 1- Init bottomSheetVC
 //        let bottomSheetVC = WordListTableViewController()
         // 2- Add bottomSheetVC as a child view
-        self.addChildViewController(bottomSheetVC)
-        self.view.addSubview(bottomSheetVC.view)
-        bottomSheetVC.didMove(toParentViewController: self)
+        self.addChildViewController(bottomSheetVC!)
+        self.view.addSubview((bottomSheetVC?.view)!)
+        bottomSheetVC?.didMove(toParentViewController: self)
         
         // 3- Adjust bottomSheet frame and initial position.
         let height = view.frame.height
         let width  = view.frame.width
-        bottomSheetVC.view.frame  = CGRect(x: 0, y: self.view.frame.maxY, width: width, height: height)
+        bottomSheetVC?.view.frame  = CGRect(x: 0, y: self.view.frame.maxY, width: width, height: height)
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
         if (self.isPresentingForFirstTime) {
-            addBottomSheetView()
-            self.isPresentingForFirstTime = false
+            if AWSSignInManager.sharedInstance().isLoggedIn {
+                addBottomSheetView()
+                self.isPresentingForFirstTime = false
+            }
         }
     }
     
