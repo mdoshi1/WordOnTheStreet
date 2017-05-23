@@ -55,6 +55,13 @@ class UserWordManager {
         })
     }
     
+    func updateUserData(wordPair: WordPairs, data: UserVocab){
+        let TI = Int(Date().timeIntervalSince1970)
+        let wordMap = ["wordId": wordPair._wordId,"bucket":1,"date":TI] as [String : Any]
+        data._flashcardWords?.append(wordMap as NSObject)
+        dynamoDBObjectMapper.save(data)
+    }
+    
     func saveUserVocab(data: UserVocab){
         let dynamoDBObjectMapper = AWSDynamoDBObjectMapper.default()
         dynamoDBObjectMapper.save(data, completionHandler: {(error: Error?) -> Void in
@@ -93,25 +100,41 @@ class UserWordManager {
         //Query using GSI index table
         //What is the top score ever recorded for the game Meteor Blasters?
         let queryExpression = AWSDynamoDBQueryExpression()
-        queryExpression.keyConditionExpression = "englishWord = :englishWord AND spanishWord = :spanishWord"
-        print("----begin query-----")
-        print(englishWord)
-        print(spanishWord)
-        queryExpression.expressionAttributeValues = [
-            ":englishWord" : englishWord, ":spanishWord":spanishWord]
         queryExpression.indexName = "spanishLookup"
+
+        queryExpression.keyConditionExpression = "englishWord = :englishWord"
+        print("----begin query-----")
+        queryExpression.expressionAttributeValues = [":englishWord" : englishWord]
         dynamoDBObjectMapper .query(WordPairs.self, expression: queryExpression) .continueWith(executor: AWSExecutor.mainThread(), block: { (task:AWSTask!) -> AnyObject! in
             if let error = task.error as NSError? {
                 print("Error: \(error)")
             } else {
                 if let result = task.result {//(task.result != nil) {
-                    for r in result.items as! [WordPairs]{
-                        completion(r)
+                    if(result.items.count > 0){
+                        for r in result.items as! [WordPairs]{
+                            completion(r)
+                        }
+                    } else {
+                        print("nothing there!!! create wordpair, add to users stuff")
+                        let wp = WordPairs()
+                        wp?._wordId = UUID().uuidString
+                        wp?._englishWord = englishWord
+                        wp?._spanishWord = spanishWord
+                        self.dynamoDBObjectMapper.save(wp!)
+                        completion(wp!)
                     }
                 }
             }
             return nil
         })
+    }
+    
+    func saveWordAsPair(englishWord:String, spanishWord:String){
+        let wp = WordPairs()
+        wp?._wordId = UUID().uuidString
+        wp?._englishWord = englishWord
+        wp?._spanishWord = spanishWord
+        self.dynamoDBObjectMapper.save(wp!)
     }
     
     func getFlashcardWords(_ data: UserVocab, completion: @escaping (_ data: [Dictionary<String, Any>]) -> Void){
