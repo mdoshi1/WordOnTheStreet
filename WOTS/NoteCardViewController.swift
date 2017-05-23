@@ -27,7 +27,8 @@ class NoteCardViewController: UIViewController {
     var dataSource: [Dictionary<String, Any>] = []
     
     fileprivate var isPresentingForFirstTime = true
-    var userWordManger: UserWordManager? = nil
+    //let userWordManger = UserWordManager.sharedSession
+    
     // MARK: Lifecycle
     var bottomSheetVC: ScrollableBottomSheetViewController? = nil
     var userVoc = UserVocab()
@@ -60,7 +61,7 @@ class NoteCardViewController: UIViewController {
     override func viewDidDisappear(_ animated: Bool) {
         // Instrumentation: time spent in Review
         Flurry.endTimedEvent("Tab_Review", withParameters: nil)
-        userWordManger?.saveUserVocab(data: userVoc!)
+        UserWordManager.shared.saveUserVocab(data: userVoc!)
     }
     
     func koloda(_ koloda: KolodaView, didSwipeCardAt index: Int, in direction: SwipeResultDirection) {
@@ -155,16 +156,16 @@ class NoteCardViewController: UIViewController {
     
     func initData(){
       //  userWordManger.testing_saveWordMap()
-        userWordManger?.pullUserWordIds { (userVocab) in
+        UserWordManager.shared.pullUserWordIds { (userVocab) in
             self.userVoc = userVocab
-            self.userWordManger?.getFlashcardWords(userVocab, completion: { (source) in
+            UserWordManager.shared.getFlashcardWords(userVocab, completion: { (source) in
                 self.dataSource = source;
                 sourceWords = source;
                 let position = self.kolodaView.currentCardIndex
                 self.kolodaView.insertCardAtIndexRange(position..<position + self.dataSource.count, animated: true)
             })
-            self.userWordManger?.getAllWords(userVocab, completion: { (source) in
-                self.bottomSheetVC?.setBottomSheetData(source: source)
+            UserWordManager.shared.getAllWords(userVocab, completion: { (source) in
+                self.bottomSheetVC.setBottomSheetData(source: source)
             })
         }
     }

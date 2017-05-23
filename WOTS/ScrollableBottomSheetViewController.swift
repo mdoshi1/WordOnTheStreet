@@ -19,7 +19,6 @@ class ScrollableBottomSheetViewController: UIViewController {
     var partialView: CGFloat {
         return UIScreen.main.bounds.height - 150
     }
-    let userWordManger = UserWordManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
