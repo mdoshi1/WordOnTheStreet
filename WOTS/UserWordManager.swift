@@ -12,7 +12,7 @@ import AWSDynamoDB
 
 class UserWordManager {
     private var dynamoDBObjectMapper = AWSDynamoDBObjectMapper.default()
-    static var sharedSession = UserWordManager()
+    static var shared = UserWordManager()
     var userInfo: UserVocab?
     
     init() {

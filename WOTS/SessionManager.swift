@@ -74,11 +74,16 @@ class SessionManager {
     func getUserData(completion: @escaping (_ data: UserInformation?) -> Void){
         //Query using GSI index table
         //What is the top score ever recorded for the game Meteor Blasters?
+        guard let identityId = AWSIdentityManager.default().identityId else {
+            completion(nil)
+            return
+        }
+        
         let queryExpression = AWSDynamoDBQueryExpression()
         queryExpression.keyConditionExpression = "userId = :userId"
         
         queryExpression.expressionAttributeValues = [
-            ":userId" : AWSIdentityManager.default().identityId! ]
+            ":userId" : identityId ]
         dynamoDBObjectMapper .query(UserInformation.self, expression: queryExpression) .continueWith(executor: AWSExecutor.mainThread(), block: { (task:AWSTask!) -> AnyObject! in
             if let error = task.error as NSError? {
                 print("Error: \(error)")
