@@ -12,7 +12,8 @@ class DefaultTableViewCell: UITableViewCell {
 
     @IBOutlet weak var spanishWordLabel: UILabel!
     @IBOutlet weak var englishWordLabel: UILabel!
-    
+    @IBOutlet weak var progressLabel: UILabel!
+    @IBOutlet weak var progressView: UIProgressView!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
