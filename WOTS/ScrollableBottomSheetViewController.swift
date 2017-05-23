@@ -119,7 +119,32 @@ extension ScrollableBottomSheetViewController: UITableViewDelegate, UITableViewD
         cell.spanishWordLabel.text = dictionary["spanish"] as? String
         
         // TODO: set the progres view
-        // cell.progressView.setProgress(0.7, animated: false)
+        let bucketNum = dictionary["bucket"] as! Int
+        switch bucketNum {
+            case 1:
+                cell.progressView.progressTintColor = UIColor.red
+                cell.progressView.setProgress(0.2, animated: false)
+                break
+            case 2:
+                cell.progressView.progressTintColor = UIColor.orange
+                cell.progressView.setProgress(0.4, animated: false)
+                break
+            case 3:
+                cell.progressView.progressTintColor = UIColor.yellow
+                cell.progressView.setProgress(0.6, animated: false)
+                break
+            case 4:
+                cell.progressView.progressTintColor = UIColor.blue
+                cell.progressView.setProgress(0.8, animated: false)
+                break
+            case 5:
+                cell.progressView.progressTintColor = UIColor.green
+                cell.progressView.setProgress(1.0, animated: false)
+                break
+            default:
+                break
+        }
+        
         return cell
     }
 }
