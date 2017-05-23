@@ -51,6 +51,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //                window?.rootViewController = loginVC
 //            }
 //        }
+        
+        
         return AWSMobileClient.sharedInstance.didFinishLaunching(application, withOptions: launchOptions)
     }
     

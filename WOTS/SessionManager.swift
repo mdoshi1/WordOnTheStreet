@@ -42,36 +42,10 @@ class SessionManager {
             }
             print("User goal updated.")
         })
-//        let queryExpression = AWSDynamoDBQueryExpression()
-//        queryExpression.keyConditionExpression = "userId = :userId"
-//        
-//        queryExpression.expressionAttributeValues = [
-//            ":userId" : AWSIdentityManager.default().identityId! ]
-//        dynamoDBObjectMapper .query(UserInformation.self, expression: queryExpression) .continueWith(executor: AWSExecutor.mainThread(), block: { (task:AWSTask!) -> AnyObject! in
-//            if let error = task.error as NSError? {
-//                print("Error: \(error)")
-//            } else {
-//                if let result = task.result {//(task.result != nil) {
-//                    for r in result.items as! [UserInformation]{
-//                        r._wordGoal = goal as NSNumber
-//                        self.dynamoDBObjectMapper.save(r, completionHandler: {(error: Error?) -> Void in
-//                            if let error = error {
-//                                print("Amazon DynamoDB Save Error: \(error)")
-//                                return
-//                            }
-//                            print("User goal updated.")
-//                        })
-//                        return nil
-//                    }
-//                }
-//            }
-//            return nil
-//        })
         
     }
     
     func saveUserWordHistory(wordsLearned: Int){
-        //05:135:2017
         let date = NSDate()
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "MM:dd:YYYY"

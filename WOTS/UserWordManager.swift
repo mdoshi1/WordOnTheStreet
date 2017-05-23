@@ -12,7 +12,21 @@ import AWSDynamoDB
 
 class UserWordManager {
     private var dynamoDBObjectMapper = AWSDynamoDBObjectMapper.default()
+    static var sharedSession = UserWordManager()
+    var userInfo: UserVocab?
     
+    init() {
+        let session = SessionManager.sharedInstance
+        session.getUserData { (info) in
+            if(info == nil){
+                session.saveUserInfo()
+            }
+            self.pullUserWordIds { (uv) in
+                self.userInfo = uv
+            }
+        }
+    }
+
     func testing_saveWordMap(){
         //Create buckets with words
         let TI = Int(Date().timeIntervalSince1970)
@@ -74,7 +88,35 @@ class UserWordManager {
         })
     }
     
+    func getWordId(_ englishWord: String, spanishWord: String, completion: @escaping (_ data: WordPairs) -> Void){
+        
+        //Query using GSI index table
+        //What is the top score ever recorded for the game Meteor Blasters?
+        let queryExpression = AWSDynamoDBQueryExpression()
+        queryExpression.keyConditionExpression = "englishWord = :englishWord AND spanishWord = :spanishWord"
+        print("----begin query-----")
+        print(englishWord)
+        print(spanishWord)
+        queryExpression.expressionAttributeValues = [
+            ":englishWord" : englishWord, ":spanishWord":spanishWord]
+        queryExpression.indexName = "spanishLookup"
+        dynamoDBObjectMapper .query(WordPairs.self, expression: queryExpression) .continueWith(executor: AWSExecutor.mainThread(), block: { (task:AWSTask!) -> AnyObject! in
+            if let error = task.error as NSError? {
+                print("Error: \(error)")
+            } else {
+                if let result = task.result {//(task.result != nil) {
+                    for r in result.items as! [WordPairs]{
+                        completion(r)
+                    }
+                }
+            }
+            return nil
+        })
+    }
+    
     func getFlashcardWords(_ data: UserVocab, completion: @escaping (_ data: [Dictionary<String, Any>]) -> Void){
+        
+        
         var dataSource: [Dictionary<String, Any>] = []
         
         let dynamoDBObjectMapper = AWSDynamoDBObjectMapper.default()
@@ -128,5 +170,22 @@ class UserWordManager {
             })
         }
     }
-
+    
+    func getEntireUserVocabTable(){
+        let scanExpression = AWSDynamoDBScanExpression()
+        dynamoDBObjectMapper.scan(UserVocab.self, expression: scanExpression).continueWith(block: { (task:AWSTask<AWSDynamoDBPaginatedOutput>!) -> Any? in
+            if let error = task.error as? NSError {
+                print("The request failed. Error: \(error)")
+            } else if let paginatedOutput = task.result {
+                for r in paginatedOutput.items as! [UserVocab] {
+                    // Do something with book.
+                    print(r)
+                }
+            }
+            
+            return ()
+            
+        })
+    }
+    
 }

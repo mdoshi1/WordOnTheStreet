@@ -146,37 +146,6 @@ class ProfileHeaderView: UIView {
             }
             return nil
         })
-        
-        
-        //let file_name = "\(String(describing: (SessionManager.sharedInstance.userInfo?._userId!)!))"
-//        let fileURL = URL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent("profile_pic.jpg")
-//        // Add progress and completion blocks
-//        let expression = AWSS3TransferUtilityDownloadExpression()
-//        expression.progressBlock = {(task, progress) in DispatchQueue.main.async(execute: {
-//            // Do something e.g. Update a progress bar.
-//            print(progress.fractionCompleted)
-//            print(file_name)
-//
-//        })
-//        }
-//        let transferUtility = AWSS3TransferUtility.default()
-//        transferUtility.download(
-//            to: fileURL,
-//            bucket: "wordonthestreet-userdata-mobile-hub-915338963",
-//            key: file_name,
-//            expression: expression,
-//            completionHandler: completionHandler()
-//            ).continueWith {
-//                (task) -> AnyObject! in if let error = task.error {
-//                    print("Error: \(error.localizedDescription)")
-//                }
-//                
-//                if let _ = task.result {
-//                    // Do some\(SessionManager.sharedInstance.userInfo?._userId!)/profile_picthing with downloadTask.
-//                    print(task.result.debugDescription)
-//                }
-//                return nil;
-//        }
     }
 }
 

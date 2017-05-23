@@ -35,7 +35,7 @@ class UserVocab: AWSDynamoDBObjectModel, AWSDynamoDBModeling {
         return [
                "_userId" : "userId",
                "_allWords" : "allWords",
-               "_flashcardWords" : "flashcardWords",
+               "_flashcardWords" : "flashcardWords"
         ]
     }
 }

@@ -28,7 +28,8 @@ class PlaceDetailViewController: UIViewController, DidSelectWordAtPlaceProtocol 
     }()
     
     var place: Place?
-    
+    let userWordManager = UserWordManager.sharedSession
+
     // TODO: remove fake data
     let words = [
         ["english": "drink", "spanish": "la bebida"],
@@ -212,7 +213,9 @@ extension PlaceDetailViewController: UITableViewDelegate, UITableViewDataSource 
         ] as [String: Any]
         
         Flurry.logEvent("Added_Word", withParameters: flurryParams)
-        
+        userWordManager.getWordId(valueSent["sourceWord"]!, spanishWord: valueSent["translationWord"]!) { (wordPairs) in
+            print(wordPairs._wordId)
+        }
     }
     
 }

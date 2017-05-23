@@ -27,7 +27,7 @@ class NoteCardViewController: UIViewController {
     var dataSource: [Dictionary<String, Any>] = []
     
     fileprivate var isPresentingForFirstTime = true
-    let userWordManger = UserWordManager()
+    let userWordManger = UserWordManager.sharedSession
     // MARK: Lifecycle
     let bottomSheetVC = ScrollableBottomSheetViewController()
     var userVoc = UserVocab()
@@ -118,16 +118,16 @@ class NoteCardViewController: UIViewController {
                 if(info == nil){
                     session.saveUserInfo()
                 }
+                self.initData()
             }
-            initData()
-
+            
         } else {
             // handle cancel operation from user
         }
     }
     
     func initData(){
-//        userWordManger.testing_saveWordMap()
+      //  userWordManger.testing_saveWordMap()
         userWordManger.pullUserWordIds { (userVocab) in
             self.userVoc = userVocab
             self.userWordManger.getFlashcardWords(userVocab, completion: { (source) in
@@ -157,8 +157,8 @@ class NoteCardViewController: UIViewController {
                 if(info == nil){
                     session.saveUserInfo()
                 }
+                self.initData()
             }
-            initData()
         }
     }
     
