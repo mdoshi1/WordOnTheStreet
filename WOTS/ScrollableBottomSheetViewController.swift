@@ -117,6 +117,9 @@ extension ScrollableBottomSheetViewController: UITableViewDelegate, UITableViewD
         
         cell.englishWordLabel.text = dictionary["english"] as? String
         cell.spanishWordLabel.text = dictionary["spanish"] as? String
+        
+        // TODO: set the progres view
+        // cell.progressView.setProgress(0.7, animated: false)
         return cell
     }
 }
