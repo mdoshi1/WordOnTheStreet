@@ -24,6 +24,12 @@ class NoteCardViewController: UIViewController {
     @IBOutlet var upGestureRecognizer: UISwipeGestureRecognizer!
     @IBOutlet weak var kolodaView: KolodaView!
     @IBOutlet weak var goExploreLabel: UILabel!
+    
+    private lazy var bottomSheetVC: ScrollableBottomSheetViewController = {
+        let bottomSheetVC = ScrollableBottomSheetViewController()
+        return bottomSheetVC
+    }()
+
     var dataSource: [Dictionary<String, Any>] = []
     @IBOutlet weak var signOutButton:UIButton!
     
@@ -31,7 +37,6 @@ class NoteCardViewController: UIViewController {
     //let userWordManger = UserWordManager.sharedSession
     
     // MARK: Lifecycle
-    var bottomSheetVC = ScrollableBottomSheetViewController()
     var userVoc = UserVocab()
     var testedFlashcards = false
     
@@ -43,9 +48,6 @@ class NoteCardViewController: UIViewController {
         self.view.backgroundColor = UIColor(red:0.20, green:0.20, blue:0.20, alpha:1.0)
         // Check if a user is logged in
         self.presentSignInViewController()
-//        if AWSSignInManager.sharedInstance().isLoggedIn {
-//            bottomSheetVC = ScrollableBottomSheetViewController()
-//        }
         kolodaView.dataSource = self
         kolodaView.delegate = self
 
@@ -174,8 +176,9 @@ class NoteCardViewController: UIViewController {
                 uv?._flashcardWords = []
                 uv?._userId =  AWSIdentityManager.default().identityId!
                 UserWordManager.shared.userInfo = uv
+                self.userVoc = uv
             }
-            UserWordManager.shared.getFlashcardWords(userVocab, completion: { (source) in
+            UserWordManager.shared.getFlashcardWords(UserWordManager.shared.userInfo!, completion: { (source) in
                 self.dataSource = source;
                 sourceWords = source;
                 self.kolodaView.insertCardAtIndexRange(0..<0 + self.dataSource.count, animated: true)
@@ -189,7 +192,7 @@ class NoteCardViewController: UIViewController {
                     self.goExploreLabel.text = "Tap to see the translated word, swipe right if you know the word, swipe left if you need to review more."
                 }
             })
-            UserWordManager.shared.getAllWords(userVocab, completion: { (source) in
+            UserWordManager.shared.getAllWords(UserWordManager.shared.userInfo!, completion: { (source) in
                 self.bottomSheetVC.setBottomSheetData(source: source)
             })
         }

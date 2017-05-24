@@ -74,7 +74,7 @@ class UserWordManager {
         })
     }
     
-    func pullUserWordIds(completion: @escaping (_ data: UserVocab) -> Void){
+    func pullUserWordIds(completion: @escaping (_ data: UserVocab?) -> Void){
         //Query using GSI index table
         //What is the top score ever recorded for the game Meteor Blasters?
         let queryExpression = AWSDynamoDBQueryExpression()
@@ -87,8 +87,12 @@ class UserWordManager {
                 print("Error: \(error)")
             } else {
                 if let result = task.result {//(task.result != nil) {
-                    for r in result.items as! [UserVocab]{
-                       completion(r)
+                    if result.items.count == 0 {
+                        completion(nil)
+                    } else {
+                        for r in result.items as! [UserVocab]{
+                            completion(r)
+                        }
                     }
                 }
             }
