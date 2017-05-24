@@ -1,4 +1,4 @@
-//
+ //
 //  ProfileViewController.swift
 //  WOTS
 //
@@ -41,7 +41,6 @@ class ProfileViewController: UIViewController {
     }()
     
     let imagePicker = UIImagePickerController()
-    let session = SessionManager.sharedInstance
     
     // MARK: - ProfileViewController
     
@@ -130,10 +129,10 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
             
             // TODO: refactor after daily goal fix
             var apndStr = " words/day"
-            if(session.userInfo?._wordGoal! == 1){
+            if(SessionManager.sharedInstance.userInfo?._wordGoal! == 1){
                 apndStr = " word/day"
             }
-            goalCell.goalLabel.text = String(describing: (session.userInfo?._wordGoal!)!) + apndStr
+            goalCell.goalLabel.text = String(describing: (SessionManager.sharedInstance.userInfo?._wordGoal!)!) + apndStr
             goalCell.selectionStyle = UITableViewCellSelectionStyle.none
 
             return goalCell
@@ -150,11 +149,13 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
                 let dateFormatter = DateFormatter()
                 dateFormatter.dateFormat = "MM:dd:YYYY"
                 let dateStr = dateFormatter.string(from: d as Date)
-                if(session.userInfo?._history != nil){
-                    if(session.userInfo?._history?[dateStr] != nil){
-                        let learned = (session.userInfo?._history?[dateStr]!)! as! Double
-                        let goal = Int((session.userInfo?._wordGoal)!)
-                        var percentage = learned/Double(goal)
+                if(SessionManager.sharedInstance.userInfo?._wordHistory != nil){
+                    if(SessionManager.sharedInstance.userInfo?._wordHistory?[dateStr] != nil){
+                        let map = SessionManager.sharedInstance.userInfo?._wordHistory?[dateStr] as! Dictionary<String, Any>
+
+                        let learned = (map["wordCount"]!) as! Int
+                        let goal = Int((SessionManager.sharedInstance.userInfo?._wordGoal)!)
+                        var percentage = Double(learned)/Double(goal)
                         if(percentage > 1.0){
                             percentage = 1.0
                         }
@@ -281,7 +282,7 @@ extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationCo
         
 
         let  transferUtility = AWSS3TransferUtility.default()
-        let key = "\(String(describing: (session.userInfo?._userId!)!)).jpg"
+        let key = "\(String(describing: (SessionManager.sharedInstance.userInfo?._userId!)!)).jpg"
 
         transferUtility.uploadData(data,
                                    bucket: "wordonthestreet-userdata-mobile-hub-915338963",

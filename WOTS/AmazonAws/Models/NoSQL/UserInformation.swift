@@ -21,6 +21,7 @@ class UserInformation: AWSDynamoDBObjectModel, AWSDynamoDBModeling {
     var _achievements: Set<String>?
     var _history:  Dictionary<String, NSObject>?
     var _wordGoal: NSNumber?
+    var _wordHistory: Dictionary<String, NSObject>?
     
     class func dynamoDBTableName() -> String {
 
@@ -38,6 +39,7 @@ class UserInformation: AWSDynamoDBObjectModel, AWSDynamoDBModeling {
                "_achievements" : "achievements",
                "_history" : "history",
                "_wordGoal" : "wordGoal",
+               "_wordHistory" : "wordHistory",
         ]
     }
 }

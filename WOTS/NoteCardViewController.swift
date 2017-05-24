@@ -67,26 +67,33 @@ class NoteCardViewController: UIViewController {
         
         var card = self.dataSource[index]
         let i = card["index"]! as! Int
-        let movedUp = card["movedUp"]! as! Bool
         var wordMap = userVoc?._flashcardWords?[i] as! Dictionary<String, Any>
         let d = Date(timeIntervalSince1970: wordMap["date"] as! TimeInterval)
         var bucketNum = wordMap["bucket"] as! Int
+        //If they didnt get pop to bucket 1
         if( direction == .left){
             bucketNum = 1
+            SessionManager.sharedInstance.saveUserWordHistoryMap(wordsLearned: -1, word: card["english"] as! String)
         } else if( direction == .right){
-            if(Calendar.current.isDate(d as Date, inSameDayAs: NSDate() as Date)){
-                return
+            //If they got it right and already got it right today dont do anything
+            if(SessionManager.sharedInstance.userInfo != nil){
+                if(SessionManager.sharedInstance.userInfo?._wordHistory != nil){
+                    let d = Date()
+                    let dateFormatter = DateFormatter()
+                    dateFormatter.dateFormat = "MM:dd:YYYY"
+                    let dateStr = dateFormatter.string(from: d as Date)
+                    let map = SessionManager.sharedInstance.userInfo?._wordHistory?[dateStr] as! Dictionary<String, Any>
+                    let strSet = map["wordSet"] as! Set<String>
+                    if(strSet.contains(card["english"] as! String)){
+                        return
+                    }
+                }
             }
-            if(movedUp == false){
-                card["movedUp"] = true
-                self.dataSource[index] = card
-                sourceWords = self.dataSource
-            } else {
-                return
-            }
+            //If they aren't in the final bucket move them up
             if(bucketNum < 5){
                 bucketNum += 1
             }
+            SessionManager.sharedInstance.saveUserWordHistoryMap(wordsLearned: 1, word: card["english"] as! String)
         }
         wordMap["bucket"] = bucketNum
         wordMap["date"] = Date().timeIntervalSince1970
@@ -151,11 +158,7 @@ class NoteCardViewController: UIViewController {
             UserWordManager.shared.getFlashcardWords(userVocab, completion: { (source) in
                 self.dataSource = source;
                 sourceWords = source;
-                let position = self.kolodaView.currentCardIndex
-                print(self.dataSource.count)
-                print(self.kolodaView.countOfCards)
-                self.kolodaView.insertCardAtIndexRange(position..<position + self.dataSource.count, animated: true)
-                print(self.kolodaView.countOfCards)
+                self.kolodaView.insertCardAtIndexRange(0..<0 + self.dataSource.count, animated: true)
             })
             UserWordManager.shared.getAllWords(userVocab, completion: { (source) in
                 self.bottomSheetVC?.setBottomSheetData(source: source)
@@ -266,7 +269,9 @@ extension NoteCardViewController: KolodaViewDataSource {
     func koloda(_ koloda: KolodaView, viewForCardAt index: Int) -> UIView {
         let nc = NoteCardView(frame: CGRect(x: 0, y: 0, width: koloda.frame.width, height: koloda.frame.height))
         nc.wordView.text = dataSource[Int(index)]["spanish"] as! String
+        nc.wordView.sizeToFit()
         nc.translationView.text = dataSource[Int(index)]["english"] as! String
+        nc.translationView.sizeToFit()
         return nc
     }
     
@@ -286,6 +291,7 @@ extension NoteCardViewController: KolodaViewDataSource {
             
             // Instrumentation: user swiped right
             Flurry.logEvent("NoteCard_Right")
+
             break
         default:
             break

@@ -71,6 +71,52 @@ class SessionManager {
         })
     }
     
+    func saveUserWordHistoryMap(wordsLearned: Int, word: String){
+        let date = NSDate()
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MM:dd:YYYY"
+        let dateStr = dateFormatter.string(from: date as Date)
+        var numWords = 0
+        var strSet: Set<String> = []
+        if self.userInfo?._wordHistory?[dateStr] != nil {
+            let map = self.userInfo?._wordHistory?[dateStr] as! Dictionary<String, Any>
+            numWords = map["wordCount"] as! Int
+            strSet = map["wordSet"] as! Set<String>
+        }
+        numWords += wordsLearned
+        //self.userInfo?._history?[dateStr] = numWords as NSObject
+        if(self.userInfo?._wordHistory == nil){
+            var newSet: Set<String> = []
+            if(wordsLearned < 0){
+                numWords = 0
+            } else {
+                newSet.insert(word)
+            }
+            let map = ["wordCount": numWords, "wordSet": newSet] as [String : Any]
+            self.userInfo?._wordHistory = [dateStr:map as NSObject]
+        } else {
+            if(wordsLearned < 0){
+                strSet.remove(word)
+                if(numWords <= 0){
+                    numWords = 0
+                    strSet.insert("void-str")
+                }
+            } else {
+                strSet.insert(word)
+                strSet.remove("void-str")
+            }
+            let map = ["wordCount": numWords, "wordSet": strSet] as [String : Any]
+            self.userInfo?._wordHistory?.updateValue(map as NSObject, forKey: dateStr)
+        }
+        self.dynamoDBObjectMapper.save(self.userInfo!, completionHandler: {(error: Error?) -> Void in
+            if let error = error {
+                print("Amazon DynamoDB Save Error: \(error)")
+                return
+            }
+            print("User word history saved")
+        })
+    }
+    
     func getUserData(completion: @escaping (_ data: UserInformation?) -> Void){
         //Query using GSI index table
         //What is the top score ever recorded for the game Meteor Blasters?
