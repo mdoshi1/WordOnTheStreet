@@ -154,6 +154,14 @@ class NoteCardViewController: UIViewController {
                 }
             }
             
+            if(UserWordManager.shared.userInfo == nil){
+                let uv = UserVocab()
+                uv?._allWords = []
+                uv?._flashcardWords = []
+                uv?._userId =  AWSIdentityManager.default().identityId!
+                UserWordManager.shared.userInfo = uv
+            }
+            
         } else {
             // handle cancel operation from user
         }
@@ -163,6 +171,7 @@ class NoteCardViewController: UIViewController {
       //  userWordManger.testing_saveWordMap()
         UserWordManager.shared.pullUserWordIds { (userVocab) in
             self.userVoc = userVocab
+            UserWordManager.shared.userInfo = userVocab
             UserWordManager.shared.getFlashcardWords(userVocab, completion: { (source) in
                 self.dataSource = source;
                 sourceWords = source;
@@ -188,6 +197,13 @@ class NoteCardViewController: UIViewController {
             session.getUserData { (info) in
                 if(info == nil){
                     session.saveUserInfo()
+                }
+                if(UserWordManager.shared.userInfo == nil){
+                    let uv = UserVocab()
+                    uv?._allWords = []
+                    uv?._flashcardWords = []
+                    uv?._userId =  AWSIdentityManager.default().identityId!
+                    UserWordManager.shared.userInfo = uv
                 }
                 self.initData()
             }

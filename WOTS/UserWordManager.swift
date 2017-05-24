@@ -15,17 +15,17 @@ class UserWordManager {
     static var shared = UserWordManager()
     var userInfo: UserVocab?
     
-    init() {
-        let session = SessionManager.sharedInstance
-        session.getUserData { (info) in
-            if(info == nil){
-                session.saveUserInfo()
-            }
-            self.pullUserWordIds { (uv) in
-                self.userInfo = uv
-            }
-        }
-    }
+//    init() {
+//        let session = SessionManager.sharedInstance
+//        session.getUserData { (info) in
+//            if(info == nil){
+//                session.saveUserInfo()
+//            }
+//            self.pullUserWordIds { (uv) in
+//                self.userInfo = uv
+//            }
+//        }
+//    }
 
     func testing_saveWordMap(){
         //Create buckets with words
