@@ -23,7 +23,7 @@ class NoteCardViewController: UIViewController {
     
     @IBOutlet var upGestureRecognizer: UISwipeGestureRecognizer!
     @IBOutlet weak var kolodaView: KolodaView!
-    
+    @IBOutlet weak var goExploreLabel: UILabel!
     var dataSource: [Dictionary<String, Any>] = []
     
     fileprivate var isPresentingForFirstTime = true
@@ -49,6 +49,14 @@ class NoteCardViewController: UIViewController {
         kolodaView.delegate = self
 
         takeQuizButton.layer.cornerRadius = 6;
+        // Hide take quiz button if no words
+        if (dataSource.count) == 0 {
+            takeQuizButton.isHidden = true
+            goExploreLabel.isHidden = false
+        } else {
+            takeQuizButton.isHidden = false
+            goExploreLabel.isHidden = true
+        }
         self.modalTransitionStyle = UIModalTransitionStyle.flipHorizontal
         self.navigationItem.title = "Word on the Street"
         
