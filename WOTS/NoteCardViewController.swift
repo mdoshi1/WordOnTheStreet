@@ -176,8 +176,9 @@ class NoteCardViewController: UIViewController {
                 uv?._flashcardWords = []
                 uv?._userId =  AWSIdentityManager.default().identityId!
                 UserWordManager.shared.userInfo = uv
+                self.userVoc = uv
             }
-            UserWordManager.shared.getFlashcardWords(userVocab, completion: { (source) in
+            UserWordManager.shared.getFlashcardWords(UserWordManager.shared.userInfo!, completion: { (source) in
                 self.dataSource = source;
                 sourceWords = source;
                 self.kolodaView.insertCardAtIndexRange(0..<0 + self.dataSource.count, animated: true)
@@ -191,7 +192,7 @@ class NoteCardViewController: UIViewController {
                     self.goExploreLabel.text = "Tap to see the translated word, swipe right if you know the word, swipe left if you need to review more."
                 }
             })
-            UserWordManager.shared.getAllWords(userVocab, completion: { (source) in
+            UserWordManager.shared.getAllWords(UserWordManager.shared.userInfo!, completion: { (source) in
                 self.bottomSheetVC.setBottomSheetData(source: source)
             })
         }

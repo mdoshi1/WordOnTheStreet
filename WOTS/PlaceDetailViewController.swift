@@ -92,7 +92,11 @@ class PlaceDetailViewController: UIViewController, DidSelectWordAtPlaceProtocol 
     func initData(){
         //  userWordManger.testing_saveWordMap()
         UserWordManager.shared.pullUserWordIds { (userVocab) in
-            UserWordManager.shared.getAllWords(userVocab, completion: { (source) in
+            var uv = userVocab
+            if(uv == nil){
+                uv = UserWordManager.shared.userInfo
+            }
+            UserWordManager.shared.getAllWords(uv!, completion: { (source) in
                 self.dataSource = source
             })
         }
