@@ -25,6 +25,7 @@ class NoteCardViewController: UIViewController {
     @IBOutlet weak var kolodaView: KolodaView!
     @IBOutlet weak var goExploreLabel: UILabel!
     var dataSource: [Dictionary<String, Any>] = []
+    @IBOutlet weak var signOutButton:UIButton!
     
     fileprivate var isPresentingForFirstTime = true
     //let userWordManger = UserWordManager.sharedSession
@@ -49,14 +50,9 @@ class NoteCardViewController: UIViewController {
         kolodaView.delegate = self
 
         takeQuizButton.layer.cornerRadius = 6;
-        // Hide take quiz button if no words
-        if (dataSource.count) == 0 {
-            takeQuizButton.isHidden = true
-            goExploreLabel.isHidden = false
-        } else {
-            takeQuizButton.isHidden = false
-            goExploreLabel.isHidden = true
-        }
+        signOutButton.layer.cornerRadius = 6
+        signOutButton.layer.borderColor = UIColor.white.cgColor
+        
         self.modalTransitionStyle = UIModalTransitionStyle.flipHorizontal
         self.navigationItem.title = "Word on the Street"
         
@@ -80,9 +76,16 @@ class NoteCardViewController: UIViewController {
         var bucketNum = wordMap["bucket"] as! Int
         //If they didnt get pop to bucket 1
         if( direction == .left){
+            // Instrumentation: user swiped left
+            Flurry.logEvent("NoteCard_Left")
+            
             bucketNum = 1
             SessionManager.sharedInstance.saveUserWordHistoryMap(wordsLearned: -1, word: card["english"] as! String)
+            
         } else if( direction == .right){
+            // Instrumentation: user swiped right
+            Flurry.logEvent("NoteCard_Right")
+            
             //If they got it right and already got it right today dont do anything
             if(SessionManager.sharedInstance.userInfo != nil){
                 if(SessionManager.sharedInstance.userInfo?._wordHistory != nil){
@@ -99,6 +102,8 @@ class NoteCardViewController: UIViewController {
             }
             //If they aren't in the final bucket move them up
             if(bucketNum < 5){
+                // Instrumentation: user swiped right
+                Flurry.logEvent("NoteCard_MovedUpBucket")
                 bucketNum += 1
             }
             SessionManager.sharedInstance.saveUserWordHistoryMap(wordsLearned: 1, word: card["english"] as! String)
@@ -119,8 +124,8 @@ class NoteCardViewController: UIViewController {
         if(!self.isPresentingForFirstTime){
             initData()
         }
+
     }
-    
     
     
     @IBAction func signOut(_ sender: Any) {
@@ -174,6 +179,15 @@ class NoteCardViewController: UIViewController {
                 self.dataSource = source;
                 sourceWords = source;
                 self.kolodaView.insertCardAtIndexRange(0..<0 + self.dataSource.count, animated: true)
+                
+                // Hide take quiz button if no words
+                if (self.dataSource.count) == 0 {
+                    self.takeQuizButton.isHidden = true
+                    self.goExploreLabel.text = "Looks like you've learned all of your words. You should go explore for more!"
+                } else {
+                    self.takeQuizButton.isHidden = false
+                    self.goExploreLabel.text = "Tap to see the translated word, swipe right if you know the word, swipe left if you need to review more."
+                }
             })
             UserWordManager.shared.getAllWords(userVocab, completion: { (source) in
                 self.bottomSheetVC.setBottomSheetData(source: source)
@@ -295,23 +309,21 @@ extension NoteCardViewController: KolodaViewDataSource {
         return nil
     }
     
-    func koloda(koloda: KolodaView, draggedCardWithPercentage finishPercentage: CGFloat, in direction: SwipeResultDirection) {
-        switch direction {
-        case .left :
-            
-            // Instrumentation: user swiped left
-            Flurry.logEvent("NoteCard_Left")
-            break
-        case .right :
-            
-            // Instrumentation: user swiped right
-            Flurry.logEvent("NoteCard_Right")
-
-            break
-        default:
-            break
-        }
-    }
+//    func koloda(koloda: KolodaView, draggedCardWithPercentage finishPercentage: CGFloat, in direction: SwipeResultDirection) {
+//        switch direction {
+//        case .left :
+//            
+//            
+//            break
+//        case .right :
+//            
+//            
+//
+//            break
+//        default:
+//            break
+//        }
+//    }
 }
 
 
