@@ -24,6 +24,12 @@ class NoteCardViewController: UIViewController {
     @IBOutlet var upGestureRecognizer: UISwipeGestureRecognizer!
     @IBOutlet weak var kolodaView: KolodaView!
     @IBOutlet weak var goExploreLabel: UILabel!
+    
+    private lazy var bottomSheetVC: ScrollableBottomSheetViewController = {
+        let bottomSheetVC = ScrollableBottomSheetViewController()
+        return bottomSheetVC
+    }()
+
     var dataSource: [Dictionary<String, Any>] = []
     @IBOutlet weak var signOutButton:UIButton!
     
@@ -31,7 +37,6 @@ class NoteCardViewController: UIViewController {
     //let userWordManger = UserWordManager.sharedSession
     
     // MARK: Lifecycle
-    var bottomSheetVC = ScrollableBottomSheetViewController()
     var userVoc = UserVocab()
     var testedFlashcards = false
     
@@ -43,9 +48,6 @@ class NoteCardViewController: UIViewController {
         self.view.backgroundColor = UIColor(red:0.20, green:0.20, blue:0.20, alpha:1.0)
         // Check if a user is logged in
         self.presentSignInViewController()
-//        if AWSSignInManager.sharedInstance().isLoggedIn {
-//            bottomSheetVC = ScrollableBottomSheetViewController()
-//        }
         kolodaView.dataSource = self
         kolodaView.delegate = self
 
