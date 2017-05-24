@@ -30,7 +30,7 @@ class NoteCardViewController: UIViewController {
     //let userWordManger = UserWordManager.sharedSession
     
     // MARK: Lifecycle
-    var bottomSheetVC: ScrollableBottomSheetViewController? = nil
+    var bottomSheetVC = ScrollableBottomSheetViewController()
     var userVoc = UserVocab()
     var testedFlashcards = false
     
@@ -42,9 +42,9 @@ class NoteCardViewController: UIViewController {
         self.view.backgroundColor = UIColor(red:0.20, green:0.20, blue:0.20, alpha:1.0)
         // Check if a user is logged in
         self.presentSignInViewController()
-        if AWSSignInManager.sharedInstance().isLoggedIn {
-            bottomSheetVC = ScrollableBottomSheetViewController()
-        }
+//        if AWSSignInManager.sharedInstance().isLoggedIn {
+//            bottomSheetVC = ScrollableBottomSheetViewController()
+//        }
         kolodaView.dataSource = self
         kolodaView.delegate = self
 
@@ -153,15 +153,6 @@ class NoteCardViewController: UIViewController {
                     self.initData()
                 }
             }
-            
-            if(UserWordManager.shared.userInfo == nil){
-                let uv = UserVocab()
-                uv?._allWords = []
-                uv?._flashcardWords = []
-                uv?._userId =  AWSIdentityManager.default().identityId!
-                UserWordManager.shared.userInfo = uv
-            }
-            
         } else {
             // handle cancel operation from user
         }
@@ -172,13 +163,20 @@ class NoteCardViewController: UIViewController {
         UserWordManager.shared.pullUserWordIds { (userVocab) in
             self.userVoc = userVocab
             UserWordManager.shared.userInfo = userVocab
+            if(UserWordManager.shared.userInfo == nil){
+                let uv = UserVocab()
+                uv?._allWords = []
+                uv?._flashcardWords = []
+                uv?._userId =  AWSIdentityManager.default().identityId!
+                UserWordManager.shared.userInfo = uv
+            }
             UserWordManager.shared.getFlashcardWords(userVocab, completion: { (source) in
                 self.dataSource = source;
                 sourceWords = source;
                 self.kolodaView.insertCardAtIndexRange(0..<0 + self.dataSource.count, animated: true)
             })
             UserWordManager.shared.getAllWords(userVocab, completion: { (source) in
-                self.bottomSheetVC?.setBottomSheetData(source: source)
+                self.bottomSheetVC.setBottomSheetData(source: source)
             })
         }
     }
@@ -198,13 +196,6 @@ class NoteCardViewController: UIViewController {
                 if(info == nil){
                     session.saveUserInfo()
                 }
-                if(UserWordManager.shared.userInfo == nil){
-                    let uv = UserVocab()
-                    uv?._allWords = []
-                    uv?._flashcardWords = []
-                    uv?._userId =  AWSIdentityManager.default().identityId!
-                    UserWordManager.shared.userInfo = uv
-                }
                 self.initData()
             }
         }
@@ -219,14 +210,14 @@ class NoteCardViewController: UIViewController {
         // 1- Init bottomSheetVC
 //        let bottomSheetVC = WordListTableViewController()
         // 2- Add bottomSheetVC as a child view
-        self.addChildViewController(bottomSheetVC!)
-        self.view.addSubview((bottomSheetVC?.view)!)
-        bottomSheetVC?.didMove(toParentViewController: self)
+        self.addChildViewController(bottomSheetVC)
+        self.view.addSubview((bottomSheetVC.view)!)
+        bottomSheetVC.didMove(toParentViewController: self)
         
         // 3- Adjust bottomSheet frame and initial position.
         let height = view.frame.height
         let width  = view.frame.width
-        bottomSheetVC?.view.frame  = CGRect(x: 0, y: self.view.frame.maxY, width: width, height: height)
+        bottomSheetVC.view.frame  = CGRect(x: 0, y: self.view.frame.maxY, width: width, height: height)
     }
     
     override func viewDidAppear(_ animated: Bool) {
