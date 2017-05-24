@@ -114,10 +114,11 @@ class NoteCardViewController: UIViewController {
         if (AWSSignInManager.sharedInstance().isLoggedIn) {
             AWSSignInManager.sharedInstance().logout(completionHandler: {(result: Any?, authState: AWSIdentityManagerAuthState, error: Error?) in
                 self.navigationController!.popToRootViewController(animated: false)
-                self.presentSignInViewController()
                 let count = self.dataSource.count
+                let position = self.kolodaView.currentCardIndex
                 self.dataSource.removeAll()
-                self.kolodaView.removeCardInIndexRange(0..<0+count, animated: false)
+                self.kolodaView.removeCardInIndexRange(position..<position+count, animated: false)
+                self.presentSignInViewController()
             })
             // print("Logout Successful: \(signInProvider.getDisplayName)");
         } else {
@@ -133,7 +134,9 @@ class NoteCardViewController: UIViewController {
                 if(info == nil){
                     session.saveUserInfo()
                 }
-                self.initData()
+                if(self.isPresentingForFirstTime){
+                    self.initData()
+                }
             }
             
         } else {
@@ -149,7 +152,10 @@ class NoteCardViewController: UIViewController {
                 self.dataSource = source;
                 sourceWords = source;
                 let position = self.kolodaView.currentCardIndex
+                print(self.dataSource.count)
+                print(self.kolodaView.countOfCards)
                 self.kolodaView.insertCardAtIndexRange(position..<position + self.dataSource.count, animated: true)
+                print(self.kolodaView.countOfCards)
             })
             UserWordManager.shared.getAllWords(userVocab, completion: { (source) in
                 self.bottomSheetVC?.setBottomSheetData(source: source)
