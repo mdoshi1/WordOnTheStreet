@@ -350,18 +350,39 @@
                                     <action selector="onSignUpClicked:" destination="tBM-jZ-I7y" eventType="touchUpInside" id="CIF-Sp-AWE"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fTu-7g-cEL">
+                                <rect key="frame" x="10" y="462.5" width="300" height="47"/>
+                                <string key="text">The phone number should not include dashes, and does not need the country code, e.g. please type 2345678 and do not type 234-5678.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The password should have a length of at least 6, and should include at least one number." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="665-OD-9YD">
+                                <rect key="frame" x="10" y="421" width="300" height="31.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="Db4-um-TSC" firstAttribute="leading" secondItem="ynd-Ed-kPb" secondAttribute="leading" id="35k-rA-w8D"/>
+                            <constraint firstItem="fTu-7g-cEL" firstAttribute="top" secondItem="665-OD-9YD" secondAttribute="bottom" constant="10" id="5Gd-Wl-SFI"/>
+                            <constraint firstItem="665-OD-9YD" firstAttribute="leading" secondItem="Z83-6q-CAy" secondAttribute="leading" constant="10" id="AYg-79-HWN"/>
                             <constraint firstItem="Db4-um-TSC" firstAttribute="width" secondItem="ynd-Ed-kPb" secondAttribute="width" id="D7R-HJ-Mr2"/>
+                            <constraint firstAttribute="trailing" secondItem="665-OD-9YD" secondAttribute="trailing" constant="10" id="E1n-Nb-ztf"/>
                             <constraint firstItem="ynd-Ed-kPb" firstAttribute="top" secondItem="eZY-Hq-j6H" secondAttribute="bottom" constant="12" id="F3Z-J3-aMw"/>
                             <constraint firstItem="Db4-um-TSC" firstAttribute="trailing" secondItem="ynd-Ed-kPb" secondAttribute="trailing" id="Gwn-5x-MHP"/>
+                            <constraint firstItem="fTu-7g-cEL" firstAttribute="leading" secondItem="Z83-6q-CAy" secondAttribute="leading" constant="10" id="HkJ-FR-xFm"/>
+                            <constraint firstAttribute="trailing" secondItem="fTu-7g-cEL" secondAttribute="trailing" constant="10" id="IXi-ga-Thj"/>
                             <constraint firstItem="Db4-um-TSC" firstAttribute="centerX" secondItem="ynd-Ed-kPb" secondAttribute="centerX" id="L1r-dP-bGy"/>
                             <constraint firstItem="Db4-um-TSC" firstAttribute="centerX" secondItem="Z83-6q-CAy" secondAttribute="centerX" id="PWG-Vc-inN"/>
+                            <constraint firstItem="665-OD-9YD" firstAttribute="centerX" secondItem="Z83-6q-CAy" secondAttribute="centerX" id="UGa-Ym-aVO"/>
                             <constraint firstItem="ynd-Ed-kPb" firstAttribute="top" secondItem="Z83-6q-CAy" secondAttribute="top" constant="46" id="aR7-Rh-Mtf"/>
+                            <constraint firstItem="665-OD-9YD" firstAttribute="top" secondItem="Db4-um-TSC" secondAttribute="bottom" constant="20" id="lTf-00-aBV"/>
                             <constraint firstItem="Db4-um-TSC" firstAttribute="top" secondItem="ynd-Ed-kPb" secondAttribute="bottom" constant="20" id="m8K-n6-NXS"/>
                             <constraint firstItem="Db4-um-TSC" firstAttribute="centerX" secondItem="eZY-Hq-j6H" secondAttribute="centerX" id="uOY-vb-a48"/>
+                            <constraint firstItem="fTu-7g-cEL" firstAttribute="centerX" secondItem="Z83-6q-CAy" secondAttribute="centerX" id="wpV-XH-9qv"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="kSJ-Ps-4Hc"/>

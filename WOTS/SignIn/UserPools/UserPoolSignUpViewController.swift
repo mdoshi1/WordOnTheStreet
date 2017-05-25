@@ -91,7 +91,7 @@ class UserPoolSignUpViewController: UIViewController {
         if let phoneValue = self.tableDelegate?.getValue(tableView, for: phoneNumberRow!), !phoneValue.isEmpty {
             let phone = AWSCognitoIdentityUserAttributeType()
             phone?.name = "phone_number"
-            phone?.value = phoneValue
+            phone?.value = "+1" + phoneValue
             attributes.append(phone!)
         }
         
