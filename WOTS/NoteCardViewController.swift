@@ -125,6 +125,9 @@ class NoteCardViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         if(!self.isPresentingForFirstTime){
             initData()
+        } else {
+            self.takeQuizButton.isHidden = true
+            self.goExploreLabel.text = "Looks like you've learned all of your words. You should go explore for more!"
         }
 
     }
