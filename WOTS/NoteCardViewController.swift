@@ -14,242 +14,171 @@ import AWSMobileHubHelper
 import AWSCognitoUserPoolsSignIn
 import Flurry_iOS_SDK
 
-
-private var numberOfCards: Int = 5
-var sourceWords: [Dictionary<String, Any>] = []
-
-
 class NoteCardViewController: UIViewController {
     
-    @IBOutlet var upGestureRecognizer: UISwipeGestureRecognizer!
+    // MARK: - IBOutlets
+    
     @IBOutlet weak var kolodaView: KolodaView!
     @IBOutlet weak var goExploreLabel: UILabel!
+    @IBOutlet weak var signOutButton:UIButton!
+    @IBOutlet weak var takeQuizButton: UIButton!
+    
+    // MARK: - Properties
     
     private lazy var bottomSheetVC: ScrollableBottomSheetViewController = {
         let bottomSheetVC = ScrollableBottomSheetViewController()
         return bottomSheetVC
     }()
 
-    var dataSource: [Dictionary<String, Any>] = []
-    @IBOutlet weak var signOutButton:UIButton!
+    fileprivate var dataSource: [[String: Any]] = []
+    fileprivate var sourceWords: [[String: Any]] = []
     
-    fileprivate var isPresentingForFirstTime = true
-    //let userWordManger = UserWordManager.sharedSession
-    
-    // MARK: Lifecycle
     var userVoc = UserVocab()
-    var testedFlashcards = false
     
-    @IBOutlet weak var takeQuizButton: UIButton!
+    let buttonCornerRadius: CGFloat = 6.0
+    
+    // MARK: - NoteCardViewController
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        self.view.backgroundColor = UIColor(patternImage: UIImage(named:"chalk-background")!)
-        self.view.backgroundColor = UIColor(red:0.20, green:0.20, blue:0.20, alpha:1.0)
-        // Check if a user is logged in
-        self.presentSignInViewController()
-        kolodaView.dataSource = self
-        kolodaView.delegate = self
-
-        takeQuizButton.layer.cornerRadius = 6;
-        signOutButton.layer.cornerRadius = 6
-        signOutButton.layer.borderColor = UIColor.white.cgColor
         
-        self.modalTransitionStyle = UIModalTransitionStyle.flipHorizontal
-        self.navigationItem.title = "Word on the Street"
+        // Check if a user is logged in
+        presentSignInViewController()
+        
+        setupView()
         
         // Instrumentation: time spent in Review
         Flurry.logEvent("Tab_Review", timed: true)
-
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if (AWSSignInManager.sharedInstance().isLoggedIn) {
+            initData()
+        }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        let count = self.dataSource.count
+        dataSource.removeAll()
+        kolodaView.removeCardInIndexRange(0..<count, animated: false)
     }
     
     override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        
         // Instrumentation: time spent in Review
         Flurry.endTimedEvent("Tab_Review", withParameters: nil)
         UserWordManager.shared.saveUserVocab(data: userVoc!)
     }
     
-    func koloda(_ koloda: KolodaView, didSwipeCardAt index: Int, in direction: SwipeResultDirection) {
+    // MARK: - Helper Methods
+    
+    private func setupView() {
         
-        var card = self.dataSource[index]
-        let i = card["index"]! as! Int
-        var wordMap = userVoc?._flashcardWords?[i] as! Dictionary<String, Any>
-        let d = Date(timeIntervalSince1970: wordMap["date"] as! TimeInterval)
-        var bucketNum = wordMap["bucket"] as! Int
-        //If they didnt get pop to bucket 1
-        if( direction == .left){
-            // Instrumentation: user swiped left
-            Flurry.logEvent("NoteCard_Left")
-            
-            bucketNum = 1
-            SessionManager.sharedInstance.saveUserWordHistoryMap(wordsLearned: -1, word: card["english"] as! String)
-            
-        } else if( direction == .right){
-            // Instrumentation: user swiped right
-            Flurry.logEvent("NoteCard_Right")
-            
-            //If they got it right and already got it right today dont do anything
-            if(SessionManager.sharedInstance.userInfo != nil){
-                if(SessionManager.sharedInstance.userInfo?._wordHistory != nil){
-                    let d = Date()
-                    let dateFormatter = DateFormatter()
-                    dateFormatter.dateFormat = "MM:dd:YYYY"
-                    let dateStr = dateFormatter.string(from: d as Date)
-                    let map = SessionManager.sharedInstance.userInfo?._wordHistory?[dateStr] as! Dictionary<String, Any>
-                    let strSet = map["wordSet"] as! Set<String>
-                    if(strSet.contains(card["english"] as! String)){
-                        return
+        // General View
+        view.backgroundColor = .charcoal
+        navigationItem.title = Constants.Storyboard.AppName
+        
+        // Kolada View
+        kolodaView.dataSource = self
+        kolodaView.delegate = self
+        
+        // Buttons
+        takeQuizButton.layer.cornerRadius = buttonCornerRadius
+        signOutButton.layer.cornerRadius = buttonCornerRadius
+        signOutButton.layer.borderColor = UIColor.white.cgColor
+        
+        // Bottom Sheet
+        addChildViewController(bottomSheetVC)
+        view.addSubview(bottomSheetVC.view)
+        bottomSheetVC.didMove(toParentViewController: self)
+        let height = view.frame.height
+        let width  = view.frame.width
+        bottomSheetVC.view.frame  = CGRect(x: 0, y: self.view.frame.maxY, width: width, height: height)
+    }
+    
+    private func presentSignInViewController() {
+        if !AWSSignInManager.sharedInstance().isLoggedIn {
+            let signInStoryboard = UIStoryboard(name: Constants.Storyboard.SignIn, bundle: nil)
+            let signInVC: SignInViewController = signInStoryboard.instantiateViewController(withIdentifier: Constants.Storyboard.SignIn) as! SignInViewController
+            signInVC.canCancel = false
+            signInVC.didCompleteSignIn = onSignIn
+            let navController = UINavigationController(rootViewController: signInVC)
+            present(navController, animated: true, completion: nil)
+        } else {
+            SessionManager.sharedInstance.getUserData { (info) in
+                if (info == nil){
+                    SessionManager.sharedInstance.initUserInfo()
+                }
+            }
+        }
+    }
+    
+    private func initData() {
+        UserWordManager.shared.pullUserWordIds { (userVocab) in
+            UserWordManager.shared.userInfo = userVocab
+            self.userVoc = UserWordManager.shared.userInfo
+            UserWordManager.shared.getFlashcardWords(self.userVoc!) { (source) in
+                self.dataSource = source;
+                self.sourceWords = source;
+                self.kolodaView.insertCardAtIndexRange(0..<self.dataSource.count, animated: true)
+                
+                // Hide take quiz button if no words
+                DispatchQueue.main.async {
+                    if (self.dataSource.count) == 0 {
+                        self.takeQuizButton.isHidden = true
+                        self.goExploreLabel.text = "Looks like you've learned all of your words. You should go explore for more!"
+                    } else {
+                        self.takeQuizButton.isHidden = false
+                        self.goExploreLabel.text = "Tap the card to see the translated word, swipe right if you know the word, swipe left if you don't know the word."
                     }
                 }
             }
-            //If they aren't in the final bucket move them up
-            if(bucketNum < 5){
-                // Instrumentation: user swiped right
-                Flurry.logEvent("NoteCard_MovedUpBucket")
-                bucketNum += 1
+            UserWordManager.shared.getAllWords(self.userVoc!) { (source) in
+                DispatchQueue.main.async {
+                    self.bottomSheetVC.setBottomSheetData(source)
+                }
             }
-            SessionManager.sharedInstance.saveUserWordHistoryMap(wordsLearned: 1, word: card["english"] as! String)
         }
-        wordMap["bucket"] = bucketNum
-        wordMap["date"] = Date().timeIntervalSince1970
-        userVoc?._flashcardWords?[i] = wordMap as NSObject
-        testedFlashcards = true
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        let count = self.dataSource.count
-        self.dataSource.removeAll()
-        self.kolodaView.removeCardInIndexRange(0..<0+count, animated: false)
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        if(!self.isPresentingForFirstTime){
-            initData()
-        } else {
-            self.takeQuizButton.isHidden = true
-            self.goExploreLabel.text = "Looks like you've learned all of your words. You should go explore for more!"
-        }
-
-    }
-    
-    
-    @IBAction func signOut(_ sender: Any) {
-        // Instrumentation: finish user session
-        Flurry.endTimedEvent("User_Session", withParameters: nil)
-        if (AWSSignInManager.sharedInstance().isLoggedIn) {
-            AWSSignInManager.sharedInstance().logout(completionHandler: {(result: Any?, authState: AWSIdentityManagerAuthState, error: Error?) in
-                self.navigationController!.popToRootViewController(animated: false)
-                let count = self.dataSource.count
-                let position = self.kolodaView.currentCardIndex
-                self.dataSource.removeAll()
-                self.kolodaView.removeCardInIndexRange(position..<position+count, animated: false)
-                self.presentSignInViewController()
-            })
-            // print("Logout Successful: \(signInProvider.getDisplayName)");
-        } else {
-            assert(false)
-        }
-
-    }
-    func onSignIn (_ success: Bool) {
-        
+    func onSignIn(_ success: Bool) {
         if (success) {
             let session = SessionManager.sharedInstance
             session.getUserData { (info) in
                 if(info == nil){
-                    session.saveUserInfo()
-                }
-                if(self.isPresentingForFirstTime){
-                    self.initData()
+                    session.initUserInfo()
                 }
             }
         } else {
             // handle cancel operation from user
         }
     }
-
-    func initData(){
-      //  userWordManger.testing_saveWordMap()
-        UserWordManager.shared.pullUserWordIds { (userVocab) in
-            self.userVoc = userVocab
-            UserWordManager.shared.userInfo = userVocab
-            if(UserWordManager.shared.userInfo == nil){
-                let uv = UserVocab()
-                uv?._allWords = []
-                uv?._flashcardWords = []
-                uv?._userId =  AWSIdentityManager.default().identityId!
-                UserWordManager.shared.userInfo = uv
-                self.userVoc = uv
-            }
-            UserWordManager.shared.getFlashcardWords(UserWordManager.shared.userInfo!, completion: { (source) in
-                self.dataSource = source;
-                sourceWords = source;
-                self.kolodaView.insertCardAtIndexRange(0..<0 + self.dataSource.count, animated: true)
-                
-                // Hide take quiz button if no words
-                if (self.dataSource.count) == 0 {
-                    self.takeQuizButton.isHidden = true
-                    self.goExploreLabel.text = "Looks like you've learned all of your words. You should go explore for more!"
-                } else {
-                    self.takeQuizButton.isHidden = false
-                    self.goExploreLabel.text = "Tap to see the translated word, swipe right if you know the word, swipe left if you need to review more."
-                }
-            })
-            UserWordManager.shared.getAllWords(UserWordManager.shared.userInfo!, completion: { (source) in
-                self.bottomSheetVC.setBottomSheetData(source: source)
-            })
-        }
-    }
-
     
-    func presentSignInViewController() {
-        if !AWSSignInManager.sharedInstance().isLoggedIn {
-            let loginStoryboard = UIStoryboard(name: "SignIn", bundle: nil)
-            let loginController: SignInViewController = loginStoryboard.instantiateViewController(withIdentifier: "SignIn") as! SignInViewController
-            loginController.canCancel = false
-            loginController.didCompleteSignIn = onSignIn
-            let navController = UINavigationController(rootViewController: loginController)
-            navigationController?.present(navController, animated: true, completion: nil)
+    // MARK: - IBActions
+    
+    @IBAction func signOut(_ sender: Any) {
+        
+        // Instrumentation: finish user session
+        Flurry.endTimedEvent("User_Session", withParameters: nil)
+        if (AWSSignInManager.sharedInstance().isLoggedIn) {
+            AWSSignInManager.sharedInstance().logout { (result, authState, error) in
+                let count = self.dataSource.count
+                let position = self.kolodaView.currentCardIndex
+                self.dataSource.removeAll()
+                self.kolodaView.removeCardInIndexRange(position..<position+count, animated: false)
+                self.presentSignInViewController()
+            }
         } else {
-            let session = SessionManager.sharedInstance
-            session.getUserData { (info) in
-                if(info == nil){
-                    session.saveUserInfo()
-                }
-                self.initData()
-            }
+            assert(false)
         }
     }
     
-    func transition(){
-        dismiss(animated: true, completion: nil)
-    }
-
-    // Show the WordListView at the bottom like the Google Maps interface
-    func addBottomSheetView() {
-        // 1- Init bottomSheetVC
-//        let bottomSheetVC = WordListTableViewController()
-        // 2- Add bottomSheetVC as a child view
-        self.addChildViewController(bottomSheetVC)
-        self.view.addSubview((bottomSheetVC.view)!)
-        bottomSheetVC.didMove(toParentViewController: self)
-        
-        // 3- Adjust bottomSheet frame and initial position.
-        let height = view.frame.height
-        let width  = view.frame.width
-        bottomSheetVC.view.frame  = CGRect(x: 0, y: self.view.frame.maxY, width: width, height: height)
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-        if (self.isPresentingForFirstTime) {
-            if AWSSignInManager.sharedInstance().isLoggedIn {
-                addBottomSheetView()
-                self.isPresentingForFirstTime = false
-            }
-        }
-    }
+    // MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "TakeQuizSegue" {
@@ -266,15 +195,12 @@ class NoteCardViewController: UIViewController {
     }
 }
 
-// MARK: KolodaViewDelegate
+// MARK: - KolodaView Methods
 
-extension NoteCardViewController: KolodaViewDelegate {
+extension NoteCardViewController: KolodaViewDelegate, KolodaViewDataSource {
     
     func kolodaDidRunOutOfCards(_ koloda: KolodaView) {
         let position = kolodaView.currentCardIndex
-//        for i in 1...4 {
-//            dataSource.append(UIImage(named: "Card_like_\(i)")!)
-//        }
         for dict in sourceWords{
             dataSource.append(dict);
         }
@@ -282,16 +208,66 @@ extension NoteCardViewController: KolodaViewDelegate {
     }
     
     func koloda(_ koloda: KolodaView, didSelectCardAt index: Int) {
-//        UIApplication.shared.openURL(URL(string: "https://yalantis.com/")!)
-        let nc = koloda.viewForCard(at: index) as? NoteCardView
-        nc?.translationView.isHidden = !(nc?.translationView.isHidden)!;
+        guard let noteCard = koloda.viewForCard(at: index) as? NoteCardView else {
+            print("Unable to retrieve notecard from KolodaView at index \(index)")
+            return
+        }
+        noteCard.translationView.isHidden = !noteCard.translationView.isHidden
     }
     
-}
-
-// MARK: KolodaViewDataSource
-
-extension NoteCardViewController: KolodaViewDataSource {
+    func koloda(_ koloda: KolodaView, didSwipeCardAt index: Int, in direction: SwipeResultDirection) {
+        
+        let card = dataSource[index]
+        let index = card["index"]! as! Int
+        var wordMap = userVoc?._flashcardWords?[index] as! [String: Any]
+        let date = Date(timeIntervalSince1970: wordMap["date"] as! TimeInterval)
+        var bucketNum = wordMap["bucket"] as! Int
+        
+        // If user didn't know word, move down a bucket
+        if( direction == .left){
+            
+            // Instrumentation: user swiped left
+            Flurry.logEvent("NoteCard_Left")
+            
+            if bucketNum > 1 {
+                
+                // Instrumentation: user moved down a bucket
+                Flurry.logEvent("NoteCard_MovedDownBucket")
+                bucketNum -= 1
+            }
+            SessionManager.sharedInstance.saveUserWordHistoryMap(wordsLearned: -1, word: card["english"] as! String)
+        } else if( direction == .right) {
+            
+            // Instrumentation: user swiped right
+            Flurry.logEvent("NoteCard_Right")
+            
+            //If they got it right and already got it right today dont do anything
+            if(SessionManager.sharedInstance.userInfo != nil){
+                if(SessionManager.sharedInstance.userInfo?._wordHistory != nil){
+                    let dateFormatter = DateFormatter()
+                    dateFormatter.dateFormat = "MM:dd:YYYY"
+                    let dateStr = dateFormatter.string(from: date as Date)
+                    let map = SessionManager.sharedInstance.userInfo?._wordHistory?[dateStr] as! [String: Any]
+                    let strSet = map["wordSet"] as! Set<String>
+                    if(strSet.contains(card["english"] as! String)){
+                        return
+                    }
+                }
+            }
+            
+            //If they aren't in the final bucket move them up
+            if(bucketNum < 5){
+                
+                // Instrumentation: user moved up a bucket
+                Flurry.logEvent("NoteCard_MovedUpBucket")
+                bucketNum += 1
+            }
+            SessionManager.sharedInstance.saveUserWordHistoryMap(wordsLearned: 1, word: card["english"] as! String)
+        }
+        wordMap["bucket"] = bucketNum
+        wordMap["date"] = Date().timeIntervalSince1970
+        userVoc?._flashcardWords?[index] = wordMap as NSObject
+    }
     
     func kolodaNumberOfCards(_ koloda: KolodaView) -> Int {
         return dataSource.count
@@ -303,33 +279,10 @@ extension NoteCardViewController: KolodaViewDataSource {
     
     func koloda(_ koloda: KolodaView, viewForCardAt index: Int) -> UIView {
         let nc = NoteCardView(frame: CGRect(x: 0, y: 0, width: koloda.frame.width, height: koloda.frame.height))
-        nc.wordView.text = dataSource[Int(index)]["spanish"] as! String
+        nc.wordView.text = dataSource[index]["spanish"] as? String
         nc.wordView.sizeToFit()
-        nc.translationView.text = dataSource[Int(index)]["english"] as! String
+        nc.translationView.text = dataSource[index]["english"] as? String
         nc.translationView.sizeToFit()
         return nc
     }
-    
-    func koloda(_ koloda: KolodaView, viewForCardOverlayAt index: Int) -> OverlayView? {
-        //return Bundle.main.loadNibNamed("NoteCardOverlayView", owner: self, options: nil)?[0] as? OverlayView
-        return nil
-    }
-    
-//    func koloda(koloda: KolodaView, draggedCardWithPercentage finishPercentage: CGFloat, in direction: SwipeResultDirection) {
-//        switch direction {
-//        case .left :
-//            
-//            
-//            break
-//        case .right :
-//            
-//            
-//
-//            break
-//        default:
-//            break
-//        }
-//    }
 }
-
-

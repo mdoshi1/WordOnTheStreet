@@ -139,7 +139,7 @@ class SignInViewController : UIViewController {
                         let session = SessionManager.sharedInstance
                         session.getUserData { (info) in
                             if(info == nil){
-                                session.saveUserInfo()
+                                session.initUserInfo()
                             }
                         }
                         //myActivityIndicator.stopAnimating()

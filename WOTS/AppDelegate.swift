@@ -22,7 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         
         // Flurry
-        Flurry.startSession("CTRZ57262RNJVRS2W228", with: FlurrySessionBuilder
+        Flurry.startSession(Constants.APIServices.FlurryKey, with: FlurrySessionBuilder
             .init()
             .withCrashReporting(true)
             .withLogLevel(FlurryLogLevelAll))
@@ -31,27 +31,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         GMSServices.provideAPIKey(Constants.APIServices.GMSServicesKey)
         GMSPlacesClient.provideAPIKey(Constants.APIServices.GMSPlacesKey)
         
+        // AWS Services
         let credentialsProvider = AWSCognitoCredentialsProvider(regionType:.USEast1,
                                                                 identityPoolId: Constants.APIServices.AWSPoolId)
-        
         let configuration = AWSServiceConfiguration(region: .USEast1, credentialsProvider: credentialsProvider)
-        
         AWSServiceManager.default().defaultServiceConfiguration = configuration
-//        while(AWSIdentityManager.default().identityId == nil){
-//           CredentialManager.credentialsProvider.getIdentityId().continueWith { (task) -> Any? in
-//                if (task.error != nil) {
-//                    print("Error: " + (task.error?.localizedDescription)!)
-//                }
-//                return nil
-//            }
-//        }
-
-//        if !AWSSignInManager.sharedInstance().isLoggedIn {
-//            if let loginVC = storyboard.instantiateViewController(withIdentifier: "SignInViewController") as? SignInViewController {
-//                window?.rootViewController = loginVC
-//            }
-//        }
-        
         
         return AWSMobileClient.sharedInstance.didFinishLaunching(application, withOptions: launchOptions)
     }
@@ -61,6 +45,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(_ application: UIApplication, handleEventsForBackgroundURLSession identifier: String, completionHandler: @escaping () -> Void) {
+        
         // Store the completion handler.
         AWSS3TransferUtility.interceptApplication(application, handleEventsForBackgroundURLSession: identifier, completionHandler: completionHandler)
     }
@@ -88,7 +73,4 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
-
-
 }
-

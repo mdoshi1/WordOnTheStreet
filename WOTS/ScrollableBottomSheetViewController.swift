@@ -32,7 +32,7 @@ class ScrollableBottomSheetViewController: UIViewController {
         gesture.delegate = self
         view.addGestureRecognizer(gesture)
     }
-    func setBottomSheetData(source:  [Dictionary<String, Any>]){
+    func setBottomSheetData(_ source: [Dictionary<String, Any>]){
         self.words = source;
         self.tableView.reloadData()
     }

@@ -11,9 +11,29 @@ import AWSMobileHubHelper
 import AWSDynamoDB
 
 class UserWordManager {
-    private var dynamoDBObjectMapper = AWSDynamoDBObjectMapper.default()
     static var shared = UserWordManager()
-    var userInfo: UserVocab?
+    var _userInfo: UserVocab?
+    var userInfo: UserVocab? {
+        get {
+            return _userInfo
+        }
+        set {
+            if (newValue == nil) {
+                guard let userVocab = UserVocab(),
+                let userId = AWSIdentityManager.default().identityId else {
+                    print("Unable to set user vocab because no user is logged in")
+                    _userInfo = nil
+                    return
+                }
+                userVocab._userId = userId
+                userVocab._allWords = []
+                userVocab._flashcardWords = []
+                _userInfo = userVocab
+            } else {
+                _userInfo = newValue
+            }
+        }
+    }
     
 //    init() {
 //        let session = SessionManager.sharedInstance
@@ -46,7 +66,7 @@ class UserWordManager {
         testObj?._allWords = [FL1 as NSObject,FL2 as NSObject,FL3 as NSObject, Reg1 as NSObject, Reg2 as NSObject, Reg3 as NSObject, Reg4 as NSObject]
         testObj?._flashcardWords = [FL1 as NSObject,FL2 as NSObject,FL3 as NSObject]
         //Save
-        dynamoDBObjectMapper.save(testObj!, completionHandler: {(error: Error?) -> Void in
+        AWSDynamoDBObjectMapper.default().save(testObj!, completionHandler: {(error: Error?) -> Void in
             if let error = error {
                 print("Amazon DynamoDB Save Error: \(error)")
                 return
@@ -60,7 +80,7 @@ class UserWordManager {
         let wordMap = ["wordId": wordPair._wordId,"bucket":1,"date":TI] as [String : Any]
         data._flashcardWords?.append(wordMap as NSObject)
         data._allWords?.append(wordMap as NSObject)
-        dynamoDBObjectMapper.save(data)
+        AWSDynamoDBObjectMapper.default().save(data)
     }
     
     func saveUserVocab(data: UserVocab){
@@ -74,30 +94,35 @@ class UserWordManager {
         })
     }
     
-    func pullUserWordIds(completion: @escaping (_ data: UserVocab?) -> Void){
+    func pullUserWordIds(completion: @escaping (_ data: UserVocab?) -> Void) {
+        
         //Query using GSI index table
-        //What is the top score ever recorded for the game Meteor Blasters?
         let queryExpression = AWSDynamoDBQueryExpression()
         queryExpression.keyConditionExpression = "userId = :userId"
         
+        guard let userId = AWSIdentityManager.default().identityId else {
+            print("Unable to pull user word ids because no user is logged in")
+            completion(nil)
+            return
+        }
+        
         queryExpression.expressionAttributeValues = [
-            ":userId" : AWSIdentityManager.default().identityId! ]
-        dynamoDBObjectMapper .query(UserVocab.self, expression: queryExpression) .continueWith(executor: AWSExecutor.mainThread(), block: { (task:AWSTask!) -> AnyObject! in
-            if let error = task.error as NSError? {
-                print("Error: \(error)")
-            } else {
-                if let result = task.result {//(task.result != nil) {
-                    if result.items.count == 0 {
-                        completion(nil)
-                    } else {
-                        for r in result.items as! [UserVocab]{
-                            completion(r)
-                        }
-                    }
-                }
+            ":userId" : userId
+        ]
+        AWSDynamoDBObjectMapper.default().query(UserVocab.self, expression: queryExpression) .continueWith(executor: AWSExecutor.mainThread()) { (task:AWSTask!) -> AnyObject! in
+            guard task.error == nil,
+                let result = task.result else {
+                    print("Amazon DynamoDB query error: \(task.error!.localizedDescription)")
+                    return nil
             }
+            
+            for item in result.items as! [UserVocab]{
+                completion(item)
+                return nil
+            }
+            completion(nil)
             return nil
-        })
+        }
     }
     
     func getWordId(_ englishWord: String, spanishWord: String, completion: @escaping (_ data: WordPairs) -> Void){
@@ -110,7 +135,7 @@ class UserWordManager {
         queryExpression.keyConditionExpression = "englishWord = :englishWord"
         print("----begin query-----")
         queryExpression.expressionAttributeValues = [":englishWord" : englishWord]
-        dynamoDBObjectMapper .query(WordPairs.self, expression: queryExpression) .continueWith(executor: AWSExecutor.mainThread(), block: { (task:AWSTask!) -> AnyObject! in
+        AWSDynamoDBObjectMapper.default().query(WordPairs.self, expression: queryExpression) .continueWith(executor: AWSExecutor.mainThread(), block: { (task:AWSTask!) -> AnyObject! in
             if let error = task.error as NSError? {
                 print("Error: \(error)")
             } else {
@@ -125,7 +150,7 @@ class UserWordManager {
                         wp?._wordId = UUID().uuidString
                         wp?._englishWord = englishWord
                         wp?._spanishWord = spanishWord
-                        self.dynamoDBObjectMapper.save(wp!)
+                        AWSDynamoDBObjectMapper.default().save(wp!)
                         completion(wp!)
                     }
                 }
@@ -139,35 +164,35 @@ class UserWordManager {
         wp?._wordId = UUID().uuidString
         wp?._englishWord = englishWord
         wp?._spanishWord = spanishWord
-        self.dynamoDBObjectMapper.save(wp!)
+        AWSDynamoDBObjectMapper.default().save(wp!)
     }
     
-    func getFlashcardWords(_ data: UserVocab, completion: @escaping (_ data: [Dictionary<String, Any>]) -> Void){
+    func getFlashcardWords(_ data: UserVocab, completion: @escaping (_ data: [[String: Any]]) -> Void) {
+        var dataSource: [[String: Any]] = []
+        var count = 0
+        guard let flashcardWords = data._flashcardWords as? [[String: Any]] else {
+            print("unable to retrieve flashcard words from user vocab data")
+            return
+        }
         
-        
-        var dataSource: [Dictionary<String, Any>] = []
-        
-        let dynamoDBObjectMapper = AWSDynamoDBObjectMapper.default()
-        var count = 0;
-        for k in data._flashcardWords! as! [Dictionary<String, Any>] {
+        for k in flashcardWords {
             let queryExpression = AWSDynamoDBQueryExpression()
             queryExpression.keyConditionExpression = "wordId = :id"
             queryExpression.expressionAttributeValues = [":id" : k["wordId"] as! String]
-            dynamoDBObjectMapper .query(WordPairs.self, expression: queryExpression) .continueWith(executor: AWSExecutor.mainThread(), block: { (task:AWSTask!) -> AnyObject! in
-                
+            AWSDynamoDBObjectMapper.default().query(WordPairs.self, expression: queryExpression) .continueWith(executor: AWSExecutor.mainThread()) { (task:AWSTask!) -> AnyObject! in
                 if let paginatedOutput = task.result {
                     for item in paginatedOutput.items as! [WordPairs] {
-                        let m = data._flashcardWords?[count] as! Dictionary<String, Any>
-                        let dict = ["english": item._englishWord, "spanish":item._spanishWord, "bucket":m["bucket"], "index": count, "movedUp": false]
+                        let m = flashcardWords[count]
+                        let dict = ["english": item._englishWord, "spanish": item._spanishWord, "bucket": m["bucket"], "index": count, "movedUp": false]
                         dataSource.append(dict as [String : Any])
                     }
                 }
                 count += 1
-                if(count == data._flashcardWords?.count){
+                if(count == flashcardWords.count){
                     completion(dataSource)
                 }
                 return nil
-            })
+            }
         }
         
     }
@@ -201,7 +226,7 @@ class UserWordManager {
     
     func getEntireUserVocabTable(){
         let scanExpression = AWSDynamoDBScanExpression()
-        dynamoDBObjectMapper.scan(UserVocab.self, expression: scanExpression).continueWith(block: { (task:AWSTask<AWSDynamoDBPaginatedOutput>!) -> Any? in
+        AWSDynamoDBObjectMapper.default().scan(UserVocab.self, expression: scanExpression).continueWith(block: { (task:AWSTask<AWSDynamoDBPaginatedOutput>!) -> Any? in
             if let error = task.error as? NSError {
                 print("The request failed. Error: \(error)")
             } else if let paginatedOutput = task.result {
