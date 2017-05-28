@@ -119,6 +119,8 @@ class NoteCardViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         let count = self.dataSource.count
         self.dataSource.removeAll()
+        self.bottomSheetVC.words.removeAll()
+        self.bottomSheetVC.tableView.reloadData()
         self.kolodaView.removeCardInIndexRange(0..<0+count, animated: false)
     }
     
