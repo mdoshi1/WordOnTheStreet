@@ -98,7 +98,6 @@
 		95A5936A1EC6506C006BFEC9 /* CredentialManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A593691EC6506C006BFEC9 /* CredentialManager.swift */; };
 		95CC6F811ECFB54300871B7B /* UserVocab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95CC6F801ECFB54300871B7B /* UserVocab.swift */; };
 		95CC6F831ECFB5B200871B7B /* UserWordManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95CC6F821ECFB5B200871B7B /* UserWordManager.swift */; };
-		95CF55611ECD02ED00AEB769 /* InitialNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95CF55601ECD02ED00AEB769 /* InitialNavigationController.swift */; };
 		95FC0BB81ECD321800664F87 /* DateFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FC0BB71ECD321800664F87 /* DateFunctions.swift */; };
 		F43436CA1EC69329007B6A3D /* UIColor+WOTS.swift in Sources */ = {isa = PBXBuildFile; fileRef = F43436C91EC69329007B6A3D /* UIColor+WOTS.swift */; };
 		F43437251ECA56D7007B6A3D /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = F43437241ECA56D7007B6A3D /* Place.swift */; };
@@ -106,7 +105,6 @@
 		F46EC9871EB52F7B00BF1A53 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F46EC9851EB52F7B00BF1A53 /* Main.storyboard */; };
 		F46EC9891EB52F7B00BF1A53 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F46EC9881EB52F7B00BF1A53 /* Assets.xcassets */; };
 		F46EC98C1EB52F7B00BF1A53 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F46EC98A1EB52F7B00BF1A53 /* LaunchScreen.storyboard */; };
-		F46EC9941EB538DB00BF1A53 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46EC9931EB538DB00BF1A53 /* TabBarController.swift */; };
 		F46EC9961EB5418C00BF1A53 /* ExploreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46EC9951EB5418C00BF1A53 /* ExploreViewController.swift */; };
 		F46EC9981EB54E7B00BF1A53 /* UIView+Autolayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46EC9971EB54E7B00BF1A53 /* UIView+Autolayout.swift */; };
 		F4BECB0B1EB9745700B98BA8 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4BECB0A1EB9745700B98BA8 /* Constants.swift */; };
@@ -272,7 +270,6 @@
 		95A593691EC6506C006BFEC9 /* CredentialManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CredentialManager.swift; sourceTree = "<group>"; };
 		95CC6F801ECFB54300871B7B /* UserVocab.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserVocab.swift; sourceTree = "<group>"; };
 		95CC6F821ECFB5B200871B7B /* UserWordManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserWordManager.swift; sourceTree = "<group>"; };
-		95CF55601ECD02ED00AEB769 /* InitialNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InitialNavigationController.swift; sourceTree = "<group>"; };
 		95FC0BB71ECD321800664F87 /* DateFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateFunctions.swift; sourceTree = "<group>"; };
 		F43436C91EC69329007B6A3D /* UIColor+WOTS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+WOTS.swift"; sourceTree = "<group>"; };
 		F43437241ECA56D7007B6A3D /* Place.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Place.swift; sourceTree = "<group>"; };
@@ -282,7 +279,6 @@
 		F46EC9881EB52F7B00BF1A53 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F46EC98B1EB52F7B00BF1A53 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F46EC98D1EB52F7B00BF1A53 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		F46EC9931EB538DB00BF1A53 /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		F46EC9951EB5418C00BF1A53 /* ExploreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExploreViewController.swift; sourceTree = "<group>"; };
 		F46EC9971EB54E7B00BF1A53 /* UIView+Autolayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Autolayout.swift"; sourceTree = "<group>"; };
 		F4BECB0A1EB9745700B98BA8 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -614,7 +610,6 @@
 				F43436C91EC69329007B6A3D /* UIColor+WOTS.swift */,
 				F4BECB0C1EB97C3800B98BA8 /* APIClient.swift */,
 				F43437241ECA56D7007B6A3D /* Place.swift */,
-				F46EC9931EB538DB00BF1A53 /* TabBarController.swift */,
 				F46EC9951EB5418C00BF1A53 /* ExploreViewController.swift */,
 				F4BECB101EBB02A500B98BA8 /* MarkerInfoView.swift */,
 				F4BECB1A1EBBB77600B98BA8 /* PlaceDetails */,
@@ -634,7 +629,6 @@
 				3FBAA2BA1EC434710040AD89 /* CircleProgressView.swift */,
 				3FC752F21EC67D9F009D9924 /* QuizResults */,
 				955A95E01EC9402F0002BCEE /* SessionManager.swift */,
-				95CF55601ECD02ED00AEB769 /* InitialNavigationController.swift */,
 				95FC0BB71ECD321800664F87 /* DateFunctions.swift */,
 			);
 			path = WOTS;
@@ -840,7 +834,6 @@
 				3FBAA2AE1EC2F87D0040AD89 /* GoalsCell.swift in Sources */,
 				F4BECB0D1EB97C3800B98BA8 /* APIClient.swift in Sources */,
 				3FC752F01EC67D2C009D9924 /* QuizResultsHeaderCell.swift in Sources */,
-				F46EC9941EB538DB00BF1A53 /* TabBarController.swift in Sources */,
 				F4BECB131EBB915000B98BA8 /* PlaceDetailViewController.swift in Sources */,
 				9551CCDA1ECAA75800D820DD /* GMUDefaultClusterIconGenerator.m in Sources */,
 				9551CCE51ECAA75800D820DD /* GMUPolygon.m in Sources */,
@@ -854,7 +847,6 @@
 				9551CCDF1ECAA75800D820DD /* GMUFeature.m in Sources */,
 				9551CCE11ECAA75800D820DD /* GMUGroundOverlay.m in Sources */,
 				9551CCD71ECAA75800D820DD /* GMUWrappingDictionaryKey.m in Sources */,
-				95CF55611ECD02ED00AEB769 /* InitialNavigationController.swift in Sources */,
 				9551CCDD1ECAA75800D820DD /* GMUGeometryRenderer.m in Sources */,
 				9559D05B1EC8056200BAC3F5 /* AWSAPI_CX0HSKU68J_RequestSchema.m in Sources */,
 				9551CD011ECAA8A100D820DD /* UserPoolsIdentityProfile.swift in Sources */,

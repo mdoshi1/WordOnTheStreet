@@ -12,30 +12,31 @@ import AWSMobileHubHelper
 import AWSDynamoDB
 
 class SessionManager {
-    static var sharedInstance = SessionManager()
-    private var dynamoDBObjectMapper = AWSDynamoDBObjectMapper.default()
-
+    static let sharedInstance = SessionManager()
     var userInfo: UserInformation?
     
-    func saveUserInfo(){
-        let user = UserInformation()
-        user?._userId = AWSIdentityManager.default().identityId!
-        user?._achievements = nil
-        user?._wordGoal = 3
-        user?._history = nil
-        let objectMapper = AWSDynamoDBObjectMapper.default()
-        self.userInfo = user
-        objectMapper.save(user!, completionHandler: {(error: Error?) -> Void in
-            if let error = error {
-                print("Amazon DynamoDB Save Error: \(error)")
+    func initUserInfo(){
+        guard let user = UserInformation(),
+            let userId = AWSIdentityManager.default().identityId else {
+            print("Unable to initialize new user info because no user is logged in")
+            return
+        }
+        user._userId = userId
+        user._achievements = nil
+        user._wordGoal = 3
+        user._history = nil
+        userInfo = user
+        AWSDynamoDBObjectMapper.default().save(user, completionHandler: {(error: Error?) -> Void in
+            guard error == nil else {
+                print("Amazon DynamoDB save error: \(error!.localizedDescription)")
                 return
             }
-            print("User saved.")
+            print("New user saved")
         })
     }
     
     func setUserWordGoal(goal: Int){
-        self.dynamoDBObjectMapper.save(self.userInfo!, completionHandler: {(error: Error?) -> Void in
+        AWSDynamoDBObjectMapper.default().save(self.userInfo!, completionHandler: {(error: Error?) -> Void in
             if let error = error {
                 print("Amazon DynamoDB Save Error: \(error)")
                 return
@@ -62,7 +63,7 @@ class SessionManager {
         } else {
             self.userInfo?._history?.updateValue(numWords as NSObject, forKey: dateStr)
         }
-        self.dynamoDBObjectMapper.save(self.userInfo!, completionHandler: {(error: Error?) -> Void in
+        AWSDynamoDBObjectMapper.default().save(self.userInfo!, completionHandler: {(error: Error?) -> Void in
             if let error = error {
                 print("Amazon DynamoDB Save Error: \(error)")
                 return
@@ -79,12 +80,11 @@ class SessionManager {
         var numWords = 0
         var strSet: Set<String> = []
         if self.userInfo?._wordHistory?[dateStr] != nil {
-            let map = self.userInfo?._wordHistory?[dateStr] as! Dictionary<String, Any>
+            let map = self.userInfo?._wordHistory?[dateStr] as! [String: Any]
             numWords = map["wordCount"] as! Int
             strSet = map["wordSet"] as! Set<String>
         }
         numWords += wordsLearned
-        //self.userInfo?._history?[dateStr] = numWords as NSObject
         if(self.userInfo?._wordHistory == nil){
             var newSet: Set<String> = []
             if(wordsLearned < 0){
@@ -108,19 +108,20 @@ class SessionManager {
             let map = ["wordCount": numWords, "wordSet": strSet] as [String : Any]
             self.userInfo?._wordHistory?.updateValue(map as NSObject, forKey: dateStr)
         }
-        self.dynamoDBObjectMapper.save(self.userInfo!, completionHandler: {(error: Error?) -> Void in
-            if let error = error {
-                print("Amazon DynamoDB Save Error: \(error)")
+        AWSDynamoDBObjectMapper.default().save(self.userInfo!) {(error: Error?) -> Void in
+            guard error == nil else {
+                print("Amazon DynamoDB Save Error: \(error!.localizedDescription)")
                 return
             }
             print("User word history saved")
-        })
+        }
     }
     
     func getUserData(completion: @escaping (_ data: UserInformation?) -> Void){
-        //Query using GSI index table
-        //What is the top score ever recorded for the game Meteor Blasters?
+        
+        // Query using GSI index table
         guard let identityId = AWSIdentityManager.default().identityId else {
+            print("Unable to get user data because no user is logged in")
             completion(nil)
             return
         }
@@ -130,20 +131,21 @@ class SessionManager {
         
         queryExpression.expressionAttributeValues = [
             ":userId" : identityId ]
-        dynamoDBObjectMapper .query(UserInformation.self, expression: queryExpression) .continueWith(executor: AWSExecutor.mainThread(), block: { (task:AWSTask!) -> AnyObject! in
-            if let error = task.error as NSError? {
-                print("Error: \(error)")
-            } else {
-                if let result = task.result {//(task.result != nil) {
-                    for r in result.items as! [UserInformation]{
-                        self.userInfo = r
-                        completion(r)
-                        return nil
-                    }
+        AWSDynamoDBObjectMapper.default().query(UserInformation.self, expression: queryExpression) .continueWith(executor: AWSExecutor.mainThread()) { (task: AWSTask!) -> AnyObject! in
+            guard task.error == nil,
+                let result = task.result else {
+                    print("Amazon DynamoDB query error: \(task.error!.localizedDescription)")
                     completion(nil)
-                }
+                    return nil
             }
+            
+            for item in result.items as! [UserInformation] {
+                self.userInfo = item
+                completion(item)
+                return nil
+            }
+            completion(nil)
             return nil
-        })
+        }
     }
 }
