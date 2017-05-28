@@ -222,7 +222,7 @@ extension NoteCardViewController: KolodaViewDelegate, KolodaViewDataSource {
         let card = dataSource[index]
         let index = card["index"]! as! Int
         var wordMap = userVoc?._flashcardWords?[index] as! [String: Any]
-        let date = Date(timeIntervalSince1970: wordMap["date"] as! TimeInterval)
+        //let date = Date(timeIntervalSince1970: wordMap["date"] as! TimeInterval)
         var bucketNum = wordMap["bucket"] as! Int
         
         // If user didn't know word, move down a bucket
@@ -246,6 +246,7 @@ extension NoteCardViewController: KolodaViewDelegate, KolodaViewDataSource {
             //If they got it right and already got it right today dont do anything
             if(SessionManager.sharedInstance.userInfo != nil){
                 if(SessionManager.sharedInstance.userInfo?._wordHistory != nil){
+                    let date = Date()
                     let dateFormatter = DateFormatter()
                     dateFormatter.dateFormat = "MM:dd:YYYY"
                     let dateStr = dateFormatter.string(from: date as Date)
