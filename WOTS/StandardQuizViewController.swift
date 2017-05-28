@@ -26,7 +26,8 @@ class StandardQuizViewController: UIViewController, UITextFieldDelegate {
     var allWords = [WordAttempt]();
     
     override func viewDidLoad() {
-        self.view.backgroundColor = UIColor(patternImage: UIImage(named:"chalk-background")!)
+        //self.view.backgroundColor = UIColor(patternImage: UIImage(named:"chalk-background")!)
+        self.view.backgroundColor = UIColor(red:0.20, green:0.20, blue:0.20, alpha:1.0)
 
         currentWord = WordAttempt(englishWord: dataSource[wordIndex]["english"]! as! String, spanishWord:  dataSource[wordIndex]["spanish"]! as! String)
         allWords.append(currentWord)
