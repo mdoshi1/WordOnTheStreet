@@ -19,8 +19,10 @@ class ExploreViewController: UIViewController {
         // Default location to CS 377U classroom
         let camera = GMSCameraPosition.camera(withLatitude: 37.43, longitude: -122.17, zoom: 17.0)
         let mapView = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
+        mapView.setMinZoom(16.0, maxZoom: 19.0)
         mapView.isMyLocationEnabled = true
         mapView.settings.myLocationButton = true
+        mapView.delegate = self
         return mapView
     }()
     
@@ -39,15 +41,15 @@ class ExploreViewController: UIViewController {
     }()
     
     fileprivate var locationManager = CLLocationManager()
-    fileprivate var clusterManager: GMUClusterManager!
-    fileprivate let placeDetailSegue = "toPlaceDetails"
-    fileprivate var placesDict = [String: Place]()
+//    fileprivate var clusterManager: GMUClusterManager!
     fileprivate var loadedPlaces = [String]()
 
     // MARK: - ExploreViewController
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        navigationItem.title = Constants.Storyboard.AppName
         
         // Setup mapview
         view.addSubview(mapView.usingAutolayout())
@@ -56,23 +58,25 @@ class ExploreViewController: UIViewController {
         setupConstraints()
         
         // Setup cluster manager
-        let renderer = GMUDefaultClusterRenderer(mapView: mapView, clusterIconGenerator: GMUDefaultClusterIconGenerator())
-        clusterManager = GMUClusterManager(map: mapView, algorithm: GMUGridBasedClusterAlgorithm(), renderer: renderer)
-        clusterManager.setDelegate(self, mapDelegate: self)
+//        let renderer = GMUDefaultClusterRenderer(mapView: mapView, clusterIconGenerator: GMUDefaultClusterIconGenerator())
+//        clusterManager = GMUClusterManager(map: mapView, algorithm: GMUGridBasedClusterAlgorithm(), renderer: renderer)
+//        clusterManager.setDelegate(self, mapDelegate: self)
         
         // Go to current location
         locationManager.delegate = self
         locationManager.startUpdatingLocation()
-        
-        self.navigationItem.title = "Word on the Street"
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
         // Instrumentation: time spent in Explore
         Flurry.logEvent("Tab_Explore", timed: true)
     }
     
     override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        
         // Instrumentation: time spent in Explore
         Flurry.endTimedEvent("Tab_Explore", withParameters: nil)
     }
@@ -148,31 +152,39 @@ extension ExploreViewController: GMSMapViewDelegate {
                 return
             }
             
+            // Load words for all places
             DispatchQueue.global(qos: .userInitiated).async {
-                for place in places {
+                for index in 0..<places.count {
+                    let place = places[index]
                     if !self.loadedPlaces.contains(place.placeId) {
                         self.loadedPlaces.append(place.placeId)
                         
                         APIClient.getWords(forPlace: place) { vocab in
-                            guard let vocab = vocab else {
-                                print("Error retrieving vocab for selected marker")
-                                return
-                            }
-                            place.updateVocab(vocab)
-                            
                             DispatchQueue.main.async {
-                                let infoMarker = GMSMarker(position: place.position)
-                                infoMarker.title = place.name
-                                infoMarker.opacity = 1.0
-                                infoMarker.infoWindowAnchor = CGPoint(x: 0, y: -0.2)
-                                infoMarker.userData = place
-                                infoMarker.map = mapView
+                                if let vocab = vocab {
+                                    place.updateVocab(vocab)
+                                    
+                                    // Place info marker if place has words
+                                    let infoMarker = GMSMarker(position: place.position)
+                                    infoMarker.title = place.name
+                                    infoMarker.opacity = 1.0
+                                    infoMarker.infoWindowAnchor = CGPoint(x: 0, y: -0.2)
+                                    infoMarker.userData = place
+                                    infoMarker.map = mapView
+                                } else {
+                                    print("Error retrieving vocab for selected marker")
+                                }
                                 
-                                if place.placeId == self.loadedPlaces.last {
+                                if index == places.count - 1 {
                                     self.activityIndicator.stopAnimating()
                                     self.loadingLabel.isHidden = true
                                 }
                             }
+                        }
+                    } else if index == places.count - 1 {
+                        DispatchQueue.main.async {
+                            self.activityIndicator.stopAnimating()
+                            self.loadingLabel.isHidden = true
                         }
                     }
                 }
@@ -229,7 +241,7 @@ extension ExploreViewController: GMSMapViewDelegate {
             ] as [String: Any]
         Flurry.logEvent("Explore_Pin_Info_Window", withParameters: flurryParams)
         
-        performSegue(withIdentifier: placeDetailSegue, sender: marker.userData)
+        performSegue(withIdentifier: Constants.Storyboard.PlaceDetailSegue, sender: marker.userData)
     }
 }
 

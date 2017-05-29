@@ -16,7 +16,7 @@ class WordCell: UITableViewCell {
     @IBOutlet weak var wordLabel: UILabel!
     @IBOutlet weak var translationLabel: UILabel!
     @IBOutlet weak var addButton: UIButton!
-    var delegate: DidSelectWordAtPlaceProtocol?
+    var delegate: WordCellDelegate?
     
     // MARK: - WordCell
 
@@ -46,7 +46,7 @@ class WordCell: UITableViewCell {
     }
 }
 
-protocol DidSelectWordAtPlaceProtocol {
+protocol WordCellDelegate: class {
     func didSelectWordCell(valueSent: [String:String])
 }
 

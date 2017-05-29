@@ -26,6 +26,11 @@ class Constants {
     struct Storyboard {
         static let AppName = "Word on the Street"
         static let SignIn = "SignIn"
+        static let PlaceDetailSegue = "toPlaceDetails"
+        static let PlaceQuizSegue = "toPlaceQuiz"
+        static let PlaceImageCell = "PlaceImageCell"
+        static let PlaceHeaderCell = "PlaceHeaderCell"
+        static let WordCell = "WordCell"
         static let GoalCell = "GoalHeaderCell"
     }
 }
