@@ -88,8 +88,6 @@
 		9578456B1EC42D0700AA551F /* AWSDynamoDB.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 957845631EC42D0700AA551F /* AWSDynamoDB.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		95791F861EB53D4700F9FA96 /* NoteCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95791F851EB53D4700F9FA96 /* NoteCardViewController.swift */; };
 		95791F981EB5513300F9FA96 /* NoteCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95791F971EB5513300F9FA96 /* NoteCardView.swift */; };
-		95791F9C1EB55A9700F9FA96 /* NoteCardOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95791F9B1EB55A9700F9FA96 /* NoteCardOverlayView.swift */; };
-		95791F9E1EB55AEE00F9FA96 /* NoteCardOverlayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95791F9D1EB55AEE00F9FA96 /* NoteCardOverlayView.xib */; };
 		957EA0C41EB853B300E7750B /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 957EA0C31EB853B300E7750B /* libz.tbd */; };
 		957EA0C61EB853BB00E7750B /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 957EA0C51EB853BB00E7750B /* libsqlite3.tbd */; };
 		957F2F461EB9419A001117DB /* StandardQuizViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957F2F451EB9419A001117DB /* StandardQuizViewController.swift */; };
@@ -260,8 +258,6 @@
 		957845631EC42D0700AA551F /* AWSDynamoDB.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AWSDynamoDB.framework; path = Sdk/Aws/AWSDynamoDB.framework; sourceTree = "<group>"; };
 		95791F851EB53D4700F9FA96 /* NoteCardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteCardViewController.swift; sourceTree = "<group>"; };
 		95791F971EB5513300F9FA96 /* NoteCardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NoteCardView.swift; path = ../NoteCardView.swift; sourceTree = "<group>"; };
-		95791F9B1EB55A9700F9FA96 /* NoteCardOverlayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteCardOverlayView.swift; sourceTree = "<group>"; };
-		95791F9D1EB55AEE00F9FA96 /* NoteCardOverlayView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NoteCardOverlayView.xib; sourceTree = "<group>"; };
 		957EA0C31EB853B300E7750B /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		957EA0C51EB853BB00E7750B /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		957F2F451EB9419A001117DB /* StandardQuizViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StandardQuizViewController.swift; sourceTree = "<group>"; };
@@ -318,6 +314,7 @@
 		3FBAA2AB1EC2F6230040AD89 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				3FBAA2BA1EC434710040AD89 /* CircleProgressView.swift */,
 				F4BECB541EC66E5300B98BA8 /* ProfileHeaderView.swift */,
 				3FBAA2A51EC2F1B70040AD89 /* ProfileViewController.swift */,
 				3FBAA2A71EC2F61C0040AD89 /* ProfileHeaderCell.swift */,
@@ -555,8 +552,6 @@
 			isa = PBXGroup;
 			children = (
 				95791F851EB53D4700F9FA96 /* NoteCardViewController.swift */,
-				95791F9B1EB55A9700F9FA96 /* NoteCardOverlayView.swift */,
-				95791F9D1EB55AEE00F9FA96 /* NoteCardOverlayView.xib */,
 				95791F971EB5513300F9FA96 /* NoteCardView.swift */,
 			);
 			name = NoteCardView;
@@ -603,33 +598,19 @@
 			isa = PBXGroup;
 			children = (
 				F43436CB1EC93304007B6A3D /* Google-Maps-iOS-Utils */,
-				3F3BA9DB1EB7103C006B4FC1 /* ScrollableBottomSheetViewController.swift */,
-				3F3BA9DC1EB7103C006B4FC1 /* ScrollableBottomSheetViewController.xib */,
+				9551CCE71ECAA8A100D820DD /* SignIn */,
+				F4E9DE3F1EDC0FF00089BA13 /* Review */,
+				F4E9DE3E1EDC0FBD0089BA13 /* Explore */,
+				3FBAA2AB1EC2F6230040AD89 /* Profile */,
+				F4E9DE421EDC11BF0089BA13 /* Convenience */,
 				F46EC9811EB52F7B00BF1A53 /* AppDelegate.swift */,
-				F4BECB0A1EB9745700B98BA8 /* Constants.swift */,
-				F43436C91EC69329007B6A3D /* UIColor+WOTS.swift */,
 				F4BECB0C1EB97C3800B98BA8 /* APIClient.swift */,
 				F43437241ECA56D7007B6A3D /* Place.swift */,
-				F46EC9951EB5418C00BF1A53 /* ExploreViewController.swift */,
-				F4BECB101EBB02A500B98BA8 /* MarkerInfoView.swift */,
-				F4BECB1A1EBBB77600B98BA8 /* PlaceDetails */,
-				F46EC9971EB54E7B00BF1A53 /* UIView+Autolayout.swift */,
 				F46EC9851EB52F7B00BF1A53 /* Main.storyboard */,
-				3F3BA9D11EB6FEF5006B4FC1 /* DefaultTableViewCell.swift */,
-				3F3BA9D21EB6FEF5006B4FC1 /* DefaultTableViewCell.xib */,
-				957F2F451EB9419A001117DB /* StandardQuizViewController.swift */,
-				957F2F4B1EB95467001117DB /* ResultsView.xib */,
-				957F2F4F1EB954B7001117DB /* ResultsView.swift */,
-				9551CCE71ECAA8A100D820DD /* SignIn */,
 				957F2F421EB92F43001117DB /* AwsConnections */,
 				9559D0471EC8056200BAC3F5 /* AmazonAws */,
-				957F2F411EB92F12001117DB /* NoteCardView */,
-				F4BECB091EB9741F00B98BA8 /* Supporting Files */,
-				3FBAA2AB1EC2F6230040AD89 /* Profile */,
-				3FBAA2BA1EC434710040AD89 /* CircleProgressView.swift */,
-				3FC752F21EC67D9F009D9924 /* QuizResults */,
 				955A95E01EC9402F0002BCEE /* SessionManager.swift */,
-				95FC0BB71ECD321800664F87 /* DateFunctions.swift */,
+				F4BECB091EB9741F00B98BA8 /* Supporting Files */,
 			);
 			path = WOTS;
 			sourceTree = "<group>";
@@ -656,6 +637,43 @@
 				F4BECB201EBBBAB400B98BA8 /* WordCell.xib */,
 			);
 			name = PlaceDetails;
+			sourceTree = "<group>";
+		};
+		F4E9DE3E1EDC0FBD0089BA13 /* Explore */ = {
+			isa = PBXGroup;
+			children = (
+				F46EC9951EB5418C00BF1A53 /* ExploreViewController.swift */,
+				F4BECB101EBB02A500B98BA8 /* MarkerInfoView.swift */,
+				F4BECB1A1EBBB77600B98BA8 /* PlaceDetails */,
+			);
+			name = Explore;
+			sourceTree = "<group>";
+		};
+		F4E9DE3F1EDC0FF00089BA13 /* Review */ = {
+			isa = PBXGroup;
+			children = (
+				3F3BA9DB1EB7103C006B4FC1 /* ScrollableBottomSheetViewController.swift */,
+				3F3BA9DC1EB7103C006B4FC1 /* ScrollableBottomSheetViewController.xib */,
+				3F3BA9D11EB6FEF5006B4FC1 /* DefaultTableViewCell.swift */,
+				3F3BA9D21EB6FEF5006B4FC1 /* DefaultTableViewCell.xib */,
+				957F2F451EB9419A001117DB /* StandardQuizViewController.swift */,
+				957F2F4B1EB95467001117DB /* ResultsView.xib */,
+				957F2F4F1EB954B7001117DB /* ResultsView.swift */,
+				957F2F411EB92F12001117DB /* NoteCardView */,
+				3FC752F21EC67D9F009D9924 /* QuizResults */,
+			);
+			name = Review;
+			sourceTree = "<group>";
+		};
+		F4E9DE421EDC11BF0089BA13 /* Convenience */ = {
+			isa = PBXGroup;
+			children = (
+				F4BECB0A1EB9745700B98BA8 /* Constants.swift */,
+				F43436C91EC69329007B6A3D /* UIColor+WOTS.swift */,
+				F46EC9971EB54E7B00BF1A53 /* UIView+Autolayout.swift */,
+				95FC0BB71ECD321800664F87 /* DateFunctions.swift */,
+			);
+			name = Convenience;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -734,7 +752,6 @@
 				9551CD001ECAA8A100D820DD /* UserPools.storyboard in Resources */,
 				3F6CB6921EC530DD005A51BD /* QuizResultsCell.xib in Resources */,
 				957F2F4C1EB95467001117DB /* ResultsView.xib in Resources */,
-				95791F9E1EB55AEE00F9FA96 /* NoteCardOverlayView.xib in Resources */,
 				9551CD061ECAAB5500D820DD /* SignIn.storyboard in Resources */,
 				3FBAA2AF1EC2F87D0040AD89 /* GoalsCell.xib in Resources */,
 				F4BECB191EBBB67900B98BA8 /* PlaceImageCell.xib in Resources */,
@@ -851,7 +868,6 @@
 				9559D05B1EC8056200BAC3F5 /* AWSAPI_CX0HSKU68J_RequestSchema.m in Sources */,
 				9551CD011ECAA8A100D820DD /* UserPoolsIdentityProfile.swift in Sources */,
 				9551CD031ECAA8A100D820DD /* UserPoolSignUpViewController.swift in Sources */,
-				95791F9C1EB55A9700F9FA96 /* NoteCardOverlayView.swift in Sources */,
 				95791F861EB53D4700F9FA96 /* NoteCardViewController.swift in Sources */,
 				9559D0621EC8056200BAC3F5 /* Achievements.swift in Sources */,
 				9559D0661EC8056200BAC3F5 /* WordPairs.swift in Sources */,

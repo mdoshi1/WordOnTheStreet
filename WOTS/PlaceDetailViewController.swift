@@ -10,16 +10,13 @@ import UIKit
 import GoogleMaps
 import Flurry_iOS_SDK
 
-class PlaceDetailViewController: UIViewController, DidSelectWordAtPlaceProtocol {
+class PlaceDetailViewController: UIViewController {
     
     enum DetailType: Int {
         case image = 0
         case header
         case words
     }
-    
-    var dataSource: [Dictionary<String, Any>] = []
-
     
     // MARK: - Properties
     
@@ -31,31 +28,7 @@ class PlaceDetailViewController: UIViewController, DidSelectWordAtPlaceProtocol 
     }()
     
     var place: Place?
-    //let userWordManager = UserWordManager.sharedSession
-
-    // TODO: remove fake data
-    let words = [
-        ["english": "drink", "spanish": "la bebida"],
-        ["english": "check", "spanish": "el cheque"],
-        ["english": "glass", "spanish": "el vaso"],
-        ["english": "table", "spanish": "la mesa"],
-        ["english": "waiter", "spanish": "el mesero"],
-        ["english": "chair", "spanish": "la silla"],
-        ["english": "to order", "spanish": "pedir"],
-        ["english": "booth", "spanish": "la cabina"],
-        ["english": "juice", "spanish": "el jugo"],
-        ["english": "fork", "spanish": "el tenedor"],
-        ["english": "spoon", "spanish": "la cuchara"],
-        ["english": "knife", "spanish": "el cuchillo"],
-        ["english": "soup", "spanish": "la sopa"],
-        ["english": "dessert", "spanish": "el postre"],
-        ["english": "menu", "spanish": "el menú"],
-        ["english": "napkin", "spanish": "la servilleta"],
-        ["english": "bathroom", "spanish": "el baño"],
-        ["english": "to pay", "spanish": "pagar"],
-        ["english": "appetizer", "spanish": "la botana"],
-        ["english": "water", "spanish": "el agua"]
-    ]
+    var dataSource = [[String: Any]]()
     
     // MARK: - PlaceDetialViewController
 
@@ -65,19 +38,22 @@ class PlaceDetailViewController: UIViewController, DidSelectWordAtPlaceProtocol 
         view.addSubview(wordList.usingAutolayout())
         setupConstraints()
         registerReusableCells()
-        self.navigationItem.title = place?.name ?? "Name"
+        navigationItem.title = place?.name ?? "Name"
         initData()
 
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
         // Instrumentation: time spent in Place Details
         Flurry.logEvent("Place_Details", timed: true)
     }
     
     override func viewDidDisappear(_ animated: Bool) {
-        // Instrumentation: time spent in Place Details
+        super.viewDidDisappear(animated)
         
+        // Instrumentation: time spent in Place Details
         let flurryParams = ["name": place?.name ?? "Place_Name",
                             "placeId": place?.placeId ?? "Place_Id",
                             "numWords": place?.numWords ?? "Place_Num_Word",
@@ -89,16 +65,11 @@ class PlaceDetailViewController: UIViewController, DidSelectWordAtPlaceProtocol 
     
     // MARK: - Helper Methods
     
-    func initData(){
-        //  userWordManger.testing_saveWordMap()
+    private func initData(){
         UserWordManager.shared.pullUserWordIds { (userVocab) in
-            var uv = userVocab
-            if(uv == nil){
-                uv = UserWordManager.shared.userInfo
-            }
-            UserWordManager.shared.getAllWords(uv!, completion: { (source) in
+            UserWordManager.shared.getAllWords(userVocab ?? UserWordManager.shared.userInfo!) { (source) in
                 self.dataSource = source
-            })
+            }
         }
     }
     
@@ -114,9 +85,9 @@ class PlaceDetailViewController: UIViewController, DidSelectWordAtPlaceProtocol 
     }
     
     private func registerReusableCells() {
-        wordList.register(UINib(nibName: "PlaceImageCell", bundle: nil), forCellReuseIdentifier: "PlaceImageCell")
-        wordList.register(UINib(nibName: "PlaceHeaderCell", bundle: nil), forCellReuseIdentifier: "PlaceHeaderCell")
-        wordList.register(UINib(nibName: "WordCell", bundle: nil), forCellReuseIdentifier: "WordCell")
+        wordList.register(UINib(nibName: Constants.Storyboard.PlaceImageCell, bundle: nil), forCellReuseIdentifier: Constants.Storyboard.PlaceImageCell)
+        wordList.register(UINib(nibName: Constants.Storyboard.PlaceHeaderCell, bundle: nil), forCellReuseIdentifier: Constants.Storyboard.PlaceHeaderCell)
+        wordList.register(UINib(nibName: Constants.Storyboard.WordCell, bundle: nil), forCellReuseIdentifier: Constants.Storyboard.WordCell)
     }
     
     // MARK: - Navigation
@@ -134,15 +105,11 @@ class PlaceDetailViewController: UIViewController, DidSelectWordAtPlaceProtocol 
             let destinationVC = navVC.topViewController as! StandardQuizViewController
             destinationVC.dataSource = dataSource
             destinationVC.navigationItem.title = "Quiz for " + (place?.name ?? "Name")
-            
-            // Shorten back button title from "Word on the Street" to just "Back"
-            let backItem = UIBarButtonItem()
-            backItem.title = ""
-            navigationItem.backBarButtonItem = backItem
         }
     }
     
     func toPlaceQuiz(sender: UIButton) {
+        
         // Instrumentation: Taking quiz based on location
         let flurryParams = ["name": place?.name ?? "Place_Name",
                             "placeId": place?.placeId ?? "Place_Id",
@@ -152,7 +119,7 @@ class PlaceDetailViewController: UIViewController, DidSelectWordAtPlaceProtocol 
             ] as [String: Any]
         Flurry.logEvent("Explore_Quiz", withParameters: flurryParams)
         
-        performSegue(withIdentifier: "toPlaceQuiz", sender: nil)
+        performSegue(withIdentifier: Constants.Storyboard.PlaceQuizSegue, sender: nil)
     }
 }
 
@@ -182,7 +149,7 @@ extension PlaceDetailViewController: UITableViewDelegate, UITableViewDataSource 
         case .header:
             return 1
         case .words:
-            return place?.numWords ?? 20
+            return place?.numWords ?? 0
         }
     }
     
@@ -206,8 +173,9 @@ extension PlaceDetailViewController: UITableViewDelegate, UITableViewDataSource 
                 wordCell.wordLabel.text = key
                 wordCell.translationLabel.text = vocab.dict[key]
             } else {
-                wordCell.wordLabel.text = words[indexPath.row]["english"]
-                wordCell.translationLabel.text = words[indexPath.row]["spanish"]
+                print("The current place's vocab is nil")
+                wordCell.wordLabel.text = "No word available"
+                wordCell.translationLabel.text = ""
             }
             for item in self.dataSource {
                 if(item["english"] as! String == wordCell.wordLabel.text!){
@@ -218,8 +186,11 @@ extension PlaceDetailViewController: UITableViewDelegate, UITableViewDataSource 
             return wordCell
         }
     }
-    
-    // MARK: Protocol for WordCell
+}
+
+// MARK: - Word Cell Methods
+
+extension PlaceDetailViewController: WordCellDelegate {
     func didSelectWordCell(valueSent: [String:String]) {
         
         // Instrumentation: what word pair did the user add to their own list
@@ -231,12 +202,11 @@ extension PlaceDetailViewController: UITableViewDelegate, UITableViewDataSource 
                             "location": place?.position ?? "Place_Location",
                             "sourceWord": valueSent["sourceWord"] ?? "Source_Word",
                             "translationWord": valueSent["translationWord"] ?? "Translation_Word"
-        ] as [String: Any]
+            ] as [String: Any]
         
         Flurry.logEvent("Added_Word", withParameters: flurryParams)
         UserWordManager.shared.getWordId(valueSent["sourceWord"]!, spanishWord: valueSent["translationWord"]!) { (wordPairs) in
             UserWordManager.shared.updateUserData(wordPair: wordPairs, data: UserWordManager.shared.userInfo!)
         }
     }
-    
 }
