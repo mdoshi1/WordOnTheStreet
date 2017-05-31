@@ -31,6 +31,9 @@ class UserPoolSignUpConfirmationViewController : UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setUp()
+        let tap = UITapGestureRecognizer(target: self.view, action: Selector("endEditing:"))
+        tap.cancelsTouchesInView = false
+        self.view.addGestureRecognizer(tap)
     }
     
     func setUp() {

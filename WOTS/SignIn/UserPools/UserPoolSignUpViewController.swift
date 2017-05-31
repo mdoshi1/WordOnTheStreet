@@ -53,6 +53,9 @@ class UserPoolSignUpViewController: UIViewController {
         tableView.reloadData()
         
         UserPoolsUIHelper.setUpFormShadow(view: formView)
+        let tap = UITapGestureRecognizer(target: self.view, action: Selector("endEditing:"))
+        tap.cancelsTouchesInView = false
+        self.view.addGestureRecognizer(tap)
         
         self.setUpBackground()
     }
