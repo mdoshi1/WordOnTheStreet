@@ -46,7 +46,8 @@ class NoteCardViewController: UIViewController {
         presentSignInViewController()
         
         setupView()
-        
+        self.takeQuizButton.isHidden = true
+        self.goExploreLabel.text = "Looks like you've learned all of your words. You should go explore for more!"
         // Instrumentation: time spent in Review
         Flurry.logEvent("Tab_Review", timed: true)
     }
