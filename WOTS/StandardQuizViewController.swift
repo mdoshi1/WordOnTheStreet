@@ -39,7 +39,9 @@ class StandardQuizViewController: UIViewController, UITextFieldDelegate {
         numAttemptsLeftLabel.isHidden = true;
         doneButton.layer.cornerRadius = 6;
         doneButton.addTarget(self, action: #selector(finishQuiz), for: .touchUpInside)
-        
+        let tap = UITapGestureRecognizer(target: self.view, action: Selector("endEditing:"))
+        tap.cancelsTouchesInView = false
+        self.view.addGestureRecognizer(tap)
         super.viewDidLoad()
         
         // Instrumentation: Time how long user spends in quiz
