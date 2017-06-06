@@ -27,7 +27,6 @@ class ScrollableBottomSheetViewController: UIViewController {
         tableView.register(UINib(nibName: "DefaultTableViewCell", bundle: nil), forCellReuseIdentifier: "default")
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 300
-        
         let gesture = UIPanGestureRecognizer.init(target: self, action: #selector(ScrollableBottomSheetViewController.panGesture))
         gesture.delegate = self
         view.addGestureRecognizer(gesture)
@@ -36,7 +35,7 @@ class ScrollableBottomSheetViewController: UIViewController {
         self.words = source;
         self.tableView.reloadData()
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 //        prepareBackgroundView()

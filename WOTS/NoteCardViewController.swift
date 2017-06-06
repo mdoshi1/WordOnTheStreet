@@ -78,6 +78,15 @@ class NoteCardViewController: UIViewController {
         UserWordManager.shared.saveUserVocab(data: userVoc!)
     }
     
+//    func setUpScrollView(){
+//        NSLayoutConstraint.activate([
+//            wordList.topAnchor.constraint(equalTo: topLayoutGuide.bottomAnchor),
+//            wordList.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+//            wordList.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+//            wordList.bottomAnchor.constraint(equalTo: bottomLayoutGuide.topAnchor)
+//            ])
+//    }
+    
     // MARK: - Helper Methods
     
     private func setupView() {
@@ -251,10 +260,11 @@ extension NoteCardViewController: KolodaViewDelegate, KolodaViewDataSource {
                     let dateFormatter = DateFormatter()
                     dateFormatter.dateFormat = "MM:dd:YYYY"
                     let dateStr = dateFormatter.string(from: date as Date)
-                    let map = SessionManager.sharedInstance.userInfo?._wordHistory?[dateStr] as! [String: Any]
-                    let strSet = map["wordSet"] as! Set<String>
-                    if(strSet.contains(card["english"] as! String)){
-                        return
+                    if let map = SessionManager.sharedInstance.userInfo?._wordHistory?[dateStr] as? [String: Any]{
+                        let strSet = map["wordSet"] as! Set<String>
+                        if(strSet.contains(card["english"] as! String)){
+                            return
+                        }
                     }
                 }
             }
